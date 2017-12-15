@@ -1,4 +1,4 @@
-package com.storeArticle.store.entity;
+package com.storeArticle.store.model.accounts;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,6 +30,9 @@ public class User implements Serializable {
 
     @Column(name="password_user")
     private String password;
+
+    @Column(name="type_user")
+    private String typeUser;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -75,4 +78,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public String getTypeUser() {
+        return typeUser;
+    }
+
+    public void setTypeUser(String typeUser) {
+        this.typeUser = typeUser;
+    }
 }

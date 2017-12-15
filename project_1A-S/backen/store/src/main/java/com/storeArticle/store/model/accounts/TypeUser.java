@@ -1,4 +1,4 @@
-package com.storeArticle.store.entity;
+package com.storeArticle.store.model.accounts;
 
 import lombok.*;
 
