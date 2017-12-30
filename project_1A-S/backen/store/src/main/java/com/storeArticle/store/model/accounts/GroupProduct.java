@@ -19,10 +19,14 @@ public class GroupProduct  implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "bussine_id")
-    private Bussine bussine_id;
+    private Bussine bussineId;
 
     @Column(name="name_group")
     private String nameGroup;
+
+    @Column(name="is_delete_group")
+    private boolean isDelete;
+
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -36,12 +40,12 @@ public class GroupProduct  implements Serializable {
         this.groupId = groupId;
     }
 
-    public Bussine getBussine_id() {
-        return bussine_id;
+    public Bussine getBussineId() {
+        return bussineId;
     }
 
-    public void setBussine_id(Bussine bussine_id) {
-        this.bussine_id = bussine_id;
+    public void setBussineId(Bussine bussineId) {
+        this.bussineId = bussineId;
     }
 
     public String getNameGroup() {
@@ -50,5 +54,14 @@ public class GroupProduct  implements Serializable {
 
     public void setNameGroup(String nameGroup) {
         this.nameGroup = nameGroup;
+    }
+
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 }

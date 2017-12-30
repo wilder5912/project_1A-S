@@ -6,11 +6,11 @@ public interface GroupProductCrup {
 
     boolean addGroupProductName(GroupProduct groupProduct);
 
-    void deleteGroupProductName(int userId);
+    boolean deleteGroupProductName(int groupId);
 
-    void updatedGroupProductName(int userId, GroupProduct groupProduct);
+    boolean updatedGroupProductName(GroupProduct groupProduct);
 
-    GroupProduct getGroupProductName(int userId);
+    GroupProduct getGroupProductName(int groupId);
 
     Boolean getIsGroupProductName();
 }

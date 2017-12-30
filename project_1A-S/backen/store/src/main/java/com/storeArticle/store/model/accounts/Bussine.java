@@ -15,12 +15,14 @@ import java.io.Serializable;
 public class Bussine implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="bussine_id")
+    @Column(name="bussine_id", nullable = false, updatable = false)
     private int bussineId;
 
-    @Column(name="nombre_bu")
+
+    @Column(name="nombre_bu", nullable = false, updatable = false)
     private String nombreBu;
 
     public int getBussineId() {

@@ -1,9 +1,9 @@
 package com.storeArticle.store.service.accounts;
 
 import com.storeArticle.store.model.accounts.User;
+import com.storeArticle.store.service.enumPage.UserQueryEnum;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -22,12 +22,10 @@ public class UserService implements UserCrup {
 
     @Override
     public void deleteUser(int userId) {
-
     }
 
     @Override
     public void updatedUser(int userId, User user) {
-
     }
 
     @Override
@@ -41,14 +39,17 @@ public class UserService implements UserCrup {
     }
 
     public List<User> getUserEmail(String email) {
-        String user = "select user FROM User as user  where user.emailUser='"+email+"' ";
-        return entityManager.createQuery(user).getResultList();
+        String userHql= UserQueryEnum.getUserEmailHql.getHql();
+        return entityManager.createQuery(userHql).setParameter(1,email)
+                                                .getResultList();
     }
     public User getAutentification(String email, String password) {
-        String userQuery = "select user FROM User as user  where user.emailUser='"+email+"' and user.password ='"+password+"' ";
+        String userHql= UserQueryEnum.getAutentificationHql.getHql();
         User user;
         try{
-             user = (User)entityManager.createQuery(userQuery).getSingleResult();
+             user = (User)entityManager.createQuery(userHql).setParameter(1,email)
+                                                            .setParameter(2,password)
+                                                            .getSingleResult();
         }catch (RuntimeException e){
             user=null;
         }
