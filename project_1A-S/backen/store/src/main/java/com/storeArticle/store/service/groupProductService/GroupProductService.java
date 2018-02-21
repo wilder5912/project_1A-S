@@ -2,7 +2,8 @@ package com.storeArticle.store.service.groupProductService;
 
 import com.storeArticle.store.model.accounts.Bussine;
 import com.storeArticle.store.model.accounts.GroupProduct;
-import com.storeArticle.store.service.dto.GroupProductDTOService;
+import com.storeArticle.store.service.dto.SelectVEO;
+import com.storeArticle.store.service.dto.SelectDTOService;
 import com.storeArticle.store.service.enumPage.GroupProductQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,12 +20,9 @@ public class GroupProductService implements GroupProductCrup{
     @PersistenceContext
     private EntityManager entityManager;
     @Autowired
-    private GroupProductDTOService groupProductDTOService;
+    private SelectDTOService selectDTOService;
     @Autowired
     private BussineService bussineService;
-
-
-
 
     @Override
     public boolean addGroupProductName(GroupProduct groupProduct) {
@@ -103,5 +101,14 @@ public class GroupProductService implements GroupProductCrup{
         } else{
             return false;
         }
+    }
+    public List<Object[]> getListGroupProductBussineId(int idBussine){
+        return entityManager.createQuery(GroupProductQueryEnum.getGroupProductBsussineIdHql.getHql())
+                .setParameter(1,idBussine)
+                .setParameter(2,false).getResultList();
+    }
+    public List<SelectVEO> getListGroupDTO(int BussineId){
+        List<Object[]> c= getListGroupProductBussineId(BussineId);
+       return  selectDTOService.getProductoIdNameDTO(getListGroupProductBussineId(BussineId));
     }
 }

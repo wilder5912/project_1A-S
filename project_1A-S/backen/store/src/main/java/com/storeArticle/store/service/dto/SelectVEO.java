@@ -1,16 +1,9 @@
 package com.storeArticle.store.service.dto;
 
-import lombok.*;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import lombok.*;
-
-import javax.persistence.*;
 import java.io.Serializable;
 
 
-public class BussineDTO implements Serializable {
+public class SelectVEO implements Serializable {
 
     private String value;
 

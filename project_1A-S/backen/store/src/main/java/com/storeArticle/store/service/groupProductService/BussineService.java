@@ -2,8 +2,8 @@ package com.storeArticle.store.service.groupProductService;
 
 import com.storeArticle.store.model.accounts.Bussine;
 import com.storeArticle.store.model.accounts.GroupProduct;
-import com.storeArticle.store.service.dto.BussineDTO;
-import com.storeArticle.store.service.dto.BussineDTOService;
+import com.storeArticle.store.service.dto.SelectVEO;
+import com.storeArticle.store.service.dto.SelectDTOService;
 import com.storeArticle.store.service.enumPage.BussineQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,7 +21,7 @@ public class BussineService implements GroupBussineCrup{
     private EntityManager entityManager;
 
     @Autowired
-    private BussineDTOService bussineDTOService ;
+    private SelectDTOService bussineDTOService ;
 
     @Override
     public boolean addBussine(GroupProduct groupProduct) {
@@ -48,13 +48,11 @@ public class BussineService implements GroupBussineCrup{
         return null;
     }
 
-    public List<BussineDTO> getBussineDTO(){
+    public List<SelectVEO> getBussineDTO(){
        return bussineDTOService.getBussineDTO(getBussine());
     }
     public List<Object> getBussine() {
-        String bussinehql= BussineQueryEnum.getListBussineHql.getHql();
-        return entityManager.createQuery(bussinehql).getResultList();
+        return entityManager.createQuery(BussineQueryEnum.getListBussineHql.getHql()).getResultList();
     }
-
 
 }

@@ -4,11 +4,8 @@ package com.storeArticle.store.controller.product;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.storeArticle.store.model.accounts.GroupProduct;
-import com.storeArticle.store.service.dto.BussineDTO;
-import com.storeArticle.store.service.dto.GroupProductDTO;
+import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.groupProductService.BussineService;
-import com.storeArticle.store.service.groupProductService.GroupProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +27,7 @@ public class BussineController {
     protected ObjectMapper mapper;
 
     @GetMapping(value = "/getBussineDTO")
-    public List<BussineDTO> getBussineDTO()throws JsonParseException, JsonMappingException, IOException {
+    public List<SelectVEO> getBussineDTO()throws JsonParseException, JsonMappingException, IOException {
         return bussineService.getBussineDTO();
     }
 

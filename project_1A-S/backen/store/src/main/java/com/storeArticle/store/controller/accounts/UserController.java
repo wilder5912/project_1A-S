@@ -6,10 +6,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.storeArticle.store.model.accounts.User;
 import com.storeArticle.store.service.accounts.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.core.io.Resource;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RestController
@@ -63,7 +69,46 @@ public class UserController {
         return false;
     }
 
-}
+    @PostMapping(value ="/editImageUserOne")
+    public ResponseEntity<String> editImageUserOne(@RequestParam("file") MultipartFile file) {
+        String message = "";
 
+        try {
+           user = userService.editImageUserOne(file,user);
+        //    storageService.store(file);
+          //  files.add(file.getOriginalFilename());
+
+            message = "You successfully uploaded " + file.getOriginalFilename() + "!";
+            return ResponseEntity.status(HttpStatus.OK).body(message);
+        } catch (Exception e) {
+            message = "FAIL to upload " + file.getOriginalFilename() + "!";
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(message);
+        }
+    }
+
+    /*@GetMapping("/getImagenUser")
+    public getImagenUser<List<String>> getListFiles() {
+        List<String> fileNames = files
+                .stream().map(fileName -> MvcUriComponentsBuilder
+                        .fromMethodName(UploadController.class, "getFile2", fileName).build().toString())
+                .collect(Collectors.toList());
+
+
+        return ResponseEntity.ok().body(fileNames);
+    }
+    */
+
+    @GetMapping("/files/{filename:.+}")
+    @ResponseBody
+    public ResponseEntity<Resource> getFile2(@PathVariable String filename) {
+        Resource file = userService.loadFile(filename);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "-\"")
+                .body(file);
+    }
+
+
+}
+//Q1720D1.jpg
 
 

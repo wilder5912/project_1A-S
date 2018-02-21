@@ -34,6 +34,9 @@ public class User implements Serializable {
     @Column(name="type_user")
     private String typeUser;
 
+    @Column(name="imagen_user")
+    private String imagenUser;
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -84,5 +87,13 @@ public class User implements Serializable {
 
     public void setTypeUser(String typeUser) {
         this.typeUser = typeUser;
+    }
+
+    public String getImagenUser() {
+        return imagenUser;
+    }
+
+    public void setImagenUser(String imagenUser) {
+        this.imagenUser = imagenUser;
     }
 }
