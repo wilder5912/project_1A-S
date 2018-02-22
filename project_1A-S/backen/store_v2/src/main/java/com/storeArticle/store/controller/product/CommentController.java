@@ -10,6 +10,7 @@ import com.storeArticle.store.service.groupProductService.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,6 +28,10 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
     protected ObjectMapper mapper;
+
+    @Autowired
+    private SimpMessagingTemplate template;
+
     public CommentController(){
         mapper = new ObjectMapper();
     }
@@ -35,8 +40,23 @@ public class CommentController {
     public List<CommentVEO> getListBanner(@RequestBody String comment)throws  IOException{
         this.mapper = new ObjectMapper();
         Comment commentData = this.mapper.readValue(comment, Comment.class);
-        return commentService.addAndGetComment(commentData);
+        List<CommentVEO> listComment = commentService.addAndGetComment(commentData);
+        template.convertAndSend("/topic/listComment", "");
+
+        return listComment;
     }
+
+    @PostMapping(value = "/getCommentArticleId")
+    public List<CommentVEO> getCommentArticleId(@RequestBody String comment)throws  IOException{
+        this.mapper = new ObjectMapper();
+        Comment commentData = this.mapper.readValue(comment, Comment.class);
+        return commentService.getCommentDTOS(commentData.getArticleId().getArticleId());
+    }
+
+
+
+
+
 
    /* @PostMapping(value ="/updateImageArticle")
     public ResponseEntity<String> editImageUserOne(@RequestParam("fileBanner") MultipartFile fileBanner, @RequestParam("banner") String banner) throws  IOException {

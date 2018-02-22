@@ -36,15 +36,15 @@ public class UserController  {
         return true;
     }
     @PostMapping(value = "/addUser")
-        public boolean addUser(@RequestBody String userData)throws JsonParseException, JsonMappingException, IOException {
+        public User addUser(@RequestBody String userData)throws JsonParseException, JsonMappingException, IOException {
             this.mapper = new ObjectMapper();
             User userJson = this.mapper.readValue(userData, User.class);
             userJson.setTypeUser("User");
             if(userService.isCreateUser(userJson.getEmailUser())) {
                 userService.addUser(userJson);
-                return true;
+                return userService.getAutentification(userJson.getEmailUser(),userJson.getPassword());
             }
-            return false;
+            return null;
     }
 
     @PostMapping(value = "/loginUser")

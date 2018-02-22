@@ -10,7 +10,8 @@ public enum CommentQueryEnum {
                 " comment.userId.lastNameUser, comment.userId.imagenUser " +
                 " FROM Comment as comment " +
                 " where comment.articleId.articleId = ? and  " +
-                " comment.isDelete = ?");
+                " comment.isDelete = ? " +
+                " ORDER BY comment.dateComment DESC ");
 
     private String hql;
 
