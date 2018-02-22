@@ -1,0 +1,121 @@
+.footer .social-media .social-link {
+  margin-left: 2em;
+}
+
+ul.social-link {
+  list-style: none;
+}
+
+ul.social-link li a {
+  font-size: 14px;
+  line-height: 27px;
+  text-align: center;
+}
+.footer .social-media .social-link {
+  margin-left: 2em;
+}
+
+.customer-support-email, .customer-support-call, .social-link li {
+  display: inline-block;
+}
+
+.style-1 ul.social-link li.icon-facebook a, .style-2 ul.social-link li.icon-facebook:hover a {
+  background-color: #3B589C;
+}
+ul.social-link li.icon-twitter a, .style-2 ul.social-link li.icon-twitter:hover a {
+  background-color: #6DC0E8;
+}
+ul.social-link li.icon-instagram a, .style-2 ul.social-link li.icon-instagram:hover a {
+  background-color: #E84C4D;
+}
+ul.social-link li.icon-linkedin a, .style-2 ul.social-link li.icon-linkedin:hover a {
+  background-color: #0177B5;
+}
+.style-1 ul.social-link li.icon-google-plus a, .style-2 ul.social-link li.icon-google-plus:hover a {
+  background-color: #D03E2F;
+}
+ul.social-link li.icon-flickr a, .style-2 ul.social-link li.icon-flickr:hover a {
+  background-color: #F7187D;
+}
+.style-1 ul.social-link li.icon-rss a, .style-2 ul.social-link li.icon-rss:hover a {
+  background-color: #f15200;
+}
+
+.footer .footer-top, .footer .footer-middle {
+  border-bottom: 1px;
+  border-style: solid;
+  border-color: rgba(233,233,233,1);
+  padding: 23px;
+}
+
+.footer {
+  margin-top: 10px;
+  border-top: 3px solid;
+  border-top-color: #1682ba;
+}
+ul.social-link li a, .style-2 ul.social-link li:hover a {
+  color: #fff;
+  padding: 10px;
+}
+.footer-middle li {
+  display: inline-block;
+  border: none;
+  padding: 6px 0;
+}
+.footer-middle li a{
+  color: #202020;
+  text-decoration: none;
+}
+
+
+.fa-facebook-f:before, .fa-facebook:before {
+  content: "\f09a";
+}
+
+.footer .social-media .social-link {
+  margin-left: 2em;
+}
+
+.footer .news-letter .widget-title, .footer .social-media .widget-title, .footer .news-letter .mc4wp-form, .footer .news-letter .mc4wp-form p, .footer .social-media .social-link {
+  display: inline-block;
+  margin: 0;
+}
+
+ul.social-link {
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+}
+
+.logo-page-a{
+  padding: 1px 12px 10px 1px;
+  margin: auto;
+}
+.logo-page{
+  width: 191px;
+  height: 99px;
+  z-index: 2;
+  position: relative;
+}
+
+.icon-facebook{
+ /* background-color: #3B589C;
+*/}
+.icon-twitter{
+
+}
+.icon-instagram{
+
+}
+.icon-linkedin{
+
+}
+.icon-google-plus{
+
+}
+.icon-flickr{
+
+}
+.icon-rss{
+
+}

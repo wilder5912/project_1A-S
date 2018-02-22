@@ -1,0 +1,39 @@
+.border-article:hover{
+  border-style: groove;
+  border-width: 3px;
+  border-color: chocolate;
+  margin: -3px;
+  border-radius: 3%;
+}
+.grow-image:hover
+{
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.pading-detail-article{
+  padding:2px;
+  margin: auto;
+  border-radius: 15%;
+}
+.margin-image{
+  margin: auto;
+  padding: 15px;
+  border-radius: 15%;
+}
+
+.center-div{
+  text-align:center
+}
+.booton-color{
+  background-color: #ff8400;
+  color:#F3F3F3;
+}
+.booton-color:hover{
+  background-color: chocolate;
+  color:#F3F3F3;
+}
+.card-text{
+  padding: 0px;
+  margin: auto;
+}

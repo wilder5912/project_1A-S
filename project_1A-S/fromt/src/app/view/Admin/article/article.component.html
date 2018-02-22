@@ -1,0 +1,184 @@
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)">añadir</button>
+  </div>
+  <div class="col-lg-12">
+    <ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Grupo</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRefSection.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12 col-center">
+            <form novalidate [formGroup]="form" name="form"   #f="ngForm" >
+              <div class="form-group">
+                <label for="bussineId">Bussine</label>
+                <ng-select
+                  [options]="bussineSelect"
+                  [multiple]="false"
+                  formControlName="bussineId"
+                  name="bussineId"
+                  (selected)="onSelectBussine($event)"
+                >
+                </ng-select>
+                <div *ngIf="form.controls.bussineId.errors" class="">
+                  <div *ngIf="form.controls.bussineId.errors.required && form.controls.bussineId.dirty" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label form="groupId">Group</label>
+                <ng-select
+                  [options]="groupSelect"
+                  [multiple]="false"
+                  formControlName="groupId"
+                  name="groupId"
+                  (selected)="onSelectSection($event)"
+                >
+                </ng-select>
+                <div *ngIf="form.controls.groupId.errors" class="">
+                  <div *ngIf="form.controls.groupId.errors.required && form.controls.groupId.dirty" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="sectionId">Seccion</label>
+                <ng-select
+                  [options]="sectionSelect"
+                  [multiple]="false"
+                  formControlName="sectionId"
+                  name="sectionId"
+                  (selected)="onSubSelect($event)"
+                >
+                </ng-select>
+                <div *ngIf="form.controls.sectionId.errors" class="">
+                  <div *ngIf="form.controls.sectionId.errors.required && form.controls.sectionId.dirty" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="nameSubSection">Nombre SubSeccion</label>
+
+                <ng-select
+                  [options]="subSectionSelect"
+                  [multiple]="false"
+                  formControlName="subSectionId"
+                  name="subSectionId">
+                </ng-select>
+                <div *ngIf="form.controls.subSectionId.errors" class="">
+                  <div *ngIf="form.controls.subSectionId.errors.required && form.controls.subSectionId.dirty" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+                </div>
+              </div>
+              <div class="form-group"><!--
+                &lt;!&ndash;<input md-input
+                       formControlName="subSectionId"
+                       hidden="true"&ndash;&gt;
+                >-->
+              </div>
+              <div class="form-group">
+                <div *ngIf="isEditForm; then addData else editData"></div>
+                <ng-template #addData>
+                  <button [disabled]="loading" type="button" (click)="registerSubSection()"  class="btn btn-primary">{{'Add_Section'| translate }}</button>
+                </ng-template>
+                <ng-template #editData>
+                  <button [disabled]="loading" type="button" (click)="editSubSectionInfo()"  class="btn btn-primary">{{'Edit_Section'| translate }}</button>
+                </ng-template>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+
+
+<!--
+
+
+
+
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">User information</div>
+
+    <table class="table table-striped" [mfData]="data | dataFilterArticle : filterQuery" #mf="mfDataTable"
+           [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+      <thead>
+      <tr>
+        <th style="width: 10%">
+          <mfDefaultSorter by="subSectionId">Id</mfDefaultSorter>
+        </th>
+
+      <th style="width: 10%">
+          <mfDefaultSorter by="sectionId.groupId.bussineId.nombreBu">Bussine</mfDefaultSorter>
+        </th>
+
+        <th style="width: 10%">
+          <mfDefaultSorter by="sectionId.groupId.nameGroup">Grupo</mfDefaultSorter>
+        </th>
+
+        <th style="width: 10%">
+          <mfDefaultSorter by="sectionId.nameSection">Name Seccion</mfDefaultSorter>
+        </th>
+        <th style="width: 10%">
+          <mfDefaultSorter by="nameSubSection">Name sub Seccion</mfDefaultSorter>
+
+        </th>
+        <th style="width: 10%">
+          <mfDefaultSorter by="nameSubSection">nombre Articulo</mfDefaultSorter>
+        </th>    <th style="width: 10%">
+          <mfDefaultSorter by="nameSubSection">image Articulo</mfDefaultSorter>
+        </th>
+
+        <th style="width: 10%">
+          <mfDefaultSorter by="">Eliminar/Editar</mfDefaultSorter>
+        </th>
+      </tr>
+      <tr>
+        <th colspan="4">
+          Filtrado:
+          <input class="form-control" [(ngModel)]="filterQuery"/>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of mf.data">
+      &lt;!&ndash;  <td>{{item.articleId.articleId}}</td>
+        <td>{{item.articleId.subSectionId.sectionId.groupId.bussineId.nameBu}}</td>
+        <td>{{item.articleId.subSectionId.sectionId.groupId.nameGroup}}</td>
+        <td>{{item.articleId.subSectionId.sectionId.nameSection}}</td>
+        <td>{{item.articleId.subSectionId.nameSubSection}}</td>
+        <td>{{item.articleId.nameAr}}</td>
+        <td>{{item.articleId.imageMainAr}}</td>
+        <td>
+          <button (click)="remove(item)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+          <button (click)="edit(item,template)" class="btn btn-danger "><span class="glyphicon glyphicon-pencil"></span></button>
+        </td>&ndash;&gt;
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="5">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+-->

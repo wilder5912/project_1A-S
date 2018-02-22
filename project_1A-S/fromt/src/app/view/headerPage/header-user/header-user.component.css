@@ -1,0 +1,357 @@
+.header-color{
+ background-color: #0f7bb3;
+}
+
+.header-topbar-border {
+  padding: 15px 0;
+}
+ .customer-support-email, .customer-support-call, .social-link li {
+   display: inline-block;
+ }
+
+ .text-left {
+   text-align: left;
+ }
+ .header-topbar .customer-support {
+   padding: 9px 0;
+ }
+ .text-right {
+   text-align: right;
+ }
+ .topbar-right {
+   vertical-align: middle;
+ }
+
+ .topbar-right li > span, .topbar-right .nav li {
+   border-left: 1px;
+   border-style: solid;
+    border-color: #0f7bb3
+ }
+
+.topbar-left {
+  vertical-align: middle;
+}
+
+.topbar-left li > span, .topbar-left .nav li {
+  border-left: 1px;
+  border-style: solid;
+  border-color: #f8f8f8;
+}
+
+
+ .topbar-right li > span, .topbar-welcome-message {
+   display: inline-block;
+   padding: 9px 8px;
+ }
+ .color-letter-static i, .color-letter-static span{
+   color: white;
+ }
+.color-spam-header span , .color-spam-header i , .color-spam-header a , .color-spam-header i {
+  color:white;
+  text-decoration:none;
+}
+.color-spam-header-second span , .color-spam-header-second i , .color-spam-header-second a , .color-spam-header-second i {
+  color: #777;
+  text-decoration:none;
+}
+
+.color-dropdown-menu a{
+  color:white;
+  background-color: #0f7bb3;
+  text-decoration:none;
+}
+.color-dropdown-menu-second a{
+  color: #777;
+  background-color: #f8f8f8;
+  text-decoration:none;
+}
+
+ .color-spam-header a:hover, .color-spam-header i:hover {
+  color: chocolate;
+}
+.color-dropdown-menu-letter:hover a{
+  color: chocolate;
+}
+
+.color-dropdown-menu:hover .color-data{
+  color: chocolate;
+}
+.label-font-black{
+  font-weight: 900!important;
+}
+.hide-main{
+ display: block;
+}
+.hide-main-second{
+  display: none;
+}
+.color-letter-stati-second{
+  color: #777;
+}
+
+header-navigation-main .header-navigation-one{
+
+}
+
+.header-navigation-one{
+
+}
+
+.header-navigation-one ul ,.header-navigation-one ol{
+  list-style: none;
+}
+
+.color-submenu-state{
+  background-color: #4D4D4D;
+}
+
+.header-navigation-one .sub-menu-nav{
+  padding: 0px;
+}
+.header-navigation-one .sub-menu-nav li a{
+  background-color: #4D4D4D;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+}
+.header-navigation-one .sub-menu-nav li a:hover{
+  background-color: #0f7bb3;
+}
+
+.header-navigation-one .sub-menu-nav li .sub-menu-show{
+ display: none;
+  width:320px;
+  margin: -40px 10px 60px 0;
+  position:relative;
+
+}
+.header-navigation-one .sub-menu-nav li:hover > .sub-menu-show{
+  display: block;
+  position: fixed;
+  z-index: 100;
+  margin-left:223px;
+}
+.header-navigation-one .emallshop-megamenu-holder .emallshop-megamenu {
+  display: none;
+  width: 700px;
+  margin: -40px 10px 60px 0;
+  position:relative;
+  position: fixed;
+  z-index: 100;
+  margin-left:278px;
+  padding-left: 0px;
+}
+.header-navigation-one .emallshop-megamenu-holder:hover .emallshop-megamenu {
+  display: block;
+  position: fixed;
+  z-index: 100;
+  margin-left:278px;
+  height: 300px;
+  overflow-y: scroll;
+}
+.header-navigation-one .sub-menu-nav li .sub-menu-show li{
+  position:relative ;
+}
+.header-navigation-one .sub-menu-nav li ul li ul{
+  right: -140px;
+  top: 0px;
+}
+
+.category-menu{
+  margin: auto;
+}
+.category-menu-title{
+  background-color: #ff8400;
+}
+
+.category-menu-title span{
+  font-size:150%;
+  margin: 10px;
+  text-align: right;
+  cursor: pointer;
+  color:white;
+}
+
+.hide-css-div{
+  display: none;
+}
+
+.affix {
+  top: 0;
+  width: 100%;
+  z-index: 9999 !important;
+}
+.color-medion-affix{
+  color: white;
+  background-color: rgb(0, 117, 173);
+}
+.color-affix-main{
+  color: white;
+  background-color: rgb(15, 123, 179);
+  border: 0px solid;
+  margin-bottom: 4px;
+  border-color: rgb(15, 123, 179);
+}
+
+.color-affix-main a{
+  background-color: rgb(15, 123, 179);
+
+  color: white;
+}
+.color-medion-affix a{
+  background-color: rgb(0, 117, 173);
+  color: white;
+}
+
+.affix  +. container-fluid{
+  padding-top: 200px;
+}
+
+
+
+#primary_nav_wrap
+{
+  margin-top:15px
+}
+
+#primary_nav_wrap ul
+{
+  list-style:none;
+  position:relative;
+  float:left;
+  margin:0;
+  padding:0
+}
+
+#primary_nav_wrap ul a
+{
+  display:block;
+  /*color:#333;*/
+  text-decoration:none;
+  font-weight:700;
+  font-size:12px;
+  line-height:32px;
+  padding:0 15px;
+  font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif
+}
+
+#primary_nav_wrap ul li
+{
+  position:relative;
+  float:left;
+  margin:0;
+  padding:0
+}
+#primary_nav_wrap ul li ul li ul .nav-flo
+{
+  position:relative;
+  float:left;
+  margin:0;
+  padding:0
+}
+
+#primary_nav_wrap ul li ul li ul .nav-flo .nav-flo-sub
+{
+  left: auto;
+  display: block;
+}
+#primary_nav_wrap ul li ul li ul .nav-flo .nav-flo-sub .click-active:active
+{
+  color:white;
+  background-color: chocolate;
+}
+
+#primary_nav_wrap ul li ul li ul .nav-flo ul li
+{
+  position: static;
+}
+
+#primary_nav_wrap ul li ul li .nav-with
+{
+  width: 600px;
+  background-color: #0ff0;
+}
+
+
+#primary_nav_wrap ul li.current-menu-item
+{
+  background:#ddd
+}
+
+#primary_nav_wrap ul li:hover
+{
+  /*background:#f6f6f6*/
+}
+
+#primary_nav_wrap ul ul
+{
+  display:none;
+  position:absolute;
+  top:100%;
+  left:0;
+  background:#fff;
+  padding:0
+}
+
+#primary_nav_wrap ul ul li
+{
+  float:none;
+  width:200px
+}
+
+#primary_nav_wrap ul ul a
+{
+  line-height:120%;
+  padding:10px 15px;
+  white-space: inherit;
+}
+
+#primary_nav_wrap ul ul ul
+{
+  top:0;
+  left:100%
+}
+
+#primary_nav_wrap ul li:hover > ul
+{
+  display:block
+}
+.logo-page-a{
+  padding: 1px 12px 10px 1px;
+  margin: auto;
+}
+.logo-page{
+  width: 191px;
+  height: 68px;
+  z-index: 2;
+  position: relative;
+}
+
+
+@media(max-width:768px) {
+  .hide-main{
+    display: none;
+  }
+  .hide-main-second{
+    display: block;
+  }
+  .color-medion-affix{
+    color: white;
+    background-color: #f8f8f8;
+  }
+  .color-affix-main{
+    color: white;
+    background-color: #f8f8f8;
+  }
+
+  .color-affix-main a{
+    background-color: #f8f8f8;
+    color: #202020;
+  }
+  .color-medion-affix a{
+    background-color: #f8f8f8;
+    color: #202020;
+  }
+
+}

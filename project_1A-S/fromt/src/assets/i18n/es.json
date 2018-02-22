@@ -1,0 +1,43 @@
+{
+  "Group": "Grupo",
+  "Table_Group": "Tabla Grupo",
+  "Table_Section": "Tabla Section",
+  "Add_Group": "Añadir Grupo",
+  "Edit_Group": "Editar Grupo",
+  "Add_Section": "Añadir Seccion",
+  "Add_Articulo": "Añadir Articulo",
+  "Edit_Section": "Editar Seccion",
+  "Edit_Articulo": "Editar Articulo",
+  "Error_Server": "Error servidor con la informacion",
+  "Input_Require": "El Campo Es Requerido",
+  "Input_Number": "El Campo deve ser numerico",
+  "Input_Min_3": "El Campo Requiere Minimo 3 Caracteres",
+  "Input_Email": "El Campo Requiere Que Sea Email",
+  "Input_Email_Exist": "Email Ya Existe",
+  "HELLO": "hellossssssssssssssssss {{value}}",
+  "Description": " Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.",
+  "sProcessing":     "Procesando...",
+  "sLengthMenu":     "Mostrar _MENU_ registros",
+  "sZeroRecords":    "No se encontraron resultados",
+  "sEmptyTable":     "Ningún dato disponible en esta tabla",
+  "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+  "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+  "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+  "sInfoPostFix":    "",
+  "sSearch":         "Buscar:",
+  "sUrl":            "",
+  "sInfoThousands":  ",",
+  "sLoadingRecords": "Cargando...",
+  "oPaginate": {
+    "sFirst":    "Primero",
+    "sLast":     "Último",
+    "sNext":     "Siguiente",
+    "sPrevious": "Anterior"
+  },
+  "oAria": {
+    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+  }
+
+
+}

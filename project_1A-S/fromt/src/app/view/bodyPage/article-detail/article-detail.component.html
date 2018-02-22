@@ -1,0 +1,298 @@
+<div class="container" >
+  <div *ngIf="detailArticle">
+    <div class="col-lg-6" >
+      <img [imageZoom]="imageActicle" [src]="imageActicle" [style.width.px]="width" [style.height.px]="height" (click)="showImage()" class="image-big border-image"/>
+      <div id="container2">
+        <div
+          ng2-carouselamos
+          class="slides-wrapper"
+          [items]="items"
+          [width]="600"
+          [$prev]="prev"
+          [$next]="next"
+          [$item]="item"
+        >
+        </div>
+        <ng-template #prev>
+          <div class=" btn-lg">
+              <span class="glyphicon glyphicon-menu-left position-left" aria-hidden="true" id="left"></span>
+            </div>
+        </ng-template>
+        <ng-template #next>
+          <div class=" btn-lg">
+              <span class="glyphicon glyphicon-menu-right  position-ringht" aria-hidden="true" id="right"></span>
+          </div>
+        </ng-template>
+        <ng-template #item let-item let-i="index">
+
+          <div class="items">
+            <img src="{{dataService.getApiUrl()}}/imageArticle/files/{{item.name}}" (click)="imageClick(item)"  class="small-image" >
+          </div>
+        </ng-template>
+      </div>
+
+    </div>
+
+
+    <div class="col-lg-6">
+      <h1 class="title-h1"> {{detailArticle.nameAr}}</h1>
+      <div class="col-lg-12">
+        <label class="col-lg-12">precion:</label>
+        <span class="col-lg-12">{{detailArticle.precyAr}} Bs</span>
+      </div>
+      <div class="col-lg-12">
+        <label class="col-lg-12">Detalle:</label>
+        <p class="col-lg-12">
+          {{detailArticle.detailAr}}
+        </p>
+
+      </div>
+      <div class="col-lg-12">
+        <hr class=" line-hr">
+      </div>
+      <div class="col-lg-12">
+        <div class="col-lg-6">
+           <input type="number" >
+        </div>
+        <div class="col-lg-6">
+          <button> Añadir</button>
+        </div>
+
+      </div>
+      <div class="col-lg-12">
+        <hr class=" line-hr">
+      </div>
+      <div class="col-lg-12">
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+
+    <tabset>
+      <tab heading="Descripcion" id="tab1" >
+        <div *ngIf="detailArticle">
+        <h2>Descripcion</h2>
+        <p *ngIf="'' != detailArticle.nameDescriptionarticle">
+            {{detailArticle.nameDescriptionarticle}}
+        </p>
+        <p *ngIf="'' == detailArticle.nameDescriptionarticle">
+            {{ 'Description' | translate}}
+        </p>
+
+        </div>
+      </tab>
+
+      <tab heading="informacion Adicional">
+      <h2> Informacion Adicional</h2>
+        <div *ngIf="detailArticle" class="col-lg-5">
+        <table class="table"  >
+            <tr *ngFor="let detailItems of detailArticle.informationVEO">
+              <th scope="col">{{detailItems.nameInformation}}</th>
+              <td scope="col">{{detailItems.detailInformation}}</td>
+            </tr>
+        </table>
+        </div>
+      </tab>
+
+      <tab heading="Comentatios">
+
+      <div *ngIf="commentArticle">
+        <div class="col-lg-12 comment-margin" *ngFor="let itemComment of commentArticle | paginate: config">
+
+          <div class="col-lg-2">
+            <img src="{{dataService.getApiUrl()}}/user/files/{{itemComment.userVEO.imagenUser}}"   class="small-image-comment" >
+          </div>
+          <div class="col-lg-10">
+            <div>
+              <span>{{itemComment.dateComment}}</span>
+              <div class="col-lg-12" >
+                <rating
+                  [(ngModel)]="itemComment.rating"
+                  [max]="max"
+                  [readonly]="isReadonly"
+                ></rating>
+                <span class="label center-div"
+                      [ngClass]="{'label-warning': itemComment.rating == 0 ,'label-warning': itemComment.rating*10<30, 'label-info': itemComment.rating*10>=30 && itemComment.rating*10<70, 'label-success': itemComment.rating*10>=70}"
+                      [ngStyle]="{display: (itemComment.rating>=0 && isReadonly) ? 'inline' : 'none'}">
+                       {{itemComment.rating*10}}%
+               </span>
+              </div>
+            </div>
+            <p class="col-lg-12">
+              {{itemComment.nameComment}}
+            </p>
+          </div>
+
+
+        </div>
+
+        <div class="container center-div">
+          <pagination-controls
+            [id]="config.id"
+            [maxSize]="maxSize"
+            [directionLinks]="directionLinks"
+            [autoHide]="autoHide"
+            [previousLabel]="labels.previousLabel"
+            [nextLabel]="labels.nextLabel"
+            [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+            [screenReaderPageLabel]="labels.screenReaderPageLabel"
+            [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+            (pageChange)="onPageChange($event)">
+          </pagination-controls>
+        </div>
+
+      </div>
+
+        <div class="col-lg-12" *ngIf="dataService.islogin">
+          <h2>Add a review</h2>
+          <span>
+           Añadir su comentario de este articulo
+          </span>
+          <span>
+            Califique por favor
+          </span>
+        </div>
+        <div class="col-lg-12" *ngIf="dataService.islogin">
+          <form  novalidate [formGroup]="form" name="form"   #f="ngForm" >
+            <p class="comment-notes">
+              <span id="email-notes">
+                Your email address will not be published.
+              </span> Required fields are marked
+              <span class="required">*</span>
+            </p>
+            <div class="comment-form-rating">
+            <label for="ratingP">Ranking</label>
+              <div class="col-lg-12" >
+                <rating
+                  [(ngModel)]="ratingP"
+                  [max]="max"
+                  [readonly]="false"
+                  formControlName="ratingP"
+                ></rating>
+              </div>
+
+              <div *ngIf="form.controls.ratingP.errors" class="">
+                <div *ngIf="form.controls.ratingP.errors.required && form.controls.ratingP.dirty" class="alert alert-danger">
+                  {{'Input_Require' | translate}}
+                </div>
+              </div>
+          </div>
+            <div class="form-group">
+              <label form="groupId">Group</label>
+             <textarea
+               class="form-control" name="nameComment"
+               id="nameComment"
+               formControlName="nameComment"
+             ></textarea>
+
+              <div *ngIf="form.controls.nameComment.errors" class="">
+                <div *ngIf="form.controls.nameComment.errors.minlength && form.controls.nameComment.dirty" class="alert alert-danger">
+                  {{'Input_Min_3' | translate}}
+                </div>
+                <div *ngIf="form.controls.nameComment.errors.required" class="alert alert-danger">
+                  {{'Input_Require' | translate}}
+                </div>
+              </div>
+
+            </div>
+
+            <p class="form-submit">
+              <button type="button" (click)="addComment()">Añadir</button>
+
+            </p>
+          </form>
+        </div>
+
+      </tab>
+
+    </tabset>
+
+</div>
+
+<div class="container" *ngIf="articleRelational">
+  <div class="col-lg-12" >
+    <h1>Producto Relacionado</h1>
+  </div>
+  <div class="col-lg-12" id="relacionationArticle" *ngIf="articleRelational">
+
+    <div
+      ng2-carouselamos
+      class="slides-wrapper"
+      [items]="articleRelational"
+      [width]="1000"
+      [$prev]="prev1"
+      [$next]="next1"
+      [$item]="item"
+    >
+    </div>
+
+    <ng-template #prev1 >
+      <div class=" btn-lg" >
+        <span class="glyphicon glyphicon-menu-left position-left" ></span>
+      </div>
+    </ng-template>
+    <ng-template #next1  >
+      <div class=" btn-lg"  >
+        <span class="glyphicon glyphicon-menu-right  position-ringht"   ></span>
+      </div>
+    </ng-template>
+
+    <ng-template #item let-item let-i="index">
+
+      <div class="items1 border-article-list">
+
+          <div class="card mb-4 box-shadow border-article">
+
+            <a routerLink="/articleDetail/{{item.articleId}}">
+              <img class="card-img-top margin-image grow-image image-best-article" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"  src="{{dataService.getApiUrl()}}/imageArticle/files/{{item.imageMainAr}}" alt="{{dataService.getApiUrl()}}/imageArticle/files/{{item.imageMainAr}}" data-holder-rendered="true">
+            </a>
+            <div class="card-body pading-detail-article">
+
+              <div class="col-lg-12 center-div">
+                <h2 class="card-text">
+                  {{item.nameAr}}
+                </h2>
+              </div>
+              <div class="col-lg-12 center-div" >
+
+                <rating
+                  [(ngModel)]="item.rating"
+                  [max]="max"
+                  [readonly]="isReadonly"
+                ></rating>
+               <span class="label center-div"
+                      [ngClass]="{'label-warning': item.rating == 0 ,'label-warning': item.rating*10<30, 'label-info': item.rating*10>=30 && item.rating*10<70, 'label-success': item.rating*10>=70}"
+                      [ngStyle]="{display: (item.rating>=0 && isReadonly) ? 'inline' : 'none'}">
+                       {{item.rating*10}}%
+               </span>
+              </div>
+              <div class="col-lg-12 center-div">
+                <span>{{item.precyAr}}Bs</span>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="center-div ">
+                  <button type="button" class="btn btn-sm btn-outline-secondary booton-color btn-lg" *ngIf="dataService.islogin == true" >
+                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>  añadir Carrito
+                  </button>
+                  <a routerLink="/loginRegister" *ngIf="dataService.islogin != true">
+                    <button type="button" class="btn btn-sm btn-outline-secondary booton-color btn-lg" >
+                      <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>  añadir Carrito
+                    </button>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+      </div>
+    </ng-template>
+  </div>
+</div>

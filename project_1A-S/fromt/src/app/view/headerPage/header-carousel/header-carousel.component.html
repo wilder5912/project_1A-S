@@ -1,0 +1,22 @@
+<div class="">
+
+  <div class="">
+    <div class="">
+      <carousel >
+        <slide *ngFor="let item of listBanner ">
+          <img src="{{dataService.getApiUrl()}}/imageArticle/files/{{item.nameImageBanner}}" alt="First slide"  class="carousel-pos image-carousel">
+          <div class="carousel-caption d-none d-md-block">
+            <div class="col-lg-6">
+              <h3 class="tittle-carrousel" *ngIf="item.urlBanner"><a href="{{item.urlBanner}}">{{item.tittleBanner}}</a></h3>
+              <h3 class="tittle-carrousel" *ngIf="!item.urlBanner">{{item.tittleBanner}}</h3>
+               <p class="container-carousel"> {{item.detallBanner}}</p>
+            </div>
+          </div>
+        </slide>
+      </carousel>
+    </div>
+
+
+  </div>
+
+</div>

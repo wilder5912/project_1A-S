@@ -1,0 +1,223 @@
+
+
+<header id="header" class="header header-2 ">
+  <nav class="navbar-default header-color container-fluid ">
+    <div class="container container-fluid">
+
+      <div class="row hide-main">
+        <div class="col-sm-6 col-md-4 text-left">
+          <div class="customer-support header-topbar-border ">
+            <div class="customer-support-email color-letter-static">
+              <i class="fa fa-envelope"></i><span>info@company.com</span>
+            </div>
+            <div class="customer-support-call color-letter-static">
+              <i class="fa fa-phone"></i><span>+81 59832452528</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-8 text-right">
+          <div class="topbar-right ">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="color-spam-header" *ngIf="dataService.islogin == true">
+                <i class="fa fa-user"></i><span><a routerLink="/home">My Account</a></span>
+              </li>
+              <li class="color-spam-header" *ngIf="dataService.islogin == true" >
+                <i class="fa fa-check-square-o"></i><span><a routerLink="/home">Revisar carrito</a></span>
+              </li>
+              <li class="color-spam-header" *ngIf="dataService.islogin != true">
+                <i class="fa fa-lock"></i><span><a routerLink="/loginRegister">Login/Register</a></span>
+              </li>
+              <li class="color-dropdown-menu">
+                 <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
+                  <a href dropdownToggle (click)="false" class="color-data"><i class="fa fa-user"></i> Bolivianos</a>
+                    <ul *dropdownMenu class="dropdown-menu">
+                      <li  class="color-dropdown-menu-letter">
+                        <a class="dropdown-item" routerLink="/home">Bolivianos</a>
+                      </li>
+                    </ul>
+                </span>
+              </li>
+              <li class="color-dropdown-menu">
+                 <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
+                  <a href dropdownToggle (click)="false" class="color-data"><i class="fa fa-user"></i>Español</a>
+                    <ul *dropdownMenu class="dropdown-menu" >
+                      <li *ngFor="let choice of items" class="color-dropdown-menu-letter">
+                        <a class="dropdown-item" href="#">{{choice}}</a>
+                      </li>
+                    </ul>
+                </span>
+              </li>
+
+              <li class="color-spam-header" *ngIf="dataService.islogin">
+                <i class="fa fa-lock"></i><span><a  (click)="logout()" href="#">logout</a></span>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+
+        </div>
+      </div>
+
+
+    </div>
+  </nav>
+
+  <nav class="navbar-default   page-wrapper-width color-medion-affix" id="bs-example-navbar-collapse-5"  role="navigation">
+
+    <div class="container sidebar-collapse ">
+
+        <div class="container navbar-header">
+          <div class="row">
+            <div class="col-lg-12">
+              <ul class=" nav navbar-left">
+                <li>
+                  <div class="header-logo">
+                    <a href="#" class="navbar-brand logo-page-a">
+                      <img  src="{{logoPage}}" class="logo-page"/>
+
+                    </a>
+                  </div>
+
+                </li>
+              </ul>
+
+              <form class="navbar-form navbar-left">
+                <div class="input-group">
+                  <input class="form-control" aria-label="Text input with segmented button dropdown">
+                  <div class="input-group-btn">
+                    <button type="button" class="btn btn-default">Action</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="caret"></span>
+                      <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                         <ul class="dropdown-menu dropdown-menu-right">
+                              <li><a href="#">Action</a></li>
+                         </ul>
+                  </div>
+                </div>
+              </form>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a routerLink="/contactUs">Contactanos</a></li>
+                <li><a routerLink="/HelpPage">Ayuda</a></li>
+                <li><a routerLink="/chat">chat</a></li>
+            </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-6 hide-main-second">
+            <div class=" text-left">
+              <div class="customer-support header-topbar-border ">
+                <div class="customer-support-email color-letter-stati-second">
+                  <i class="fa fa-envelope"></i><span>info@company.com</span>
+                </div>
+                <div class="customer-support-call color-letter-stati-second">
+                  <i class="fa fa-phone"></i><span>+81 59832452528</span>
+                </div>
+              </div>
+            </div>
+            <div class=" text-left">
+              <div class="topbar-left ">
+                <ul class="nav navbar-nav navbar-left">
+                  <li class="color-spam-header-second" *ngIf="dataService.islogin == true" >
+                    <i class="fa fa-user"></i><span><a routerLink="/home">Mi cuenta</a></span>
+                  </li>
+                  <li class="color-spam-header-second"  *ngIf="dataService.islogin == true">
+                    <i class="fa fa-check-square-o"></i><span><a routerLink="/home">mi carrito</a></span>
+                  </li>
+
+                   <li class="color-spam-header-second" *ngIf="dataService.islogin != true">
+                    <i class="fa fa-lock"></i><span><a routerLink="/loginRegister">Login/Registers</a></span>
+                  </li>
+                  <li class="color-dropdown-menu-second">
+                 <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
+                  <a href dropdownToggle (click)="false" class="color-data"><i class="fa fa-user"></i>Bolivianos</a>
+                    <ul *dropdownMenu class="dropdown-menu">
+                      <li  class="color-dropdown-menu-letter">
+                        <a class="dropdown-item" routerLink="/">Bolivianos</a>
+                      </li>
+                      <!--<li *ngFor="let choice of items" class="color-dropdown-menu-letter">
+                        <a class="dropdown-item" routerLink="/">{{choice}}</a>
+                      </li>-->
+                    </ul>
+                </span>
+                  </li>
+                  <li class="color-dropdown-menu-second">
+                 <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()">
+                  <a href dropdownToggle (click)="false" class="color-data"><i class="fa fa-user"></i>Español</a>
+                    <ul *dropdownMenu class="dropdown-menu" >
+                      <li *ngFor="let choice of items" class="color-dropdown-menu-letter">
+                        <a class="dropdown-item" routerLink="/">{{choice}}</a>
+                      </li>
+                    </ul>
+                </span>
+                  </li>
+                  <li class="color-dropdown-menu-second"  *ngIf="dataService.islogin">
+                    <i class="fa fa-lock"></i><span><a  (click)="logout()" href="#">logout</a></span>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+    </div>
+  </nav>
+
+
+  <nav class="navbar navbar-default color-affix-main" data-spy="affix"  data-offset-top="197">
+    <div class="container container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div id="primary_nav_wrap">
+      <ul class="nav navbar-nav">
+
+        <li class="dropdown-menu"><a >Tienda Categoria</a>
+          <ul *ngIf="menuData" >
+            <li class="color-spam-header"  *ngFor="let item of menuData.groupProductVEO"  >
+              <a  >{{item.nameGroup}}</a>
+                          <ul class="nav-with"  >
+                              <li class="nav-flo" *ngFor="let itemSecond of item.sectionGroup">
+                                <a></a>
+                                <ul class="nav-flo-sub"  >
+                                  <li ><a  class="label-font-black">{{itemSecond.nameSection}}</a></li>
+                                  <li *ngFor="let itemSubSecond of itemSecond.subSectionVEO"><a class="click-active" routerLink="/ListArticle/{{itemSubSecond.idSubSection}}">{{itemSubSecond.nameSubSection}}</a></li>
+                                 </ul>
+                              </li>
+                          </ul>
+          </li>
+          </ul>
+        </li>
+
+        <li class="current-menu-item"><a routerLink="/home"  >Home</a></li>
+      </ul>
+      </div>
+      </div>
+    </div>
+  </nav>
+
+
+</header>
+
+
+

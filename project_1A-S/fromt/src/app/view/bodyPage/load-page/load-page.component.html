@@ -1,0 +1,13 @@
+<div *ngIf="dataService.imageLoadPage; then thenTemplateName else elseTemplateName">
+</div>
+<ng-template #thenTemplateName>
+  <div class="load-page">
+    <div class="load-image">
+      <img src="{{imageload}}" alt="{{imageload}}"  class="user-image img-responsive"/>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #elseTemplateName>
+
+</ng-template>

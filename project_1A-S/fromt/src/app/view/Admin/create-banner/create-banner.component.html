@@ -1,0 +1,131 @@
+<div class="row">
+  <div class="col-lg-12">
+    <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)">añadir</button>
+  </div>
+  <div class="col-lg-12">
+    <ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Grupo</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRefBanner.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12 col-center">
+            <form novalidate [formGroup]="form" name="form"   #f="ngForm" >
+              <div class="form-group">
+                <label for="tittleBanner">Titulo Banner</label>
+
+                <input type="text" class="form-control" name="tittleBanner"
+                       id="tittleBanner"
+                       formControlName="tittleBanner"
+                />
+                <div *ngIf="form.controls.tittleBanner.errors" class="">
+                  <div *ngIf="form.controls.tittleBanner.errors.minlength && form.controls.tittleBanner.dirty" class="alert alert-danger">
+                    {{'Input_Min_3' | translate}}
+                  </div>
+                  <div *ngIf="form.controls.tittleBanner.errors.required && form.controls.tittleBanner.dirty" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-group">
+                <label for="detallBanner">Detalle de Banner</label>
+                  <textarea
+                    class="form-control" name="detallBanner"
+                    id="detallBanner"
+                    formControlName="detallBanner"
+                  >
+                </textarea>
+                <div *ngIf="form.controls.detallBanner.errors" class="">
+                  <div *ngIf="form.controls.detallBanner.errors.minlength && form.controls.detallBanner.dirty" class="alert alert-danger">
+                    {{'Input_Min_3' | translate}}
+                  </div>
+                  <div *ngIf="form.controls.detallBanner.errors.required && form.controls.detallBanner.dirty" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="nameImageBanner">Imagen Banner</label>
+                <label class="btn btn-default form-control"   >
+                  <input type="file" id="file-2"
+                         class="style-file"
+                         (change)="selectFileBanner($event)"
+                         formControlName="nameImageBanner"
+                  >
+                  <label for="file-2">
+                    <svg xmlns="" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+                    <span class="iborrainputfile">Seleccione Imagen Banner</span>
+                  </label>
+                </label>
+                <div  *ngIf="null != selectedFilesbanner">
+                  <pre>{{selectedFilesbanner[0].name }}</pre>
+                </div>
+
+                <div *ngIf="!selectedFilesbanner" class="">
+                  <div *ngIf="form.controls.nameImageBanner.errors.required" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="startBanner">Tiempo Banner</label>
+                  <input type="text" class="form-control" placeholder="Daterangepicker"
+                         bsDaterangepicker
+                         ngModel
+                         formControlName="startBanner"
+                         [bsConfig]="bsConfig"
+                         [minDate]="minDate"
+                         [(ngModel)]="bsRangeValue"
+                   />
+                <div *ngIf="form.controls.startBanner.errors" class="">
+                  <div *ngIf="form.controls.startBanner.errors.required && form.controls.startBanner.dirty" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+                </div>
+
+              </div>
+              <div class="form-group">
+
+                <label for="urlBanner">Url Banner</label>
+                <input type="text" class="form-control" name="urlBanner"
+                       id="urlBanner"
+                       formControlName="urlBanner"
+                />
+                <div *ngIf="form.controls.urlBanner.errors" class="">
+                  <div *ngIf="form.controls.urlBanner.errors.minlength && form.controls.urlBanner.dirty" class="alert alert-danger">
+                    {{'Input_Min_3' | translate}}
+                  </div>
+                  <div *ngIf="form.controls.urlBanner.errors.required && form.controls.urlBanner.dirty" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <!--<input md-input
+                       formControlName="groupId"
+                       hidden="true"
+                >-->
+              </div>
+              <div class="form-group">
+                <div *ngIf="isEditForm; then addData else editData"></div>
+                <ng-template #addData>
+                  <button [disabled]="loading" type="button" (click)="registerBanner()"  class="btn btn-primary">{{'Add_Group'| translate }}</button>
+                </ng-template>
+                <ng-template #editData>
+                  <button [disabled]="loading" type="button" (click)="editGroupInfo()"  class="btn btn-primary">{{'Edit_Group'| translate }}</button>
+                </ng-template>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

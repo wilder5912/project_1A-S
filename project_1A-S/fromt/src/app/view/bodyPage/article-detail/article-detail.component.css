@@ -1,0 +1,135 @@
+.carousel-pos-list-image{
+  height: 50px;
+  width: 100%;
+  display: block;
+}
+.image-big{
+  height: 400px;
+  width: 400px;
+  margin: auto;
+  padding-top: 17px;
+}
+.title-h1{
+  text-align: center;
+}
+.line-hr{
+  background-color: red;
+  height: 3px;
+  margin-right: 0%;
+  width: 100%;
+}
+
+#container2 {
+  margin: auto;
+  width: 100%;
+  margin: auto;
+  padding: 0;
+  padding-top: 23px;
+  background:#fff;
+}
+
+.items {
+  max-width:300px;
+  height:200px;
+  background:#ECECEC;
+}
+
+#left, #right {
+  margin: 30px;
+}
+.small-image{
+  width: 200px;
+  height: 200px;
+}
+.small-image-comment{
+  width: 100px;
+  height: 100px;
+}
+.position-ringht{
+  margin: auto!important;
+  position: fixed;
+}
+.position-left{
+  position: fixed;
+  margin: auto!important;
+}
+.border-image{
+  border-style: groove;
+  border-width: 3px;
+  border-color: chocolate;
+}
+
+.image-best-article{
+  width: 300px;
+  height: 300px;
+}
+
+.raquing-border{
+  border-color: transparent;
+}
+
+
+
+
+.border-article:hover{
+  border-style: groove;
+  border-width: 3px;
+  border-color: chocolate;
+  margin: 2px;
+  border-radius: 3%;
+
+  transition-delay: 0s !important;
+  -webkit-transition-delay: 0s !important;
+  -moz-transition-delay: 0s !important;
+  -o-transition-delay: 0s!important;
+}
+.carousel-pos-best{
+  height: 200px;
+  width: 100%;
+  display: block;
+}
+
+.main-carrousel .carousel .carousel-control{
+  display: none!important;
+}
+
+.main-carrousel .carousel:hover carousel-control{
+  display: none!important;
+}
+.carousel-control-color{
+  background-image: linear-gradient(to right, rgb(255, 255, 255) 0%, rgba(0, 0, 0, .0001) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+  background-repeat: repeat-x;
+
+}
+.image-best-article{
+  height: 234px;
+  width: 245px;
+  display: block;
+}
+
+.margin-image{
+  margin: auto;
+  padding: 15px;
+  border-radius: 15%;
+}
+
+.center-div{
+  text-align:center
+}
+.booton-color{
+  background-color: #ff8400;
+  color:#F3F3F3;
+}
+.booton-color:hover{
+  background-color: chocolate;
+  color:#F3F3F3;
+}
+.card-text{
+  padding: 0px;
+  margin: auto;
+}
+.comment-margin{
+  margin: auto;
+  padding: 8px;
+}

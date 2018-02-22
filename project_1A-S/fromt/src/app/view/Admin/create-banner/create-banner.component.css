@@ -1,0 +1,11 @@
+.style-file{
+  width: 100%;
+  color: #fff0;
+  display: none;
+}
+.bg-blue {
+  background-color: lightblue;
+}
+.bg-pink {
+  background-color: lightcoral;
+}
