@@ -6,7 +6,76 @@
 
     <div class="col-lg-12" id="relacionationArticle" *ngIf="articleRelational">
 
-      <div
+
+<!--
+      <div class=" col-xs-12 col-sm-5 col-lg-5">
+        <div class="swiper-button-next-page  col-xs-2 col-sm-2 col-lg-2   ">
+          <button NgxCarouselPrev class='leftRs'>&lt;</button>
+        </div>
+        <div class="swiper-button-prev-page col-xs-2 col-sm-2 col-lg-2 ">
+          <button NgxCarouselNext class='rightRs'>&gt;</button>
+        </div>
+      </div>-->
+
+      <ngx-carousel
+        [inputs]="carouselOne"
+        (carouselLoad)="carouselTileLoad($event)">
+
+
+
+        <button NgxCarouselPrev class='leftRs btn-lg'>
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </button>
+        <button NgxCarouselNext class='rightRs btn-lg'>
+          <span class="glyphicon glyphicon-chevron-right"></span>
+
+        </button>
+
+        <ngx-tile NgxCarouselItem *ngFor="let item of articleRelational">
+          <div class="items1 border-article-list">
+            <div class="card mb-4 box-shadow border-article">
+              <a routerLink="/articleDetail/{{item.articleId}}">
+                <img class="card-img-top margin-image grow-image image-best-article" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"  src="{{dataService.getApiUrl()}}/imageArticle/files/{{item.imageMainAr}}" alt="{{dataService.getApiUrl()}}/imageArticle/files/{{item.imageMainAr}}" data-holder-rendered="true">
+              </a>
+              <div class="card-body pading-detail-article">
+                <div class="col-lg-12 center-div">
+                  <h2 class="card-text">
+                    {{item.nameAr}}
+                  </h2>
+                </div>
+                <div class="col-lg-12 center-div">
+                  <rating [(ngModel)]="item.rating" [max]="max" [readonly]="isReadonly"
+                          [titles]="['one','two','three']"></rating>
+                  <span class="label center-div"
+                        [ngClass]="{'label-warning': item.rating == 0 ,'label-warning': item.rating*10<30, 'label-info': item.rating*10>=30 && item.rating*10<70, 'label-success': item.rating*10>=70}"
+                        [ngStyle]="{display: (item.rating>=0 && isReadonly) ? 'inline' : 'none'}">{{item.rating*10}}%</span>
+                </div>
+                <div class="col-lg-12 center-div">
+                  <span>{{item.precyAr}} Bs</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="center-div ">
+                    <button type="button" class="btn btn-sm btn-outline-secondary booton-color btn-lg" *ngIf="dataService.islogin == true" >
+                      <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>  añadir Carrito
+                    </button>
+                    <a routerLink="/loginRegister" *ngIf="dataService.islogin != true">
+                      <button type="button" class="btn btn-sm btn-outline-secondary booton-color btn-lg" >
+                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>  añadir Carrito
+                      </button>
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </ngx-tile>
+       <!-- <button NgxCarouselPrev class='leftRs'>&lt;</button>
+        <button NgxCarouselNext class='rightRs'>&gt;</button>
+-->
+      </ngx-carousel>
+     <!-- <div
         ng2-carouselamos
         class="slides-wrapper"
         [items]="articleRelational"
@@ -68,6 +137,8 @@
 
         </div>
       </ng-template>
+
+      -->
     </div>
 
   </div>

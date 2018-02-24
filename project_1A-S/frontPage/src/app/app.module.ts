@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './view/user/login/login.component';
 import { HomeComponent } from './view/user/home/home.component';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
-import { AlertModule, ModalModule,PopoverModule,RatingModule , BsDropdownModule, CarouselModule, TabsModule,BsDatepickerModule } from 'ngx-bootstrap';
+import { AlertModule, ModalModule,PopoverModule,RatingModule , BsDropdownModule, TabsModule,BsDatepickerModule } from 'ngx-bootstrap';
 import { AuthGuard } from './service/sesion/index';
 import { SharedService } from './service/sesion/shared.service';
 import { RouterModule } from '@angular/router';
@@ -48,10 +48,14 @@ import { LoadPageComponent } from './view/bodyPage/load-page/load-page.component
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import { HomeAdminPageComponent } from './view/Admin/home-admin-page/home-admin-page.component';
 import { ChatPageComponent } from './view/bodyPage/chat-page/chat-page.component';
-
 import { WebSocketService } from "./service/webSocketServicePage/websocket.service";
 import { ContactUsComponent } from './view/bodyPage/contact-us/contact-us.component';
 import { HelpPageComponent } from './view/bodyPage/help-page/help-page.component';
+
+import { SwiperModule } from 'angular2-useful-swiper';
+import { NgxCarouselModule } from 'ngx-carousel';
+import 'hammerjs';
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -110,7 +114,6 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AlertModule.forRoot(),
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
-    CarouselModule.forRoot(),
     NgxPaginationModule,
     TabsModule.forRoot(),
     PopoverModule.forRoot(),
@@ -121,6 +124,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     DataTableModule,
     ImageZoomModule,
     Ng2CarouselamosModule,
+    SwiperModule,
+    NgxCarouselModule,
      TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

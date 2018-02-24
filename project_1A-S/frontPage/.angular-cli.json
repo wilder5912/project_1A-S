@@ -21,11 +21,13 @@
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/font-awesome/css/font-awesome.css",
-        "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss"
+        "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss",
+        "../node_modules/swiper/dist/css/swiper.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
-         "../node_modules/bootstrap/dist/js/bootstrap.js"
+         "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../node_modules/swiper/dist/js/swiper.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
