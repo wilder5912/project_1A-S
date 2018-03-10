@@ -4,11 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name="groupproduct")
 public class GroupProduct  implements Serializable {
     private static final long serialVersionUID = 1L;

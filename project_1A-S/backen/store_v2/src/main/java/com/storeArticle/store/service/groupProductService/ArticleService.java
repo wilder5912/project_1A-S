@@ -86,18 +86,6 @@ public class ArticleService implements ArticleCrup {
     public Article CreateImageAndArticle(MultipartFile fileArticle, Article article) {
         try {
             String renameImage= userService.randomString();
-
-            //Path fileData = rootLocation.resolve(user.getImagenUser());
-
-           /* Resource resource = new UrlResource(fileData.toUri());
-            if (resource.exists()) {
-                Files.delete(fileData);
-            }*/
-            //user.setImagenUser(renameImage+file.getOriginalFilename());
-
-            //updatedUser(user);
-
-
             Files.copy(fileArticle.getInputStream(), this.rootLocation.resolve(renameImage+fileArticle.getOriginalFilename()));
         } catch (Exception e) {
             throw new RuntimeException("FAIL!");
@@ -109,7 +97,4 @@ public class ArticleService implements ArticleCrup {
     public SubSectionVEO getArticleSubArticle(SubSection subSection){
         return subSectionDTOService.getSubSectionArticleDTO(subSection);
     }
-
-
-
 }

@@ -4,10 +4,6 @@ import com.storeArticle.store.model.accounts.Bussine;
 import com.storeArticle.store.service.groupProductService.GroupProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class BussineDTOService {

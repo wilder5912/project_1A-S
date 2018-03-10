@@ -1,7 +1,5 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.ArticleRelational;
-import com.storeArticle.store.model.accounts.DescriptionArticle;
 import com.storeArticle.store.model.accounts.Information;
 
 public interface InformationCrup {

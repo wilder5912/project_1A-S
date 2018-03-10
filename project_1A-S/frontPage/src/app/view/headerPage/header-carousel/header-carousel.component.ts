@@ -16,10 +16,10 @@ export class HeaderCarouselComponent implements OnInit {
 
   public config: SwiperOptions;
 
-  constructor(public bannerService:BannerService,public dataService: DataService) { }
+  constructor(public bannerService: BannerService, public dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.imageLoadPage=true;
+    this.dataService.imageLoadPage = true;
     this.getListBanner();
     this.configCarousel();
   }
@@ -34,12 +34,12 @@ export class HeaderCarouselComponent implements OnInit {
       loop: true
     };
   }
-  public getListBanner(){
+  public getListBanner() {
 
     this.bannerService.getBannerList()
-      .subscribe(result=>{
-        this.listBanner=result;
-        this.dataService.imageLoadPage=false;
+      .subscribe(result => {
+        this.listBanner = result;
+        this.dataService.imageLoadPage = false;
       });
 
   }

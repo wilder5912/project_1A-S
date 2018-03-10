@@ -6,11 +6,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name="articledetail")
 public class ArticleDetail implements Serializable {
 

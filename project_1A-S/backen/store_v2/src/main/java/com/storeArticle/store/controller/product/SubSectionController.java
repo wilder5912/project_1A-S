@@ -1,12 +1,8 @@
 package com.storeArticle.store.controller.product;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.storeArticle.store.model.accounts.Section;
 import com.storeArticle.store.model.accounts.SubSection;
 import com.storeArticle.store.service.dto.SelectVEO;
-import com.storeArticle.store.service.groupProductService.SectionService;
 import com.storeArticle.store.service.groupProductService.SubSectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,12 +27,12 @@ public class SubSectionController {
         mapper = new ObjectMapper();
     }
     @GetMapping(value="/getSubSection")
-    public List<SubSection> getSubSection() throws JsonParseException, JsonMappingException, IOException{
+    public List<SubSection> getSubSection() throws  IOException{
         return subSectionService.getSubSectionList();
     }
 
     @PostMapping(value="/addSubSection")
-    public boolean addSubSection(@RequestBody String subSectionData)throws JsonParseException, JsonMappingException, IOException {
+    public boolean addSubSection(@RequestBody String subSectionData)throws IOException {
         SubSection subSection = this.mapper.readValue(subSectionData,SubSection.class);
         return subSectionService.addSubSection(subSection);
     }
@@ -47,7 +43,7 @@ public class SubSectionController {
     }
 
     @PostMapping(value = "/updateSubSection")
-    public boolean updateSubSection(@RequestBody String sectionData)throws JsonParseException, JsonMappingException, IOException {
+    public boolean updateSubSection(@RequestBody String sectionData)throws IOException {
         this.mapper = new ObjectMapper();
         SubSection subSection = this.mapper.readValue(sectionData, SubSection.class);
         return subSectionService.updatedGroupProductName(subSection);

@@ -29,8 +29,7 @@ public class ImageArticleService implements ImageArticleCrup {
 
     @PersistenceContext
     private EntityManager entityManager;
-    @Autowired
-    private SelectDTOService selectDTOService;
+
     @Autowired
     private UserService userService;
     private Path rootLocation = Paths.get("../webapps/store-0.0.1-SNAPSHOT/upload-dir/article");

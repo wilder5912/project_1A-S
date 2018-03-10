@@ -1,0 +1,9 @@
+<form class="navbar-form navbar-left"  novalidate [formGroup]="form" name="form"   #f="ngForm"  >
+  <div class="input-group webdesigntuts-workshop">
+    <input class="form-control" aria-label="Text input with segmented button dropdown"  type="search"  name="fiendArticle"
+           formControlName="fiendArticle">
+    <div class="input-group-btn">
+      <button type="button" class="btn btn-default" (click)="fiendArticleOrCode()"><span class="glyphicon glyphicon-search"></span></button>
+    </div>
+  </div>
+</form>

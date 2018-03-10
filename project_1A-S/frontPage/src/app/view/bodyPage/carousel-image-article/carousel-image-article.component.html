@@ -1,0 +1,16 @@
+<div *ngIf="articleImagePage">
+  <ngx-carousel [inputs]="carouselImage"
+                (carouselLoad)="carouselTileLoad($event)">
+
+    <button NgxCarouselPrev class='leftRs btn-lg'>
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+    <button NgxCarouselNext class='rightRs btn-lg'>
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+    <ngx-tile NgxCarouselItem *ngFor="let item of articleImagePage">
+      <img src="{{dataService.getApiUrl()}}/imageArticle/files/{{item.name}}" (click)="imageClick(item)"  class="small-image" >
+    </ngx-tile>
+  </ngx-carousel>
+
+</div>

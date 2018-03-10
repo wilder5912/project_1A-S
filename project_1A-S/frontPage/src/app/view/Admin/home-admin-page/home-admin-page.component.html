@@ -18,7 +18,7 @@
             <form name="form" (ngSubmit)="logout()"  #f="ngForm"  novalidate>
               <div class="form-group">
 
-                <button [disabled]="loading" class="btn btn-danger square-btn-adjust">Logout</button>
+                <button [disabled]="false" class="btn btn-danger square-btn-adjust">Logout</button>
               </div>
 
             </form>
@@ -75,12 +75,18 @@
             <li>
               <a routerLink="/productCreate" ><i class="fa fa-dashboard fa-2x"></i>Crear Acticulos</a>
             </li>
+            <li>
+              <a routerLink="/addInformationArticle" ><i class="fa fa-dashboard fa-2x"></i>Añadir Informacion Al Acticulos</a>
+            </li>
 
           </ul>
         </li>
 
         <li>
           <a   routerLink="/createBanner"  ><i class="fa fa-dashboard fa-3x"></i> Banner</a>
+        </li>
+        <li>
+          <a   routerLink="/createArticleRelational"><i class="fa fa-dashboard fa-3x"></i>Añadir Articles Relational</a>
         </li>
 
       </ul>

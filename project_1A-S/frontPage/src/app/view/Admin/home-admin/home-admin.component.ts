@@ -18,6 +18,6 @@ export class HomeAdminComponent implements OnInit {
   }
   ngOnInit() {
     this.dataService.urlPage = this.router.url;
-    this.dataService.redirectTypeUser()
+    this.dataService.redirectTypeUser();
   }
 }

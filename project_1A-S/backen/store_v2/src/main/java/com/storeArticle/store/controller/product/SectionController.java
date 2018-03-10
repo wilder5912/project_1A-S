@@ -1,7 +1,5 @@
 package com.storeArticle.store.controller.product;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.storeArticle.store.model.accounts.Section;
 import com.storeArticle.store.service.dto.SelectVEO;
@@ -29,13 +27,13 @@ public class SectionController {
         mapper = new ObjectMapper();
     }
     @PostMapping(value="/addSection")
-    public boolean addSection(@RequestBody String sectionData)throws JsonParseException, JsonMappingException, IOException {
+    public boolean addSection(@RequestBody String sectionData)throws  IOException {
         Section section = this.mapper.readValue(sectionData,Section.class);
         return sectionService.addSection(section);
     }
 
     @GetMapping(value="/getSection")
-    public List<Section> getSection() throws JsonParseException, JsonMappingException, IOException{
+    public List<Section> getSection() throws  IOException{
         return sectionService.getSubSectionList();
     }
 
@@ -53,7 +51,7 @@ public class SectionController {
 
 
     @PostMapping(value = "/updateSection")
-    public boolean updateSection(@RequestBody String sectionData)throws JsonParseException, JsonMappingException, IOException {
+    public boolean updateSection(@RequestBody String sectionData)throws  IOException {
         this.mapper = new ObjectMapper();
         Section section = this.mapper.readValue(sectionData, Section.class);
         return sectionService.updatedGroupProductName(section);

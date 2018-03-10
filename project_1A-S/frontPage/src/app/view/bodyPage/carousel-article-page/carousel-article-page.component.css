@@ -1,0 +1,84 @@
+
+.border-article:hover{
+  border-style: groove;
+  border-width: 3px;
+  border-color: chocolate;
+  margin: 2px;
+  border-radius: 3%;
+
+  transition-delay: 0s !important;
+  -webkit-transition-delay: 0s !important;
+  -moz-transition-delay: 0s !important;
+  -o-transition-delay: 0s!important;
+}
+.carousel-pos-best{
+  height: 200px;
+  width: 100%;
+  display: block;
+}
+
+.main-carrousel .carousel .carousel-control{
+  display: none!important;
+}
+
+.main-carrousel .carousel:hover carousel-control{
+  display: none!important;
+}
+.carousel-control-color{
+  background-image: linear-gradient(to right, rgb(255, 255, 255) 0%, rgba(0, 0, 0, .0001) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+  background-repeat: repeat-x;
+
+}
+.image-best-article{
+  height: 234px;
+  width: 245px;
+  display: block;
+}
+
+.margin-image{
+  margin: auto;
+  padding: 15px;
+  border-radius: 15%;
+}
+
+.center-div{
+  text-align:center
+}
+.booton-color{
+  background-color: #ff8400;
+  color:#F3F3F3;
+}
+.booton-color:hover{
+  background-color: chocolate;
+  color:#F3F3F3;
+}
+.card-text{
+  padding: 0px;
+  margin: auto;
+}
+
+
+.leftRs {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  height: 50px;
+  box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, .3);
+  border-radius: 999px;
+  left: 0;
+}
+
+.rightRs {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  height: 50px;
+  box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, .3);
+  border-radius: 999px;
+  right: 0;
+}

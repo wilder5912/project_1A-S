@@ -1,5 +1,5 @@
 import {Article} from '../product/Article';
-export class ImageArticle{
+export class ImageArticle {
   imageArticleId: number;
   articleId: Article;
   nombreImageActicle: string;

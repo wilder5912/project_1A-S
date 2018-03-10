@@ -24,6 +24,9 @@ public class ArticleRelational implements Serializable {
     @JoinColumn(name = "art_article_id")
     private Article artArticleId;
 
+    @Column(name = "is_delete_articlerelational")
+    private boolean isDelete;
+
     public int getArticleRelationalId() {
         return articleRelationalId;
     }
@@ -54,5 +57,13 @@ public class ArticleRelational implements Serializable {
 
     public void setArtArticleId(Article artArticleId) {
         this.artArticleId = artArticleId;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 }

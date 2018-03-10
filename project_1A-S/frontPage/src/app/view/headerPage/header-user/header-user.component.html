@@ -92,26 +92,12 @@
 
                 </li>
               </ul>
+              <app-fiend-article-page></app-fiend-article-page>
 
-              <form class="navbar-form navbar-left">
-                <div class="input-group">
-                  <input class="form-control" aria-label="Text input with segmented button dropdown">
-                  <div class="input-group-btn">
-                    <button type="button" class="btn btn-default">Action</button>
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <span class="caret"></span>
-                      <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                         <ul class="dropdown-menu dropdown-menu-right">
-                              <li><a href="#">Action</a></li>
-                         </ul>
-                  </div>
-                </div>
-              </form>
               <ul class="nav navbar-nav navbar-right">
                 <li><a routerLink="/contactUs">Contactanos</a></li>
                 <li><a routerLink="/HelpPage">Ayuda</a></li>
-                <li><a routerLink="/chat">chat</a></li>
+                <!--<li><a routerLink="/chat">chat</a></li>-->
             </ul>
             </div>
           </div>
@@ -189,30 +175,103 @@
         </button>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <div id="primary_nav_wrap">
-      <ul class="nav navbar-nav">
+      <div class="col-xs-5 col-md-5  col-lg-6" id="primary_nav_wrap">
+      <ul class="nav navbar-nav" *ngIf="menuData">
 
-        <li class="dropdown-menu"><a >Tienda Categoria</a>
-          <ul *ngIf="menuData" >
-            <li class="color-spam-header"  *ngFor="let item of menuData.groupProductVEO"  >
-              <a  >{{item.nameGroup}}</a>
-                          <ul class="nav-with"  >
-                              <li class="nav-flo" *ngFor="let itemSecond of item.sectionGroup">
-                                <a></a>
-                                <ul class="nav-flo-sub"  >
-                                  <li ><a  class="label-font-black">{{itemSecond.nameSection}}</a></li>
-                                  <li *ngFor="let itemSubSecond of itemSecond.subSectionVEO"><a class="click-active" routerLink="/ListArticle/{{itemSubSecond.idSubSection}}">{{itemSubSecond.nameSubSection}}</a></li>
-                                 </ul>
-                              </li>
-                          </ul>
+
+          <li class="current-menu-item show-list-phone" >
+            <div class="btn-group" dropdown [autoClose]="false" container="body">
+              <a dropdownToggle type="button" class="color-data-canaston">
+                Tienda Categoria <span class="caret"></span>
+              </a>
+              <ul *dropdownMenu class="dropdown-menu" role="menu">
+                <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested">Action</a></li>
+
+                <li role="menuitem" dropdown triggers="mouseover" placement="right" container="body" *ngFor="let item of menuData.groupProductVEO">
+                  <a dropdownToggle class="dropdown-item dropdown-toggle"
+                     (click)="false">{{item.nameGroup}} <span class="caret"></span></a>
+                  <ul *dropdownMenu class="dropdown-menu" role="menu"  >
+                    <div  *ngFor="let itemSecond of item.sectionGroup">
+                    <li role="menuitem"><a class="dropdown-item" href="#/dropdowns#nested" >{{itemSecond.nameSection}}</a></li>
+                    <li role="menuitem" *ngFor="let itemSubSecond of itemSecond.subSectionVEO" ><a class="dropdown-item" routerLink="/ListArticle/{{itemSubSecond.idSubSection}}">{{itemSubSecond.nameSubSection}}</a></li>
+                     </div>
+                  </ul>
+                 </li>
+              </ul>
+            </div>
           </li>
-          </ul>
-        </li>
 
-        <li class="current-menu-item"><a routerLink="/home"  >Home</a></li>
+          <li class="dropdown-menu show-list-desck" ><a >Tienda Categoria</a>
+            <ul *ngIf="menuData" >
+              <li class="color-spam-header"  *ngFor="let item of menuData.groupProductVEO"  >
+                <a>{{item.nameGroup}}</a>
+                  <ul class="nav-with"  >
+                      <li class="nav-flo" *ngFor="let itemSecond of item.sectionGroup">
+                        <a></a>
+                        <ul class="nav-flo-sub"  >
+                          <li ><a  class="label-font-black">{{itemSecond.nameSection}}</a></li>
+                          <li *ngFor="let itemSubSecond of itemSecond.subSectionVEO"><a class="click-active" routerLink="/ListArticle/{{itemSubSecond.idSubSection}}">{{itemSubSecond.nameSubSection}}</a></li>
+                         </ul>
+                      </li>
+                  </ul>
+            </li>
+            </ul>
+          </li>
+        <li class=""><a routerLink="/home"  >Home</a></li>
       </ul>
       </div>
+
+
+
+
+        <div class="col-xs-7 col-md-7 col-lg-6 text-right" >
+
+          <div class="topbar-right ">
+            <ul class="nav navbar-nav navbar-right" *ngIf="dataService.islogin == true"  >
+              <li class="color-dropdown-menu color-back-group-carousel show-list-phone color-list-phone"  >
+                <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()" >
+                   <a routerLink="/home" dropdownToggle (click)="false" class="color-data-canaston"><i class="glyphicon glyphicon-shopping-cart"></i> Carrito</a>
+                </span>
+              </li>
+              <li class="color-dropdown-menu color-back-group-carousel show-list-desck" *ngIf="dataService.getListArticle">
+                 <span dropdown (onShown)="onShown()" (onHidden)="onHidden()" (isOpenChange)="isOpenChange()" >
+                  <a href dropdownToggle (click)="false" class="color-data-canaston"><i class="glyphicon glyphicon-shopping-cart"></i> Carrito</a>
+                    <ul *dropdownMenu class="dropdown-menu scrollable-menu" >
+                      <li role="menuitem"><a class="dropdown-item col-xs-12 col-md-12 col-lg-12 div-article-list" href="#">Lista De Articulos</a>
+
+                       <li  class="color-dropdown-menu-letter col-xs-12 col-md-12 col-lg-12" *ngFor="let itemArticle of dataService.getListArticle.listProductVEO.articleVEO">
+                         <div class="col-xs-4 col-md-4 col-lg-4 col-lg-4">
+
+                          <img alt="pl-emallshop-extensions " class="imagen-article-canaston" src="{{dataService.getApiUrl()}}/imageArticle/files/{{itemArticle.imageMainAr}}" >
+                         </div>
+                          <div class="col-xs-8 col-md-8 col-lg-8 col-lg-8 margin-top-carousel" >
+                            <a class="color-name-article col-lg-12">{{itemArticle.nameAr}}</a>
+                            <span class="color-name-article col-lg-12 text-aling-center" > {{itemArticle.numProduct}} X {{itemArticle.precyAr}} Bs </span>
+                         </div>
+                      </li>
+
+                       <li role="menuitem col-xs-12 col-md-12 col-lg-12" ><a class="dropdown-item text-aling-center" >Costo: {{dataService.articleValue}} bs</a>
+
+                       <li role="menuitem col-xs-12 col-md-12 col-lg-12">
+                          <a class="dropdown-item text-aling-center">
+                              <button type="button" class="btn btn-primary" [disabled]="disabled">Comprar Carrito</button>
+                              <button type="button" class="btn btn-primary" [disabled]="disabled">Ver Carrito</button>
+                          </a>
+                    </ul>
+                </span>
+
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+
+
+
+
       </div>
+
     </div>
   </nav>
 

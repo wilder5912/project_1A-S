@@ -1,7 +1,5 @@
 package com.storeArticle.store.service.dto;
 
-import com.storeArticle.store.model.accounts.Section;
-
 import java.io.Serializable;
 import java.util.List;
 

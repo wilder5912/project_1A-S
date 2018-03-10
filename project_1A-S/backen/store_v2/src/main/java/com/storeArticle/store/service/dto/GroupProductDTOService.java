@@ -1,7 +1,5 @@
 package com.storeArticle.store.service.dto;
 
-import com.storeArticle.store.model.accounts.Bussine;
-import com.storeArticle.store.service.groupProductService.GroupProductService;
 import com.storeArticle.store.service.groupProductService.SectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

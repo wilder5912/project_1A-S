@@ -1,0 +1,22 @@
+.image-big{
+  height: 400px;
+  width: 400px;
+  margin: auto;
+  padding-top: 17px;
+}
+
+.border-article:hover{
+  border-style: groove;
+  border-width: 3px;
+  border-color: chocolate;
+  margin: 2px;
+  border-radius: 3%;
+
+  transition-delay: 0s !important;
+  -webkit-transition-delay: 0s !important;
+  -moz-transition-delay: 0s !important;
+  -o-transition-delay: 0s!important;
+}
+.image-big-modal{
+  width:100%;
+}

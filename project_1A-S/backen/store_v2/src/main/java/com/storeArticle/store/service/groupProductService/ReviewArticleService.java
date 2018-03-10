@@ -21,10 +21,7 @@ public class ReviewArticleService implements ReviewArticleCrup{
 
     @PersistenceContext
     private EntityManager entityManager;
-    @Autowired
-    private SelectDTOService selectDTOService;
-    @Autowired
-    private BussineDTOService bussineDTOService;
+
     @Autowired
     private ArticleDTOService articleDTOService;
 

@@ -5,6 +5,7 @@ import { HomeComponent } from './view/user/home/home.component';
 import { RegisterComponent } from './view/user/register/register.component';
 import { HomeAdminComponent } from './view/Admin/home-admin/home-admin.component';
 import { CreateProductAdminComponent } from './view/Admin/create-product-admin/create-product-admin.component';
+import { ArticleRelationalComponent } from './view/Admin/article-relational/article-relational.component';
 import { GroupProductComponent } from './view/Admin/group-product/group-product.component';
 import { SectionProductComponent } from './view/Admin/section-product/section-product.component';
 import { SubSectionProductComponent } from './view/Admin/sub-section-product/sub-section-product.component';
@@ -17,22 +18,22 @@ import { BlogPageComponent } from './view/bodyPage/blog-page/blog-page.component
 import { ArticleDetailComponent } from './view/bodyPage/article-detail/article-detail.component';
 import { ContactUsComponent } from './view/bodyPage/contact-us/contact-us.component';
 import { HelpPageComponent } from './view/bodyPage/help-page/help-page.component';
-
 import { ChatPageComponent } from './view/bodyPage/chat-page/chat-page.component';
-
-
+import { AddInformationArticleComponent } from './view/Admin/add-information-article/add-information-article.component';
+import {ListArticleFiendComponent} from './view/bodyPage/list-article-fiend/list-article-fiend.component';
 
 const routes: Routes = [
-  { path : 'login', component: LoginComponent},
   { path : 'home', component: HomeComponent},
   { path : 'loginRegister', component: LoginAndRegisterComponent},
   { path : 'ListArticle/:id', component: ListArticleComponent},
+  { path : 'ListArticleFiend/:name', component: ListArticleFiendComponent},
   { path : 'articleDetail/:id', component: ArticleDetailComponent},
   { path : 'createBanner', component: CreateBannerComponent},
-  { path : 'register', component: RegisterComponent},
   { path : 'information', component: InformationPageComponent},
   { path : 'blog', component: BlogPageComponent},
   { path : 'homeAdmin', component: HomeAdminComponent},
+  { path : 'createArticleRelational', component: ArticleRelationalComponent},
+  { path : 'addInformationArticle', component: AddInformationArticleComponent},
   { path : 'groupProduct', component: GroupProductComponent},
   { path : 'sectionProduct', component: SectionProductComponent},
   { path : 'subSectionProduct', component: SubSectionProductComponent},

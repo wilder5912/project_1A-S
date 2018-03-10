@@ -3,8 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { User } from '../../../model/usuario/User';
 import { LoginService } from '../../../service/accounts/loginService';
 import { DataService } from '../../../service/dataService/data.service';
-import { Router, CanActivate } from '@angular/router';
-import { AuthHttp, AuthConfig ,JwtHelper} from 'angular2-jwt';
+import { Router } from '@angular/router';
+import { JwtHelper } from 'angular2-jwt';
 
 
 @Component({
@@ -25,23 +25,20 @@ export class LoginComponent implements OnInit {
   constructor(public loginService: LoginService , public router: Router, public dataService: DataService ) {
   }
   ngOnInit() {
-    this.iniPage();
-  }
 
-  public iniPage(){
   }
 
   public login() {
     this.dataService.imageLoadPage = true;
     this.user = this.model;
-    this.user.password= window.btoa(this.model.password);
+    this.user.password = window.btoa(this.model.password);
       this.loginService.login(this.user)
       .subscribe(result => {
         if (null !== result) {
-          sessionStorage.setItem('token',result.tokenUser);
+          sessionStorage.setItem('token', result.tokenUser);
           localStorage.setItem('currentUser', JSON.stringify({ emailUser: result.emailUser, token: 'fake-jwt-token' }));
-        }else{
-          sessionStorage.setItem('token',null);
+        }else {
+          sessionStorage.setItem('token', null);
         }
         window.location.reload();
 

@@ -11,8 +11,8 @@ export class SecurityInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const authorization =  'Basic ' + btoa("ajay:test");//sessionStorage.getItem('token');//'Basic ' + btoa("ajay:test");
-    const correctReq = req.clone({ headers: req.headers.set('Authorization', authorization)});
+    const authorization =  'Basic ' + btoa('ajay:test');
+    const correctReq = req.clone({ headers: req.headers.set('Authorization', authorization).set('Content-Type', 'application/json')});
     return next.handle(correctReq);
   }
 }

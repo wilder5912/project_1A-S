@@ -4,16 +4,13 @@ import com.storeArticle.store.model.accounts.Section;
 import com.storeArticle.store.model.accounts.SubSection;
 import com.storeArticle.store.service.dto.SelectDTOService;
 import com.storeArticle.store.service.dto.SelectVEO;
-import com.storeArticle.store.service.dto.SubSectionVEO;
 import com.storeArticle.store.service.enumPage.SubSectionQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.List;
 
 @Transactional

@@ -1,11 +1,9 @@
 package com.storeArticle.store.service.dto;
 
 import com.storeArticle.store.model.accounts.Article;
-import com.storeArticle.store.model.accounts.ImageArticle;
 import com.storeArticle.store.service.groupProductService.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -88,6 +86,50 @@ public class ArticleDTOService {
                 articleVEOInfo.setRating(commentService.getRating(article.getArticleId()));
                 //articleVEOInfo.setImageArticleVEOS(imageArticleDTOService.getImageArticleDTO(imageArticleService.getImageArticleListObject(articleVEOInfo.getArticleId())));
                 articleDTOList.add(articleVEOInfo);
+            });
+        }catch(Exception e){
+        }finally{
+        }
+        return articleDTOList;
+    }
+
+    public List<ArticleVEO> getArticleFind(List<Object> articleList){
+            List<ArticleVEO> articleDTOList = new ArrayList<ArticleVEO>();
+            try{
+                articleList.forEach(selectDatas->{
+                    Article articleData= (Article)selectDatas;
+                    ArticleVEO articleVEOInfo = new ArticleVEO();
+                    articleVEOInfo.setArticleId(articleData.getArticleId());
+                    articleVEOInfo.setNameAr(articleData.getNameAr());
+                    articleVEOInfo.setCodigoAr(articleData.getCodigoAr());
+                    articleVEOInfo.setPrecyAr(articleData.getPrecyAr());
+                    articleVEOInfo.setImageMainAr(articleData.getImageMainAr());
+                    articleVEOInfo.setArticleId(articleData.getArticleId());
+                    articleVEOInfo.setRating(commentService.getRating(articleData.getArticleId()));
+                    articleDTOList.add(articleVEOInfo);
+                });
+            }catch(Exception e){
+            }finally{
+            }
+            return articleDTOList;
+    }
+    public List<ArticleVEO> getArticleBox(List<Object[]> articleList){
+        List<ArticleVEO> articleDTOList = new ArrayList<ArticleVEO>();
+        try{
+            articleList.forEach(selectDatas->{
+                if(Integer.parseInt(selectDatas[0] + "") > 0) {
+                    Article articleData = (Article) selectDatas[1];
+                    ArticleVEO articleVEOInfo = new ArticleVEO();
+                    articleVEOInfo.setArticleId(articleData.getArticleId());
+                    articleVEOInfo.setNumProduct(Integer.parseInt(selectDatas[0] + ""));
+                    articleVEOInfo.setNameAr(articleData.getNameAr());
+                    articleVEOInfo.setCodigoAr(articleData.getCodigoAr());
+                    articleVEOInfo.setPrecyAr(articleData.getPrecyAr());
+                    articleVEOInfo.setImageMainAr(articleData.getImageMainAr());
+                    articleVEOInfo.setArticleId(articleData.getArticleId());
+                    articleVEOInfo.setRating(commentService.getRating(articleData.getArticleId()));
+                    articleDTOList.add(articleVEOInfo);
+                }
             });
         }catch(Exception e){
         }finally{

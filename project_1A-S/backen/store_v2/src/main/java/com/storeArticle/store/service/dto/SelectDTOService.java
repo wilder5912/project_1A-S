@@ -46,7 +46,20 @@ public class SelectDTOService {
         return selectDTOList;
     }
 
-
+    public List<SelectVEO> getIdNameDTOAndId(List<Object[]> idNameList){
+        List<SelectVEO> selectDTOList = new ArrayList<SelectVEO>();
+        try{
+            idNameList.forEach(SelectData->{
+                SelectVEO selectInfo = new SelectVEO();
+                selectInfo.setValue(SelectData[0].toString());
+                selectInfo.setLabel(SelectData[0].toString()+" "+SelectData[1].toString());
+                selectDTOList.add(selectInfo);
+            });
+        }catch(Exception e){
+        }finally{
+        }
+        return selectDTOList;
+    }
 
 
 }

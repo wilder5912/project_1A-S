@@ -1,5 +1,5 @@
 import {GroupProduct} from '../product/GroupProduct';
-export class Section{
+export class Section {
   sectionId: number;
   groupId: GroupProduct;
   nameSection: string;

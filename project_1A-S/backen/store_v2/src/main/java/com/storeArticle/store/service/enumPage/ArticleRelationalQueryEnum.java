@@ -4,7 +4,22 @@ public enum ArticleRelationalQueryEnum {
 
     getArticleRelationalHqlArticleId("select articleRelational.artArticleId.articleId, articleRelational.bussineId.bussineId  FROM ArticleRelational as articleRelational " +
                           " where articleRelational.bussineId.bussineId= ? and " +
-                          " articleRelational.articleId.articleId = ?");
+                          " articleRelational.articleId.articleId = ? and " +
+                          " articleRelational.isDelete = ?"),
+    getArticleIdRelationalHql("select articleRelational.artArticleId.articleId" +
+                        " FROM ArticleRelational as articleRelational " +
+                        " where articleRelational.bussineId.bussineId= ? and " +
+                        " articleRelational.articleId.articleId = ? and " +
+                        " articleRelational.isDelete = ? "),
+    isArticleIdRelationalHql("select articleRelational.articleRelationalId" +
+                        " FROM ArticleRelational as articleRelational " +
+                        " where articleRelational.bussineId.bussineId= ? and " +
+                        " articleRelational.articleId.articleId = ? and " +
+                        " articleRelational.artArticleId.articleId = ? " ),
+    updateStateArticleIdRelationalHql("update ArticleRelational as articleRelational  " +
+                        " set articleRelational.isDelete = ? " +
+                        " where articleRelational.bussineId.bussineId = ? and " +
+                        " articleRelational.articleId.articleId = ?  " ) ;
 
     private String hql;
 

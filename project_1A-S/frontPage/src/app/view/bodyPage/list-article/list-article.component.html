@@ -1,5 +1,6 @@
 <div *ngIf="null != listArticleSubSection">
-<div class="container  form-horizontal">
+<app-list-page-article [listArticle]="listArticleSubSection.articleVEO"></app-list-page-article>
+  <!--<div class="container  form-horizontal">
   <div class="form-group">
     <label for="filter" class="col-lg-2 control-label">Buscar</label>
     <div class="col-lg-9">
@@ -63,5 +64,5 @@
       [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
       (pageChange)="onPageChange($event)">
     </pagination-controls>
-  </div>
+  </div>-->
 </div>

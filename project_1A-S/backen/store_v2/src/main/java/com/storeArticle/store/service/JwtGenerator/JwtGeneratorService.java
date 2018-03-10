@@ -2,13 +2,11 @@
 package com.storeArticle.store.service.JwtGenerator;
 
 
-import com.storeArticle.store.service.accounts.UserService;
+import com.storeArticle.store.model.accounts.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.storeArticle.store.model.accounts.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

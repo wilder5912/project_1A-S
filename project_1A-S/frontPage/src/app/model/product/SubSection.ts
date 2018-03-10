@@ -1,5 +1,5 @@
 import {Section} from '../product/Section';
-export class SubSection{
+export class SubSection {
   subSectionId: number;
   sectionId: Section;
   nameSubSection: string;

@@ -2,19 +2,15 @@ package com.storeArticle.store.service.groupProductService;
 
 import com.storeArticle.store.model.accounts.GroupProduct;
 import com.storeArticle.store.model.accounts.Section;
-import com.storeArticle.store.service.dto.SectionVEO;
 import com.storeArticle.store.service.dto.SelectDTOService;
 import com.storeArticle.store.service.dto.SelectVEO;
-import com.storeArticle.store.service.enumPage.GroupProductQueryEnum;
 import com.storeArticle.store.service.enumPage.SectionQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -27,8 +23,7 @@ public class SectionService implements SectionCrup {
     private SelectDTOService selectDTOService;
     @Autowired
     private GroupProductService groupProductService;
-   @Autowired
-    private SubSectionService subSectionService;
+
 
     @Override
     public boolean addSection(Section section) {

@@ -1,0 +1,31 @@
+.webdesigntuts-workshop input:focus {
+  -webkit-animation: glow 800ms ease-out infinite alternate;
+  -moz-animation: glow 800ms ease-out infinite alternate;
+  -o-animation: glow 800ms ease-out infinite alternate;
+  -ms-animation: glow 800ms ease-out infinite alternate;
+  animation: glow 800ms ease-out infinite alternate;
+  border-color: chocolate;
+  outline: none;
+}
+
+.webdesigntuts-workshop button {
+
+  -o-box-sizing: content-box;
+  -ms-box-sizing: content-box;
+  box-sizing: content-box;
+  display: block;
+  float: left;
+  font-family: 'Cabin', helvetica, arial, sans-serif;
+  font-weight: 400;
+  margin: 0;
+  position: relative;
+  text-shadow: 0 -1px 0 #000;
+}
+
+.webdesigntuts-workshop input:focus::-webkit-input-placeholder {
+  color: #efe;
+}
+
+.webdesigntuts-workshop input:focus:-moz-placeholder {
+  color: #efe;
+}

@@ -3,12 +3,25 @@ package com.storeArticle.store.service.enumPage;
 public enum ArticleDetailQueryEnum {
     getArticleDetailList("select articleDetail FROM ArticleDetail as articleDetail where articleDetail.isDelete = false"),
     getArticleDetailSubSectionArticleIdHql("select articleDetail FROM ArticleDetail as articleDetail  " +
-                            "where articleDetail.subSectionId.subSectionId = ? and " +
-                            "articleDetail.articleId.articleId = ? and " +
-                            "articleDetail.isDelete = ? "),
-    getArticleDetailIdSubSectionHql("select articleDetail.articleId.articleId,articleDetail.subSectionId.subSectionId FROM ArticleDetail as articleDetail  " +
-                            "where articleDetail.subSectionId.subSectionId = ? and " +
-                            "articleDetail.isDelete = ? ");
+                            " WHERE articleDetail.subSectionId.subSectionId = ? and " +
+                            " articleDetail.articleId.articleId = ? and " +
+                            " articleDetail.isDelete = ? "),
+    getArticleDetailIdSubSectionHql("select articleDetail.articleId.articleId,articleDetail.subSectionId.subSectionId " +
+                            " FROM ArticleDetail as articleDetail  " +
+                            " WHERE articleDetail.subSectionId.subSectionId = ? and " +
+                            " articleDetail.isDelete = ? "),
+    getFiendArticleOfBussineHql("select articleDetail.articleId " +
+                            " FROM ArticleDetail as articleDetail " +
+                            " WHERE (articleDetail.articleId.nameAr like ? or " +
+                            " articleDetail.articleId.codigoAr like ? ) and " +
+                            " ( articleDetail.subSectionId.sectionId.groupId.bussineId.bussineId = ? and " +
+                            "  articleDetail.articleId.isDelete = ? and " +
+                            "  articleDetail.isDelete = ? ) "),
+    getArticledetailBussineHql("select articleDetail.articleId.articleId, articleDetail.articleId.nameAr" +
+                            " FROM ArticleDetail as articleDetail " +
+                            " WHERE  articleDetail.subSectionId.sectionId.groupId.bussineId.bussineId = ? and " +
+                            "  articleDetail.articleId.isDelete = ? and " +
+                            "  articleDetail.isDelete = ? ");
 
     private String hql;
 

@@ -1,6 +1,6 @@
 import {Article} from '../product/Article';
 import {User} from '../usuario/User';
-export class Comment{
+export class Comment {
       commentId: number;
       articleId: Article;
       userId: User;

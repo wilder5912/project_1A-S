@@ -2,17 +2,12 @@ package com.storeArticle.store.service.groupProductService;
 
 import com.storeArticle.store.model.accounts.ArticleRelational;
 import com.storeArticle.store.model.accounts.DescriptionArticle;
-import com.storeArticle.store.service.dto.ArticleDTOService;
-import com.storeArticle.store.service.dto.ArticleVEO;
-import com.storeArticle.store.service.enumPage.ArticleRelationalQueryEnum;
 import com.storeArticle.store.service.enumPage.DescriptionArticleQueryEnum;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 
 @Transactional
 @Service
@@ -20,8 +15,6 @@ public class DescriptionArticleService implements DescriptionArticleCrup{
 
     @PersistenceContext
     private EntityManager entityManager;
-    @Autowired
-    private ArticleDTOService articleDTOService;
 
     @Override
     public boolean addDescriptionArticle(DescriptionArticle descriptionArticle) {

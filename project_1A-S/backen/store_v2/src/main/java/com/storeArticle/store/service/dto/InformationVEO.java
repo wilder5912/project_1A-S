@@ -1,9 +1,6 @@
 package com.storeArticle.store.service.dto;
 
-import com.storeArticle.store.model.accounts.Information;
-
 import java.io.Serializable;
-import java.util.List;
 
 
 public class InformationVEO implements Serializable {

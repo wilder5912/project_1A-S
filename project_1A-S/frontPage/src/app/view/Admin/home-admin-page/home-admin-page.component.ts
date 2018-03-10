@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
- import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { DataService } from '../../../service/dataService/data.service';
 import { User } from '../../../model/usuario/User';
 import { LoginService } from '../../../service/accounts/loginService';
@@ -11,93 +10,88 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-admin-page.component.css']
 })
 export class HomeAdminPageComponent implements OnInit {
-  title = 'app';
-  idAN = '';
-  idBN = '';
-  idAN2 = '';
-  idBN2= '';
-  selectedFiles: FileList;
-  currentFileUpload: File
-  progress: { percentage: number } = { percentage: 0 }
-  imageUser = '';
-  imageload = '';
-
-
-  user: User = new User();
-  stateUser: boolean = null;
-  stateCss: boolean = true;
-  stateCss2: boolean = true;
-  constructor( public dataService: DataService , public loginService: LoginService, public userService: UserService,public router: Router) {
-
+  public title = 'app';
+  public  idAN = '';
+  public idBN = '';
+  public idAN2 = '';
+  public idBN2= '';
+  public selectedFiles: FileList;
+  public currentFileUpload: File;
+  public progress: { percentage: number } = { percentage: 0 };
+  public imageUser = '';
+  public user: User = new User();
+  public stateUser: boolean;
+  public stateCss: boolean;
+  public stateCss2: boolean;
+  constructor( public dataService: DataService , public loginService: LoginService,
+               public userService: UserService, public router: Router) {
   }
 
   ngOnInit() {
+    this.stateUser = null;
+    this.stateCss = true;
+    this.stateCss2 = true;
     this.dataService.redirectTypeUser();
   }
 
-  logout() {
+  public logout() {
     this.loginService.logout()
       .subscribe(result => {
         window.location.reload();
       }, e => {
-        console.log( "errrr" );
+        console.log( '', e);
       });
   }
 
-  selectTodo() {
-    if(this.stateCss){
+  public selectTodo() {
+    if (this.stateCss) {
       this.stateCss = false;
       this.idAN = 'antive';
       this.idBN = 'in';
-    }else{
+    }else {
       this.stateCss = true;
       this.idAN = '';
       this.idBN = '';
     }
-  }  selectTodo2() {
-    if(this.stateCss2){
+  }
+  public selectTodo2() {
+    if (this.stateCss2) {
       this.stateCss2 = false;
       this.idAN2 = 'antive';
       this.idBN2 = 'in';
-    }else{
+    }else {
       this.stateCss2 = true;
       this.idAN2 = '';
       this.idBN2 = '';
     }
   }
 
-  selectFile(event) {
-
+  public selectFile(event) {
     const file = event.target.files.item(0);
     if (file.type.match('image.*')) {
-
       this.selectedFiles = event.target.files;
     } else {
-      console.log("formato invalido");
+      console.log('formato invalido');
     }
   }
 
-  upload() {
+  public upload() {
     this.progress.percentage = 0;
-
-    this.currentFileUpload = this.selectedFiles.item(0)
+    this.currentFileUpload = this.selectedFiles.item(0);
     this.userService.editImage(this.currentFileUpload).subscribe(event => {
       this.getUserDataServer();
     }, e => {
-      console.log( "errrr",e );
+      console.log( '', e );
     });
-
-    this.selectedFiles = undefined
+    this.selectedFiles = undefined;
   }
-
-
-  getUserDataServer() {
+  public getUserDataServer() {
     if (localStorage.getItem('currentUser')) {
       const usersData: any[] = JSON.parse(localStorage.getItem('currentUser')) || [];
       this.user.emailUser = usersData['emailUser'];
     }
     if (!sessionStorage.getItem('token')) {
-      sessionStorage.setItem("token","null");
+      sessionStorage.setItem('token', (null + ''));
       this.user.tokenUser = 'null';
     }
     this.user.tokenUser = sessionStorage.getItem('token');
@@ -108,30 +102,27 @@ export class HomeAdminPageComponent implements OnInit {
         this.dataService.urlPage = this.router.url;
         if (null !== result) {
           this.dataService.AUTH_CONFIG = result;
-          this.imageUser= this.dataService.getApiUrl()+"/user/files/"+this.dataService.AUTH_CONFIG.imagenUser;
-          this.dataService.imageUserPage= this.dataService.getApiUrl()+"/user/files/"+this.dataService.AUTH_CONFIG.imagenUser;
-
-
-          localStorage.setItem('currentUser', JSON.stringify({emailUser: result.emailUser, token: "fake-jwt-token"}));
+          this.imageUser = this.dataService.getApiUrl() + '/user/files/' + this.dataService.AUTH_CONFIG.imagenUser;
+          this.dataService.imageUserPage = this.dataService.getApiUrl() + '/user/files/' + this.dataService.AUTH_CONFIG.imagenUser;
+          localStorage.setItem('currentUser', JSON.stringify({emailUser: result.emailUser, token: 'fake-jwt-token'}));
           this.user = result;
           if (localStorage.getItem('currentUser')) {
-            if('/loginRegister'=== this.router.url){
-              this.loginService.redirectUser(result, '/homeAdmin');
-            }else{
-              this.loginService.redirectUser(result, this.dataService.urlPage);
+            if ('/loginRegister' === this.router.url) {
+              this.loginService.redirectUser( '/homeAdmin');
+            }else {
+              this.loginService.redirectUser( this.dataService.urlPage);
 
             }
           }
-          this.dataService.islogin=true;
+          this.dataService.islogin = true;
         }else {
-          //this.loginService.redirectUser(result, this.dataService.urlPage);
-          this.dataService.islogin=false;
-          this.loginService.redirectUser(this.user, '/home');
+         this.dataService.islogin = false;
+          this.loginService.redirectUser( '/home');
 
         }
         this.dataService.imageLoadPage = false;
       }, e => {
-        console.log( "errrr",e );
+        console.log( '', e );
       });
   }
 

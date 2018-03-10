@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpHeaders , HttpHandler, HttpRequest ,HttpEvent,HttpInterceptor ,  HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
  import { ArticleDetail} from '../../model/product/ArticleDetail';
 import { DataService } from '../dataService/data.service';
 import { Router } from '@angular/router';
@@ -10,15 +10,14 @@ export class ArticleDetailService {
   constructor(private http: HttpClient, public dataService: DataService , public router: Router) { }
 
   public getArticleDetailList(): Observable<ArticleDetail>  {
-    return this.http.get<ArticleDetail>(this.dataService.getUrl("/articleDetail/getArticleDetail"));
+    return this.http.get<ArticleDetail>(this.dataService.getUrl('/articleDetail/getArticleDetail'));
   }
- /* public addSubSection(section: SubSection): Observable<SubSection>  {
-    return this.http.post<SubSection>(this.dataService.getUrl("/subSection/addSubSection"), JSON.stringify(section));
+  public getArticleFiend(nameArticle: string, idBussine: number): Observable<Object> {
+    return this.http.get<Object>(this.dataService.getUrl('/articleDetail/getFindArticleBussineId/' + nameArticle + '/' + idBussine));
   }
-  public deleteSubSectionId(subSectionId:number): Observable<boolean>  {
-    return this.http.get<boolean>(this.dataService.getUrl("/subSection/deleteSubSectionId/"+subSectionId));
+
+  public getArticleDetailBussine( idBussine: number): Observable<Object> {
+    return this.http.get<Object>(this.dataService.getUrl('/articleDetail/getArticleBussine/' + idBussine));
   }
-  public updateSubSection(subSection: SubSection): Observable<boolean>  {
-    return this.http.post<boolean>(this.dataService.getUrl("/subSection/updateSubSection"), JSON.stringify(subSection));
-  }*/
+
 }

@@ -1,13 +1,8 @@
 package com.storeArticle.store.controller.product;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.storeArticle.store.model.accounts.Article;
 import com.storeArticle.store.model.accounts.ArticleDetail;
 import com.storeArticle.store.model.accounts.ImageArticle;
-import com.storeArticle.store.model.accounts.SubSection;
-import com.storeArticle.store.service.groupProductService.ArticleService;
 import com.storeArticle.store.service.groupProductService.ImageArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -39,12 +34,12 @@ public class ImageArticleController {
     }
 
     @GetMapping(value="/getImageArticle")
-    public List<ImageArticle> getSection() throws JsonParseException, JsonMappingException, IOException {
+    public List<ImageArticle> getSection() throws IOException {
         return imageArticleService.getSubSectionList();
     }
 
     @PostMapping(value ="/updateArticleImageDetailOne")
-    public ResponseEntity<String> updateArticleImageDetailOne(@RequestParam("fileArticle") MultipartFile fileArticle, @RequestParam("idArticle") String idArticle) throws JsonParseException, JsonMappingException, IOException{
+    public ResponseEntity<String> updateArticleImageDetailOne(@RequestParam("fileArticle") MultipartFile fileArticle, @RequestParam("idArticle") String idArticle) throws IOException{
         String message = "";
         ArticleDetail resArticleDetail=null;
         this.mapper = new ObjectMapper();
@@ -53,7 +48,7 @@ public class ImageArticleController {
     }
 
     @GetMapping(value="/getImageArticleIdList/{articleId}")
-    public List<ImageArticle> getImageArticleIdList(@PathVariable("articleId") int articleId) throws JsonParseException, JsonMappingException, IOException {
+    public List<ImageArticle> getImageArticleIdList(@PathVariable("articleId") int articleId) throws IOException {
         return imageArticleService.getImageArticleList(articleId);
     }
 

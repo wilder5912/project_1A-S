@@ -1,4 +1,4 @@
-import { Component, TemplateRef,OnInit } from '@angular/core';
+import { Component, TemplateRef, OnInit } from '@angular/core';
 import { DataService } from '../../../service/dataService/data.service';
 import { Router} from '@angular/router';
 import { Section } from '../../../model/product/Section';
@@ -8,7 +8,6 @@ import { GroupProductService } from '../../../service/product/groupProductServic
 import { SectionService } from '../../../service/product/SectionService';
 import { SubSectionService } from '../../../service/product/SubSectionService';
 import { ArticleDetailService } from '../../../service/product/ArticleDetailService';
-
 import { TranslateService } from '@ngx-translate/core';
 import { BussineService } from '../../../service/product/bussineService';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -18,7 +17,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
   selector: 'app-article',
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css'],
-  providers: [SectionService,BussineService,GroupProductService,SubSectionService,ArticleDetailService]
+  providers: [SectionService, BussineService, GroupProductService, SubSectionService, ArticleDetailService]
 })
 export class ArticleComponent implements OnInit {
 
@@ -49,10 +48,6 @@ export class ArticleComponent implements OnInit {
 
   private modalRefSection: BsModalRef;
 
-
-
-
-
   constructor(private router: Router , private formBuilder: FormBuilder, public dataService: DataService, public bussineService:BussineService,translate: TranslateService, public sectionService:SectionService, public groupProductService:GroupProductService  ,public subSectionService: SubSectionService,public articleDetailService:ArticleDetailService, private modalService: BsModalService ) {
     translate.setDefaultLang(dataService.languagePage);
     translate.use(dataService.languagePage);
@@ -71,8 +66,6 @@ export class ArticleComponent implements OnInit {
     this.sectionSelect= [
       {value: '', label: ''}
     ];
-
-
     this.getImageArticleList();
   }
 
@@ -92,7 +85,6 @@ public getImageArticleList(){
     this.bussineService.getBussine()
       .subscribe(result => {
         this.bussineSelect = result;
-        //this.getSectionList();
       }, error => {
         console.log(error );
       });

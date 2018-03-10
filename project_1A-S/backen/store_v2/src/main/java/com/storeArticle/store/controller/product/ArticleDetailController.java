@@ -5,10 +5,10 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.storeArticle.store.model.accounts.Article;
 import com.storeArticle.store.model.accounts.ArticleDetail;
-import com.storeArticle.store.model.accounts.ImageArticle;
 import com.storeArticle.store.model.accounts.SubSection;
+import com.storeArticle.store.service.dto.ArticleVEO;
+import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.groupProductService.ArticleDetailService;
-import com.storeArticle.store.service.groupProductService.ImageArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,8 +37,13 @@ public class ArticleDetailController {
     }
 
     @GetMapping(value="/getArticleDetail")
-    public List<ArticleDetail> getSection() throws JsonParseException, JsonMappingException, IOException {
+    public List<ArticleDetail> getSection() throws IOException {
         return articleDetailService.getArticleDetailList();
+    }
+
+    @GetMapping(value="/getFindArticleBussineId/{nameArRrCode}/{bussineId}")
+    public List<ArticleVEO> getFindArticleBussineId(@PathVariable("nameArRrCode") String  nameArRrCode, @PathVariable("bussineId") int  bussineId ) throws IOException {
+        return articleDetailService.getListDTO(nameArRrCode, bussineId);
     }
 
     @PostMapping(value ="/updateArticleDetailOne")
@@ -52,17 +57,11 @@ public class ArticleDetailController {
         return ResponseEntity.status(HttpStatus.OK).body(resArticleDetail.getArticleId().getArticleId());
     }
 
-
-  /*  @PostMapping(value ="/getArticleDetailOne")
-    public ResponseEntity<Integer> getArticleList(@RequestParam("fileArticle") MultipartFile fileArticle, @RequestParam("articleData") String articleData, @RequestParam("subSectionData") String subSectionData ) throws JsonParseException, JsonMappingException, IOException{
-        String message = "";
-        ArticleDetail resArticleDetail=null;
-        this.mapper = new ObjectMapper();
-        Article article = this.mapper.readValue(articleData, Article.class);
-        SubSection subSection = this.mapper.readValue(subSectionData, SubSection.class);
-        resArticleDetail = articleDetailService.addArticleAndSubSection(fileArticle,article,subSection);
-        return ResponseEntity.status(HttpStatus.OK).body(resArticleDetail.getArticleId().getArticleId());
+    @GetMapping(value = "/getArticleBussine/{bussineId}")
+    public List<SelectVEO> getArticleBussine(@PathVariable("bussineId") int  bussineId) throws  IOException {
+      return  articleDetailService.getSelectArticleList(bussineId);
     }
-    */
+
+
 
 }

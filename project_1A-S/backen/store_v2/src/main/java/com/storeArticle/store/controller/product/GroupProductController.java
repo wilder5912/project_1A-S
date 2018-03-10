@@ -1,7 +1,5 @@
 package com.storeArticle.store.controller.product;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.storeArticle.store.model.accounts.GroupProduct;
 import com.storeArticle.store.service.dto.SelectVEO;
@@ -26,25 +24,25 @@ public class GroupProductController {
     protected ObjectMapper mapper;
 
     @PostMapping(value = "/addGroupProduct")
-        public boolean addGroupProduct(@RequestBody String groupProductData)throws JsonParseException, JsonMappingException, IOException {
+        public boolean addGroupProduct(@RequestBody String groupProductData)throws  IOException {
             this.mapper = new ObjectMapper();
             GroupProduct groupProduct = this.mapper.readValue(groupProductData, GroupProduct.class);
             return groupProductService.addGroupProductName(groupProduct);
     }
      @GetMapping(value = "/getGroupProduct")
-        public List<GroupProduct> getGroupProduct()throws JsonParseException, JsonMappingException, IOException {
+        public List<GroupProduct> getGroupProduct()throws IOException {
             return groupProductService.getGroupProduct();
     }
 
     @PostMapping(value = "/editGroupProduct")
-    public boolean editGroupProduct(@RequestBody String groupProductData)throws JsonParseException, JsonMappingException, IOException {
+    public boolean editGroupProduct(@RequestBody String groupProductData)throws IOException {
         this.mapper = new ObjectMapper();
         GroupProduct groupProduct = this.mapper.readValue(groupProductData, GroupProduct.class);
         return groupProductService.updatedGroupProductName(groupProduct);
     }
 
     @PostMapping(value = "/deleteGroupProduct")
-    public boolean deleteGroupProduct(@RequestBody String groupProductData)throws JsonParseException, JsonMappingException, IOException {
+    public boolean deleteGroupProduct(@RequestBody String groupProductData)throws IOException {
         this.mapper = new ObjectMapper();
         GroupProduct groupProduct = this.mapper.readValue(groupProductData, GroupProduct.class);
         return groupProductService.deleteGroupProductName(groupProduct.getGroupId());

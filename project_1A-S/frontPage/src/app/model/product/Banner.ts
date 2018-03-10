@@ -5,6 +5,6 @@ export class Banner{
   nameImageBanner: string;
   startBanner: string;
   endBanner: string;
-  urlBanner:string;
+  urlBanner: string;
   isDelete: boolean;
 }

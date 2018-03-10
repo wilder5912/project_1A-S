@@ -1,10 +1,10 @@
-export class Article{
+export class Article {
   articleId: number;
   nameAr: string;
   nameSubSection: string;
   codigoAr: string;
   precyAr: number;
   detailAr: string;
-  imageMainAr:string;
+  imageMainAr: string;
   isDelete: boolean;
 }

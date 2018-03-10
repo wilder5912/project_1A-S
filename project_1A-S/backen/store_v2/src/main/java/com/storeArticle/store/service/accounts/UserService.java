@@ -5,21 +5,18 @@ import com.storeArticle.store.service.JwtGenerator.JwtGeneratorService;
 import com.storeArticle.store.service.JwtGenerator.JwtValidatorService;
 import com.storeArticle.store.service.enumPage.UserQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.core.io.Resource;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.io.File;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 @Transactional
@@ -35,11 +32,13 @@ public class UserService implements UserCrup {
 
     private  Path rootLocation = Paths.get("../webapps/store-0.0.1-SNAPSHOT/upload-dir/userImage");
 
+
     @Override
     public void addUser(User user){
         user.setCodeUser(randomString());
         user.setImagenUser("user-local.png");
         user.setTokenUser(jwtGeneratorService.generate(user));
+        user.setIdBoxUser(0);
         entityManager.persist(user);
     }
 
@@ -72,10 +71,10 @@ public class UserService implements UserCrup {
                                                 .getResultList();
     }
     public User getAutentification(String email, String password) {
-        String userHql= UserQueryEnum.getAutentificationHql.getHql();
-        User user;
+         User user;
         try{
-             user = (User)entityManager.createQuery(userHql).setParameter(1,email)
+             user = (User)entityManager.createQuery( UserQueryEnum.getAutentificationHql.getHql())
+                                                            .setParameter(1,email)
                                                             .setParameter(2,password)
                                                             .getSingleResult();
             User userActial = getUser(user.getUserID());
@@ -83,6 +82,7 @@ public class UserService implements UserCrup {
             userActial.setTokenUser(jwtGeneratorService.generate(user));
             entityManager.flush();
             user = userActial;
+
         }catch (RuntimeException e){
             user=null;
         }

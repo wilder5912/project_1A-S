@@ -1,29 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { DataTableModule} from "angular2-datatable";
+import { DataTableModule} from 'angular2-datatable';
 import { GroupProductPipe } from './service/pipe/group-product.pipe';
 import { SectionPipe } from './service/pipe/section.pipe';
 import { SubSectionPipe } from './service/pipe/sub-section.pipe';
 import { ArticlePipe } from './service/pipe/Article.pipe';
 import { StringFilterPipe } from './service/pipe/string-filter.pipe';
-import {Http, Headers, RequestOptions } from '@angular/http';
-import { AuthHttp, AuthConfig ,JwtHelper } from 'angular2-jwt';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { Http, RequestOptions } from '@angular/http';
+import { AuthHttp, AuthConfig , JwtHelper } from 'angular2-jwt';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule ,HttpClient, HTTP_INTERCEPTORS  } from "@angular/common/http";
+import { HttpClientModule , HttpClient } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './view/user/login/login.component';
 import { HomeComponent } from './view/user/home/home.component';
-import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
-import { AlertModule, ModalModule,PopoverModule,RatingModule , BsDropdownModule, TabsModule,BsDatepickerModule } from 'ngx-bootstrap';
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
+import { AlertModule, ModalModule, PopoverModule, RatingModule , BsDropdownModule, TabsModule, BsDatepickerModule } from 'ngx-bootstrap';
 import { AuthGuard } from './service/sesion/index';
 import { SharedService } from './service/sesion/shared.service';
-import { RouterModule } from '@angular/router';
 import { DataService } from './service/dataService/data.service';
 import { RegisterComponent } from './view/user/register/register.component';
 import { HomeAdminComponent } from './view/Admin/home-admin/home-admin.component';
 import { CreateProductAdminComponent } from './view/Admin/create-product-admin/create-product-admin.component';
-import { GroupProductComponent } from './view/Admin/group-product/group-product.component';
 import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { SelectModule} from 'angular2-select';
@@ -41,21 +39,27 @@ import { BlogPageComponent } from './view/bodyPage/blog-page/blog-page.component
 import { InformationPageComponent } from './view/bodyPage/information-page/information-page.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ArticleDetailComponent } from './view/bodyPage/article-detail/article-detail.component';
-import {ImageZoomModule} from 'angular2-image-zoom';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { CreateBannerComponent } from './view/Admin/create-banner/create-banner.component';
 import { LoadPageComponent } from './view/bodyPage/load-page/load-page.component';
-import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import { HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { HomeAdminPageComponent } from './view/Admin/home-admin-page/home-admin-page.component';
 import { ChatPageComponent } from './view/bodyPage/chat-page/chat-page.component';
-import { WebSocketService } from "./service/webSocketServicePage/websocket.service";
+import { WebSocketService } from './service/webSocketServicePage/websocket.service';
 import { ContactUsComponent } from './view/bodyPage/contact-us/contact-us.component';
 import { HelpPageComponent } from './view/bodyPage/help-page/help-page.component';
-
 import { SwiperModule } from 'angular2-useful-swiper';
 import { NgxCarouselModule } from 'ngx-carousel';
 import 'hammerjs';
-
+import { CarouselArticlePageComponent } from './view/bodyPage/carousel-article-page/carousel-article-page.component';
+import { CarouselImageArticleComponent } from './view/bodyPage/carousel-image-article/carousel-image-article.component';
+import { ShowImageModalComponent } from './view/bodyPage/show-image-modal/show-image-modal.component';
+import { ArticleRelationalComponent } from './view/Admin/article-relational/article-relational.component';
+import { ListArticleFiendComponent } from './view/bodyPage/list-article-fiend/list-article-fiend.component';
+import { ListPageArticleComponent } from './view/bodyPage/list-page-article/list-page-article.component';
+import { FiendArticlePageComponent } from './view/bodyPage/fiend-article-page/fiend-article-page.component';
+import { AddInformationArticleComponent } from './view/Admin/add-information-article/add-information-article.component';
+import { GroupProductComponent } from './view/Admin/group-product/group-product.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -65,10 +69,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
     tokenName: 'token',
     tokenGetter: (() => sessionStorage.getItem('token')),
-    globalHeaders: [{'Content-Type':'application/json'}],
+    globalHeaders: [{'Content-Type': 'application/json'}],
   }), http, options);
 }
-
 
 @NgModule({
   declarations: [
@@ -103,6 +106,14 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ChatPageComponent,
     ContactUsComponent,
     HelpPageComponent,
+    CarouselArticlePageComponent,
+    CarouselImageArticleComponent,
+    ShowImageModalComponent,
+    ArticleRelationalComponent,
+    ListArticleFiendComponent,
+    ListPageArticleComponent,
+    FiendArticlePageComponent,
+    AddInformationArticleComponent,
 
   ],
   imports: [
@@ -122,11 +133,10 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     HttpClientModule,
     Angular2FontawesomeModule,
     DataTableModule,
-    ImageZoomModule,
     Ng2CarouselamosModule,
     SwiperModule,
     NgxCarouselModule,
-     TranslateModule.forRoot({
+      TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
@@ -139,7 +149,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AuthGuard,
     SharedService,
     DataService,
-    [{provide: LocationStrategy, useClass:HashLocationStrategy}],
+    [{provide: LocationStrategy, useClass: HashLocationStrategy}],
     JwtHelper,
     {
       provide: AuthHttp,

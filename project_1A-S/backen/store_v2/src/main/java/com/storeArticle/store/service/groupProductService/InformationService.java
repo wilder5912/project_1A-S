@@ -1,10 +1,7 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.ArticleRelational;
-import com.storeArticle.store.model.accounts.DescriptionArticle;
 import com.storeArticle.store.model.accounts.Information;
 import com.storeArticle.store.service.dto.ArticleDTOService;
-import com.storeArticle.store.service.enumPage.DescriptionArticleQueryEnum;
 import com.storeArticle.store.service.enumPage.InformationQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +17,6 @@ public class InformationService implements InformationCrup{
 
     @PersistenceContext
     private EntityManager entityManager;
-    @Autowired
-    private ArticleDTOService articleDTOService;
 
     @Override
     public boolean addInformation(Information information) {

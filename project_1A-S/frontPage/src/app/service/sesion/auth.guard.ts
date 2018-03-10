@@ -5,19 +5,14 @@ import { DataService } from '../dataService/data.service';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router, public dataService:DataService) { }
+  constructor(private router: Router, public dataService: DataService) { }
 
-  //console.log("holas");
 
   canActivate() {
-    //this.dataService.increment();
-   // console.log(this.dataService.get(),"ffffffffffff");
-
 
     if (localStorage.getItem('currentUser')) {
     console.log("t",localStorage.getItem('currentUser'));
-   //   this.router.navigate(['/home']);
-      // logged in so return true
+
       return true;
     }
     console.log("f");

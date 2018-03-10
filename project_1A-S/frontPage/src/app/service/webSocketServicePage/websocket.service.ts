@@ -1,16 +1,16 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from '@angular/core';
+import { DataService } from '../dataService/data.service';
 
-var SockJs = require("sockjs-client");
-var Stomp = require("stompjs");
-
+const SockJs = require('sockjs-client');
+const Stomp = require('stompjs');
 
 @Injectable()
 export class WebSocketService {
 
-    constructor() { }
+    constructor(public dataService: DataService) { }
     connect() {
-        let socket = new SockJs(`http://localhost:8080/socket`);
-        let stompClient = Stomp.over(socket);
+        const socket = new SockJs(this.dataService.getUrl('/socket'));
+        const stompClient = Stomp.over(socket);
         return stompClient;
     }
 }

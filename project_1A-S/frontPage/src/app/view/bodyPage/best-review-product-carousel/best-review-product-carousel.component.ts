@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarouselConfig } from 'ngx-bootstrap/carousel';
-import { DataService } from "../../../service/dataService/data.service";
-import { ArticleService } from "../../../service/product/ArticleService";
+import { DataService } from '../../../service/dataService/data.service';
+import { ArticleService } from '../../../service/product/ArticleService';
 import { NgxCarousel } from 'ngx-carousel';
 
 @Component({
@@ -15,17 +15,18 @@ import { NgxCarousel } from 'ngx-carousel';
 export class BestReviewProductCarouselComponent implements OnInit {
   public articleRelational;
   public carouselOne: NgxCarousel;
-  public max = 10;
-  public  rate = 0;
-   public isReadonly = true;
-
-  constructor(public dataService:DataService, public articleService:ArticleService) { }
+  public max: number;
+  public  rate: number;
+  public isReadonly: boolean;
+  public articleTitle: string;
+  constructor(public dataService: DataService, public articleService: ArticleService) { }
 
   ngOnInit() {
-
+    this.max = 10;
+    this.rate = 0;
+    this.isReadonly = true;
+    this.articleTitle = 'Articulos Mas Revisados';
     this.getBetsArticle();
-
-
     this.carouselOne  = {
       grid: {xs: 1, sm: 3, md: 3, lg: 4, all: 0},
       slide: 2,
@@ -62,26 +63,16 @@ export class BestReviewProductCarouselComponent implements OnInit {
       load: 2,
       touch: true,
       easing: 'ease'
-    }
+    };
 
   }
-  public getBetsArticle(){
+  public getBetsArticle() {
     this.articleService.getBestRevieArticle(this.dataService.bussineId)
-      .subscribe(result=>{
+      .subscribe(result => {
         this.articleRelational = result;
-
       });
-
-
   }
   public carouselTileLoad(evt: any) {
-
-    /*const len = this.articleRelational.length
-    if (len <= 30) {
-      for (let i = len; i < len + 10; i++) {
-        this.articleRelational.push(i);
-      }
-    }*/
 
   }
 }

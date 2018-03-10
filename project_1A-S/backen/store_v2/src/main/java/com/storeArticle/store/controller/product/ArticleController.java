@@ -1,7 +1,5 @@
 package com.storeArticle.store.controller.product;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.storeArticle.store.model.accounts.Article;
 import com.storeArticle.store.model.accounts.ReviewArticle;
@@ -11,7 +9,6 @@ import com.storeArticle.store.service.dto.ArticleVEO;
 import com.storeArticle.store.service.dto.SubSectionVEO;
 import com.storeArticle.store.service.groupProductService.ArticleService;
 import com.storeArticle.store.service.groupProductService.ReviewArticleService;
-import com.storeArticle.store.service.groupProductService.SubSectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -58,14 +55,14 @@ public class ArticleController {
     }
 
     @PostMapping(value="/getSubSectionArticleListAll")
-    public SubSectionVEO getSubSectionArticleListAll(@RequestBody String subSection)throws JsonParseException, JsonMappingException, IOException {
+    public SubSectionVEO getSubSectionArticleListAll(@RequestBody String subSection)throws  IOException {
         this.mapper = new ObjectMapper();
         SubSection subSectionData = this.mapper.readValue(subSection, SubSection.class);
         return articleService.getArticleSubArticle(subSectionData);
     }
 
     @PostMapping(value="/getArticleDataDetail")
-    public ArticleVEO getArticleDataDetail(@RequestBody String article)throws JsonParseException, JsonMappingException, IOException {
+    public ArticleVEO getArticleDataDetail(@RequestBody String article)throws IOException {
         this.mapper = new ObjectMapper();
         Article articleData = this.mapper.readValue(article, Article.class);
         return articleDTOService.getArticleDetailDTO(articleData.getArticleId());
@@ -76,12 +73,19 @@ public class ArticleController {
         return reviewArticleService.getArticleBest(bussineId);
     }
 
+    @GetMapping(value = "/getArticleId/{articleId}")
+    public Article getArticleId(@PathVariable("articleId") int articleId){
+        return articleService.getArticle(articleId);
+    }
+
     @PostMapping(value = "/addReviewArticle")
     public boolean addReviewArticle(@RequestBody String reviewArticle)throws IOException{
         this.mapper = new ObjectMapper();
         ReviewArticle reviewArticle1Data = this.mapper.readValue(reviewArticle, ReviewArticle.class);
         return reviewArticleService.addReviewArticle(reviewArticle1Data);
     }
+
+
 
 
 

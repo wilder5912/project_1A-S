@@ -1,8 +1,6 @@
 package com.storeArticle.store.controller.product;
 
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.storeArticle.store.model.accounts.Bussine;
 import com.storeArticle.store.service.dto.BussineVEO;
@@ -32,12 +30,12 @@ public class BussineController {
     }
 
     @GetMapping(value = "/getBussineDTO")
-    public List<SelectVEO> getBussineDTO()throws JsonParseException, JsonMappingException, IOException {
+    public List<SelectVEO> getBussineDTO()throws IOException {
         return bussineService.getBussineDTO();
     }
 
     @PostMapping(value = "/getBussineListAllDTO")
-    public BussineVEO getBussineListAllDTO(@RequestBody String bussineData)throws JsonParseException, JsonMappingException, IOException {
+    public BussineVEO getBussineListAllDTO(@RequestBody String bussineData)throws IOException {
         this.mapper = new ObjectMapper();
         Bussine bussine = this.mapper.readValue(bussineData, Bussine.class);
         return bussineService.getBussineAll(bussine);

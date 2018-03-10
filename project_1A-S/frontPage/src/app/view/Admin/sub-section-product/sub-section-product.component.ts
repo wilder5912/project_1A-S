@@ -1,4 +1,4 @@
-import { Component, TemplateRef,OnInit } from '@angular/core';
+import { Component, TemplateRef, OnInit } from '@angular/core';
 import { DataService } from '../../../service/dataService/data.service';
 import { Router} from '@angular/router';
 import { Section } from '../../../model/product/Section';
@@ -17,7 +17,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
   selector: 'app-sub-section-product',
   templateUrl: './sub-section-product.component.html',
   styleUrls: ['./sub-section-product.component.css'],
-  providers: [SectionService,BussineService,GroupProductService,SubSectionService],
+  providers: [SectionService, BussineService, GroupProductService, SubSectionService],
 })
 export class SubSectionProductComponent implements OnInit {
   public form: FormGroup;
@@ -25,16 +25,13 @@ export class SubSectionProductComponent implements OnInit {
   public subSection: SubSection = new SubSection();
   public data;
   public dataSection;
-  public filterQuery = "";
-  public filterQuery2 = "";
-  public rowsOnPage = 10;
-  public sortBy = "nameSubSection";
-  public sortOrder = "asc";
-
+  public filterQuery: string;
+  public rowsOnPage: number;
+  public sortBy: string;
+  public sortOrder: string;
   public bussineSelect;
   public groupSelect;
   public sectionSelect;
-
   public groupProductSelect;
   public config = {
     animated: true,
@@ -42,36 +39,42 @@ export class SubSectionProductComponent implements OnInit {
     backdrop: true,
     ignoreBackdropClick: false
   };
-  public isEditForm:boolean = true;
+  public isEditForm: boolean;
 
   public modalRefSection: BsModalRef;
 
 
-  constructor(private router: Router , private formBuilder: FormBuilder, public dataService: DataService, public bussineService:BussineService,public translate: TranslateService, public sectionService:SectionService, public groupProductService:GroupProductService  ,public subSectionService: SubSectionService, private modalService: BsModalService ) {
+  constructor(private router: Router , private formBuilder: FormBuilder, public dataService: DataService,
+              public bussineService: BussineService, public translate: TranslateService,
+              public sectionService: SectionService, public groupProductService: GroupProductService,
+              public subSectionService: SubSectionService, private modalService: BsModalService ) {
     translate.setDefaultLang(dataService.languagePage);
     translate.use(dataService.languagePage);
   }
 
   ngOnInit() {
+    this.filterQuery = '';
+    this.rowsOnPage = 10;
+    this.sortBy = 'nameSubSection';
+    this.sortOrder = 'asc';
+    this.isEditForm = true;
     this.dataService.redirectTypeUser();
     this.getListBussine();
     this.dataService.urlPage = this.router.url;
     this.getSectionList();
     this.formValidateModal();
-    this.groupSelect= [
-      {value: '', label: ''}
-
-    ];
-    this.sectionSelect= [
+    this.groupSelect = [
       {value: '', label: ''}
     ];
-
+    this.sectionSelect = [
+      {value: '', label: ''}
+    ];
     this.getSubSectionList();
   }
 
 
 
-  getListBussine(): void{
+  getListBussine(): void {
     this.bussineService.getBussine()
       .subscribe(result => {
         this.bussineSelect = result;
@@ -81,7 +84,7 @@ export class SubSectionProductComponent implements OnInit {
       });
   }
 
-  public getSectionList(){
+  public getSectionList() {
     this.sectionService.getSectionList()
       .subscribe(result => {
         this.dataSection = result;
@@ -90,7 +93,7 @@ export class SubSectionProductComponent implements OnInit {
       });
   }
 
-  public getSubSectionList(){
+  public getSubSectionList() {
     this.subSectionService.getSubSectionList()
       .subscribe(result => {
         this.data = result;
@@ -99,50 +102,50 @@ export class SubSectionProductComponent implements OnInit {
       });
   }
 
-  public onSelectBussine(event){
+  public onSelectBussine(event) {
     this.groupProductService.getProductGroupBussineId(event.value)
       .subscribe(result => {
-        this.groupSelect=result;
+        this.groupSelect = result;
       }, error => {
         console.log(error);
       });
   }
 
-  public onSelectSection(event){
+  public onSelectSection(event) {
     this.sectionService.getSectionIdList(event.value)
       .subscribe(result => {
-        this.sectionSelect=result;
+        this.sectionSelect = result;
       }, error => {
         console.log(error);
       });
   }
 
 
-  public onSubSelectBussine(event){
+  public onSubSelectBussine(event) {
     this.groupProductService.getProductGroupBussineId(event.value)
       .subscribe(result => {
-        this.groupSelect=result;
+        this.groupSelect = result;
       }, error => {
         console.log(error);
       });
   }
 
 
-  public formValidateModal(){
+  public formValidateModal() {
     this.form = this.formBuilder.group({
-      bussineId:['',Validators.compose([
+      bussineId: ['', Validators.compose([
         Validators.required
       ])],
-      groupId:['',Validators.compose([
+      groupId: ['', Validators.compose([
         Validators.required
       ])],
-      sectionId:['',Validators.compose([
+      sectionId: ['', Validators.compose([
         Validators.required
       ])],
-      subSectionId:['',Validators.compose([
+      subSectionId: ['', Validators.compose([
         Validators.required
       ])],
-      nameSubSection:['', Validators.compose([
+      nameSubSection: ['', Validators.compose([
         Validators.required,
         Validators.minLength(3),
       ])]
@@ -156,17 +159,17 @@ export class SubSectionProductComponent implements OnInit {
     this.form.controls['sectionId'].setValue('');
     this.form.controls['subSectionId'].setValue('');
     this.form.controls['nameSubSection'].setValue('');
-    this.modalRefSection = this.dataService.showModal(template,this.config);
+    this.modalRefSection = this.dataService.showModal(template, this.config);
 
   }
 
-  public registerSubSection(){
-    if( null === this.form.controls.sectionId.errors && null === this.form.controls.nameSubSection.errors  ) {
+  public registerSubSection() {
+    if ( null === this.form.controls.sectionId.errors && null === this.form.controls.nameSubSection.errors  ) {
       this.section = new Section();
       this.subSection = new SubSection();
       this.section.sectionId = this.form.value['sectionId'];
       this.subSection.sectionId = this.section;
-      this.subSection.nameSubSection=this.form.value['nameSubSection'];
+      this.subSection.nameSubSection = this.form.value['nameSubSection'];
       this.subSectionService.addSubSection(this.subSection)
         .subscribe(result => {
           this.getSubSectionList();
@@ -177,14 +180,14 @@ export class SubSectionProductComponent implements OnInit {
     }
   }
 
-  public editSubSectionInfo(){
-    if( null === this.form.controls.sectionId.errors && null === this.form.controls.nameSubSection.errors  ) {
+  public editSubSectionInfo() {
+    if ( null === this.form.controls.sectionId.errors && null === this.form.controls.nameSubSection.errors  ) {
       this.section = new Section();
       this.subSection = new SubSection();
       this.section.sectionId = this.form.value['sectionId'];
       this.subSection.sectionId = this.section;
-      this.subSection.nameSubSection=this.form.value['nameSubSection'];
-      this.subSection.subSectionId=this.form.value['subSectionId'];
+      this.subSection.nameSubSection = this.form.value['nameSubSection'];
+      this.subSection.subSectionId = this.form.value['subSectionId'];
       this.subSectionService.updateSubSection(this.subSection)
         .subscribe(result => {
           this.getSubSectionList();
@@ -196,33 +199,32 @@ export class SubSectionProductComponent implements OnInit {
   }
 
 
-  public remove(itemTableSection){
-    console.log(itemTableSection)
+  public remove(itemTableSection) {
+    console.log(itemTableSection);
 
   }
-  public edit(itemTableSubSection ,template: TemplateRef<any>) {
-   this.isEditForm = false;
-    this.form.controls['bussineId'].setValue(itemTableSubSection.sectionId.groupId.bussineId.bussineId+'');
-    this.form.controls['nameSubSection'].setValue(itemTableSubSection.nameSubSection+'');
-    this.form.controls['subSectionId'].setValue(itemTableSubSection.subSectionId+'');
-    this.groupProductService.getProductGroupBussineId(itemTableSubSection.sectionId.groupId.bussineId.bussineId)
+  public edit(itemTableSubSection , template: TemplateRef<any>) {
+    this.formValidateModal();
+    this.isEditForm = false;
+    this.form.controls['bussineId'].setValue(itemTableSubSection.sectionId.groupId.bussineId.bussineId + '');
+    this.form.controls['nameSubSection'].setValue(itemTableSubSection.nameSubSection + '');
+    this.form.controls['subSectionId'].setValue(itemTableSubSection.subSectionId + '');
+     this.groupProductService.getProductGroupBussineId(itemTableSubSection.sectionId.groupId.bussineId.bussineId)
       .subscribe(result => {
-        this.groupSelect=result;
-        this.form.controls['groupId'].setValue(itemTableSubSection.sectionId.groupId.groupId+'');
-        this.getSectionId(itemTableSubSection.sectionId.groupId.groupId+'', itemTableSubSection.sectionId.sectionId, template);
-      }, error => {
+        this.groupSelect = result;
+        this.form.controls['groupId'].setValue(itemTableSubSection.sectionId.groupId.groupId + '');
+        this.getSectionId(itemTableSubSection, itemTableSubSection.sectionId.sectionId, template);
+        }, error => {
         console.log(error);
       });
   }
 
-  public getSectionId(valueId,sectionIdData,template){
-
-    this.sectionService.getSectionIdList(valueId)
+  public getSectionId(valueId, sectionIdData, template) {
+    this.sectionService.getSectionIdList(valueId.sectionId.groupId.groupId)
       .subscribe(result => {
-        this.sectionSelect=result;
-        this.form.controls['sectionId'].setValue(sectionIdData+'');
-        this.modalRefSection = this.dataService.showModal(template,this.config);
-
+        this.sectionSelect = result;
+        this.form.controls['sectionId'].setValue(sectionIdData + '');
+        this.modalRefSection = this.dataService.showModal(template, this.config);
       }, error => {
         console.log(error);
       });

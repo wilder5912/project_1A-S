@@ -6,11 +6,6 @@ import java.io.Serializable;
 
 
 @Entity
-@Getter
-@Setter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name="user")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -43,6 +38,8 @@ public class User implements Serializable {
     @Column(name="code_user")
     private String codeUser;
 
+    @Column(name = "id_box_user")
+    private int idBoxUser;
 
 
     public static long getSerialVersionUID() {
@@ -119,5 +116,13 @@ public class User implements Serializable {
 
     public void setCodeUser(String codeUser) {
         this.codeUser = codeUser;
+    }
+
+    public int getIdBoxUser() {
+        return idBoxUser;
+    }
+
+    public void setIdBoxUser(int idBoxUser) {
+        this.idBoxUser = idBoxUser;
     }
 }

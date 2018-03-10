@@ -1,5 +1,4 @@
-import { BehaviorSubject, Observable } from 'rxjs/Rx';
-import { Injectable,Component } from '@angular/core';
+import { Injectable, Component } from '@angular/core';
 import { User } from '../../model/usuario/User';
 import { LoginService } from '../../service/accounts/loginService';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -15,36 +14,47 @@ export class DataService {
  private _apiUrl = 'http://localhost:8080';
  public urlPage = '/' ;
  private _languagePage = 'es';
- public imageLoadPage:boolean = true;
- public bussineId:number = 1;
- public islogin=false;
+ public imageLoadPage: boolean;
+ public bussineId: number;
+ public islogin = false;
  public imageUserPage;
  public stateUserPage = null;
- constructor( private modalService: BsModalService , private router:Router){
-   this.getLanguagePage();
- }
-
-  AUTH_CONFIG: User = {
-      userID: 0,
-      firtNameUser: '',
-      lastNameUser:'',
-      emailUser: '',
-      password: '',
-      typeUser: '',
-      imagenUser:'',
-      tokenUser:'',
-      codeUser:''
+ public imageActicle = '';
+ public getListArticle;
+ public articleValue: number;
+ public boxIdUser = 0;
+ public AUTH_CONFIG: User = {
+    userID: 0,
+    firtNameUser: '',
+    lastNameUser: '',
+    emailUser: '',
+    password: '',
+    typeUser: '',
+    imagenUser: '',
+    tokenUser: '',
+    codeUser: '',
+    idBoxUser: 0
   };
+ public  typeImageSelect= [
+   {value: 'Publico', label: 'Publico'},
+   {value: 'Privado', label: 'Privado'},
 
-
-  typeImageSelect= [
-    {value: 'Publico', label: 'Publico'},
-    {value: 'Privado', label: 'Privado'},
-
-  ];
-
+ ];
+  constructor( private modalService: BsModalService , private router: Router ) {
+   this.getLanguagePage();
+    this.initPage();
+ }
+ public initPage() {
+    this.imageLoadPage = true;
+    this.bussineId = 1;
+    this.articleValue = 0;
+ }
   public getUrl(modelo: string) {
     return this.getApiUrl() + modelo;
+  }
+
+  public redirectUrlWithName(modelo: string) {
+   return this.router.navigate([modelo]);
   }
 
   public redirectUser(userA: User, urlPageN: string ) {
@@ -53,7 +63,7 @@ export class DataService {
 
   public redirectTypeUser() {
     if(this.AUTH_CONFIG.typeUser !== 'Admin' ) {
-      //this.router.navigate(['/home']);
+      this.router.navigate(['/home']);
     }
   }
 
@@ -61,10 +71,16 @@ export class DataService {
     return this._apiUrl;
   }
 
-  public showModal(template,config){
+  public showModal(template, config) {
     return  this.modalService.show(
             template,
             Object.assign({}, config, { class: 'modal-sm' })
+          );
+  }
+  public showModalBig(template, config) {
+    return  this.modalService.show(
+            template,
+            Object.assign({}, config, { class: 'gray modal-lg' })
           );
   }
 
@@ -76,19 +92,19 @@ export class DataService {
     this._languagePage = value;
   }
 
-  public getFormatDate(value : string):string{
-   let date =  new Date(value);
-   return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getUTCDay()+1);
+  public getFormatDate(value: string): string {
+   const date: Date =  new Date(value);
+   return date.getFullYear() + '-' + (date.getMonth() + 1 ) + '-' + (date.getUTCDay() + 1 );
  }
 
- public getDateAndHour(value: string){
-   let date =  new Date(value);
-   return date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getUTCDay()+1)+" "+date.getHours()+":"+date.getUTCMinutes()+":"+date.getSeconds();
-
+ public getDateAndHour(value: string): string {
+   const date: Date = new Date(value);
+   return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' +
+     '' + (date.getUTCDay() + 1) + ' ' + date.getHours() + ':' +
+     '' + date.getUTCMinutes() + ':' + date.getSeconds();
  }
 
-
-public getLanguagePage(){
+public getLanguagePage() {
   defineLocale('es', esLocale);
   defineLocale('en', enGbLocale);
   defineLocale('cs', csLocale);

@@ -1,7 +1,5 @@
 package com.storeArticle.store.service.dto;
 
-import com.storeArticle.store.model.accounts.Information;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -21,6 +19,7 @@ public class ArticleVEO implements Serializable {
     private String nameDescriptionarticle;
     private List <InformationVEO> informationVEO;
     private List<CommentVEO> commentVEOS;
+    private int numProduct;
 
     public int getArticleId() {
         return articleId;
@@ -116,6 +115,14 @@ public class ArticleVEO implements Serializable {
 
     public void setCommentVEOS(List<CommentVEO> commentVEOS) {
         this.commentVEOS = commentVEOS;
+    }
+
+    public int getNumProduct() {
+        return numProduct;
+    }
+
+    public void setNumProduct(int numProduct) {
+        this.numProduct = numProduct;
     }
 }
 

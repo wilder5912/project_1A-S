@@ -5,7 +5,10 @@ import com.storeArticle.store.model.accounts.ArticleDetail;
 import com.storeArticle.store.model.accounts.ImageArticle;
 import com.storeArticle.store.model.accounts.SubSection;
 import com.storeArticle.store.service.accounts.UserService;
+import com.storeArticle.store.service.dto.ArticleDTOService;
+import com.storeArticle.store.service.dto.ArticleVEO;
 import com.storeArticle.store.service.dto.SelectDTOService;
+import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.enumPage.ArticleDetailQueryEnum;
 import com.storeArticle.store.service.enumPage.ImageArticleQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +35,9 @@ public class ArticleDetailService implements ArticleDetailCrup {
     private UserService userService;
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private ArticleDTOService articleDTOService;
+
 
     @Override
     public boolean addArticleDetail(ArticleDetail articleDetail) {
@@ -121,6 +127,30 @@ public class ArticleDetailService implements ArticleDetailCrup {
                  .setParameter(2, false)
                 .getResultList();
 
+    }
+
+    public List<Object> fiendArticleBussine(String nameArRrCode, int bussineId ){
+        return entityManager.createQuery(ArticleDetailQueryEnum.getFiendArticleOfBussineHql.getHql())
+                .setParameter(1, "%"+nameArRrCode+"%")
+                .setParameter(2, "%"+nameArRrCode+"%")
+                .setParameter(3, bussineId)
+                .setParameter(4, false)
+                .setParameter(5, false)
+                .getResultList();
+    }
+    public List<Object[]> getArticledetailBussineId(int bussineId ){
+        return entityManager.createQuery(ArticleDetailQueryEnum.getArticledetailBussineHql.getHql())
+                .setParameter(1, bussineId)
+                .setParameter(2, false)
+                .setParameter(3, false)
+                .getResultList();
+    }
+    public List<ArticleVEO> getListDTO(String nameArRrCode, int bussineId){
+         return this.articleDTOService.getArticleFind(fiendArticleBussine(nameArRrCode,bussineId));
+    }
+    //selectDTOService
+    public List<SelectVEO> getSelectArticleList(int bussineId){
+        return selectDTOService.getIdNameDTOAndId(getArticledetailBussineId(bussineId));
     }
 
 

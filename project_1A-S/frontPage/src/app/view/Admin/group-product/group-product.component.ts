@@ -1,4 +1,4 @@
-import { Component,TemplateRef , OnInit} from '@angular/core';
+import { Component, TemplateRef , OnInit} from '@angular/core';
 import { Router} from '@angular/router';
 import { DataService } from '../../../service/dataService/data.service';
 import { LoginService } from '../../../service/accounts/loginService';
@@ -16,17 +16,17 @@ import { TranslateService } from '@ngx-translate/core';
   selector: 'app-group-product',
   templateUrl: './group-product.component.html',
   styleUrls: ['./group-product.component.css'],
-  providers: [LoginService,GroupProductService,BussineService],
+  providers: [LoginService, GroupProductService , BussineService ]
 
 })
 export class GroupProductComponent implements OnInit {
   public form: FormGroup;
   public user: User = new User();
   public groupProduct: GroupProduct = new GroupProduct();
-  public bussine:Bussine = new Bussine();
+  public bussine: Bussine = new Bussine();
   public modalRefProductGroup: BsModalRef;
   public options;
-  public isEditForm:boolean=true;
+  public isEditForm: boolean;
   public config = {
     animated: true,
     keyboard: true,
@@ -34,18 +34,23 @@ export class GroupProductComponent implements OnInit {
     ignoreBackdropClick: false
   };
   modalRef: BsModalRef;
-
   public data;
-  public filterQuery = "";
+  public filterQuery;
   public rowsOnPage = 10;
-  public sortBy = "nameGroup";
-  public sortOrder = "asc";
-
-  constructor(private router: Router , private formBuilder: FormBuilder, public dataService: DataService, public bussineService:BussineService,public translate: TranslateService, public loginService: LoginService, public groupProductService:GroupProductService  , private modalService: BsModalService ) {
+  public sortBy: string;
+  public sortOrder: string;
+  constructor(private router: Router , private formBuilder: FormBuilder,
+              public dataService: DataService, public bussineService: BussineService,
+              public translate: TranslateService, public loginService: LoginService,
+              public groupProductService: GroupProductService, private modalService: BsModalService ) {
     translate.setDefaultLang(dataService.languagePage);
     translate.use(dataService.languagePage);
   }
   ngOnInit() {
+    this.isEditForm = true;
+    this.filterQuery = '';
+    this.sortBy = 'nameGroup';
+    this.sortOrder = 'asc';
     this.dataService.redirectTypeUser();
     this.dataService.urlPage = this.router.url;
     this.getListProduct();
@@ -60,10 +65,10 @@ export class GroupProductComponent implements OnInit {
         this.form.controls['bussineId'].setValue('1');
         this.form.controls['groupId'].setValue('');
         this.form.controls['nameGroup'].setValue('');
-        this.modalRefProductGroup = this.dataService.showModal(template,this.config);
+        this.modalRefProductGroup = this.dataService.showModal(template, this.config);
   }
 
-  getListProduct(): void{
+  getListProduct(): void {
     this.groupProductService.getGroupProduct()
       .subscribe(result => {
         this.data = result;
@@ -71,7 +76,7 @@ export class GroupProductComponent implements OnInit {
         console.log(error);
       });
  }
- getListBussine(): void{
+ getListBussine(): void {
     this.bussineService.getBussine()
       .subscribe(result => {
         this.options = result;
@@ -80,15 +85,15 @@ export class GroupProductComponent implements OnInit {
         console.log(error );
       });
  }
- public formValidateModal(){
+ public formValidateModal() {
    this.form = this.formBuilder.group({
-     groupId:['',Validators.compose([
+     groupId: ['', Validators.compose([
      ])],
      nameGroup: ['', Validators.compose([
        Validators.required,
        Validators.minLength(3),
      ])],
-     bussineId:['',Validators.compose([
+     bussineId: ['', Validators.compose([
        Validators.required
      ])]
    });
@@ -101,35 +106,35 @@ export class GroupProductComponent implements OnInit {
     return a.city.length;
   }
 
-  public registerGroup(){
-  if(null === this.form.controls.nameGroup.errors && null === this.form.controls.bussineId.errors ) {
+  public registerGroup() {
+  if (null === this.form.controls.nameGroup.errors && null === this.form.controls.bussineId.errors ) {
         this.groupProduct.nameGroup = this.form.value['nameGroup'];
         this.bussine.bussineId = this.form.value['bussineId'];
         this.groupProduct.bussineId = this.bussine;
         this.groupProductService.addProductGroup(this.groupProduct)
           .subscribe(result => {
-            if(result) {
+            if (result) {
               this.getListProduct();
               this.groupProduct.nameGroup = '';
             }
-
           }, e => {
-            console.log("errrr");
+            console.log('' + e);
           });
         this.modalRefProductGroup.hide();
       }
   }
 
-  public editGroupInfo(){
-    if(null === this.form.controls.nameGroup.errors && null === this.form.controls.bussineId.errors ) {
-      this.groupProduct.groupId=this.form.value['groupId'];
-      this.groupProduct.nameGroup=this.form.value['nameGroup'];
-      this.bussine.bussineId=this.form.value['bussineId'];
+  public editGroupInfo() {
+    if (null === this.form.controls.nameGroup.errors && null === this.form.controls.bussineId.errors ) {
+      this.groupProduct.groupId = this.form.value['groupId'];
+      this.groupProduct.nameGroup = this.form.value['nameGroup'];
+      this.bussine.bussineId = this.form.value['bussineId'];
       this.groupProduct.bussineId = this.bussine;
       this.groupProductService.editProductGroup(this.groupProduct)
         .subscribe(result => {
-          if(result)
+          if (result) {
             this.getListProduct();
+          }
         }, error => {
           console.log(error);
         });
@@ -137,22 +142,23 @@ export class GroupProductComponent implements OnInit {
     }
   }
 
-  public remove(itemTableGroup){
+  public remove(itemTableGroup) {
       this.groupProduct.groupId = itemTableGroup.groupId;
       this.groupProductService.deleteProductGroup(this.groupProduct)
         .subscribe(result => {
-          if(result)
+          if (result) {
             this.getListProduct();
+          }
         }, error => {
           console.log(error);
         });
   }
-  public edit(itemTableGroup,template: TemplateRef<any>){
+  public edit(itemTableGroup, template: TemplateRef<any>) {
     this.isEditForm = false;
-    this.form.controls['bussineId'].setValue(itemTableGroup.bussineId.bussineId+'');
+    this.form.controls['bussineId'].setValue(itemTableGroup.bussineId.bussineId + '');
     this.form.controls['groupId'].setValue(itemTableGroup.groupId);
     this.form.controls['nameGroup'].setValue(itemTableGroup.nameGroup);
-    this.modalRefProductGroup = this.dataService.showModal(template,this.config);
+    this.modalRefProductGroup = this.dataService.showModal(template, this.config);
   }
 }
 

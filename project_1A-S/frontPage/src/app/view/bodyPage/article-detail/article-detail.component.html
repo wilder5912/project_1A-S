@@ -1,34 +1,16 @@
 <div class="container" >
   <div *ngIf="detailArticle">
     <div class="col-lg-6" >
-      <img [imageZoom]="imageActicle" [src]="imageActicle" [style.width.px]="width" [style.height.px]="height" (click)="showImage()" class="image-big border-image"/>
-      <div id="container2">
-        <div
-          ng2-carouselamos
-          class="slides-wrapper"
-          [items]="items"
-          [width]="600"
-          [$prev]="prev"
-          [$next]="next"
-          [$item]="item"
-        >
-        </div>
-        <ng-template #prev>
-          <div class=" btn-lg">
-              <span class="glyphicon glyphicon-menu-left position-left" aria-hidden="true" id="left"></span>
-            </div>
-        </ng-template>
-        <ng-template #next>
-          <div class=" btn-lg">
-              <span class="glyphicon glyphicon-menu-right  position-ringht" aria-hidden="true" id="right"></span>
-          </div>
-        </ng-template>
-        <ng-template #item let-item let-i="index">
 
-          <div class="items">
-            <img src="{{dataService.getApiUrl()}}/imageArticle/files/{{item.name}}" (click)="imageClick(item)"  class="small-image" >
-          </div>
-        </ng-template>
+<app-show-image-modal [srcImage]="dataService.imageActicle" ></app-show-image-modal>
+
+
+      <div id="container2">
+        <app-carousel-image-article
+          [articleImagePage] = "items"
+        >
+        </app-carousel-image-article>
+
       </div>
 
     </div>
@@ -37,7 +19,7 @@
     <div class="col-lg-6">
       <h1 class="title-h1"> {{detailArticle.nameAr}}</h1>
       <div class="col-lg-12">
-        <label class="col-lg-12">precion:</label>
+        <label class="col-lg-12">Precion:</label>
         <span class="col-lg-12">{{detailArticle.precyAr}} Bs</span>
       </div>
       <div class="col-lg-12">
@@ -52,10 +34,19 @@
       </div>
       <div class="col-lg-12">
         <div class="col-lg-6">
-           <input type="number" >
+          <form  novalidate [formGroup]="form" name="form"   #f="ngForm" >
+           <input type="number"  formControlName = "numberArtcle" class="form-control" >
+            <div *ngIf="form.controls.numberArtcle.errors" class="">
+              <div *ngIf="form.controls.numberArtcle.errors.required && form.controls.numberArtcle.dirty"  >
+              </div>
+            </div>
+
+          </form>
+
+          <!--numberArtcle-->
         </div>
         <div class="col-lg-6">
-          <button> Añadir</button>
+          <button class="btn btn-default"  (click)="addArticle(detailArticle)"> Añadir</button>
         </div>
 
       </div>
@@ -214,6 +205,15 @@
 </div>
 
 <div class="container" *ngIf="articleRelational">
+
+  <div class="container" *ngIf="articleRelational">
+    <app-carousel-article-page [articleList] = "articleRelational"
+                               [titleCarousel] = "titleArticleRelational"
+    >
+    </app-carousel-article-page>
+
+
+<!--
   <div class="col-lg-12" >
     <h1>Producto Relacionado</h1>
   </div>
@@ -295,4 +295,7 @@
       </div>
     </ng-template>
   </div>
+
+  -->
+
 </div>
