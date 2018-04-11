@@ -45,8 +45,16 @@
 
           <!--numberArtcle-->
         </div>
-        <div class="col-lg-6">
-          <button class="btn btn-default"  (click)="addArticle(detailArticle)"> Añadir</button>
+        <div class="col-lg-6 margin-button">
+          <button class="btn btn-default"  *ngIf="dataService.islogin == true" (click)="addArticle(detailArticle)"> Añadir</button>
+
+
+          <a routerLink="/loginRegister" *ngIf="dataService.islogin != true">
+            <button type="button" class="btn btn-sm btn-outline-secondary booton-color btn-lg" >
+              <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>  añadir Carrito
+            </button>
+          </a>
+
         </div>
 
       </div>
@@ -67,10 +75,11 @@
       <tab heading="Descripcion" id="tab1" >
         <div *ngIf="detailArticle">
         <h2>Descripcion</h2>
-        <p *ngIf="'' != detailArticle.nameDescriptionarticle">
-            {{detailArticle.nameDescriptionarticle}}
+        <p *ngIf="detailArticle.detailAr">
+            {{detailArticle.detailAr}}
+
         </p>
-        <p *ngIf="'' == detailArticle.nameDescriptionarticle">
+        <p *ngIf="'' == detailArticle.detailAr">
             {{ 'Description' | translate}}
         </p>
 
@@ -103,13 +112,13 @@
               <div class="col-lg-12" >
                 <rating
                   [(ngModel)]="itemComment.rating"
-                  [max]="max"
+                  [max]="dataService.rantingMax"
                   [readonly]="isReadonly"
                 ></rating>
                 <span class="label center-div"
-                      [ngClass]="{'label-warning': itemComment.rating == 0 ,'label-warning': itemComment.rating*10<30, 'label-info': itemComment.rating*10>=30 && itemComment.rating*10<70, 'label-success': itemComment.rating*10>=70}"
+                      [ngClass]="{'label-warning': itemComment.rating == 0 ,'label-warning': itemComment.rating*10<=20, 'label-info': itemComment.rating*10>=30 && itemComment.rating*10<=40, 'label-success': itemComment.rating*10>=50}"
                       [ngStyle]="{display: (itemComment.rating>=0 && isReadonly) ? 'inline' : 'none'}">
-                       {{itemComment.rating*10}}%
+                       {{(itemComment.rating*10)*2}}%
                </span>
               </div>
             </div>
@@ -160,7 +169,7 @@
               <div class="col-lg-12" >
                 <rating
                   [(ngModel)]="ratingP"
-                  [max]="max"
+                  [max]="dataService.rantingMax"
                   [readonly]="false"
                   formControlName="ratingP"
                 ></rating>

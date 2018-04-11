@@ -32,7 +32,7 @@
 }
 .image-best-article{
   height: 234px;
-  width: 245px;
+  width: 215px;
   display: block;
 }
 
@@ -48,14 +48,17 @@
 .booton-color{
   background-color: #ff8400;
   color:#F3F3F3;
+  margin: 3%;
 }
 .booton-color:hover{
   background-color: chocolate;
   color:#F3F3F3;
+  margin: 3%;
 }
 .card-text{
   padding: 0px;
   margin: auto;
+  font-size: x-large;
 }
 
 
@@ -81,4 +84,13 @@
   box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, .3);
   border-radius: 999px;
   right: 0;
+}
+
+
+@media(max-width:768px) {
+  .image-best-article{
+    height: 234px;
+    width: 150px;
+    display: block;
+  }
 }

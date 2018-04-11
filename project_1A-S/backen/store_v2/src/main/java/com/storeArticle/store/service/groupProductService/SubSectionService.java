@@ -2,6 +2,8 @@ package com.storeArticle.store.service.groupProductService;
 
 import com.storeArticle.store.model.accounts.Section;
 import com.storeArticle.store.model.accounts.SubSection;
+import com.storeArticle.store.service.dao.groupProductDTO.InfoCrup;
+import com.storeArticle.store.service.dao.groupProductDTO.SubSectionDAO;
 import com.storeArticle.store.service.dto.SelectDTOService;
 import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.enumPage.SubSectionQueryEnum;
@@ -23,13 +25,15 @@ public class SubSectionService implements SubSectionCrup {
 
     @Autowired
     private SelectDTOService selectDTOService;
-
+    private InfoCrup infoCrup;
     @Override
     public boolean addSubSection(SubSection subSection) {
         boolean isSubSection=false;
         if(isSubSection(subSection.getSectionId().getSectionId(),subSection.getNameSubSection())) {
             isSubSection = true;
-            entityManager.persist(subSection);
+            infoCrup = new SubSectionDAO(entityManager);
+            infoCrup.addObject(subSection);
+            //entityManager.persist(subSection);
         }
         return isSubSection;
     }

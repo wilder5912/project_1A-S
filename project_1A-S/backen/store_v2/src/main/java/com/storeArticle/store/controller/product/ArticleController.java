@@ -6,6 +6,7 @@ import com.storeArticle.store.model.accounts.ReviewArticle;
 import com.storeArticle.store.model.accounts.SubSection;
 import com.storeArticle.store.service.dto.ArticleDTOService;
 import com.storeArticle.store.service.dto.ArticleVEO;
+import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.dto.SubSectionVEO;
 import com.storeArticle.store.service.groupProductService.ArticleService;
 import com.storeArticle.store.service.groupProductService.ReviewArticleService;
@@ -85,8 +86,9 @@ public class ArticleController {
         return reviewArticleService.addReviewArticle(reviewArticle1Data);
     }
 
-
-
-
+    @GetMapping(value = "/getArticleList")
+    public List<SelectVEO> getArticleList() throws  IOException {
+        return  articleService.getSelectArticleList();
+    }
 
 }

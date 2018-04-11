@@ -4,6 +4,7 @@ import { LoginComponent } from './view/user/login/login.component';
 import { HomeComponent } from './view/user/home/home.component';
 import { RegisterComponent } from './view/user/register/register.component';
 import { HomeAdminComponent } from './view/Admin/home-admin/home-admin.component';
+import { ViewDetailArticleComponent } from './view/Admin/view-detail-article/view-detail-article.component';
 import { CreateProductAdminComponent } from './view/Admin/create-product-admin/create-product-admin.component';
 import { ArticleRelationalComponent } from './view/Admin/article-relational/article-relational.component';
 import { GroupProductComponent } from './view/Admin/group-product/group-product.component';
@@ -20,7 +21,8 @@ import { ContactUsComponent } from './view/bodyPage/contact-us/contact-us.compon
 import { HelpPageComponent } from './view/bodyPage/help-page/help-page.component';
 import { ChatPageComponent } from './view/bodyPage/chat-page/chat-page.component';
 import { AddInformationArticleComponent } from './view/Admin/add-information-article/add-information-article.component';
-import {ListArticleFiendComponent} from './view/bodyPage/list-article-fiend/list-article-fiend.component';
+import { ListArticleFiendComponent } from './view/bodyPage/list-article-fiend/list-article-fiend.component';
+import { SubSectionAndArticleComponent } from './view/Admin/sub-section-and-article/sub-section-and-article.component';
 
 const routes: Routes = [
   { path : 'home', component: HomeComponent},
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path : 'ListArticle/:id', component: ListArticleComponent},
   { path : 'ListArticleFiend/:name', component: ListArticleFiendComponent},
   { path : 'articleDetail/:id', component: ArticleDetailComponent},
+  { path : 'viewDetailArticle/:idArticle', component: ViewDetailArticleComponent},
+  { path : 'subSectionAndArticle', component: SubSectionAndArticleComponent},
   { path : 'createBanner', component: CreateBannerComponent},
   { path : 'information', component: InformationPageComponent},
   { path : 'blog', component: BlogPageComponent},

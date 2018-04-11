@@ -1,0 +1,22 @@
+<h1>
+  Desctipcion Articulo
+</h1>
+<div *ngIf="idArticule">
+<tabset #staticTabs>
+  <tab heading="Formulario Articulo">
+    <div *ngIf="articleInfo">
+      <app-form-create-article [articleDetail] = "articleInfo" [articleDetailId] = "articleDetailId"  ></app-form-create-article>
+    </div>
+  </tab>
+  <tab heading="Lista Imgen Articulo">
+    <div *ngIf="articleInfo">
+    <app-form-list-article-image [articleDetail] = "articleInfo.imageArticleVEOS" [articleData] = "articleInfo" ></app-form-list-article-image>
+    </div>
+  </tab>
+  <tab heading="Informacion Del Articulo">
+    <div *ngIf="articleInfo">
+      <app-form-list-article-information [articleDetailData] = "articleInfo" [articleDetailId] = "articleDetailId" ></app-form-list-article-information>
+    </div>
+  </tab>
+</tabset>
+</div>

@@ -21,7 +21,20 @@ public enum ArticleDetailQueryEnum {
                             " FROM ArticleDetail as articleDetail " +
                             " WHERE  articleDetail.subSectionId.sectionId.groupId.bussineId.bussineId = ? and " +
                             "  articleDetail.articleId.isDelete = ? and " +
-                            "  articleDetail.isDelete = ? ");
+                            "  articleDetail.isDelete = ? "),
+    getArticleBussineHql("select articleDetail " +
+                            " FROM ArticleDetail as articleDetail " +
+                            " WHERE articleDetail.articleId.isDelete = ? and " +
+                            "  articleDetail.isDelete = ? "),
+    getSubSectionListArticleIdHql("select articleDetail.articleId.articleId FROM ArticleDetail as articleDetail  " +
+                            " WHERE articleDetail.subSectionId.subSectionId = ? and " +
+                            " articleDetail.isDelete = ? "),
+    updateStateArticleIdDetailHql("update ArticleDetail as articleDetail  " +
+            " set articleDetail.isDelete = ? " +
+            " where articleDetail.subSectionId.subSectionId = ? "  ),
+    getSubSectionArticleIdHql("select articleDetail.articleDetailId FROM ArticleDetail as articleDetail  " +
+            " WHERE articleDetail.subSectionId.subSectionId = ? and " +
+            " articleDetail.articleId.articleId = ? " );
 
     private String hql;
 

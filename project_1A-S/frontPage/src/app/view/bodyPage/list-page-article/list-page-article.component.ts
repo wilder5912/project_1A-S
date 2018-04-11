@@ -41,7 +41,7 @@ export class ListPageArticleComponent implements OnInit {
     itemsPerPage: 12,
     currentPage: 1
   };
-  public max = 10;
+  public max;
   public rate = 0;
   public isReadonly = true;
   public overStar: number;
@@ -63,7 +63,7 @@ export class ListPageArticleComponent implements OnInit {
   this.maxSize = 7;
   this.directionLinks = true;
   this.autoHide = false;
-  this.max = 10;
+  this.max = 5;
   this.rate = 0;
   this.isReadonly = true;
   }

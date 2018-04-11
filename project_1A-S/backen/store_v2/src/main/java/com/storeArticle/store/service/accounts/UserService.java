@@ -3,6 +3,8 @@ package com.storeArticle.store.service.accounts;
 import com.storeArticle.store.model.accounts.User;
 import com.storeArticle.store.service.JwtGenerator.JwtGeneratorService;
 import com.storeArticle.store.service.JwtGenerator.JwtValidatorService;
+import com.storeArticle.store.service.dao.groupProductDTO.InfoCrup;
+import com.storeArticle.store.service.dao.user.UserDAO;
 import com.storeArticle.store.service.enumPage.UserQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -31,7 +33,7 @@ public class UserService implements UserCrup {
     private JwtValidatorService jwtValidatorService;
 
     private  Path rootLocation = Paths.get("../webapps/store-0.0.1-SNAPSHOT/upload-dir/userImage");
-
+    private InfoCrup infoCrup;
 
     @Override
     public void addUser(User user){
@@ -39,7 +41,9 @@ public class UserService implements UserCrup {
         user.setImagenUser("user-local.png");
         user.setTokenUser(jwtGeneratorService.generate(user));
         user.setIdBoxUser(0);
-        entityManager.persist(user);
+        infoCrup = new UserDAO(entityManager);
+        infoCrup.addObject(user);
+        ///entityManager.persist(user);
     }
 
     @Override
@@ -118,7 +122,7 @@ public class UserService implements UserCrup {
     }
 
     public List<User> getUserToke(User user){
-// tranqui
+
        return entityManager.createQuery(UserQueryEnum.getAutentificationTokenHql.getHql()).setParameter(1,user.getTokenUser())
                 .setParameter(2, user.getCodeUser())
                 .getResultList();

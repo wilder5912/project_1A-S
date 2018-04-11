@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public class InformationVEO implements Serializable {
 
-
+    private int informationId;
     private String nameInformation;
 
     private String detailInformation;
@@ -24,6 +24,14 @@ public class InformationVEO implements Serializable {
 
     public void setDetailInformation(String detailInformation) {
         this.detailInformation = detailInformation;
+    }
+
+    public int getInformationId() {
+        return informationId;
+    }
+
+    public void setInformationId(int informationId) {
+        this.informationId = informationId;
     }
 }
 

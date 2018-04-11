@@ -57,11 +57,43 @@ public class ArticleDetailController {
         return ResponseEntity.status(HttpStatus.OK).body(resArticleDetail.getArticleId().getArticleId());
     }
 
+    @PostMapping(value ="/editArticleDetailOne")
+    public ResponseEntity<Article> editArticleDetailOne(@RequestParam("fileArticle") MultipartFile fileArticle, @RequestParam("articleData") String articleData) throws JsonParseException, JsonMappingException, IOException{
+        this.mapper = new ObjectMapper();
+        Article article = this.mapper.readValue(articleData, Article.class);
+        Article articleNewData = articleDetailService.editArticleData(fileArticle, article);
+        return ResponseEntity.status(HttpStatus.OK).body(articleNewData);
+    }
+
+    @PostMapping(value ="/editArticleData")
+    public ResponseEntity<Article> editArticleData( @RequestParam("articleData") String articleData) throws JsonParseException, JsonMappingException, IOException{
+        this.mapper = new ObjectMapper();
+        Article article = this.mapper.readValue(articleData, Article.class);
+        Article articleNewData = articleDetailService.editArticleData(null, article);
+        return ResponseEntity.status(HttpStatus.OK).body(articleNewData);
+    }
+
+
     @GetMapping(value = "/getArticleBussine/{bussineId}")
     public List<SelectVEO> getArticleBussine(@PathVariable("bussineId") int  bussineId) throws  IOException {
       return  articleDetailService.getSelectArticleList(bussineId);
     }
 
+    @GetMapping(value = "/getArticleBussineId")
+    public List<Object> getArticleBussineId(){
+        return articleDetailService.getArticleBussineId();
+    }
+
+
+    @GetMapping(value = "/getSubSectionListArticle/{subSectionId}")
+    public List<Object> getSubSectionListArticle(@PathVariable("subSectionId") int subSectionId){
+        return articleDetailService.getSubSelectListArticleId(subSectionId);
+    }
+
+    @PostMapping(value="/addArticleDetail")
+    public boolean addArticleDetail(@RequestBody List<ArticleDetail> articleDetailData )throws IOException{
+        return articleDetailService.addArticleRelational(articleDetailData);
+    }
 
 
 }

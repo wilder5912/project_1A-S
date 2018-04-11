@@ -5,6 +5,11 @@
   margin: -3px;
   border-radius: 3%;
 }
+.image-tamanio{
+  height: 225px;
+  width: 215px;
+  display: block;
+}
 .grow-image:hover
 {
   -webkit-transform: scale(1.1);
@@ -36,4 +41,33 @@
 .card-text{
   padding: 0px;
   margin: auto;
+  font-size: x-large;
 }
+
+@media only screen and (max-width:1200px){
+  .image-tamanio {
+    height: 225px;
+    width: 195px;
+    display: block;
+  }
+}
+
+@media only screen and (max-width:990px){
+  .image-tamanio {
+    height: 225px;
+    width: 150px;
+    display: block;
+  }
+}
+
+@media only screen and (max-width:768px){
+  .image-tamanio {
+    height: 225px;
+    width: 115px;
+    display: block;
+  }
+}
+
+
+
+

@@ -20,6 +20,7 @@ public class InformationDTOService {
                 InformationVEO informationVEOInfo = new InformationVEO();
                 informationVEOInfo.setNameInformation((SelectData[0].toString()));
                 informationVEOInfo.setDetailInformation(SelectData[1].toString());
+                informationVEOInfo.setInformationId(Integer.parseInt(SelectData[2].toString()));
                 informationDTOList.add(informationVEOInfo);
             });
         }catch(Exception e){

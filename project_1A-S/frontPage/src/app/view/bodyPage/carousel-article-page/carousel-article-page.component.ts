@@ -30,7 +30,7 @@ export class CarouselArticlePageComponent implements OnInit {
   constructor(public dataService: DataService , public boxService: BoxService ) { }
 
   ngOnInit() {
-    this.max = 10;
+    this.max = 5;
     this.isReadonly = true;
     this.carouselOne  = {
       grid: {xs: 1, sm: 3, md: 3, lg: 4, all: 0},

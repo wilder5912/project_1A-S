@@ -139,10 +139,7 @@ export class ArticleRelationalComponent implements OnInit {
         this.articleRelational.push(this.articleRelarionaData);
       }
     this.articleService.addArticleRelationalList(this.articleRelational)
-    .subscribe( result =>{
-
-          this.modalRefArticleRelation.hide();
-           console.log(result);
+    .subscribe( result => {
     });
     }
   }

@@ -4,10 +4,7 @@ import com.storeArticle.store.model.accounts.Article;
 import com.storeArticle.store.model.accounts.GroupProduct;
 import com.storeArticle.store.model.accounts.SubSection;
 import com.storeArticle.store.service.accounts.UserService;
-import com.storeArticle.store.service.dto.ArticleDTOService;
-import com.storeArticle.store.service.dto.ArticleVEO;
-import com.storeArticle.store.service.dto.SubSectionDTOService;
-import com.storeArticle.store.service.dto.SubSectionVEO;
+import com.storeArticle.store.service.dto.*;
 import com.storeArticle.store.service.enumPage.ArticleQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,6 +31,8 @@ public class ArticleService implements ArticleCrup {
     private UserService userService;
     @Autowired
     private SubSectionDTOService subSectionDTOService;
+    @Autowired
+    private SelectDTOService selectDTOService;
 
     private Path rootLocation = Paths.get("../webapps/store-0.0.1-SNAPSHOT/upload-dir/userImage");
 
@@ -97,4 +96,15 @@ public class ArticleService implements ArticleCrup {
     public SubSectionVEO getArticleSubArticle(SubSection subSection){
         return subSectionDTOService.getSubSectionArticleDTO(subSection);
     }
+
+    public List<Object[]> getListArticle(){
+        return entityManager.createQuery(ArticleQueryEnum.getArticleList.getHql())
+                .setParameter(1, false)
+                .getResultList();
+    }
+
+    public List<SelectVEO> getSelectArticleList(){
+        return selectDTOService.getIdNameDTOAndIdCode(getListArticle());
+    }
+
 }

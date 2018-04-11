@@ -41,3 +41,30 @@
   border-radius: 999px;
   right: 0;
 }
+
+@media only screen and (max-width:1200px){
+  .image-list{
+    width:auto;
+  }
+
+}
+
+@media only screen and (max-width:990px){
+  .image-list{
+    width:auto;
+  }
+
+}
+
+@media only screen and (max-width:768px){
+  .image-list{
+    width:auto;
+  }
+
+}
+
+
+
+
+
+

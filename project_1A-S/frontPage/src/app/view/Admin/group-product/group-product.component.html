@@ -1,15 +1,13 @@
-<div class = "row">
+<div class = "">
+  <div class="container">
+    <h1 class="title-head">{{ 'Group' |translate }}</h1>
+  </div>
+
+</div>
+
+
 <div class="">
 
-  <h1 class="title-head">{{ 'Group' |translate }}</h1>
-
-</div>
-</div>
-
-<div class="row">
-  <div class="col-lg-12">
-    <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)">añadir</button>
-  </div>
   <div class="col-lg-12">
   <ng-template #template>
     <div class="modal-header">
@@ -80,8 +78,11 @@
   </div>
 </div>
 
-<div class="row">
-  <h2 class="col-xs-6">{{'Table_Group' | translate }}</h2>
+<div class=" ">
+  <div class="col-xs-6 margin-top-button">
+    <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)">Añadir</button>
+  </div>
+
   <div class="col-xs-2">
     <label class="label-control">Rows on page</label>
     <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
@@ -115,9 +116,9 @@
   </div>
 </div>
 
-<div class="row">
+<div class="">
     <div class="panel panel-default">
-      <div class="panel-heading">User information</div>
+
 
       <table class="table table-striped" [mfData]="data | dataFilterGroupProduct : filterQuery" #mf="mfDataTable"
              [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">

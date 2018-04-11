@@ -26,11 +26,11 @@
                 </h2>
               </div>
               <div class="col-lg-12 center-div">
-                <rating [(ngModel)]="item.rating" [max]="max" [readonly]="isReadonly"
+                <rating [(ngModel)]="item.rating" [max]="dataService.rantingMax" [readonly]="isReadonly"
                         [titles]="['one','two','three']"></rating>
                 <span class="label center-div"
-                      [ngClass]="{'label-warning': item.rating == 0 ,'label-warning': item.rating*10<30, 'label-info': item.rating*10>=30 && item.rating*10<70, 'label-success': item.rating*10>=70}"
-                      [ngStyle]="{display: (item.rating>=0 && isReadonly) ? 'inline' : 'none'}">{{item.rating*10}}%</span>
+                      [ngClass]="{'label-warning': item.rating == 0 ,'label-warning': item.rating*10<=20, 'label-info': item.rating*10>=30 && item.rating*10<=40, 'label-success': item.rating*10>=50}"
+                      [ngStyle]="{display: (item.rating>=0 && isReadonly) ? 'inline' : 'none'}">{{(item.rating*10)*2}}%</span>
               </div>
               <div class="col-lg-12 center-div">
                 <span>{{item.precyAr}} Bs</span>

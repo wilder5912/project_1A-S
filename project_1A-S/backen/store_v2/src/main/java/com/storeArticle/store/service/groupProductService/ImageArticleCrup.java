@@ -7,11 +7,11 @@ public interface ImageArticleCrup {
 
     boolean addImageArticle(ImageArticle imageArticle);
 
-    boolean deleteArticle(int articleId);
+    boolean deleteImageArticle(int articleId);
 
-    boolean updatedArticle(ImageArticle imageArticle);
+    boolean updatedImageArticle(ImageArticle imageArticle);
 
-    SubSection getImageArticle(int imageArticleId);
+    ImageArticle getImageArticle(int imageArticleId);
 
     Boolean getIsImageArticle();
 }

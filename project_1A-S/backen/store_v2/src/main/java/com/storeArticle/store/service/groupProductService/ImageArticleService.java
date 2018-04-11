@@ -41,18 +41,25 @@ public class ImageArticleService implements ImageArticleCrup {
     }
 
     @Override
-    public boolean deleteArticle(int articleId) {
+    public boolean deleteImageArticle(int imageArticle) {
+        boolean isDeleteImage = false;
+        ImageArticle imageArticleData =  getImageArticle(imageArticle);
+        if(null != imageArticleData) {
+            isDeleteImage = true;
+            imageArticleData.setDelete(true);
+            entityManager.flush();
+        }
+        return isDeleteImage;
+    }
+
+    @Override
+    public boolean updatedImageArticle(ImageArticle imageArticle) {
         return false;
     }
 
     @Override
-    public boolean updatedArticle(ImageArticle imageArticle) {
-        return false;
-    }
-
-    @Override
-    public SubSection getImageArticle(int imageArticleId) {
-        return null;
+    public ImageArticle getImageArticle(int imageArticleId) {
+        return entityManager.find(ImageArticle.class, imageArticleId);
     }
 
     @Override

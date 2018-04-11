@@ -1,108 +1,110 @@
-
-
-<div class="row">
+<div class="" *ngIf="listArticleData">
   <div class="col-lg-12">
-    <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)">añadir</button>
-  </div>
-  <div class="col-lg-12">
-    <ng-template #template>
-      <div class="modal-header">
-        <h4 class="modal-title pull-left">Grupo</h4>
-        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRefSection.hide()">
-          <span aria-hidden="true">&times;</span>
-        </button>
+
+    <div class="">
+      <h2 class="col-xs-6">Lista De Articulos</h2>
+      <div class="col-xs-2">
+        <label class="label-control">Rows on page</label>
+        <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
+          <option [ngValue]="5">5</option>
+          <option [ngValue]="10">10</option>
+          <option [ngValue]="15">15</option>
+        </select>
       </div>
-      <div class="modal-body">
+      <div class="col-xs-4">
         <div class="row">
-          <div class="col-lg-12 col-center">
-            <form novalidate [formGroup]="form" name="form"   #f="ngForm" >
-              <div class="form-group">
-                <label for="bussineId">Bussine</label>
-                <ng-select
-                  [options]="bussineSelect"
-                  [multiple]="false"
-                  formControlName="bussineId"
-                  name="bussineId"
-                  (selected)="onSelectBussine($event)"
-                >
-                </ng-select>
-                <div *ngIf="form.controls.bussineId.errors" class="">
-                  <div *ngIf="form.controls.bussineId.errors.required && form.controls.bussineId.dirty" class="alert alert-danger">
-                    {{'Input_Require' | translate}}
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label form="groupId">Group</label>
-                <ng-select
-                  [options]="groupSelect"
-                  [multiple]="false"
-                  formControlName="groupId"
-                  name="groupId"
-                  (selected)="onSelectSection($event)"
-                >
-                </ng-select>
-                <div *ngIf="form.controls.groupId.errors" class="">
-                  <div *ngIf="form.controls.groupId.errors.required && form.controls.groupId.dirty" class="alert alert-danger">
-                    {{'Input_Require' | translate}}
-                  </div>
-                </div>
-              </div>
+          <label class="col-xs-12 label-control">Ordenar</label>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <select class="form-control input-sm" [(ngModel)]="sortBy">
+              <option ngValue="articleDetailId">Id</option>
+              <option ngValue="subSectionId.sectionId.groupId.bussineId.nameBu">Negocio</option>
+              <option ngValue="subSectionId.sectionId.groupId.nameGroup">Nombre Grupo</option>
+              <option ngValue="subSectionId.sectionId.nameSection">Seccion</option>
+              <option ngValue="subSectionId.nameSubSection">Sub Seccion</option>
+              <option ngValue="articleId.nameAr">Articulo</option>
 
-              <div class="form-group">
-                <label for="sectionId">Seccion</label>
-                <ng-select
-                  [options]="sectionSelect"
-                  [multiple]="false"
-                  formControlName="sectionId"
-                  name="sectionId"
-                  (selected)="onSubSelect($event)"
-                >
-                </ng-select>
-                <div *ngIf="form.controls.sectionId.errors" class="">
-                  <div *ngIf="form.controls.sectionId.errors.required && form.controls.sectionId.dirty" class="alert alert-danger">
-                    {{'Input_Require' | translate}}
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="nameSubSection">Nombre SubSeccion</label>
-
-                <ng-select
-                  [options]="subSectionSelect"
-                  [multiple]="false"
-                  formControlName="subSectionId"
-                  name="subSectionId">
-                </ng-select>
-                <div *ngIf="form.controls.subSectionId.errors" class="">
-                  <div *ngIf="form.controls.subSectionId.errors.required && form.controls.subSectionId.dirty" class="alert alert-danger">
-                    {{'Input_Require' | translate}}
-                  </div>
-                </div>
-              </div>
-              <div class="form-group"><!--
-                &lt;!&ndash;<input md-input
-                       formControlName="subSectionId"
-                       hidden="true"&ndash;&gt;
-                >-->
-              </div>
-              <div class="form-group">
-                <div *ngIf="isEditForm; then addData else editData"></div>
-                <ng-template #addData>
-                  <button [disabled]="loading" type="button" (click)="registerSubSection()"  class="btn btn-primary">{{'Add_Section'| translate }}</button>
-                </ng-template>
-                <ng-template #editData>
-                  <button [disabled]="loading" type="button" (click)="editSubSectionInfo()"  class="btn btn-primary">{{'Edit_Section'| translate }}</button>
-                </ng-template>
-              </div>
-
-            </form>
+            </select>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="row">
+            <select class="form-control input-sm" [(ngModel)]="sortOrder">
+              <option ngValue="asc">Acendente</option>
+              <option ngValue="desc">Decedente</option>
+              <option ngValue="badValue">Bad value</option>
+            </select>
           </div>
         </div>
       </div>
-    </ng-template>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">User information</div>
+
+      <table class="table table-striped" [mfData]="listArticleData | dataFilterListArticle : filterQuery" #mf="mfDataTable"
+             [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+        <thead>
+        <tr>
+          <th style="width: 20%">
+            <mfDefaultSorter by="articleDetailId">Id</mfDefaultSorter>
+          </th>
+          <th style="width: 20%">
+            <mfDefaultSorter by="subSectionId.sectionId.groupId.bussineId.nameBu">Nombre Negocio</mfDefaultSorter>
+          </th>
+          <th style="width: 20%">
+            <mfDefaultSorter by="subSectionId.sectionId.groupId.nameGroup">Nombre Grupo</mfDefaultSorter>
+          </th>
+          <th style="width: 20%">
+            <mfDefaultSorter by="subSectionId.sectionId.nameSection">Nombre seccion</mfDefaultSorter>
+          </th>
+          <th style="width: 20%">
+            <mfDefaultSorter by="subSectionId.nameSubSection">Nombre Sub Seccion</mfDefaultSorter>
+          </th>
+          <th style="width: 20%">
+            <mfDefaultSorter by="articleId.nameAr">nombre articulo</mfDefaultSorter>
+          </th>
+
+        </tr>
+        <tr>
+          <th colspan="5">
+            Filter by name:
+            <input class="form-control" [(ngModel)]="filterQuery"/>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of mf.data">
+          <td>{{item.articleDetailId}}</td>
+          <td>{{item.subSectionId.sectionId.groupId.bussineId.nameBu}}</td>
+          <td>{{item.subSectionId.sectionId.groupId.nameGroup}}</td>
+          <td>{{item.subSectionId.sectionId.nameSection}}</td>
+          <td>{{item.subSectionId.nameSubSection}}</td>
+
+          <td>
+            <div class="col-lg-12">
+             <div class="col-lg-12 center-text">
+                <img class="image-article-width" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"  src="{{dataService.getApiUrl()}}/imageArticle/files/{{item.articleId.imageMainAr}}" alt="{{dataService.getApiUrl()}}/imageArticle/files/{{item.articleId.imageMainAr}}" data-holder-rendered="true">
+              </div>
+
+              <div class="col-lg-12 center-text">
+                <a routerLink="/viewDetailArticle/{{item.articleId.articleId}}"> {{item.articleId.nameAr}}</a>
+              </div>
+            </div>
+
+
+
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="5">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
   </div>
 </div>
-
-

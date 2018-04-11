@@ -23,6 +23,27 @@ export class ArticleService {
     });
     return this.http.request(req);
   }
+  public editImageAndArticle(fileArticle: File, article: Article): Observable<HttpEvent<{}>> {
+
+    const formdata: FormData = new FormData();
+    formdata.append('articleData', JSON.stringify(article));
+    if (fileArticle) {
+      formdata.append('fileArticle', fileArticle);
+      const req = new HttpRequest('POST', this.dataService.getUrl('/articleDetail/editArticleDetailOne'), formdata, {
+        reportProgress: true,
+        responseType: 'text'
+      });
+      return this.http.request(req);
+    }else {
+      formdata.append('fileArticle', fileArticle);
+      const req = new HttpRequest('POST', this.dataService.getUrl('/articleDetail/editArticleData'), formdata, {
+        reportProgress: true,
+        responseType: 'text'
+      });
+      return this.http.request(req);
+    }
+  }
+
 
   public getArticleListAll(subSection: SubSection): Observable<Object>  {
     return this.http.post<Object>(this.dataService.getUrl('/article/getSubSectionArticleListAll'), JSON.stringify(subSection));
@@ -59,11 +80,12 @@ export class ArticleService {
     return this.http.get<Object>(this.dataService.getUrl('/article/getArticleId/' + idArticle));
 
   }
+  public getArticleList(): Observable<Object> {
+    return this.http.get<Object>(this.dataService.getUrl('/article/getArticleList'));
+
+  }
   public eveentoPru(): Observable<Object> {
     return this.http.get<Object>(this.dataService.getUrl('/pru/notify'));
 
   }
-
-
-
 }

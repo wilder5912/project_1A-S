@@ -98,7 +98,8 @@ public class ArticleRelationalService implements ArticleRelationalCrup{
         try{
             updateArticleId(articleRelational.get(0));
             articleRelational.forEach(selectDatas->{
-                addArticleRelational(selectDatas);
+                isDeleteArticleRelation(selectDatas);
+                //addArticleRelational(selectDatas);
             });
         }catch(Exception e){
             return false;

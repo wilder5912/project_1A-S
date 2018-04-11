@@ -8,9 +8,13 @@
     <button NgxCarouselNext class='rightRs btn-lg'>
       <span class="glyphicon glyphicon-chevron-right"></span>
     </button>
-    <ngx-tile NgxCarouselItem *ngFor="let item of articleImagePage">
+
+    <ngx-tile NgxCarouselItem *ngFor="let item of articleImagePage" style="
+    text-align: center;
+">
       <img src="{{dataService.getApiUrl()}}/imageArticle/files/{{item.name}}" (click)="imageClick(item)"  class="small-image" >
     </ngx-tile>
+
   </ngx-carousel>
 
 </div>

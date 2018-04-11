@@ -47,6 +47,12 @@ public class ListProductService implements ListProductCrup {
 
 
     public List<Object[]> getListArticle(int boxId){
+
+        List<Object> c = entityManager.createQuery(ListProductEnum.getArticleBox.getHql())
+                .setParameter(1, boxId)
+                .setParameter(2, false)
+                .getResultList();
+
         return entityManager.createQuery(ListProductEnum.getArticleBox.getHql())
                 .setParameter(1, boxId)
                 .setParameter(2, false)

@@ -33,4 +33,15 @@ public class InformationController {
         return informationService.addInformation(informacionData);
     }
 
+    @PostMapping(value = "/deleteInformationArticle")
+    public boolean deleteInformationArticle(@RequestBody int idinformation)throws IOException{
+        this.mapper = new ObjectMapper();
+        return informationService.deleteInformation(idinformation);
+    }
+
+    @PostMapping(value = "/editInformationArticle")
+    public boolean editInformationArticle(@RequestBody Information information)throws IOException{
+        this.mapper = new ObjectMapper();
+        return informationService.updatedInformation(information);
+    }
 }

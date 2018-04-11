@@ -11,7 +11,7 @@ import { frLocale } from 'ngx-bootstrap/locale';
 
 @Injectable()
 export class DataService {
- private _apiUrl = 'http://localhost:8080';
+ private _apiUrl = 'http://env-7216038.jl.serv.net.mx/store-0.0.1-SNAPSHOT';
  public urlPage = '/' ;
  private _languagePage = 'es';
  public imageLoadPage: boolean;
@@ -23,6 +23,7 @@ export class DataService {
  public getListArticle;
  public articleValue: number;
  public boxIdUser = 0;
+ public detailArticle;
  public AUTH_CONFIG: User = {
     userID: 0,
     firtNameUser: '',
@@ -35,6 +36,7 @@ export class DataService {
     codeUser: '',
     idBoxUser: 0
   };
+ public rantingMax = 5;
  public  typeImageSelect= [
    {value: 'Publico', label: 'Publico'},
    {value: 'Privado', label: 'Privado'},

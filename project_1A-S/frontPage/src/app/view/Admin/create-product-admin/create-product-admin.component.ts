@@ -39,11 +39,6 @@ export class CreateProductAdminComponent implements OnInit {
   public articleDetailListImage;
   public data;
   public dataSection;
-/*  public filterQuery = "";
-  public filterQuery2 = "";
-  public rowsOnPage = 10;
-  public sortBy = "nameArticle";
-  public sortOrder = "asc";*/
   public bussineSelect;
   public groupSelect;
   public sectionSelect;
@@ -253,6 +248,7 @@ export class CreateProductAdminComponent implements OnInit {
             this.articleDetail.articleId = this.article;
             this.articleDetail.subSectionId = this.subSection;
             this.articleDetail.articleId.articleId = Number(result.body + '');
+            this.dataService.redirectUrlWithName('/viewDetailArticle/' + this.articleDetail.articleId.articleId  );
           }
         });
     }

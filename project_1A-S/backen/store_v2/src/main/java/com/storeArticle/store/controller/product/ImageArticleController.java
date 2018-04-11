@@ -62,6 +62,10 @@ public class ImageArticleController {
                 .body(file);
     }
 
+    @PostMapping(value = "/deleteImageArticle")
+    public boolean deleteImageArticle(@RequestBody int idArticleImage) throws IOException{
+        return imageArticleService.deleteImageArticle(idArticleImage);
+    }
 
 
 

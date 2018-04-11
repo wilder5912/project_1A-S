@@ -2,18 +2,17 @@ package com.storeArticle.store.service.groupProductService;
 
 import com.storeArticle.store.model.accounts.Bussine;
 import com.storeArticle.store.model.accounts.GroupProduct;
-import com.storeArticle.store.service.dto.GroupProductVEO;
+import com.storeArticle.store.service.dao.groupProductDTO.GroupProductDAO;
+import com.storeArticle.store.service.dao.groupProductDTO.InfoCrup;
 import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.dto.SelectDTOService;
 import com.storeArticle.store.service.enumPage.GroupProductQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -27,12 +26,16 @@ public class GroupProductService implements GroupProductCrup{
     @Autowired
     private BussineService bussineService;
 
+    private InfoCrup infoCrup;
+
+    private GroupProductDAO groupProductDAO;
     @Override
     public boolean addGroupProductName(GroupProduct groupProduct) {
-        boolean isRegisterGroupProduct=false;
+        boolean isRegisterGroupProduct = false;
         if(isCreateGroupProduct(groupProduct.getNameGroup(),groupProduct.getBussineId().getBussineId())) {
             isRegisterGroupProduct=true;
-            entityManager.persist(groupProduct);
+            infoCrup = new GroupProductDAO(entityManager);
+            infoCrup.addObject(groupProduct);
         }
         return isRegisterGroupProduct;
     }
@@ -41,7 +44,7 @@ public class GroupProductService implements GroupProductCrup{
     public boolean deleteGroupProductName(int groupProductId) {
         GroupProduct groupProduct = getGroupProductName(groupProductId);
         groupProduct.setDelete(true);
-       return null != groupProduct;
+        return null != groupProduct;
     }
 
     @Override

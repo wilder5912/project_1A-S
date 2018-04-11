@@ -22,6 +22,9 @@ public class Information implements Serializable {
     @Column(name = "detail_information")
     private String detailInformation;
 
+    @Column(name = "is_delete_information")
+    private boolean isDelete;
+
     public int getInformationId() {
         return informationId;
     }
@@ -52,5 +55,13 @@ public class Information implements Serializable {
 
     public void setDetailInformation(String detailInformation) {
         this.detailInformation = detailInformation;
+    }
+
+    public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 }

@@ -10,10 +10,10 @@
   </div>
 
   <div class="container"    >
-    <div class="col-lg-3 " *ngFor="let item of listArticle | stringFilter: filter | paginate: config  ">
+    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 " *ngFor="let item of listArticle | stringFilter: filter | paginate: config  ">
       <div class="card mb-4 box-shadow border-article">
         <a (click)="addReview(item.articleId)">
-          <img class="card-img-top margin-image grow-image" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="{{dataService.getApiUrl()}}/imageArticle/files/{{item.imageMainAr}}" alt="{{dataService.getApiUrl()}}/imageArticle/files/{{item.nombreImageActicle}}" data-holder-rendered="true">
+          <img class="card-img-top margin-image grow-image image-tamanio" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"   src="{{dataService.getApiUrl()}}/imageArticle/files/{{item.imageMainAr}}" alt="{{dataService.getApiUrl()}}/imageArticle/files/{{item.nombreImageActicle}}" data-holder-rendered="true">
         </a>
         <div class="card-body pading-detail-article">
           <div class="col-lg-12 center-div">
@@ -22,7 +22,7 @@
             </h2>
           </div>
           <div class="col-lg-12 center-div">
-            <rating [(ngModel)]="item.rating" [max]="max" [readonly]="isReadonly"
+            <rating [(ngModel)]="item.rating" [max]="dataService.rantingMax" [readonly]="isReadonly"
                     [titles]="['one','two','three']"></rating>
             <span class="label center-div"
                   [ngClass]="{'label-warning': item.rating == 0 ,'label-warning': item.rating*10<30, 'label-info': item.rating*10>=30 && item.rating*10<70, 'label-success': item.rating*10>=70}"

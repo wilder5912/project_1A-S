@@ -4,6 +4,7 @@ import { DataTableModule} from 'angular2-datatable';
 import { GroupProductPipe } from './service/pipe/group-product.pipe';
 import { SectionPipe } from './service/pipe/section.pipe';
 import { SubSectionPipe } from './service/pipe/sub-section.pipe';
+import { ListArticlePipe } from './service/pipe/list-article.pipe';
 import { ArticlePipe } from './service/pipe/Article.pipe';
 import { StringFilterPipe } from './service/pipe/string-filter.pipe';
 import { Http, RequestOptions } from '@angular/http';
@@ -60,6 +61,11 @@ import { ListPageArticleComponent } from './view/bodyPage/list-page-article/list
 import { FiendArticlePageComponent } from './view/bodyPage/fiend-article-page/fiend-article-page.component';
 import { AddInformationArticleComponent } from './view/Admin/add-information-article/add-information-article.component';
 import { GroupProductComponent } from './view/Admin/group-product/group-product.component';
+import { ViewDetailArticleComponent } from './view/Admin/view-detail-article/view-detail-article.component';
+import { FormCreateArticleComponent } from './view/Admin/form-create-article/form-create-article.component';
+import { FormListArticleImageComponent } from './view/Admin/form-list-article-image/form-list-article-image.component';
+import { FormListArticleInformationComponent } from './view/Admin/form-list-article-information/form-list-article-information.component';
+import { SubSectionAndArticleComponent } from './view/Admin/sub-section-and-article/sub-section-and-article.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -85,6 +91,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     GroupProductPipe,
     SectionPipe,
     SubSectionPipe,
+    ListArticlePipe,
     ArticlePipe,
     StringFilterPipe,
     SectionProductComponent,
@@ -114,6 +121,11 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ListPageArticleComponent,
     FiendArticlePageComponent,
     AddInformationArticleComponent,
+    ViewDetailArticleComponent,
+    FormCreateArticleComponent,
+    FormListArticleImageComponent,
+    FormListArticleInformationComponent,
+    SubSectionAndArticleComponent,
 
   ],
   imports: [

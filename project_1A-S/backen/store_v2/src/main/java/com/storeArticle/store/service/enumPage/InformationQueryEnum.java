@@ -2,9 +2,10 @@ package com.storeArticle.store.service.enumPage;
 
 public enum InformationQueryEnum {
 
-    getInformationArticleId("select information.nameInformation , information.detailInformation " +
+    getInformationArticleId("select information.nameInformation , information.detailInformation, information.informationId  " +
                           " FROM Information as information " +
-                          " where information.articleId.articleId = ? "  );
+                          " where information.articleId.articleId = ? and " +
+                          " information.isDelete = ?"  );
 
     private String hql;
 

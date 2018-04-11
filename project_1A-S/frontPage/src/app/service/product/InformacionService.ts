@@ -12,4 +12,14 @@ export class InformationService {
   public addInformationArticle(infomation: Information): Observable<boolean> {
     return this.http.post<boolean>(this.dataService.getUrl('/information/addInformationArticle'), JSON.stringify(infomation));
   }
+  public deleteInformationArticle(idInfomation: number): Observable<boolean> {
+    return this.http.post<boolean>(this.dataService.getUrl('/information/deleteInformationArticle'), JSON.stringify(idInfomation),
+      {
+        headers: { 'Content-Type': 'application/json; charset=utf-8'}});
+  }
+  public editInformationArticle(infomation: Information): Observable<boolean> {
+    return this.http.post<boolean>(this.dataService.getUrl('/information/editInformationArticle'), JSON.stringify(infomation),
+      {
+        headers: { 'Content-Type': 'application/json; charset=utf-8'}});
+  }
 }

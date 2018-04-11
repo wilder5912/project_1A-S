@@ -27,17 +27,34 @@ public class InformationService implements InformationCrup{
 
     @Override
     public boolean deleteInformation(int informationId) {
-        return false;
+        boolean isDeleteInformation = false;
+        Information information =  getInformation(informationId);
+        if(null != information) {
+            isDeleteInformation = true;
+            information.setDelete(true);
+            entityManager.flush();
+        }
+        return isDeleteInformation;
+
     }
 
     @Override
     public boolean updatedInformation(Information information) {
-        return false;
+        boolean isEditInformation = false;
+        Information information1Data = getInformation(information.getInformationId());
+        if(null != information) {
+            isEditInformation = true;
+            information1Data.setNameInformation(information.getNameInformation());
+            information1Data.setDetailInformation(information.getDetailInformation());
+            entityManager.flush();
+        }
+        return isEditInformation;
     }
 
     @Override
     public Information getInformation(int InformationId) {
-        return null;
+
+        return entityManager.find(Information.class, InformationId);
     }
 
     @Override
@@ -48,6 +65,7 @@ public class InformationService implements InformationCrup{
     public List<Object[]> getDescriptionArticleId(int articleId) {
         return entityManager.createQuery(InformationQueryEnum.getInformationArticleId.getHql())
                 .setParameter(1, articleId)
+                .setParameter(2, false)
                 .getResultList();
     }
 

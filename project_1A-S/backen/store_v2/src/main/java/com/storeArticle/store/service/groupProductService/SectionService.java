@@ -2,6 +2,8 @@ package com.storeArticle.store.service.groupProductService;
 
 import com.storeArticle.store.model.accounts.GroupProduct;
 import com.storeArticle.store.model.accounts.Section;
+import com.storeArticle.store.service.dao.groupProductDTO.InfoCrup;
+import com.storeArticle.store.service.dao.groupProductDTO.SectionDAO;
 import com.storeArticle.store.service.dto.SelectDTOService;
 import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.enumPage.SectionQueryEnum;
@@ -23,14 +25,16 @@ public class SectionService implements SectionCrup {
     private SelectDTOService selectDTOService;
     @Autowired
     private GroupProductService groupProductService;
-
+    private InfoCrup infoCrup;
 
     @Override
     public boolean addSection(Section section) {
         boolean isSection=false;
         if(isSection(section.getGroupId().getGroupId(),section.getNameSection())) {
             isSection=true;
-            entityManager.persist(section);
+            infoCrup = new SectionDAO(entityManager);
+            infoCrup.addObject(section);
+            //entityManager.persist(section);
         }
         return isSection;
     }

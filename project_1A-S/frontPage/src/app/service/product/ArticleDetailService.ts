@@ -19,5 +19,18 @@ export class ArticleDetailService {
   public getArticleDetailBussine( idBussine: number): Observable<Object> {
     return this.http.get<Object>(this.dataService.getUrl('/articleDetail/getArticleBussine/' + idBussine));
   }
+  public getArticleBussine(): Observable<Object> {
+    return this.http.get<Object>(this.dataService.getUrl('/articleDetail/getArticleBussineId'));
+  }
 
+  public getSubSectionListArticle(subSectionId: number): Observable<Object[]> {
+    return this.http.get<Object[]>(this.dataService.getUrl('/articleDetail/getSubSectionListArticle/' + subSectionId ));
+  }
+
+  public addArticleDetail( articleDetail ): Observable<boolean> {
+    return this.http.post<boolean>(this.dataService.getUrl('/articleDetail/addArticleDetail'), JSON.stringify(articleDetail),
+      {
+        headers: { 'Content-Type': 'application/json; charset=utf-8'}}
+    );
+  }
 }
