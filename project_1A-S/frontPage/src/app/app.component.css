@@ -106,12 +106,14 @@
   color: #fff0;
   display: none;
 }
-
+.top-page{
+  top: auto;
+}
 /*==============================================
     MEDIA QUERIES
     =============================================*/
 
-@media(min-width:768px) {
+@media only screen and (max-width:768px){
   #page-wrapper{
     margin: 0 0 0 260px;
     padding: 15px 30px;
@@ -129,7 +131,10 @@
   .navbar {
     border-radius: 0px;
   }
-
+  .top-page{
+    top: 50px;
+    position: absolute;
+  }
 }
 
 .sidebar-collapse .nav > li > a {

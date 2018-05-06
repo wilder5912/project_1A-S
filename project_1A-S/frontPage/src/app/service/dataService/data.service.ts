@@ -11,7 +11,7 @@ import { frLocale } from 'ngx-bootstrap/locale';
 
 @Injectable()
 export class DataService {
- private _apiUrl = 'http://env-7216038.jl.serv.net.mx/store-0.0.1-SNAPSHOT';
+ private _apiUrl = 'http://localhost:8080';
  public urlPage = '/' ;
  private _languagePage = 'es';
  public imageLoadPage: boolean;

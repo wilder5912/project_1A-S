@@ -192,6 +192,7 @@ header-navigation-main .header-navigation-one{
   border: 0px solid;
   margin-bottom: 4px;
   border-color: rgb(15, 123, 179);
+  display: block;
 }
 
 .color-affix-main a{
@@ -371,7 +372,13 @@ rgb(15, 123, 179);*/
 .color-back-group-carousel a:hover{
   color: black;
 }
+.subMenu-Page{
 
+}
+.div-firex{
+
+}
+.showNav{}
 @media(max-width:768px) {
   .hide-main{
     display: none;
@@ -401,6 +408,27 @@ rgb(15, 123, 179);*/
   }
   .show-list-phone{
     display: block;
+  }
+  .color-affix-main{
+    display: none;
+  }
+  .subMenu-Page{
+    background-color: #f8f8f8;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    top: 51px;
+    width: 200px;
+    z-index: 8;
+    overflow: hidden;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+  }
+  .div-firex{
+    position: fixed;
+    z-index: 100;
+    width: 100%;
   }
 
 }
