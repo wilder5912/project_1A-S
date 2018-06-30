@@ -17,7 +17,7 @@ public class ReviewArticle implements Serializable {
     private Article articleId;
 
     @ManyToOne
-    @JoinColumn(name = "bussine_id")
+    @JoinColumn(name = "business_id")
     private Bussine bussineId;
 
     @Column(name= "is_delete_reviewarticle")

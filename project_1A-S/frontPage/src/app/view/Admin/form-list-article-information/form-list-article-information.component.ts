@@ -38,6 +38,7 @@ export class FormListArticleInformationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.redirectTypeUser();
     this.articleDetail = this.articleDetailData;
     this.formValidateModal();
     this.isEditForm = true;

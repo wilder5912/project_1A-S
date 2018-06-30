@@ -13,7 +13,7 @@ public class GroupProduct  implements Serializable {
     private int groupId;
 
     @ManyToOne
-    @JoinColumn(name = "bussine_id")
+    @JoinColumn(name = "business_id")
     private Bussine bussineId;
 
     @Column(name="name_group")

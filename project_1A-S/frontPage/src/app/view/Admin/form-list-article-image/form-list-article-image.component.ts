@@ -26,6 +26,7 @@ export class FormListArticleImageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.redirectTypeUser();
     this.articleDetailListImage = this.articleDetail;
     this.article = this.articleData;
   }

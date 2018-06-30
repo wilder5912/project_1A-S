@@ -42,6 +42,7 @@ export class ArticleRelationalComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.redirectTypeUser();
     this.artArticleId = new Article();
     this.dataService.redirectTypeUser();
     this.isEditForm = true;

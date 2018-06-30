@@ -17,7 +17,7 @@ public class ArticleRelational implements Serializable {
     private Article articleId;
 
     @ManyToOne
-    @JoinColumn(name = "bussine_id")
+    @JoinColumn(name = "business_id")
     private Bussine bussineId;
 
     @ManyToOne

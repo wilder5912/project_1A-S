@@ -6,14 +6,14 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="bussine")
+@Table(name="business")
 public class Bussine implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="bussine_id", nullable = false, updatable = false)
+    @Column(name="business_id", nullable = false, updatable = false)
     private int bussineId;
 
 

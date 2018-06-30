@@ -40,6 +40,7 @@ export class FormCreateArticleComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.redirectTypeUser();
     this.article = this.articleDetail;
     this.imageArticle = this.article;
     this.formValidateModal();
