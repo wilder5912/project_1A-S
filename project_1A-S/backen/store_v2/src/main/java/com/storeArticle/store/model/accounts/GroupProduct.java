@@ -14,7 +14,7 @@ public class GroupProduct  implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "business_id")
-    private Bussine bussineId;
+    private Business businessId;
 
     @Column(name="name_group")
     private String nameGroup;
@@ -35,12 +35,12 @@ public class GroupProduct  implements Serializable {
         this.groupId = groupId;
     }
 
-    public Bussine getBussineId() {
-        return bussineId;
+    public Business getBusinessId() {
+        return businessId;
     }
 
-    public void setBussineId(Bussine bussineId) {
-        this.bussineId = bussineId;
+    public void setBusinessId(Business businessId) {
+        this.businessId = businessId;
     }
 
     public String getNameGroup() {

@@ -1,0 +1,68 @@
+<div class = "">
+  <div class="container">
+    <h1 class="title-head">{{ 'Business' |translate }}</h1>
+  </div>
+
+</div>
+
+
+
+<div class="">
+
+  <div class="col-lg-12">
+    <ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Sucursal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRefBusiness.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12 col-center">
+            <form novalidate [formGroup]="form" name="form"   #f="ngForm" >
+
+              <div class="form-group">
+                <label for="nameBu">Nombre Sucursal</label>
+                <input type="text" class="form-control" name="nameBu"
+                       id="nameBu"
+                       formControlName="nameBu"
+                />
+              <!--  <div *ngIf="form.controls.nameGroup.errors" class="">
+                  <div *ngIf="form.controls.nameGroup.errors.minlength && form.controls.nameGroup.dirty" class="alert alert-danger">
+                    {{'Input_Min_3' | translate}}
+                  </div>
+                  <div *ngIf="form.controls.nameGroup.errors.required && form.controls.nameGroup.dirty" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+                </div>-->
+              </div>
+              <div class="form-group">
+               <!-- <input md-input
+                       formControlName="groupId"
+                       hidden="true"
+                >-->
+              </div>
+              <div class="form-group">
+                <div *ngIf="isEditForm; then addData else editData"></div>
+                <ng-template #addData>
+                  <button [disabled]="loading" type="button" (click)="registerBusiness()"  class="btn btn-primary">{{'Add_Group'| translate }}</button>
+                </ng-template>
+                <ng-template #editData>
+                  <button [disabled]="loading" type="button" (click)="editBusiness()"  class="btn btn-primary">{{'Edit_Group'| translate }}</button>
+                </ng-template>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<div class=" ">
+  <div class="col-xs-6 margin-top-button">
+    <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)">Añadir</button>
+  </div>
+</div>

@@ -4,7 +4,7 @@ import { User } from '../../../model/usuario/User';
 import { LoginService } from '../../../service/accounts/loginService';
 import { DataService } from '../../../service/dataService/data.service';
 import { Router } from '@angular/router';
-import { Bussine } from '../../../model/bussine/Bussine';
+import { Business } from '../../../model/business/Business';
 import { SubSectionService } from '../../../service/product/SubSectionService';
 import { BussineService } from '../../../service/product/bussineService';
 import { BoxService } from '../../../service/boxArticle/BoxService';
@@ -22,7 +22,7 @@ export class HeaderUserComponent implements OnInit {
   public menuData;
   public stateCss;
   public model: User = new User();
-  public bussine: Bussine = new Bussine();
+  public business: Business = new Business();
   public form: FormGroup;
   public loading = false;
   public isLogin = true;
@@ -64,17 +64,17 @@ public setStyle() {
   }
 
   public getBussineAllList() {
-    this.bussine =  new Bussine();
-    this.bussine.bussineId = this.dataService.bussineId;
+    this.business =  new Business();
+    this.business.businessId = this.dataService.bussineId;
     this.box = new Box();
     this.user = new User();
-    this.bussineService.getBussineAll(this.bussine)
+    this.bussineService.getBussineAll(this.business)
       .subscribe(result => {
         this.menuData = result;
         this.user.userID = this.dataService.AUTH_CONFIG.userID;
         this.box.boxId = this.dataService.AUTH_CONFIG.idBoxUser;
         this.box.userID = this.user;
-        this.box.bussineId =  this.bussine;
+        this.box.businessId =  this.business;
         if (this.dataService.AUTH_CONFIG.userID > 0 && this.dataService.AUTH_CONFIG.typeUser !== 'Admin') {
           this.getBoxArticle(this.box);
         }

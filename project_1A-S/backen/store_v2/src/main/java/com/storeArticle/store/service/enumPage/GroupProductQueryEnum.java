@@ -4,10 +4,10 @@ public enum GroupProductQueryEnum {
 
     getProductoGroupList("select groupProduct FROM GroupProduct as groupProduct where groupProduct.isDelete = false"),
     getNameGroupProductHql("select groupProduct FROM GroupProduct as groupProduct  " +
-            "where groupProduct.bussineId.bussineId = ? " +
+            "where groupProduct.businessId.businessId = ? " +
             "and groupProduct.nameGroup = ? "),
     getGroupProductBsussineIdHql("select groupProduct.groupId,groupProduct.nameGroup FROM GroupProduct as groupProduct  " +
-                                   "where groupProduct.bussineId.bussineId = ? " +
+                                   "where groupProduct.businessId.businessId = ? " +
                                    "and groupProduct.isDelete = ? ");
 
 

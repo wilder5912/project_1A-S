@@ -14,7 +14,9 @@ export class HomeAdminPageComponent implements OnInit {
   public  idAN = '';
   public idBN = '';
   public idAN2 = '';
-  public idBN2= '';
+  public idBN2 = '';
+  public idAN3 = '';
+  public idBN3 = '';
   public selectedFiles: FileList;
   public currentFileUpload: File;
   public progress: { percentage: number } = { percentage: 0 };
@@ -23,6 +25,7 @@ export class HomeAdminPageComponent implements OnInit {
   public stateUser: boolean;
   public stateCss: boolean;
   public stateCss2: boolean;
+  public stateCss3: boolean;
   constructor( public dataService: DataService , public loginService: LoginService,
                public userService: UserService, public router: Router) {
   }
@@ -31,6 +34,8 @@ export class HomeAdminPageComponent implements OnInit {
     this.stateUser = null;
     this.stateCss = true;
     this.stateCss2 = true;
+    this.stateCss3 = true;
+
     this.dataService.redirectTypeUser();
   }
 
@@ -63,6 +68,17 @@ export class HomeAdminPageComponent implements OnInit {
       this.stateCss2 = true;
       this.idAN2 = '';
       this.idBN2 = '';
+    }
+  }
+  public selectTodo3() {
+    if (this.stateCss3) {
+      this.stateCss3 = false;
+      this.idAN3 = 'antive';
+      this.idBN3 = 'in';
+    }else {
+      this.stateCss3 = true;
+      this.idAN3 = '';
+      this.idBN3 = '';
     }
   }
 

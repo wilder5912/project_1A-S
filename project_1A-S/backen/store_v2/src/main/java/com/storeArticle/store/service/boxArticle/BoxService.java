@@ -1,7 +1,8 @@
 package com.storeArticle.store.service.boxArticle;
 
+
 import com.storeArticle.store.model.accounts.Box;
-import com.storeArticle.store.model.accounts.Bussine;
+import com.storeArticle.store.model.accounts.Business;
 import com.storeArticle.store.model.accounts.ListProduct;
 import com.storeArticle.store.model.accounts.User;
 import com.storeArticle.store.service.accounts.UserService;
@@ -124,8 +125,8 @@ public class BoxService implements BoxCrup {
         Box box = new Box();
         box.setCodeBox(user.getCodeUser());
         box.setUserID(user);
-        Bussine businne = (Bussine)bussineService.getBussine().get(0);
-        box.setBussineId(businne);
+        Business businne = (Business)bussineService.getBussine().get(0);
+        box.setBusinessId(businne);
         addBox(box);
 
     }
@@ -134,7 +135,7 @@ public class BoxService implements BoxCrup {
         try{
             boxData = (Box)entityManager.createQuery(BoxEnum.getBoxUser.getHql())
                     .setParameter(1, box.getUserId().getUserID())
-                    .setParameter(2, box.getBussineId().getBussineId())
+                    .setParameter(2, box.getBusinessId().getBusinessId())
                     .setParameter(3, true)
                     .setParameter(4, false)
                     .getSingleResult();

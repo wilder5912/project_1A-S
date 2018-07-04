@@ -3,7 +3,7 @@ package com.storeArticle.store.service.enumPage;
 public enum ReviewArticleQueryEnum {
 
     getNumReviewArticleHql("select reviewArticle.articleId.articleId, Count(reviewArticle.articleId.articleId) as num FROM ReviewArticle as reviewArticle " +
-                          " where reviewArticle.bussineId.bussineId = ? " +
+                          " where reviewArticle.businessId.businessId = ? " +
                           "GROUP BY reviewArticle.articleId.articleId ORDER BY num DESC ");
 
     private String hql;

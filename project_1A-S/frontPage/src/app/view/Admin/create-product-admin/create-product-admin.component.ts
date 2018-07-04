@@ -159,7 +159,7 @@ export class CreateProductAdminComponent implements OnInit {
 
   public formValidateModal() {
     this.form = this.formBuilder.group({
-      bussineId: ['', Validators.compose([
+      businessId: ['', Validators.compose([
         Validators.required
       ])],
       groupId: ['', Validators.compose([
@@ -222,7 +222,7 @@ export class CreateProductAdminComponent implements OnInit {
   openModalWithClass(template: TemplateRef<any>) {
     this.isEditForm = true;
     this.form.controls['sectionId'].setValue(null);
-    this.form.controls['bussineId'].setValue('');
+    this.form.controls['businessId'].setValue('');
     this.form.controls['groupId'].setValue('');
     this.form.controls['subSectionId'].setValue('');
     this.form.controls['nameSubSection'].setValue('');
@@ -292,10 +292,10 @@ imageListArticle(articleId: number) {
   }
   public edit(itemTableSubSection, template: TemplateRef<any>) {
     this.isEditForm = false;
-    this.form.controls['bussineId'].setValue(itemTableSubSection.sectionId.groupId.bussineId.bussineId + '');
+    this.form.controls['businessId'].setValue(itemTableSubSection.sectionId.groupId.businessId.businessId + '');
     this.form.controls['nameSubSection'].setValue(itemTableSubSection.nameSubSection + '');
     this.form.controls['subSectionId'].setValue(itemTableSubSection.subSectionId + '');
-    this.groupProductService.getProductGroupBussineId(itemTableSubSection.sectionId.groupId.bussineId.bussineId)
+    this.groupProductService.getProductGroupBussineId(itemTableSubSection.sectionId.groupId.businessId.businessId)
       .subscribe(result => {
         this.groupSelect = result;
         this.form.controls['groupId'].setValue(itemTableSubSection.sectionId.groupId.groupId + '');

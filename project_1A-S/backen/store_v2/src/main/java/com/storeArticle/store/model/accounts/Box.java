@@ -16,7 +16,7 @@ public class Box implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "bussine_id")
-    private Bussine bussineId;
+    private Business businessId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -42,12 +42,12 @@ public class Box implements Serializable {
         this.boxId = boxId;
     }
 
-    public Bussine getBussineId() {
-        return bussineId;
+    public Business getBusinessId() {
+        return businessId;
     }
 
-    public void setBussineId(Bussine bussineId) {
-        this.bussineId = bussineId;
+    public void setBusinessId(Business businessId) {
+        this.businessId = businessId;
     }
 
     public User getUserId() {

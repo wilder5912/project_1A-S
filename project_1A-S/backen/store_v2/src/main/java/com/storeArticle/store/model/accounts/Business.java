@@ -7,25 +7,29 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="business")
-public class Bussine implements Serializable {
+public class Business implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="business_id", nullable = false, updatable = false)
-    private int bussineId;
+    private int businessId;
 
 
     @Column(name="name_bu", nullable = false, updatable = false)
     private String nameBu;
 
-    public int getBussineId() {
-        return bussineId;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public void setBussineId(int bussineId) {
-        this.bussineId = bussineId;
+    public int getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(int businessId) {
+        this.businessId = businessId;
     }
 
     public String getNameBu() {

@@ -9,17 +9,17 @@
         <form novalidate [formGroup]="form" name="form"   #f="ngForm" >
 
           <div class="form-group">
-            <label for="bussineId">Bussine</label>
+            <label for="businessId">Bussine</label>
             <ng-select
               [options]="bussineSelect"
               [multiple]="false"
-              formControlName="bussineId"
-              name="bussineId"
+              formControlName="businessId"
+              name="businessId"
               (selected)="onSelectBussine($event)"
             >
             </ng-select>
-            <div *ngIf="form.controls.bussineId.errors" class="">
-              <div *ngIf="form.controls.bussineId.errors.required && form.controls.bussineId.dirty" class="alert alert-danger">
+            <div *ngIf="form.controls.businessId.errors" class="">
+              <div *ngIf="form.controls.businessId.errors.required && form.controls.businessId.dirty" class="alert alert-danger">
                 {{'Input_Require' | translate}}
               </div>
             </div>

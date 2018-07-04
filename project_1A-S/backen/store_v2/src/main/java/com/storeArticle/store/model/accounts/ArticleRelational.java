@@ -18,7 +18,7 @@ public class ArticleRelational implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "business_id")
-    private Bussine bussineId;
+    private Business businessId;
 
     @ManyToOne
     @JoinColumn(name = "art_article_id")
@@ -43,12 +43,12 @@ public class ArticleRelational implements Serializable {
         this.articleId = articleId;
     }
 
-    public Bussine getBussineId() {
-        return bussineId;
+    public Business getBussineId() {
+        return businessId;
     }
 
-    public void setBussineId(Bussine bussineId) {
-        this.bussineId = bussineId;
+    public void setBussineId(Business bussineId) {
+        this.businessId = bussineId;
     }
 
     public Article getArtArticleId() {

@@ -1,11 +1,11 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.Bussine;
+import com.storeArticle.store.model.accounts.Business;
 import com.storeArticle.store.model.accounts.GroupProduct;
 import com.storeArticle.store.service.dao.groupProductDTO.GroupProductDAO;
 import com.storeArticle.store.service.dao.groupProductDTO.InfoCrup;
-import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.dto.SelectDTOService;
+import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.enumPage.GroupProductQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,7 +32,7 @@ public class GroupProductService implements GroupProductCrup{
     @Override
     public boolean addGroupProductName(GroupProduct groupProduct) {
         boolean isRegisterGroupProduct = false;
-        if(isCreateGroupProduct(groupProduct.getNameGroup(),groupProduct.getBussineId().getBussineId())) {
+        if(isCreateGroupProduct(groupProduct.getNameGroup(),groupProduct.getBusinessId().getBusinessId())) {
             isRegisterGroupProduct=true;
             infoCrup = new GroupProductDAO(entityManager);
             infoCrup.addObject(groupProduct);
@@ -50,21 +50,21 @@ public class GroupProductService implements GroupProductCrup{
     @Override
     public boolean updatedGroupProductName(GroupProduct groupProductNew) {
         GroupProduct groupProduct = getGroupProductName(groupProductNew.getGroupId());
-        Bussine bussine = bussineService.getBussine(groupProductNew.getBussineId().getBussineId());
+        Business bussine = bussineService.getBussine(groupProductNew.getBusinessId().getBusinessId());
         boolean iscorrect = false;
         boolean iscorrectBussine=false;
-        if(groupProduct.getBussineId().getBussineId() == groupProductNew.getBussineId().getBussineId() && !groupProduct.getNameGroup().equals(groupProductNew.getNameGroup()) ) {
-            if(isCreateGroupProduct(groupProductNew.getNameGroup(),groupProductNew.getBussineId().getBussineId())) {
+        if(groupProduct.getBusinessId().getBusinessId() == groupProductNew.getBusinessId().getBusinessId() && !groupProduct.getNameGroup().equals(groupProductNew.getNameGroup()) ) {
+            if(isCreateGroupProduct(groupProductNew.getNameGroup(),groupProductNew.getBusinessId().getBusinessId())) {
                 iscorrect = true;
                 groupProduct.setNameGroup(groupProductNew.getNameGroup());
                 entityManager.flush();
             }
         }
 
-        if(groupProduct.getBussineId().getBussineId() != groupProductNew.getBussineId().getBussineId() && groupProduct.getNameGroup().equals(groupProductNew.getNameGroup())) {
-            if(isCreateGroupProduct(groupProductNew.getNameGroup(),groupProductNew.getBussineId().getBussineId())) {
+        if(groupProduct.getBusinessId().getBusinessId() != groupProductNew.getBusinessId().getBusinessId() && groupProduct.getNameGroup().equals(groupProductNew.getNameGroup())) {
+            if(isCreateGroupProduct(groupProductNew.getNameGroup(),groupProductNew.getBusinessId().getBusinessId())) {
                 iscorrectBussine = true;
-                groupProduct.setBussineId(bussine);
+                groupProduct.setBusinessId(bussine);
                 entityManager.flush();
             }
         }
@@ -109,9 +109,11 @@ public class GroupProductService implements GroupProductCrup{
         }
     }
     public List<Object[]> getListGroupProductBussineId(int idBussine){
+
         return entityManager.createQuery(GroupProductQueryEnum.getGroupProductBsussineIdHql.getHql())
                 .setParameter(1,idBussine)
                 .setParameter(2,false).getResultList();
+
     }
     public List<SelectVEO> getListGroupDTO(int BussineId){
        return  selectDTOService.getIdNameDTO(getListGroupProductBussineId(BussineId));

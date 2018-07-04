@@ -6,7 +6,7 @@ import { SubSection } from '../../../model/product/SubSection';
 import { DataService } from '../../../service/dataService/data.service';
 import { ReviewArticle } from '../../../model/product/ReviewArticle';
 import { Article } from '../../../model/product/Article';
-import { Bussine } from '../../../model/bussine/Bussine';
+import { Business } from '../../../model/business/Business';
 import { PaginationInstance } from '../../../../../node_modules/ngx-pagination/dist/ngx-pagination.module';
 import { BoxService } from '../../../service/boxArticle/BoxService';
 import { Box } from '../../../model/boxArticle/Box';
@@ -28,7 +28,7 @@ export class ListPageArticleComponent implements OnInit {
   public subSection: SubSection = new SubSection();
   public reviewArticle: ReviewArticle = new ReviewArticle();
   public article: Article = new Article();
-  public bussine: Bussine = new Bussine();
+  public business: Business = new Business();
   public box: Box = new Box();
   public listProduct: ListProduct = new ListProduct();
   public user: User = new User();
@@ -80,10 +80,10 @@ export class ListPageArticleComponent implements OnInit {
 
   public addReview(articleId: number) {
     this.reviewArticle = new ReviewArticle();
-    this.bussine.bussineId = this.dataService.bussineId;
+    this.business.businessId = this.dataService.bussineId;
     this.article.articleId = articleId;
     this.reviewArticle.articleId = this.article;
-    this.reviewArticle.bussineId = this.bussine;
+    this.reviewArticle.businessId = this.business;
     this.articleService.addReviewArticle(this.reviewArticle)
       .subscribe(result => {
         const redirectPage =  '/articleDetail/' + articleId;
@@ -109,15 +109,15 @@ export class ListPageArticleComponent implements OnInit {
     this.user = new User();
     this.article = new Article();
     this.listProduct = new ListProduct();
-    this.bussine = new Bussine();
-    this.bussine.bussineId = this.dataService.bussineId;
+    this.business = new Business();
+    this.business.businessId = this.dataService.bussineId;
     this.user.userID = this.dataService.AUTH_CONFIG.userID;
     this.box.boxId = this.dataService.boxIdUser;
     this.box.userID = this.user;
     this.listProduct.boxId = this.box;
     this.article.articleId = articleData.articleId;
     this.listProduct.articleId = this.article;
-    this.box.bussineId = this.bussine;
+    this.box.businessId = this.business;
     this.boxService.addBoxArticle(this.listProduct)
       .subscribe(result => {
         this.getBoxArticle(this.box);

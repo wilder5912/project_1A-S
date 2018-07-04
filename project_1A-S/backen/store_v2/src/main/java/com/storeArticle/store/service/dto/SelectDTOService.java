@@ -1,7 +1,6 @@
 package com.storeArticle.store.service.dto;
 
-import com.storeArticle.store.model.accounts.Bussine;
-import org.springframework.stereotype.Repository;
+import com.storeArticle.store.model.accounts.Business;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,9 +15,9 @@ public class SelectDTOService {
         List<SelectVEO> bussineDTOList = new ArrayList<SelectVEO>();
         try{
                 bussineList.forEach(BussineData->{
-                    Bussine bussine = (Bussine)BussineData;
+                    Business bussine = (Business)BussineData;
                     SelectVEO bussineDTOInfo = new SelectVEO();
-                    bussineDTOInfo.setValue( new String(bussine.getBussineId()+""));
+                    bussineDTOInfo.setValue( new String(bussine.getBusinessId()+""));
                     bussineDTOInfo.setLabel((String)bussine.getNameBu());
                     bussineDTOList.add(bussineDTOInfo);
             });

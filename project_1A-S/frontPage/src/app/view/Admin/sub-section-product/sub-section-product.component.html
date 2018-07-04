@@ -17,17 +17,17 @@
           <div class="col-lg-12 col-center">
             <form novalidate [formGroup]="form" name="form"   #f="ngForm" >
               <div class="form-group">
-                <label for="bussineId">Bussine</label>
+                <label for="businessId">Bussine</label>
                 <ng-select
                   [options]="bussineSelect"
                   [multiple]="false"
-                  formControlName="bussineId"
-                  name="bussineId"
+                  formControlName="businessId"
+                  name="businessId"
                   (selected)="onSelectBussine($event)"
                 >
                 </ng-select>
-                <div *ngIf="form.controls.bussineId.errors" class="">
-                  <div *ngIf="form.controls.bussineId.errors.required && form.controls.bussineId.dirty" class="alert alert-danger">
+                <div *ngIf="form.controls.businessId.errors" class="">
+                  <div *ngIf="form.controls.businessId.errors.required && form.controls.businessId.dirty" class="alert alert-danger">
                     {{'Input_Require' | translate}}
                   </div>
                 </div>
@@ -157,7 +157,7 @@
         </th>
 
         <th style="width: 10%">
-          <mfDefaultSorter by="sectionId.groupId.bussineId.nameBu">Bussine</mfDefaultSorter>
+          <mfDefaultSorter by="sectionId.groupId.businessId.nameBu">Bussine</mfDefaultSorter>
         </th>
 
         <th style="width: 10%">
@@ -184,7 +184,7 @@
       <tbody>
       <tr *ngFor="let item of mf.data">
         <td>{{item.subSectionId}}</td>
-        <td>{{item.sectionId.groupId.bussineId.nameBu}}</td>
+        <td>{{item.sectionId.groupId.businessId.nameBu}}</td>
         <td>{{item.sectionId.groupId.nameGroup}}</td>
         <td>{{item.sectionId.nameSection}}</td>
         <td>{{item.nameSubSection}}</td>

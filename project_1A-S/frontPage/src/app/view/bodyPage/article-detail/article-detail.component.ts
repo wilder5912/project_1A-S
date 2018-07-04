@@ -14,7 +14,7 @@ import { PaginationInstance } from '../../../../../node_modules/ngx-pagination/d
 import { BoxService } from '../../../service/boxArticle/BoxService';
 import { Box } from '../../../model/boxArticle/Box';
 import { ListProduct } from '../../../model/boxArticle/ListProduct';
-import { Bussine } from '../../../model/bussine/Bussine';
+import { Business } from '../../../model/business/Business';
 import { ValidateNumberPositive } from '../../../service/validate/validateNumberPositive.directive';
 import { ValidateNumber } from '../../../service/validate/validateNumber.directive';
 
@@ -51,7 +51,7 @@ export class ArticleDetailComponent implements OnInit {
   public titleArticleRelational = 'Producto Relacionado';
   public box: Box = new Box();
   public listProduct: ListProduct = new ListProduct();
-  public bussine: Bussine = new Bussine();
+  public business: Business = new Business();
   private popped = [];
   public labels: any = {
     previousLabel: 'Previous',
@@ -223,13 +223,13 @@ export class ArticleDetailComponent implements OnInit {
       this.box = new Box();
       this.user = new User();
       this.article = new Article();
-      this.bussine = new Bussine();
+      this.business = new Business();
       this.listProduct = new ListProduct();
-      this.bussine.bussineId = this.dataService.bussineId;
+      this.business.businessId = this.dataService.bussineId;
       this.user.userID = this.dataService.AUTH_CONFIG.userID;
       this.box.boxId = this.dataService.boxIdUser;
       this.box.userID = this.user;
-      this.box.bussineId = this.bussine;
+      this.box.businessId = this.business;
       this.listProduct.boxId = this.box;
       this.article.articleId = articleData.articleId;
       this.listProduct.articleId = this.article;

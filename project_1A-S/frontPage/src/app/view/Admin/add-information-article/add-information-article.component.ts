@@ -8,7 +8,7 @@ import { ArticleDetailService } from '../../../service/product/ArticleDetailServ
 import { ArticleService } from '../../../service/product/ArticleService';
 import { BussineService } from '../../../service/product/bussineService';
 import { Article } from '../../../model/product/Article';
-import { Bussine } from '../../../model/bussine/Bussine';
+import { Business } from '../../../model/business/Business';
 import { Information } from '../../../model/product/Information';
 import { ArticleRelational } from '../../../model/product/ArticleRelational';
 import { InformationService } from '../../../service/product/InformacionService';
@@ -28,7 +28,7 @@ export class AddInformationArticleComponent implements OnInit {
   public article: Article;
   public information: Information;
   public artArticleId: Article = new Article();
-  public bussine: Bussine;
+  public business: Business;
   public articleRelarionaData: ArticleRelational;
   public articleRelational: any;
   public modalRefArticleRelation: BsModalRef;
@@ -71,7 +71,7 @@ export class AddInformationArticleComponent implements OnInit {
 
   public formValidateModal() {
     this.form = this.formBuilder.group({
-      bussineId: [ '', Validators.compose([
+      businessId: [ '', Validators.compose([
         Validators.required
       ])],
       articleId: [ '', Validators.compose([

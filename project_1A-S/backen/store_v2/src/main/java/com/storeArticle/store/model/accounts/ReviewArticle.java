@@ -18,7 +18,7 @@ public class ReviewArticle implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "business_id")
-    private Bussine bussineId;
+    private Business businessId;
 
     @Column(name= "is_delete_reviewarticle")
     private boolean isDelete;
@@ -39,12 +39,12 @@ public class ReviewArticle implements Serializable {
         this.articleId = articleId;
     }
 
-    public Bussine getBussineId() {
-        return bussineId;
+    public Business getBusinessId() {
+        return businessId;
     }
 
-    public void setBussineId(Bussine bussineId) {
-        this.bussineId = bussineId;
+    public void setBusinessId(Business businessId) {
+        this.businessId = businessId;
     }
 
     public boolean isDelete() {

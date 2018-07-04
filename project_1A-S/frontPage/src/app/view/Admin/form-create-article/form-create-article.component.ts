@@ -50,7 +50,7 @@ export class FormCreateArticleComponent implements OnInit {
 
   public formValidateModal() {
     this.form = this.formBuilder.group({
-      bussineId: ['', Validators.compose([
+      businessId: ['', Validators.compose([
         Validators.required
       ])],
       groupId: ['', Validators.compose([

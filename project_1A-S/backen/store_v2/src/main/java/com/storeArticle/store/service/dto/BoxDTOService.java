@@ -17,7 +17,7 @@ public class BoxDTOService{
         User user = new User();
         user.setUserID(box.getUserId().getUserID());
         boxVEO.setBoxId(box.getBoxId());
-        boxVEO.setBussineId(box.getBussineId());
+        boxVEO.setBusinessId(box.getBusinessId());
         boxVEO.setNameBox(box.getNameBox());
         boxVEO.setCodeBox(box.getCodeBox());
         boxVEO.setSelectBox(box.isSelectBox());

@@ -45,7 +45,7 @@ export class FormListArticleInformationComponent implements OnInit {
   }
   public formValidateModal() {
     this.form = this.formBuilder.group({
-      bussineId: [ '', Validators.compose([
+      businessId: [ '', Validators.compose([
         Validators.required
       ])],
       articleId: [ '', Validators.compose([

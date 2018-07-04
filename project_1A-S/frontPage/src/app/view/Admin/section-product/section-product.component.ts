@@ -6,7 +6,7 @@ import { GroupProductService } from '../../../service/product/groupProductServic
 import { SectionService } from '../../../service/product/SectionService';
 import { BussineService } from '../../../service/product/bussineService';
 import { Section } from '../../../model/product/Section';
-import { Bussine } from '../../../model/bussine/Bussine';
+import { Business } from '../../../model/business/Business';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -22,7 +22,7 @@ import {GroupProduct} from '../../../model/product/GroupProduct';
 export class SectionProductComponent implements OnInit {
   public form: FormGroup;
   public groupProduct: GroupProduct = new GroupProduct();
-  public bussine: Bussine = new Bussine();
+  public business: Business = new Business();
   public isEditForm: boolean;
   public modalRefSection: BsModalRef;
   public bussineSelect;
@@ -88,7 +88,7 @@ public getListBussine(): void {
     this.form = this.formBuilder.group({
       sectionId: [ '', Validators.compose([
       ])],
-      bussineId: [ '', Validators.compose([
+      businessId: [ '', Validators.compose([
         Validators.required
       ])],
       groupId: [ '', Validators.compose([
@@ -102,7 +102,7 @@ public getListBussine(): void {
   }
 
   public registerSection() {
-   if (null === this.form.controls.bussineId.errors && null === this.form.controls.groupId.errors &&
+   if (null === this.form.controls.businessId.errors && null === this.form.controls.groupId.errors &&
      null === this.form.controls.nameSection.errors  ) {
       this.section = new Section();
       this.groupProduct.groupId = this.form.value['groupId'];
@@ -133,7 +133,7 @@ public onSelectGroup(event) {
   openModalWithClass(template: TemplateRef<any>) {
     this.isEditForm = true;
     this.form.controls['sectionId'].setValue(null);
-    this.form.controls['bussineId'].setValue('');
+    this.form.controls['businessId'].setValue('');
     this.form.controls['groupId'].setValue('');
     this.form.controls['nameSection'].setValue('');
     this.modalRefSection = this.dataService.showModal(template, this.config);
@@ -153,9 +153,9 @@ public onSelectGroup(event) {
 public edit(itemTableSection, template: TemplateRef<any>) {
    this.isEditForm = false;
   this.form.controls['sectionId'].setValue(itemTableSection.sectionId + '');
-  this.form.controls['bussineId'].setValue(itemTableSection.groupId.bussineId.bussineId + '');
+  this.form.controls['businessId'].setValue(itemTableSection.groupId.businessId.businessId + '');
 
-  this.groupProductService.getProductGroupBussineId(itemTableSection.groupId.bussineId.bussineId)
+  this.groupProductService.getProductGroupBussineId(itemTableSection.groupId.businessId.businessId)
     .subscribe(result => {
       this.groupSelect = result;
       this.form.controls['groupId'].setValue(itemTableSection.groupId.groupId + '');
@@ -167,7 +167,7 @@ public edit(itemTableSection, template: TemplateRef<any>) {
 }
 
   public editSectionInfo() {
-    if (null === this.form.controls.bussineId.errors && null === this.form.controls.groupId.errors &&
+    if (null === this.form.controls.businessId.errors && null === this.form.controls.groupId.errors &&
       null === this.form.controls.nameSection.errors  ) {
       this.section = new Section();
       this.section.sectionId = this.form.value['sectionId'];

@@ -7,7 +7,7 @@ import { ArticleDetailService } from '../../../service/product/ArticleDetailServ
 import { ArticleService } from '../../../service/product/ArticleService';
 import { BussineService } from '../../../service/product/bussineService';
 import { Article } from '../../../model/product/Article';
-import { Bussine } from '../../../model/bussine/Bussine';
+import { Business } from '../../../model/business/Business';
 import { ArticleRelational } from '../../../model/product/ArticleRelational';
 @Component({
   selector: 'app-article-relational',
@@ -23,7 +23,7 @@ export class ArticleRelationalComponent implements OnInit {
   public bussineSelect;
   public article: Article;
   public artArticleId: Article;
-  public bussine: Bussine;
+  public business: Business;
   public articleRelarionaData: ArticleRelational;
   public articleRelational: any;
   public modalRefArticleRelation: BsModalRef;
@@ -126,8 +126,8 @@ export class ArticleRelationalComponent implements OnInit {
     if (this.getValidateInfo()) {
       this.articleRelational = [];
       this.article = new Article();
-      this.bussine = new Bussine();
-      this.bussine.bussineId = this.dataService.bussineId;
+      this.business = new Business();
+      this.business.businessId = this.dataService.bussineId;
       this.article.articleId =  this.form.value['articleId'];
       const articleIdList = this.form.value['artArticleId'];
       for (let i = 0; i < articleIdList.length; i++) {
@@ -136,7 +136,7 @@ export class ArticleRelationalComponent implements OnInit {
         this.artArticleId.articleId = articleIdList[i];
         this.articleRelarionaData.articleId = this.article;
         this.articleRelarionaData.artArticleId = this.artArticleId;
-        this.articleRelarionaData.bussineId = this.bussine;
+        this.articleRelarionaData.businessId = this.business;
         this.articleRelational.push(this.articleRelarionaData);
       }
     this.articleService.addArticleRelationalList(this.articleRelational)

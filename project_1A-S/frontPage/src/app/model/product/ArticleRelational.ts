@@ -1,9 +1,9 @@
 import {Article} from '../product/Article';
-import { Bussine } from '../bussine/Bussine';
+import { Business } from '../business/Business';
 
 export class ArticleRelational {
   articleRelationalId: number;
   articleId: Article;
   artArticleId: Article;
-  bussineId: Bussine;
+  businessId: Business;
 }

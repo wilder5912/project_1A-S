@@ -4,18 +4,18 @@ import java.io.Serializable;
 import java.util.List;
 
 
-public class BussineVEO implements Serializable {
+public class BusinessVEO implements Serializable {
 
-    private int idBussine;
+    private int idBusiness;
     private String nameBusssine;
     private List<GroupProductVEO> groupProductVEO;
 
-    public int getIdBussine() {
-        return idBussine;
+    public int getIdBusiness() {
+        return idBusiness;
     }
 
-    public void setIdBussine(int idBussine) {
-        this.idBussine = idBussine;
+    public void setIdBusiness(int idBusiness) {
+        this.idBusiness = idBusiness;
     }
 
     public String getNameBusssine() {

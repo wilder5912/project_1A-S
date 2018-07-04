@@ -59,7 +59,9 @@
         <li class="{{idAN}}" >
           <a (click)="selectTodo()"><i class="fa fa-desktop fa-3x"></i> Tienda Acticulos <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level collapse {{idBN}}"   >
-
+            <li>
+              <a   routerLink="/createBusiness"  ><i class="fa fa-dashboard fa-2x"></i> Sucursal </a>
+            </li>
             <li>
               <a   routerLink="/groupProduct"  ><i class="fa fa-dashboard fa-2x"></i> Grupo Producto </a>
             </li>
@@ -73,24 +75,50 @@
               <a routerLink="/acticle" ><i class="fa fa-dashboard fa-2x"></i>Lista De Acticulos</a>
             </li>
             <li>
+              <a routerLink="/acticle" ><i class="fa fa-dashboard fa-2x"></i>Añadir Articulo Sucursal</a>
+            </li>
+
+            <li>
               <a routerLink="/productCreate" ><i class="fa fa-dashboard fa-2x"></i>Crear Acticulos</a>
             </li>
             <li>
               <a routerLink="/addInformationArticle" ><i class="fa fa-dashboard fa-2x"></i>Añadir Informacion Al Acticulos</a>
             </li>
-
+            <li>
+              <a   routerLink="/createBanner"  ><i class="fa fa-dashboard fa-2x"></i> Banner</a>
+            </li>
+            <li>
+              <a   routerLink="/createArticleRelational"><i class="fa fa-dashboard fa-2x"></i>Añadir Articles Relational</a>
+            </li>
+            <li>
+              <a   routerLink="/subSectionAndArticle"><i class="fa fa-dashboard fa-2x"></i>Sub Seccion Y Articulos</a>
+            </li>
           </ul>
         </li>
 
-        <li>
-          <a   routerLink="/createBanner"  ><i class="fa fa-dashboard fa-3x"></i> Banner</a>
+        <li class="{{idAN2}}" >
+          <a (click)="selectTodo2()"><i class="fa fa-desktop fa-3x"></i>Proveedor <span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level collapse {{idBN2}}"   >
+            <li>
+              <a   routerLink="/groupProduct"  ><i class="fa fa-dashboard fa-2x"></i>Proveedor </a>
+            </li>
+            <li>
+              <a   routerLink="/groupProduct"  ><i class="fa fa-dashboard fa-2x"></i>Articulo provedor </a>
+            </li>
+          </ul>
         </li>
-        <li>
-          <a   routerLink="/createArticleRelational"><i class="fa fa-dashboard fa-3x"></i>Añadir Articles Relational</a>
+
+
+        <li class="{{idAN3}}" >
+          <a (click)="selectTodo3()"><i class="fa fa-desktop fa-3x"></i>Almacen <span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level collapse {{idBN3}}"   >
+            <li>
+              <a   routerLink="/groupProduct"  ><i class="fa fa-dashboard fa-2x"></i>Lista Almacen </a>
+            </li>
+          </ul>
         </li>
-        <li>
-          <a   routerLink="/subSectionAndArticle"><i class="fa fa-dashboard fa-3x"></i>Sub Seccion Y Articulos</a>
-        </li>
+
+
 
       </ul>
     </div>

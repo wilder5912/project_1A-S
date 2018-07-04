@@ -6,7 +6,7 @@ import { Box } from '../../../model/boxArticle/Box';
 import { ListProduct } from '../../../model/boxArticle/ListProduct';
 import { User } from '../../../model/usuario/User';
 import { Article } from '../../../model/product/Article';
-import { Bussine } from '../../../model/bussine/Bussine';
+import { Business } from '../../../model/business/Business';
 
 @Component({
   selector: 'app-carousel-article-page',
@@ -26,7 +26,7 @@ export class CarouselArticlePageComponent implements OnInit {
   public listProduct: ListProduct = new ListProduct();
   public user: User = new User();
   public article: Article = new Article();
-  public bussine: Bussine = new Bussine();
+  public business: Business = new Business();
   constructor(public dataService: DataService , public boxService: BoxService ) { }
 
   ngOnInit() {
@@ -93,13 +93,13 @@ export class CarouselArticlePageComponent implements OnInit {
     this.box = new Box();
     this.user = new User();
     this.article = new Article();
-    this.bussine = new Bussine();
+    this.business = new Business();
     this.listProduct = new ListProduct();
-    this.bussine.bussineId = this.dataService.bussineId;
+    this.business.businessId = this.dataService.bussineId;
     this.user.userID = this.dataService.AUTH_CONFIG.userID;
     this.box.boxId = this.dataService.boxIdUser;
     this.box.userID = this.user;
-    this.box.bussineId = this.bussine;
+    this.box.businessId = this.business;
     this.listProduct.boxId = this.box;
     this.article.articleId = articleData.articleId;
     this.listProduct.articleId = this.article;

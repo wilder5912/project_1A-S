@@ -2,8 +2,8 @@ package com.storeArticle.store.controller.product;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.storeArticle.store.model.accounts.Bussine;
-import com.storeArticle.store.service.dto.BussineVEO;
+import com.storeArticle.store.model.accounts.Business;
+import com.storeArticle.store.service.dto.BusinessVEO;
 import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.groupProductService.BussineService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +35,10 @@ public class BussineController {
     }
 
     @PostMapping(value = "/getBussineListAllDTO")
-    public BussineVEO getBussineListAllDTO(@RequestBody String bussineData)throws IOException {
+    public BusinessVEO getBussineListAllDTO(@RequestBody String bussineData)throws IOException {
         this.mapper = new ObjectMapper();
-        Bussine bussine = this.mapper.readValue(bussineData, Bussine.class);
-        return bussineService.getBussineAll(bussine);
+        Business businessI = this.mapper.readValue(bussineData, Business.class);
+        return bussineService.getBussineAll(businessI);
     }
 
 

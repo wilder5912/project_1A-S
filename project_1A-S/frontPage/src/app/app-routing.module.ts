@@ -4,6 +4,7 @@ import { LoginComponent } from './view/user/login/login.component';
 import { HomeComponent } from './view/user/home/home.component';
 import { RegisterComponent } from './view/user/register/register.component';
 import { HomeAdminComponent } from './view/Admin/home-admin/home-admin.component';
+import { BusinessComponent } from './view/Admin/business/business.component';
 import { ViewDetailArticleComponent } from './view/Admin/view-detail-article/view-detail-article.component';
 import { CreateProductAdminComponent } from './view/Admin/create-product-admin/create-product-admin.component';
 import { ArticleRelationalComponent } from './view/Admin/article-relational/article-relational.component';
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path : 'blog', component: BlogPageComponent},
   { path : 'homeAdmin', component: HomeAdminComponent},
   { path : 'createArticleRelational', component: ArticleRelationalComponent},
+  { path : 'createBusiness', component: BusinessComponent},
   { path : 'addInformationArticle', component: AddInformationArticleComponent},
   { path : 'groupProduct', component: GroupProductComponent},
   { path : 'sectionProduct', component: SectionProductComponent},

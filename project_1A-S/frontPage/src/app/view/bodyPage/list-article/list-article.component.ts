@@ -6,7 +6,7 @@ import { SubSection } from '../../../model/product/SubSection';
 import { DataService } from '../../../service/dataService/data.service';
 import { ReviewArticle } from '../../../model/product/ReviewArticle';
 import { Article } from '../../../model/product/Article';
-import { Bussine } from '../../../model/bussine/Bussine';
+import { Business } from '../../../model/business/Business';
 
 @Component({
   selector: 'app-list-article',
@@ -21,7 +21,7 @@ export class ListArticleComponent implements OnInit {
   public listArticleSubSection;
   public reviewArticle: ReviewArticle = new ReviewArticle();
   public article: Article = new Article();
-  public bussine: Bussine = new Bussine();
+  public business: Business = new Business();
 
 
 constructor(private route: ActivatedRoute, public articleService: ArticleService,
@@ -51,10 +51,10 @@ public getAticleAllSeubSection(idSubsection: number) {
 
   public addReview(articleId: number) {
     this.reviewArticle = new ReviewArticle();
-    this.bussine.bussineId = this.dataService.bussineId;
+    this.business.businessId = this.dataService.bussineId;
     this.article.articleId = articleId;
     this.reviewArticle.articleId = this.article;
-    this.reviewArticle.bussineId = this.bussine;
+    this.reviewArticle.businessId = this.business;
     this.articleService.addReviewArticle(this.reviewArticle)
       .subscribe(result => {
         const redirectPage =  '/articleDetail/' + articleId;

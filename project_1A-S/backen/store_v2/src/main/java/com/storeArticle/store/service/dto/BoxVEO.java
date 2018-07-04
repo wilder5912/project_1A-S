@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.dto;
 
-import com.storeArticle.store.model.accounts.Bussine;
+import com.storeArticle.store.model.accounts.Business;
 import com.storeArticle.store.model.accounts.User;
 
 import java.io.Serializable;
@@ -11,7 +11,7 @@ public class BoxVEO implements Serializable {
 
     private int boxId;
 
-    private Bussine bussineId;
+    private Business businessId;
 
     private User userId;
 
@@ -33,12 +33,12 @@ public class BoxVEO implements Serializable {
         this.boxId = boxId;
     }
 
-    public Bussine getBussineId() {
-        return bussineId;
+    public Business getBusinessId() {
+        return businessId;
     }
 
-    public void setBussineId(Bussine bussineId) {
-        this.bussineId = bussineId;
+    public void setBusinessId(Business businessId) {
+        this.businessId = businessId;
     }
 
     public User getUserId() {

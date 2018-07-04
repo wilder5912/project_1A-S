@@ -1,8 +1,8 @@
-import { Bussine } from '../bussine/Bussine';
+import { Business } from '../business/Business';
 import { User } from '../usuario/User';
 export class Box {
   boxId: number;
-  bussineId: Bussine;
+  businessId: Business;
   userID: User;
   nameBox: string;
   codeBox: number;

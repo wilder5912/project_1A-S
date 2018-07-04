@@ -7,7 +7,7 @@ import { ArticleDetailService } from '../../../service/product/ArticleDetailServ
 import { ArticleService } from '../../../service/product/ArticleService';
 import { BussineService } from '../../../service/product/bussineService';
 import { Article } from '../../../model/product/Article';
-import { Bussine } from '../../../model/bussine/Bussine';
+import { Business } from '../../../model/business/Business';
 import { ArticleRelational } from '../../../model/product/ArticleRelational';
 import { GroupProductService } from '../../../service/product/groupProductService';
 import { ArticleDetail } from '../../../model/product/ArticleDetail';
@@ -29,7 +29,7 @@ export class SubSectionAndArticleComponent implements OnInit {
   public article: Article;
   public artArticleId: Article;
   public articleDetailData: ArticleDetail;
-  public bussine: Bussine;
+  public business: Business;
   public articleRelarionaData: ArticleRelational;
   public groupSelect;
   public sectionSelect;
@@ -85,7 +85,7 @@ export class SubSectionAndArticleComponent implements OnInit {
 
   public formValidateModal() {
     this.form = this.formBuilder.group({
-      bussineId: [ '', Validators.compose([
+      businessId: [ '', Validators.compose([
         Validators.required
       ])],
       articleId: [ '', Validators.compose([
@@ -169,8 +169,8 @@ export class SubSectionAndArticleComponent implements OnInit {
         this.getArticleIdRelational(event.value, this.dataService.bussineId);
       });
   }
-  public getArticleIdRelational(articleId, bussineId) {
-    this.articleService.getArticleIdRelational(bussineId, articleId )
+  public getArticleIdRelational(articleId, businessId) {
+    this.articleService.getArticleIdRelational(businessId, articleId )
       .subscribe(result => {
         const listRelational = [];
         result.forEach(function(sectioninforData) {

@@ -66,6 +66,7 @@ import { FormCreateArticleComponent } from './view/Admin/form-create-article/for
 import { FormListArticleImageComponent } from './view/Admin/form-list-article-image/form-list-article-image.component';
 import { FormListArticleInformationComponent } from './view/Admin/form-list-article-information/form-list-article-information.component';
 import { SubSectionAndArticleComponent } from './view/Admin/sub-section-and-article/sub-section-and-article.component';
+import { BusinessComponent } from './view/Admin/business/business.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -126,6 +127,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     FormListArticleImageComponent,
     FormListArticleInformationComponent,
     SubSectionAndArticleComponent,
+    BusinessComponent,
 
   ],
   imports: [

@@ -6,7 +6,7 @@ import { GroupProductService } from '../../../service/product/groupProductServic
 import { BussineService } from '../../../service/product/bussineService';
 import { User } from '../../../model/usuario/User';
 import { GroupProduct } from '../../../model/product/GroupProduct';
-import { Bussine } from '../../../model/bussine/Bussine';
+import { Business } from '../../../model/business/Business';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -23,7 +23,7 @@ export class GroupProductComponent implements OnInit {
   public form: FormGroup;
   public user: User = new User();
   public groupProduct: GroupProduct = new GroupProduct();
-  public bussine: Bussine = new Bussine();
+  public business: Business = new Business();
   public modalRefProductGroup: BsModalRef;
   public options;
   public isEditForm: boolean;
@@ -62,7 +62,7 @@ export class GroupProductComponent implements OnInit {
   }
   openModalWithClass(template: TemplateRef<any>) {
         this.isEditForm = true;
-        this.form.controls['bussineId'].setValue('1');
+        this.form.controls['businessId'].setValue('1');
         this.form.controls['groupId'].setValue('');
         this.form.controls['nameGroup'].setValue('');
         this.modalRefProductGroup = this.dataService.showModal(template, this.config);
@@ -93,7 +93,7 @@ export class GroupProductComponent implements OnInit {
        Validators.required,
        Validators.minLength(3),
      ])],
-     bussineId: ['', Validators.compose([
+     businessId: ['', Validators.compose([
        Validators.required
      ])]
    });
@@ -107,10 +107,10 @@ export class GroupProductComponent implements OnInit {
   }
 
   public registerGroup() {
-  if (null === this.form.controls.nameGroup.errors && null === this.form.controls.bussineId.errors ) {
+  if (null === this.form.controls.nameGroup.errors && null === this.form.controls.businessId.errors ) {
         this.groupProduct.nameGroup = this.form.value['nameGroup'];
-        this.bussine.bussineId = this.form.value['bussineId'];
-        this.groupProduct.bussineId = this.bussine;
+        this.business.businessId = this.form.value['businessId'];
+        this.groupProduct.businessId = this.business;
         this.groupProductService.addProductGroup(this.groupProduct)
           .subscribe(result => {
             if (result) {
@@ -125,11 +125,11 @@ export class GroupProductComponent implements OnInit {
   }
 
   public editGroupInfo() {
-    if (null === this.form.controls.nameGroup.errors && null === this.form.controls.bussineId.errors ) {
+    if (null === this.form.controls.nameGroup.errors && null === this.form.controls.businessId.errors ) {
       this.groupProduct.groupId = this.form.value['groupId'];
       this.groupProduct.nameGroup = this.form.value['nameGroup'];
-      this.bussine.bussineId = this.form.value['bussineId'];
-      this.groupProduct.bussineId = this.bussine;
+      this.business.businessId = this.form.value['businessId'];
+      this.groupProduct.businessId = this.business;
       this.groupProductService.editProductGroup(this.groupProduct)
         .subscribe(result => {
           if (result) {
@@ -155,7 +155,7 @@ export class GroupProductComponent implements OnInit {
   }
   public edit(itemTableGroup, template: TemplateRef<any>) {
     this.isEditForm = false;
-    this.form.controls['bussineId'].setValue(itemTableGroup.bussineId.bussineId + '');
+    this.form.controls['businessId'].setValue(itemTableGroup.businessId.businessId + '');
     this.form.controls['groupId'].setValue(itemTableGroup.groupId);
     this.form.controls['nameGroup'].setValue(itemTableGroup.nameGroup);
     this.modalRefProductGroup = this.dataService.showModal(template, this.config);

@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.Bussine;
+import com.storeArticle.store.model.accounts.Business;
 import com.storeArticle.store.model.accounts.GroupProduct;
 
 public interface GroupBussineCrup {
@@ -11,7 +11,7 @@ public interface GroupBussineCrup {
 
     void updatedBussine(int userId, GroupProduct groupProduct);
 
-    Bussine getBussine(int bussineId);
+    Business getBussine(int bussineId);
 
     Boolean getIsBussine();
 }

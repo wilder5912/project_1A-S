@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.Bussine;
+import com.storeArticle.store.model.accounts.Business;
 import com.storeArticle.store.model.accounts.GroupProduct;
 import com.storeArticle.store.service.dto.*;
 import com.storeArticle.store.service.enumPage.BussineQueryEnum;
@@ -40,8 +40,8 @@ public class BussineService implements GroupBussineCrup{
     }
 
     @Override
-    public Bussine getBussine(int bussineId) {
-        return entityManager.find(Bussine.class, bussineId);
+    public Business getBussine(int bussineId) {
+        return entityManager.find(Business.class, bussineId);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class BussineService implements GroupBussineCrup{
         return entityManager.createQuery(BussineQueryEnum.getListBussineHql.getHql()).getResultList();
     }
 
-    public BussineVEO getBussineAll(Bussine bussine) {
+    public BusinessVEO getBussineAll(Business bussine) {
         return  bussineDTOService.listGroupAll(bussine);
     }
 

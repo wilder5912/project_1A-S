@@ -2,7 +2,7 @@ package com.storeArticle.store.service.enumPage;
 
 public enum BussineQueryEnum {
 
-    getListBussineHql("select bussine FROM Bussine as bussine");
+    getListBussineHql("select business FROM Business as business");
 
     private String hql;
 

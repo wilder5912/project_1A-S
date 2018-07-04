@@ -25,16 +25,16 @@
               <ng-select
                 [options]="options"
                 [multiple]="false"
-                formControlName="bussineId"
-                name="bussineId"
+                formControlName="businessId"
+                name="businessId"
               >
               </ng-select>
 
               <div style="margin:10px 0 20px 0;color:#666;font-size:11pt;font-style:italic;">
-                Selected option id: {{form.value['bussineId']}}
+                Selected option id: {{form.value['businessId']}}
               </div>
-              <div *ngIf="form.controls.bussineId.errors" class="">
-                <div *ngIf="form.controls.bussineId.errors.required && form.controls.bussineId.dirty" class="alert alert-danger">
+              <div *ngIf="form.controls.businessId.errors" class="">
+                <div *ngIf="form.controls.businessId.errors.required && form.controls.businessId.dirty" class="alert alert-danger">
                   {{'Input_Require' | translate}}
                 </div>
               </div>
@@ -128,7 +128,7 @@
             <mfDefaultSorter by="groupId">Id</mfDefaultSorter>
           </th>
           <th style="width: 10%">
-            <mfDefaultSorter by="bussineId.nameBu">Bussine</mfDefaultSorter>
+            <mfDefaultSorter by="businessId.nameBu">Bussine</mfDefaultSorter>
           </th>
           <th style="width: 20%">
             <mfDefaultSorter by="nameGroup">Grupo</mfDefaultSorter>
@@ -148,7 +148,7 @@
         <tr *ngFor="let item of mf.data">
 
           <td>{{item.groupId}}</td>
-          <td>{{item.bussineId.nameBu}}</td>
+          <td>{{item.businessId.nameBu}}</td>
           <td>{{item.nameGroup}}</td>
           <td>
             <button (click)="remove(item)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>

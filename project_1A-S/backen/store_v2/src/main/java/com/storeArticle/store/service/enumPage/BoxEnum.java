@@ -7,7 +7,7 @@ public enum BoxEnum {
                 " boxId.isDelete = ? "),
     getBoxUser("select box FROM Box as box " +
             "where box.userID.userID = ? and " +
-            " box.bussineId.bussineId = ? and " +
+            " box.businessId.businessId = ? and " +
             " box.isSelectBox = ? and " +
             " box.isDelete = ? ");
 

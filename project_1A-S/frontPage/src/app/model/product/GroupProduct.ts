@@ -1,7 +1,7 @@
-import {Bussine} from '../bussine/Bussine';
+import {Business} from '../business/Business';
 export class GroupProduct {
   groupId: number;
-  bussineId: Bussine;
+  businessId: Business;
   nameGroup: string;
   isDelete: boolean;
 }
