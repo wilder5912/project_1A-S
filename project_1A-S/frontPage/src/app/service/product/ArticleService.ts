@@ -52,15 +52,15 @@ export class ArticleService {
     return this.http.post<Object>(this.dataService.getUrl('/article/getArticleDataDetail'), JSON.stringify(article));
   }
 
-  public getBestRevieArticle(bussineId: number): Observable<Object> {
-    return this.http.get<Object>(this.dataService.getUrl('/article/getBestArticleReview/' + bussineId));
+  public getBestRevieArticle(businessId: number): Observable<Object> {
+    return this.http.get<Object>(this.dataService.getUrl('/article/getBestArticleReview/' + businessId));
   }
 
-  public getArticleRelationalArticleIdBussineId(bussineId: number , articleId): Observable<Object> {
-    return this.http.get<Object>(this.dataService.getUrl('/articleRelational/getArticleRelational/' + bussineId + '/' + articleId));
+  public getArticleRelationalArticleIdBussineId(businessId: number , articleId): Observable<Object> {
+    return this.http.get<Object>(this.dataService.getUrl('/articleRelational/getArticleRelational/' + businessId + '/' + articleId));
   }
-  public getArticleIdRelational(bussineId: number, articleId): Observable<Object[]> {
-    return this.http.get<Object[]>(this.dataService.getUrl('/articleRelational/getArticleIdRelational/' + bussineId + '/' + articleId));
+  public getArticleIdRelational(businessId: number, articleId): Observable<Object[]> {
+    return this.http.get<Object[]>(this.dataService.getUrl('/articleRelational/getArticleIdRelational/' + businessId + '/' + articleId));
   }
 
   public addArticleRelationalList( articleRelational ): Observable<boolean> {

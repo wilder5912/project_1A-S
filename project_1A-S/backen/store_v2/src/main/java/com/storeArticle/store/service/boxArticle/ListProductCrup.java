@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.boxArticle;
 
-import com.storeArticle.store.model.accounts.ListProduct;
+import com.storeArticle.store.model.groupProductModel.ListProduct;
 
 public interface ListProductCrup {
 

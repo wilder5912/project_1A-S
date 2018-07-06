@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.boxArticle;
 
-import com.storeArticle.store.model.accounts.ListProduct;
+import com.storeArticle.store.model.groupProductModel.ListProduct;
 import com.storeArticle.store.service.enumPage.ListProductEnum;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

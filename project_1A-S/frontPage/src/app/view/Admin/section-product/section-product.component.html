@@ -18,7 +18,7 @@
           <div class="col-lg-12 col-center">
             <form novalidate [formGroup]="form" name="form"   #f="ngForm" >
               <div class="form-group">
-                <label for="businessId">Bussinee</label>
+                <label for="businessId">Sucursal</label>
                 <ng-select
                   [options]="bussineSelect"
                   [multiple]="false"
@@ -108,7 +108,7 @@
       <div class="row">
         <select class="form-control input-sm" [(ngModel)]="sortBy">
           <option ngValue="sectionId">N</option>
-          <option ngValue="nombreBu">Bussine</option>
+          <option ngValue="nombreBu">Sucursal</option>
           <option ngValue="nameGroup">Grupo</option>
           <option ngValue="nameSection">Seccion</option>
 
@@ -139,7 +139,7 @@
         </th>
 
         <th style="width: 10%">
-          <mfDefaultSorter by="groupId.businessId.nombreBu">Bussine</mfDefaultSorter>
+          <mfDefaultSorter by="groupId.businessId.nombreBu">Sucursal</mfDefaultSorter>
         </th>
 
         <th style="width: 10%">

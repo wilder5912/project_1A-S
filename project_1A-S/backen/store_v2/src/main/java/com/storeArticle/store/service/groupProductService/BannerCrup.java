@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.Banner;
+import com.storeArticle.store.model.groupProductModel.Banner;
 
 public interface BannerCrup {
 

@@ -1,8 +1,6 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.ArticleDetail;
-import com.storeArticle.store.model.accounts.ImageArticle;
-import com.storeArticle.store.model.accounts.SubSection;
+import com.storeArticle.store.model.groupProductModel.ArticleDetail;
 
 public interface ArticleDetailCrup {
 

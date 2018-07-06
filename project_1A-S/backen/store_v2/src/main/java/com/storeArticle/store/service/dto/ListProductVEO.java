@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.dto;
 
-import com.storeArticle.store.model.accounts.Box;
+import com.storeArticle.store.model.boxModel.Box;
 
 import java.io.Serializable;
 import java.util.List;

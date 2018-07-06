@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.dto;
 
-import com.storeArticle.store.model.accounts.Business;
+import com.storeArticle.store.model.groupProductModel.Business;
 import com.storeArticle.store.service.groupProductService.GroupProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

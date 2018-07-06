@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.dto;
 
-import com.storeArticle.store.model.accounts.Box;
+import com.storeArticle.store.model.boxModel.Box;
 import com.storeArticle.store.model.accounts.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.Business;
-import com.storeArticle.store.model.accounts.GroupProduct;
+import com.storeArticle.store.model.groupProductModel.Business;
+import com.storeArticle.store.model.groupProductModel.GroupProduct;
 import com.storeArticle.store.service.dao.groupProductDTO.GroupProductDAO;
 import com.storeArticle.store.service.dao.groupProductDTO.InfoCrup;
 import com.storeArticle.store.service.dto.SelectDTOService;
@@ -24,7 +24,7 @@ public class GroupProductService implements GroupProductCrup{
     @Autowired
     private SelectDTOService selectDTOService;
     @Autowired
-    private BussineService bussineService;
+    private BusinessService bussineService;
 
     private InfoCrup infoCrup;
 
@@ -50,7 +50,7 @@ public class GroupProductService implements GroupProductCrup{
     @Override
     public boolean updatedGroupProductName(GroupProduct groupProductNew) {
         GroupProduct groupProduct = getGroupProductName(groupProductNew.getGroupId());
-        Business bussine = bussineService.getBussine(groupProductNew.getBusinessId().getBusinessId());
+        Business bussine = bussineService.getBusiness(groupProductNew.getBusinessId().getBusinessId());
         boolean iscorrect = false;
         boolean iscorrectBussine=false;
         if(groupProduct.getBusinessId().getBusinessId() == groupProductNew.getBusinessId().getBusinessId() && !groupProduct.getNameGroup().equals(groupProductNew.getNameGroup()) ) {
@@ -91,7 +91,7 @@ public class GroupProductService implements GroupProductCrup{
     }
 
     public List<GroupProduct> getGroupProduct() {
-        List<GroupProduct> x = getProductoIdName();
+       // List<GroupProduct> x = getProductoIdName();
         return getProductoIdName();
     }
 

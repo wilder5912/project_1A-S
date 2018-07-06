@@ -1,7 +1,7 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.GroupProduct;
-import com.storeArticle.store.model.accounts.Section;
+import com.storeArticle.store.model.groupProductModel.GroupProduct;
+import com.storeArticle.store.model.groupProductModel.Section;
 import com.storeArticle.store.service.dao.groupProductDTO.InfoCrup;
 import com.storeArticle.store.service.dao.groupProductDTO.SectionDAO;
 import com.storeArticle.store.service.dto.SelectDTOService;

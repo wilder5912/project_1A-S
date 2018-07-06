@@ -1,9 +1,7 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.Information;
-import com.storeArticle.store.service.dto.ArticleDTOService;
+import com.storeArticle.store.model.groupProductModel.Information;
 import com.storeArticle.store.service.enumPage.InformationQueryEnum;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

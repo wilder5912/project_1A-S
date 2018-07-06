@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.dto;
 
-import com.storeArticle.store.model.accounts.Business;
+import com.storeArticle.store.model.groupProductModel.Business;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

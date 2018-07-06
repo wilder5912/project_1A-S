@@ -2,7 +2,7 @@ package com.storeArticle.store.controller.product;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.storeArticle.store.model.accounts.Comment;
+import com.storeArticle.store.model.groupProductModel.Comment;
 import com.storeArticle.store.service.dto.CommentVEO;
 import com.storeArticle.store.service.groupProductService.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;

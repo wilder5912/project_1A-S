@@ -12,12 +12,12 @@ export class ArticleDetailService {
   public getArticleDetailList(): Observable<ArticleDetail>  {
     return this.http.get<ArticleDetail>(this.dataService.getUrl('/articleDetail/getArticleDetail'));
   }
-  public getArticleFiend(nameArticle: string, idBussine: number): Observable<Object> {
-    return this.http.get<Object>(this.dataService.getUrl('/articleDetail/getFindArticleBussineId/' + nameArticle + '/' + idBussine));
+  public getArticleFiend(nameArticle: string, idBusiness: number): Observable<Object> {
+    return this.http.get<Object>(this.dataService.getUrl('/articleDetail/getFindArticleBussineId/' + nameArticle + '/' + idBusiness));
   }
 
-  public getArticleDetailBussine( idBussine: number): Observable<Object> {
-    return this.http.get<Object>(this.dataService.getUrl('/articleDetail/getArticleBussine/' + idBussine));
+  public getArticleDetailBussine( idBusiness: number): Observable<Object> {
+    return this.http.get<Object>(this.dataService.getUrl('/articleDetail/getArticleBussine/' + idBusiness));
   }
   public getArticleBussine(): Observable<Object> {
     return this.http.get<Object>(this.dataService.getUrl('/articleDetail/getArticleBussineId'));

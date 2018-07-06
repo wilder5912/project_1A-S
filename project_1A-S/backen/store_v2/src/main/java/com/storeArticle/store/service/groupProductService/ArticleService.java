@@ -1,13 +1,11 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.Article;
-import com.storeArticle.store.model.accounts.GroupProduct;
-import com.storeArticle.store.model.accounts.SubSection;
+import com.storeArticle.store.model.groupProductModel.Article;
+import com.storeArticle.store.model.groupProductModel.SubSection;
 import com.storeArticle.store.service.accounts.UserService;
 import com.storeArticle.store.service.dto.*;
 import com.storeArticle.store.service.enumPage.ArticleQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,8 +16,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-
-import org.springframework.core.io.Resource;
 
 @Transactional
 @Service

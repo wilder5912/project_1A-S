@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.GroupProduct;
+import com.storeArticle.store.model.groupProductModel.GroupProduct;
 
 public interface GroupProductCrup {
 

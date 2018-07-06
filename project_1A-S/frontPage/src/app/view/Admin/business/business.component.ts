@@ -4,8 +4,6 @@ import { DataService } from '../../../service/dataService/data.service';
 import { LoginService } from '../../../service/accounts/loginService';
 import { GroupProductService } from '../../../service/product/groupProductService';
 import { BussineService } from '../../../service/product/bussineService';
-import { User } from '../../../model/usuario/User';
-import { GroupProduct } from '../../../model/product/GroupProduct';
 import { Business } from '../../../model/business/Business';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsModalService } from 'ngx-bootstrap/modal';
@@ -31,6 +29,12 @@ export class BusinessComponent implements OnInit {
     ignoreBackdropClick: false
   };
   modalRef: BsModalRef;
+
+  public dataBusiness;
+  public filterQuery;
+  public rowsOnPage = 10;
+  public sortBy: string;
+  public sortOrder: string;
   constructor(private router: Router , private formBuilder: FormBuilder,
               public dataService: DataService, public bussineService: BussineService,
               public modalService: BsModalService, public translate: TranslateService) {
@@ -39,8 +43,13 @@ export class BusinessComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataService.redirectTypeUser();
+    this.filterQuery = '';
+    this.sortBy = 'nameBu';
+    this.sortOrder = 'asc';
     this.formValidateModal();
     this.isEditForm = true;
+    this.getListBussine();
   }
 
 
@@ -54,49 +63,79 @@ export class BusinessComponent implements OnInit {
       ])]
     });
   }
-
+  public getListBussine(): void {
+    this.bussineService.getBussineList()
+      .subscribe(result => {
+        this.dataBusiness = result;
+       }, error => {
+        console.log(error );
+      });
+  }
 
   public registerBusiness() {
-    /*if (null === this.form.controls.nameGroup.errors && null === this.form.controls.bussineId.errors ) {
-      this.groupProduct.nameGroup = this.form.value['nameGroup'];
-      this.bussine.bussineId = this.form.value['bussineId'];
-      this.groupProduct.bussineId = this.bussine;
-      this.groupProductService.addProductGroup(this.groupProduct)
-        .subscribe(result => {
-          if (result) {
-            this.getListProduct();
-            this.groupProduct.nameGroup = '';
-          }
-        }, e => {
-          console.log('' + e);
-        });
-      this.modalRefProductGroup.hide();
-    }*/
+     if (true === this.getValidateInfo() ) {
+      this.business = new Business();
+      this.business.nameBu = this.form.value['nameBu'];
+        this.bussineService.addBusiness(this.business)
+          .subscribe(result => {
+             if (result) {
+              this.getListBussine();
+              this.modalRefBusiness.hide();
+            }
+          });
+    }
   }
 
   public editBusiness() {
-    /*if (null === this.form.controls.nameGroup.errors && null === this.form.controls.bussineId.errors ) {
-      this.groupProduct.groupId = this.form.value['groupId'];
-      this.groupProduct.nameGroup = this.form.value['nameGroup'];
-      this.bussine.bussineId = this.form.value['bussineId'];
-      this.groupProduct.bussineId = this.bussine;
-      this.groupProductService.editProductGroup(this.groupProduct)
+     if (true === this.getValidateInfo() ) {
+      this.business = new Business();
+      this.business.businessId = this.form.value['businessId'];
+      this.business.nameBu = this.form.value['nameBu'];
+      this.bussineService.editBusiness(this.business)
         .subscribe(result => {
-          if (result) {
-            this.getListProduct();
+           if (result) {
+            this.getListBussine();
+            this.modalRefBusiness.hide();
           }
-        }, error => {
-          console.log(error);
         });
-      this.modalRefProductGroup.hide();
-    }*/
+    }
   }
-  openModalWithClass(template: TemplateRef<any>) {
-   /* this.isEditForm = true;
-    this.form.controls['bussineId'].setValue('1');
-    this.form.controls['groupId'].setValue('');
-    this.form.controls['nameGroup'].setValue('');
-   */ this.modalRefBusiness = this.dataService.showModal(template, this.config);
+  public remove(itemTableGroup) {
+    this.business.businessId = itemTableGroup.businessId;
+    this.bussineService.deleteBusiness(this.business)
+      .subscribe(result => {
+        if (result) {
+          this.getListBussine();
+        }
+      }, error => {
+        console.log(error);
+      });
   }
 
+  openModalWithClass(template: TemplateRef<any>) {
+    this.isEditForm = true;
+    this.form.controls['businessId'].setValue('');
+    this.form.controls['nameBu'].setValue('');
+    this.modalRefBusiness = this.dataService.showModal(template, this.config);
+  }
+
+  public getValidateInfo(): boolean {
+    let stateBaoolean = true;
+    const sectionInfo = [
+      {'SectionInformation': this.form.controls.nameBu.errors}
+    ];
+    sectionInfo.forEach(function(keyForm: any, i){
+      if ( null !== keyForm.SectionInformation) {
+        stateBaoolean = false;
+      }
+    });
+    return stateBaoolean;
+  }
+
+  public edit(itemTableBusiness, template: TemplateRef<any>) {
+    this.isEditForm = false;
+    this.form.controls['businessId'].setValue(itemTableBusiness.businessId + '');
+    this.form.controls['nameBu'].setValue(itemTableBusiness.nameBu);
+    this.modalRefBusiness = this.dataService.showModal(template, this.config);
+  }
 }

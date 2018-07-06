@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.dto;
 
-import com.storeArticle.store.model.accounts.Business;
+import com.storeArticle.store.model.groupProductModel.Business;
 import com.storeArticle.store.model.accounts.User;
 
 import java.io.Serializable;

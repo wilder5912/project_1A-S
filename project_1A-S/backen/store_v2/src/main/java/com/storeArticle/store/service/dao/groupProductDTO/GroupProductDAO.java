@@ -1,9 +1,8 @@
 package com.storeArticle.store.service.dao.groupProductDTO;
 
 
-import com.storeArticle.store.model.accounts.GroupProduct;
+import com.storeArticle.store.model.groupProductModel.GroupProduct;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

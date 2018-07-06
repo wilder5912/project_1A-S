@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.SubSection;
+import com.storeArticle.store.model.groupProductModel.SubSection;
 
 public interface SubSectionCrup {
 

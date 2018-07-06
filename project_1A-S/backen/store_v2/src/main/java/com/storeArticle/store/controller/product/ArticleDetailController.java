@@ -3,9 +3,9 @@ package com.storeArticle.store.controller.product;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.storeArticle.store.model.accounts.Article;
-import com.storeArticle.store.model.accounts.ArticleDetail;
-import com.storeArticle.store.model.accounts.SubSection;
+import com.storeArticle.store.model.groupProductModel.Article;
+import com.storeArticle.store.model.groupProductModel.ArticleDetail;
+import com.storeArticle.store.model.groupProductModel.SubSection;
 import com.storeArticle.store.service.dto.ArticleVEO;
 import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.groupProductService.ArticleDetailService;
@@ -41,9 +41,9 @@ public class ArticleDetailController {
         return articleDetailService.getArticleDetailList();
     }
 
-    @GetMapping(value="/getFindArticleBussineId/{nameArRrCode}/{bussineId}")
-    public List<ArticleVEO> getFindArticleBussineId(@PathVariable("nameArRrCode") String  nameArRrCode, @PathVariable("bussineId") int  bussineId ) throws IOException {
-        return articleDetailService.getListDTO(nameArRrCode, bussineId);
+    @GetMapping(value="/getFindArticleBussineId/{nameArRrCode}/{businessId}")
+    public List<ArticleVEO> getFindArticleBussineId(@PathVariable("nameArRrCode") String  nameArRrCode, @PathVariable("businessId") int  businessId ) throws IOException {
+        return articleDetailService.getListDTO(nameArRrCode, businessId);
     }
 
     @PostMapping(value ="/updateArticleDetailOne")
@@ -74,9 +74,9 @@ public class ArticleDetailController {
     }
 
 
-    @GetMapping(value = "/getArticleBussine/{bussineId}")
-    public List<SelectVEO> getArticleBussine(@PathVariable("bussineId") int  bussineId) throws  IOException {
-      return  articleDetailService.getSelectArticleList(bussineId);
+    @GetMapping(value = "/getArticleBussine/{businessId}")
+    public List<SelectVEO> getArticleBussine(@PathVariable("businessId") int  businessId) throws  IOException {
+      return  articleDetailService.getSelectArticleList(businessId);
     }
 
     @GetMapping(value = "/getArticleBussineId")

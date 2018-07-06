@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { DataTableModule} from 'angular2-datatable';
 import { GroupProductPipe } from './service/pipe/group-product.pipe';
 import { SectionPipe } from './service/pipe/section.pipe';
+import { BusinnesPipe } from './service/pipe/business.pipe';
 import { SubSectionPipe } from './service/pipe/sub-section.pipe';
 import { ListArticlePipe } from './service/pipe/list-article.pipe';
 import { ArticlePipe } from './service/pipe/Article.pipe';
@@ -67,6 +68,10 @@ import { FormListArticleImageComponent } from './view/Admin/form-list-article-im
 import { FormListArticleInformationComponent } from './view/Admin/form-list-article-information/form-list-article-information.component';
 import { SubSectionAndArticleComponent } from './view/Admin/sub-section-and-article/sub-section-and-article.component';
 import { BusinessComponent } from './view/Admin/business/business.component';
+import { ProviderComponent } from './view/Admin/ProviderAdmin/provider/provider.component';
+import { ArticleProviderComponent } from './view/Admin/ProviderAdmin/article-provider/article-provider.component';
+import { WarehouseComponent } from './view/Admin/WarehouseAdmin/warehouse/warehouse.component';
+import { AddProToBusComponent } from './view/Admin/ProviderAdmin/add-pro-to-bus/add-pro-to-bus.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -94,6 +99,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     SubSectionPipe,
     ListArticlePipe,
     ArticlePipe,
+    BusinnesPipe,
     StringFilterPipe,
     SectionProductComponent,
     SubSectionProductComponent,
@@ -128,6 +134,10 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     FormListArticleInformationComponent,
     SubSectionAndArticleComponent,
     BusinessComponent,
+    ProviderComponent,
+    ArticleProviderComponent,
+    WarehouseComponent,
+    AddProToBusComponent,
 
   ],
   imports: [

@@ -1,15 +1,15 @@
 package com.storeArticle.store.service.boxArticle;
 
 
-import com.storeArticle.store.model.accounts.Box;
-import com.storeArticle.store.model.accounts.Business;
-import com.storeArticle.store.model.accounts.ListProduct;
+import com.storeArticle.store.model.boxModel.Box;
+import com.storeArticle.store.model.groupProductModel.Business;
+import com.storeArticle.store.model.groupProductModel.ListProduct;
 import com.storeArticle.store.model.accounts.User;
 import com.storeArticle.store.service.accounts.UserService;
 import com.storeArticle.store.service.dto.BoxDTOService;
 import com.storeArticle.store.service.dto.BoxVEO;
 import com.storeArticle.store.service.enumPage.BoxEnum;
-import com.storeArticle.store.service.groupProductService.BussineService;
+import com.storeArticle.store.service.groupProductService.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,7 +33,7 @@ public class BoxService implements BoxCrup {
     private UserService userService;
 
     @Autowired
-    private BussineService bussineService;
+    private BusinessService bussineService;
 
     @Override
     public boolean addBox(Box box) {
@@ -125,7 +125,7 @@ public class BoxService implements BoxCrup {
         Box box = new Box();
         box.setCodeBox(user.getCodeUser());
         box.setUserID(user);
-        Business businne = (Business)bussineService.getBussine().get(0);
+        Business businne = (Business)bussineService.getBusiness().get(0);
         box.setBusinessId(businne);
         addBox(box);
 

@@ -23,8 +23,8 @@ export class GroupProductService {
   public deleteProductGroup(groupProduct: GroupProduct): Observable<boolean>  {
     return this.http.post<boolean>(this.dataService.getUrl('/groupProduct/deleteGroupProduct'), JSON.stringify(groupProduct));
   }
-  public getProductGroupBussineId(bussineId: number): Observable<object>  {
-    return this.http.get<object>(this.dataService.getUrl('/groupProduct/getBussineGroupList/' + bussineId));
+  public getProductGroupBussineId(businessId: number): Observable<object>  {
+    return this.http.get<object>(this.dataService.getUrl('/groupProduct/getBussineGroupList/' + businessId));
   }
 
 

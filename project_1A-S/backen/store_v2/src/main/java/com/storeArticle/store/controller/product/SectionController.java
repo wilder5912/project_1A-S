@@ -1,7 +1,7 @@
 package com.storeArticle.store.controller.product;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.storeArticle.store.model.accounts.Section;
+import com.storeArticle.store.model.groupProductModel.Section;
 import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.groupProductService.SectionService;
 import org.springframework.beans.factory.annotation.Autowired;

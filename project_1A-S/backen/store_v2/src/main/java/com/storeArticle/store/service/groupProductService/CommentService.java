@@ -1,7 +1,6 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.Comment;
-import com.storeArticle.store.service.accounts.UserService;
+import com.storeArticle.store.model.groupProductModel.Comment;
 import com.storeArticle.store.service.dto.CommentDTOService;
 import com.storeArticle.store.service.dto.CommentVEO;
 import com.storeArticle.store.service.enumPage.CommentQueryEnum;

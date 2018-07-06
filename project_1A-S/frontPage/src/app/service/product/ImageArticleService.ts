@@ -29,7 +29,6 @@ export class ImageArticleSevice {
     return this.http.get<ImageArticle>(this.dataService.getUrl('/imageArticle/getImageArticleIdList/' + articleId));
   }
   public deleteImageArticle(idImageArticle: number ): Observable<boolean> {
-    console.log(idImageArticle,"---");
     return this.http.post<boolean>(this.dataService.getUrl('/imageArticle/deleteImageArticle'), JSON.stringify(idImageArticle),
       {
         headers: { 'Content-Type': 'application/json; charset=utf-8'}}

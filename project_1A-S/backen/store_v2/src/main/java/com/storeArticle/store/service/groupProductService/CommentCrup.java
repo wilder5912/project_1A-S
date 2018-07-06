@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.groupProductService;
 
- import com.storeArticle.store.model.accounts.Comment;
+ import com.storeArticle.store.model.groupProductModel.Comment;
 
 public interface CommentCrup {
 

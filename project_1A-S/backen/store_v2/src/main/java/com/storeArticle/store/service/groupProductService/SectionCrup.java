@@ -1,5 +1,5 @@
 package com.storeArticle.store.service.groupProductService;
-import com.storeArticle.store.model.accounts.Section;
+import com.storeArticle.store.model.groupProductModel.Section;
 
 public interface SectionCrup {
 

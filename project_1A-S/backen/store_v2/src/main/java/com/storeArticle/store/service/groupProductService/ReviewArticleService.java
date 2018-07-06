@@ -1,7 +1,7 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.Article;
-import com.storeArticle.store.model.accounts.ReviewArticle;
+import com.storeArticle.store.model.groupProductModel.Article;
+import com.storeArticle.store.model.groupProductModel.ReviewArticle;
 import com.storeArticle.store.service.dto.ArticleDTOService;
 import com.storeArticle.store.service.dto.ArticleVEO;
 import com.storeArticle.store.service.enumPage.ReviewArticleQueryEnum;

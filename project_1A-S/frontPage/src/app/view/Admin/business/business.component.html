@@ -28,28 +28,28 @@
                        id="nameBu"
                        formControlName="nameBu"
                 />
-              <!--  <div *ngIf="form.controls.nameGroup.errors" class="">
-                  <div *ngIf="form.controls.nameGroup.errors.minlength && form.controls.nameGroup.dirty" class="alert alert-danger">
+               <div *ngIf="form.controls.nameBu.errors" class="">
+                  <div *ngIf="form.controls.nameBu.errors.minlength && form.controls.nameBu.dirty" class="alert alert-danger">
                     {{'Input_Min_3' | translate}}
                   </div>
-                  <div *ngIf="form.controls.nameGroup.errors.required && form.controls.nameGroup.dirty" class="alert alert-danger">
+                  <div *ngIf="form.controls.nameBu.errors.required && form.controls.nameBu.dirty" class="alert alert-danger">
                     {{'Input_Require' | translate}}
                   </div>
-                </div>-->
+                </div>
               </div>
               <div class="form-group">
-               <!-- <input md-input
-                       formControlName="groupId"
+               <input md-input
+                       formControlName="businessId"
                        hidden="true"
-                >-->
+                >
               </div>
               <div class="form-group">
                 <div *ngIf="isEditForm; then addData else editData"></div>
                 <ng-template #addData>
-                  <button [disabled]="loading" type="button" (click)="registerBusiness()"  class="btn btn-primary">{{'Add_Group'| translate }}</button>
+                  <button [disabled]="loading" type="button" (click)="registerBusiness()"  class="btn btn-primary">{{'Add_Sucursal'| translate }}</button>
                 </ng-template>
                 <ng-template #editData>
-                  <button [disabled]="loading" type="button" (click)="editBusiness()"  class="btn btn-primary">{{'Edit_Group'| translate }}</button>
+                  <button [disabled]="loading" type="button" (click)="editBusiness()"  class="btn btn-primary">{{'Edit_Sucursal'| translate }}</button>
                 </ng-template>
               </div>
 
@@ -65,4 +65,59 @@
   <div class="col-xs-6 margin-top-button">
     <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)">Añadir</button>
   </div>
+
+
+
 </div>
+
+
+
+<div class="">
+  <div class="panel panel-default">
+
+
+    <table class="table table-striped" [mfData]="dataBusiness | dataFilterBusiness : filterQuery" #mf="mfDataTable"
+           [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+      <thead>
+      <tr>
+        <th style="width: 10%">
+          <mfDefaultSorter by="businessId">Id</mfDefaultSorter>
+        </th>
+        <th style="width: 10%">
+          <mfDefaultSorter by="nameBu">Sucursal</mfDefaultSorter>
+        </th>
+        <th style="width: 10%">
+          <mfDefaultSorter by="nameGroup">Eliminar/Editar</mfDefaultSorter>
+        </th>
+       </tr>
+      <tr>
+        <th colspan="3">
+          Filtrado Por Grupo:
+          <input class="form-control" [(ngModel)]="filterQuery"/>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of mf.data">
+        <td>{{item.businessId}}</td>
+        <td>{{item.nameBu}}</td>
+        <td>
+          <button (click)="remove(item)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+          <button (click)="edit(item,template)" class="btn btn-danger "><span class="glyphicon glyphicon-pencil"></span></button>
+
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="3">
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+
+

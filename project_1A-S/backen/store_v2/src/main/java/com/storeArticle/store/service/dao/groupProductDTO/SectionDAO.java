@@ -1,6 +1,6 @@
 package com.storeArticle.store.service.dao.groupProductDTO;
 
-import com.storeArticle.store.model.accounts.Section;
+import com.storeArticle.store.model.groupProductModel.Section;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

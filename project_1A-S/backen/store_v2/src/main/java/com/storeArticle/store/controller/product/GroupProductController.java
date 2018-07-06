@@ -1,7 +1,7 @@
 package com.storeArticle.store.controller.product;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.storeArticle.store.model.accounts.GroupProduct;
+import com.storeArticle.store.model.groupProductModel.GroupProduct;
 import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.groupProductService.GroupProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,9 +48,9 @@ public class GroupProductController {
         return groupProductService.deleteGroupProductName(groupProduct.getGroupId());
     }
 
-    @GetMapping(value = "/getBussineGroupList/{idBussine}")
-    public List<SelectVEO> getBussineGroupList(@PathVariable("idBussine") String idBussine){
-            return groupProductService.getListGroupDTO(Integer.parseInt(idBussine));
+    @GetMapping(value = "/getBussineGroupList/{idBusiness}")
+    public List<SelectVEO> getBussineGroupList(@PathVariable("idBusiness") String idBusiness){
+            return groupProductService.getListGroupDTO(Integer.parseInt(idBusiness));
     }
 }
 

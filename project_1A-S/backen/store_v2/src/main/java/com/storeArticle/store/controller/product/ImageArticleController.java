@@ -1,8 +1,8 @@
 package com.storeArticle.store.controller.product;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.storeArticle.store.model.accounts.ArticleDetail;
-import com.storeArticle.store.model.accounts.ImageArticle;
+import com.storeArticle.store.model.groupProductModel.ArticleDetail;
+import com.storeArticle.store.model.groupProductModel.ImageArticle;
 import com.storeArticle.store.service.groupProductService.ImageArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;

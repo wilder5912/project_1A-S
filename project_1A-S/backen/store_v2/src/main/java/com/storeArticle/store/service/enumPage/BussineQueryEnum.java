@@ -2,7 +2,11 @@ package com.storeArticle.store.service.enumPage;
 
 public enum BussineQueryEnum {
 
-    getListBussineHql("select business FROM Business as business");
+    getListBussineHql("select business FROM Business as business where business.isDelete = false"),
+    getlookForBusiness("select business FROM Business as business " +
+                        "where business.nameBu = ? " +
+                        "and business.isDelete = ? ")
+    ;
 
     private String hql;
 

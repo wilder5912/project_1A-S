@@ -2,7 +2,7 @@ package com.storeArticle.store.controller.product;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.storeArticle.store.model.accounts.Banner;
+import com.storeArticle.store.model.groupProductModel.Banner;
 import com.storeArticle.store.service.groupProductService.BannerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

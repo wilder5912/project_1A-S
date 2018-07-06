@@ -1,7 +1,6 @@
 package com.storeArticle.store.service.boxArticle;
 
-import com.storeArticle.store.model.accounts.Article;
-import com.storeArticle.store.model.accounts.Box;
+import com.storeArticle.store.model.boxModel.Box;
 
 public interface BoxCrup {
 

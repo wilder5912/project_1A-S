@@ -5,6 +5,10 @@ import { HomeComponent } from './view/user/home/home.component';
 import { RegisterComponent } from './view/user/register/register.component';
 import { HomeAdminComponent } from './view/Admin/home-admin/home-admin.component';
 import { BusinessComponent } from './view/Admin/business/business.component';
+import { ProviderComponent } from './view/Admin/ProviderAdmin/provider/provider.component';
+import { AddProToBusComponent } from './view/Admin/ProviderAdmin/add-pro-to-bus/add-pro-to-bus.component';
+import { WarehouseComponent } from './view/Admin/WarehouseAdmin/warehouse/warehouse.component';
+import { ArticleProviderComponent } from './view/Admin/ProviderAdmin/article-provider/article-provider.component';
 import { ViewDetailArticleComponent } from './view/Admin/view-detail-article/view-detail-article.component';
 import { CreateProductAdminComponent } from './view/Admin/create-product-admin/create-product-admin.component';
 import { ArticleRelationalComponent } from './view/Admin/article-relational/article-relational.component';
@@ -39,6 +43,10 @@ const routes: Routes = [
   { path : 'homeAdmin', component: HomeAdminComponent},
   { path : 'createArticleRelational', component: ArticleRelationalComponent},
   { path : 'createBusiness', component: BusinessComponent},
+  { path : 'createProvider', component: ProviderComponent},
+  { path : 'createProToBus', component: AddProToBusComponent},
+  { path : 'createArticleProvider', component: ArticleProviderComponent},
+  { path : 'createWarehouse', component: WarehouseComponent},
   { path : 'addInformationArticle', component: AddInformationArticleComponent},
   { path : 'groupProduct', component: GroupProductComponent},
   { path : 'sectionProduct', component: SectionProductComponent},

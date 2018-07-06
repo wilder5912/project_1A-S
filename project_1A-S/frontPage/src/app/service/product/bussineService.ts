@@ -11,12 +11,23 @@ export class BussineService {
     constructor(private http: HttpClient, public dataService: DataService , public router: Router) { }
 
     public getBussine(): Observable<Business>  {
-      return this.http.get<Business>(this.dataService.getUrl('/bussine/getBussineDTO'));
+      return this.http.get<Business>(this.dataService.getUrl('/business/getBusinessDTO'));
      }
-     public getBussineAll(bussine: Business): Observable<Object>  {
-      return this.http.post<Object>(this.dataService.getUrl('/bussine/getBussineListAllDTO'), JSON.stringify(bussine));
+    public getBussineList(): Observable<Business> {
+      return this.http.get<Business>(this.dataService.getUrl('/business/getBusinessList'));
+    }
+     public getBussineAll(business: Business): Observable<Object>  {
+      return this.http.post<Object>(this.dataService.getUrl('/business/getBusinessListAllDTO'), JSON.stringify(business));
      }
+    public addBusiness(business: Business): Observable<Business>  {
+       return this.http.post<Business>(this.dataService.getUrl('/business/addBusiness'), JSON.stringify(business));
+    }
 
+    public editBusiness(business: Business): Observable<Business>  {
+      return this.http.post<Business>(this.dataService.getUrl('/business/editBusiness'), JSON.stringify(business));
+    }
+    public deleteBusiness(business: Business): Observable<Business>  {
+      return this.http.post<Business>(this.dataService.getUrl('/business/deleteBusiness'), JSON.stringify(business));
+    }
 }
-
 

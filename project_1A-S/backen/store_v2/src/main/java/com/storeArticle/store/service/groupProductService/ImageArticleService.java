@@ -1,15 +1,11 @@
 package com.storeArticle.store.service.groupProductService;
 
-import com.storeArticle.store.model.accounts.Article;
-import com.storeArticle.store.model.accounts.ImageArticle;
-import com.storeArticle.store.model.accounts.SubSection;
+import com.storeArticle.store.model.groupProductModel.Article;
+import com.storeArticle.store.model.groupProductModel.ImageArticle;
 import com.storeArticle.store.service.accounts.UserService;
-import com.storeArticle.store.service.dto.SelectDTOService;
 import com.storeArticle.store.service.enumPage.ImageArticleQueryEnum;
-import com.storeArticle.store.service.enumPage.SectionQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.UrlResource;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;

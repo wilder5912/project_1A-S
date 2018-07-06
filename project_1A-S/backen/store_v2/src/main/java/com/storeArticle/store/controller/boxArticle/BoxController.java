@@ -2,8 +2,8 @@ package com.storeArticle.store.controller.boxArticle;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.storeArticle.store.model.accounts.Box;
-import com.storeArticle.store.model.accounts.ListProduct;
+import com.storeArticle.store.model.boxModel.Box;
+import com.storeArticle.store.model.groupProductModel.ListProduct;
 import com.storeArticle.store.service.boxArticle.BoxService;
 import com.storeArticle.store.service.dto.BoxVEO;
 import org.springframework.beans.factory.annotation.Autowired;

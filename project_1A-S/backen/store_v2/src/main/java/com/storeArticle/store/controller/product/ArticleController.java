@@ -1,9 +1,9 @@
 package com.storeArticle.store.controller.product;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.storeArticle.store.model.accounts.Article;
-import com.storeArticle.store.model.accounts.ReviewArticle;
-import com.storeArticle.store.model.accounts.SubSection;
+import com.storeArticle.store.model.groupProductModel.Article;
+import com.storeArticle.store.model.groupProductModel.ReviewArticle;
+import com.storeArticle.store.model.groupProductModel.SubSection;
 import com.storeArticle.store.service.dto.ArticleDTOService;
 import com.storeArticle.store.service.dto.ArticleVEO;
 import com.storeArticle.store.service.dto.SelectVEO;
@@ -69,9 +69,9 @@ public class ArticleController {
         return articleDTOService.getArticleDetailDTO(articleData.getArticleId());
     }
 
-    @GetMapping(value = "/getBestArticleReview/{bussineId}")
-    public List<ArticleVEO> getBestArticleReview(@PathVariable("bussineId") int bussineId){
-        return reviewArticleService.getArticleBest(bussineId);
+    @GetMapping(value = "/getBestArticleReview/{businessId}")
+    public List<ArticleVEO> getBestArticleReview(@PathVariable("businessId") int businessId){
+        return reviewArticleService.getArticleBest(businessId);
     }
 
     @GetMapping(value = "/getArticleId/{articleId}")
