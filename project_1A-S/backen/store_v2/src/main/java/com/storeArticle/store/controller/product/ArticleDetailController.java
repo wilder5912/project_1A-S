@@ -78,6 +78,10 @@ public class ArticleDetailController {
     public List<SelectVEO> getArticleBussine(@PathVariable("businessId") int  businessId) throws  IOException {
       return  articleDetailService.getSelectArticleList(businessId);
     }
+    @GetMapping(value = "/getArticleDetailIdBussine/{businessId}")
+    public List<SelectVEO> getArticleDetailIdBussine(@PathVariable("businessId") int  businessId) throws  IOException {
+      return  articleDetailService.getSelectArticleDetailIdList(businessId);
+    }
 
     @GetMapping(value = "/getArticleBussineId")
     public List<Object> getArticleBussineId(){

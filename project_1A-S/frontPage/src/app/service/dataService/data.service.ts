@@ -37,7 +37,7 @@ export class DataService {
     idBoxUser: 0
   };
  public rantingMax = 5;
- public  typeImageSelect= [
+ public typeImageSelect = [
    {value: 'Publico', label: 'Publico'},
    {value: 'Privado', label: 'Privado'},
 
@@ -46,6 +46,10 @@ export class DataService {
    this.getLanguagePage();
     this.initPage();
  }
+  public headerSend = {
+    'Content-Type': 'application/json; charset=utf-8',
+    'access-token': sessionStorage.getItem('token'),
+  };
  public initPage() {
     this.imageLoadPage = true;
     this.bussineId = 1;
@@ -64,7 +68,7 @@ export class DataService {
   }
 
   public redirectTypeUser() {
-    if(this.AUTH_CONFIG.typeUser !== 'Admin' ) {
+    if (this.AUTH_CONFIG.typeUser !== 'Admin' ) {
       this.router.navigate(['/home']);
     }
   }

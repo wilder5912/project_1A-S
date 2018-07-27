@@ -6,7 +6,7 @@ import { ReviewArticle} from '../../model/product/ReviewArticle';
 import { SubSection} from '../../model/product/SubSection';
 import { DataService } from '../dataService/data.service';
 import { Router } from '@angular/router';
-
+import { ArticleRelational } from '../../model/product/ArticleRelational';
 @Injectable()
 export class ArticleService {
 
@@ -63,11 +63,11 @@ export class ArticleService {
     return this.http.get<Object[]>(this.dataService.getUrl('/articleRelational/getArticleIdRelational/' + businessId + '/' + articleId));
   }
 
-  public addArticleRelationalList( articleRelational ): Observable<boolean> {
-
+  public addArticleRelationalList( articleRelational): Observable<boolean> {
     return this.http.post<boolean>(this.dataService.getUrl('/articleRelational/addArticleRelation'), JSON.stringify(articleRelational),
       {
-              headers: { 'Content-Type': 'application/json; charset=utf-8'}}
+              headers: this.dataService.headerSend
+      }
       );
   }
   public addReviewArticle(reviewArticle: ReviewArticle): Observable<Object> {

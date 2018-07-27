@@ -17,8 +17,8 @@ public class Provider implements Serializable {
     @Column(name = "code_provider")
     private String codeProvider;
 
-    @Column(name = "numbre_phone_provider")
-    private int numbrePhoneProvider;
+    @Column(name = "number_phone_provider")
+    private int numberPhoneProvider;
 
     @Column(name = "is_delete_provider")
     private boolean isDelete;
@@ -39,12 +39,12 @@ public class Provider implements Serializable {
         this.codeProvider = codeProvider;
     }
 
-    public int getNumbrePhoneProvider() {
-        return numbrePhoneProvider;
+    public int getNumberPhoneProvider() {
+        return numberPhoneProvider;
     }
 
-    public void setNumbrePhoneProvider(int numbrePhoneProvider) {
-        this.numbrePhoneProvider = numbrePhoneProvider;
+    public void setNumberPhoneProvider(int numberPhoneProvider) {
+        this.numberPhoneProvider = numberPhoneProvider;
     }
 
     public String getNameProvider() {

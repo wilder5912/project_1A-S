@@ -63,7 +63,7 @@ public class UserController  {
 
         this.mapper = new ObjectMapper();
         User userActuali = this.mapper.readValue(userData, User.class);
-        String token =userActuali.getTokenUser();
+        String token = userActuali.getTokenUser();
 
         return userService.getUserActual(user,userActuali,token);
     }

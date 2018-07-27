@@ -5,6 +5,8 @@ import com.storeArticle.store.model.provider.ArticleProvider;
 import com.storeArticle.store.model.provider.Provider;
 import com.storeArticle.store.service.ProviderProductService.ArticleProviderService;
 import com.storeArticle.store.service.ProviderProductService.ProviderService;
+import com.storeArticle.store.service.dto.SelectDTOService;
+import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.groupProductService.ArticleDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,12 +33,22 @@ public class WarehouseService {
     @Autowired
     private ArticleProviderService articleProviderService;
 
+    @Autowired
+    private SelectDTOService selectDTOService;
+
     public boolean addWarehouse(Warehouse warehouse){
         boolean isWarehouse = false;
-        if(isWarehouseList(warehouse.getCodeWarehouse())) {
+        if(this.articleProviderService.addArticleProvider(warehouse.getArticleProviderId())) {
+            ArticleProvider articleProvider = this.articleProviderService.getArticleProviderCode(warehouse.getArticleProviderId().getCodeArticleProvider());
+            warehouse.setArticleProviderId(articleProvider);
             warehouse.setDelete(false);
             entityManager.persist(warehouse);
-
+            isWarehouse = true;
+        }else{
+            ArticleProvider articleProvider = this.articleProviderService.getArticleProviderCode(warehouse.getArticleProviderId().getCodeArticleProvider());
+            warehouse.setArticleProviderId(articleProvider);
+            warehouse.setDelete(false);
+            entityManager.persist(warehouse);
             isWarehouse = true;
         }
         return isWarehouse;
@@ -88,13 +100,15 @@ public class WarehouseService {
         entityManager.flush();
         return null != warehouse;
     }
-//
 
     public List<Warehouse> getWarehouseListAll(){
         return entityManager.createQuery(getlookForWarehouseHql.getListWarehouseHql.getHql())
                 .getResultList();
 
     }
-
-
+    public List<String> getWarehouseCodeListAll(){
+        return entityManager.createQuery(getlookForWarehouseHql.getListWarehouseCodeHql.getHql())
+                .setParameter(1,false)
+                .getResultList();
+    }
 }

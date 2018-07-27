@@ -3,7 +3,8 @@ import { Business } from '../business/Business';
 
 export class ArticleRelational {
   articleRelationalId: number;
+  businessId: Business;
   articleId: Article;
   artArticleId: Article;
-  businessId: Business;
+
 }

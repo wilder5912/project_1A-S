@@ -91,7 +91,7 @@ public class GroupProductService implements GroupProductCrup{
     }
 
     public List<GroupProduct> getGroupProduct() {
-       // List<GroupProduct> x = getProductoIdName();
+        List<GroupProduct> x = getProductoIdName();
         return getProductoIdName();
     }
 

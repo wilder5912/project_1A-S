@@ -6,8 +6,10 @@ import { SectionPipe } from './service/pipe/section.pipe';
 import { BusinnesPipe } from './service/pipe/business.pipe';
 import { SubSectionPipe } from './service/pipe/sub-section.pipe';
 import { ListArticlePipe } from './service/pipe/list-article.pipe';
+import { ProviderPhonePipe } from './service/pipe/providerPhone.pipe';
 import { ArticlePipe } from './service/pipe/Article.pipe';
 import { StringFilterPipe } from './service/pipe/string-filter.pipe';
+import { ProviderPipe } from './service/pipe/provider.pipe';
 import { Http, RequestOptions } from '@angular/http';
 import { AuthHttp, AuthConfig , JwtHelper } from 'angular2-jwt';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -100,6 +102,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ListArticlePipe,
     ArticlePipe,
     BusinnesPipe,
+    ProviderPipe,
+    ProviderPhonePipe,
     StringFilterPipe,
     SectionProductComponent,
     SubSectionProductComponent,

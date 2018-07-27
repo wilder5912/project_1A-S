@@ -11,14 +11,14 @@ export class BoxService {
 
   public getBoxListArticle(boxData: Box): Observable<Object>  {
     return this.http.post<Object>(this.dataService.getUrl('/box/getBox'), JSON.stringify(boxData),
-      { headers: { 'Content-Type': 'application/json; charset=utf-8'}
+      { headers: this.dataService.headerSend
             }
       );
   }
 
   public addBoxArticle(listProduct: ListProduct): Observable<Object>  {
     return this.http.post<Object>(this.dataService.getUrl('/box/addBoxArticle'), JSON.stringify(listProduct),
-      { headers: { 'Content-Type': 'application/json; charset=utf-8'}
+      { headers: this.dataService.headerSend
     }
       );
   }

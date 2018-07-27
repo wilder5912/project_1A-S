@@ -11,18 +11,14 @@ public class ArticleProvider implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "articleprovider_id " )
+    @Column(name = "articleprovider_id" )
     private int articleProviderId;
 
-    @Column(name = "codeArticleprovider " )
+    @Column(name = "code_articleprovider" )
     private String codeArticleProvider;
 
-    @Column(name = "nameArticleprovider" )
+    @Column(name = "name_articleprovider" )
     private String nameArticleProvider;
-
-    @ManyToOne
-    @JoinColumn(name = "providerId")
-    private Provider providerId;
 
     @Column(name = "is_delete_articleprovider")
     private boolean isDelete;
@@ -49,14 +45,6 @@ public class ArticleProvider implements Serializable {
 
     public void setNameArticleProvider(String nameArticleProvider) {
         this.nameArticleProvider = nameArticleProvider;
-    }
-
-    public Provider getProviderId() {
-        return providerId;
-    }
-
-    public void setProviderId(Provider providerId) {
-        this.providerId = providerId;
     }
 
     public boolean isDelete() {

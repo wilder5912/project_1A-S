@@ -57,6 +57,16 @@ public class ArticleProviderService {
         }
     }
 
+    public ArticleProvider getArticleProviderCode(String articleProviderCode){
+        List<ArticleProvider> articleProviderList = getArticleProviderList(articleProviderCode);
+        ArticleProvider articleProvider = new ArticleProvider();
+        if(articleProviderList.size() > 0){
+           articleProvider = articleProviderList.get(0);
+        }
+        return articleProvider;
+    }
+
+
     public List<ArticleProvider> getArticleProviderList(String articleProviderCode){
         String groupProductHql =
         ArticleProviderQueryEnum.getlookForArticleProvider.getHql();

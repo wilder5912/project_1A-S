@@ -13,7 +13,7 @@ export class SubSectionPipe implements PipeTransform {
       const sectionInfo = [
         {'SectionInformation': _.filter(array, row => row.subSectionId === query)},
         {'SectionInformation': _.filter(array, row => row.nameSubSection.indexOf(query) > -1)},
-        {'SectionInformation': _.filter(array, row => row.sectionId.groupId.bussineId.nameBu.indexOf(query) > -1)},
+        {'SectionInformation': _.filter(array, row => row.sectionId.groupId.businessId.nameBu.indexOf(query) > -1)},
         {'SectionInformation': _.filter(array, row => row.sectionId.groupId.nameGroup.indexOf(query) > -1)},
         {'SectionInformation': _.filter(array, row => row.sectionId.nameSection.indexOf(query) > -1)},
         {'SectionInformation': _.filter(array, row => row.nameSubSection.indexOf(query) > -1)},

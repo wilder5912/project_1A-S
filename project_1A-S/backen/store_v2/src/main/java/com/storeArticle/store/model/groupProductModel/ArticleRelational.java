@@ -43,12 +43,12 @@ public class ArticleRelational implements Serializable {
         this.articleId = articleId;
     }
 
-    public Business getBussineId() {
+    public Business getBusinessId() {
         return businessId;
     }
 
-    public void setBussineId(Business bussineId) {
-        this.businessId = bussineId;
+    public void setBusinessId(Business businessId) {
+        this.businessId = businessId;
     }
 
     public Article getArtArticleId() {

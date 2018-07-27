@@ -1,3 +1,249 @@
-<p>
-  warehouse works!
-</p>
+<div class = "">
+  <div class="container">
+    <h1 class="title-head">{{ 'Add_Warehouse' |translate }}</h1>
+  </div>
+</div>
+
+<div class="">
+  <div class="col-lg-12">
+    <ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">{{ 'Add_Warehouse' |translate }}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRefWarehouser.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12 col-center">
+            <form novalidate [formGroup]="form" name="form"   #f="ngForm" >
+
+              <div class="col-lg-6">
+
+
+                <div class="form-group">
+                  <label for="businessId">Bussine</label>
+                  <ng-select
+                    [options]="bussineSelect"
+                    [multiple]="false"
+                    formControlName="businessId"
+                    name="businessId"
+                    (selected)="onSelectBussine($event)"
+                  >
+                  </ng-select>
+                  <div *ngIf="form.controls.businessId.errors" class="">
+                    <div *ngIf="form.controls.businessId.errors.required && form.controls.businessId.dirty" class="alert alert-danger">
+                      {{'Input_Require' | translate}}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="articleDetailId">Articulo</label>
+                  <ng-select
+                    [options]="articleSelect"
+                    [multiple]="false"
+                    formControlName="articleDetailId"
+                    name="articleDetailId"
+                  >
+                  </ng-select>
+                  <div *ngIf="form.controls.articleDetailId.errors" class="">
+                    <div *ngIf="form.controls.articleDetailId.errors.required && form.controls.articleDetailId.dirty" class="alert alert-danger">
+                      {{'Input_Require' | translate}}
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+               <div class="form-group">
+                <label for="wnameId">Codigo Almacen</label>
+
+                 <ng-select
+                   [options]="warehouseList"
+                   [multiple]="false"
+                   formControlName="wnameId"
+                   name="wnameId"
+
+                 >
+                 </ng-select>
+                 <div *ngIf="form.controls.wnameId.errors" class="">
+                   <div *ngIf="form.controls.wnameId.errors.required && form.controls.wnameId.dirty" class="alert alert-danger">
+                     {{'Input_Require' | translate}}
+                   </div>
+                 </div>
+
+<!--
+                <input type="text" class="form-control" name="codeWarehouse"
+                       id="codeWarehouse"
+                       formControlName="codeWarehouse" list="countries"
+                />
+                 <datalist id="countries">
+
+
+                   <select>
+                     <option *ngFor="let c of warehouseList" [value]="c"></option>
+                   </select>
+
+
+
+                 </datalist>
+
+                 <div *ngIf="form.controls.codeWarehouse.errors" class="">
+                  <div *ngIf="form.controls.codeWarehouse.errors.required && form.controls.codeWarehouse.dirty" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+
+                 </div>-->
+              </div>
+
+               <div class="form-group">
+                <label for="quantytiProviderWarehouse">Cantidad</label>
+                <input type="text" class="form-control" name="quantytiProviderWarehouse"
+                       id="quantytiProviderWarehouse"
+                       formControlName="quantytiProviderWarehouse"
+                />
+                <div *ngIf="form.controls.quantytiProviderWarehouse.errors" class="">
+                  <div *ngIf="form.controls.quantytiProviderWarehouse.errors.minlength && form.controls.quantytiProviderWarehouse.dirty" class="alert alert-danger">
+                    {{'Input_Min_3' | translate}}
+                  </div>
+                  <div *ngIf="form.controls.quantytiProviderWarehouse.errors.required && form.controls.quantytiProviderWarehouse.dirty" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+                </div>
+              </div>
+                <div>
+                <div class="form-group">
+                  <label for="codeArticleprovider">Articulos que llegaron</label>
+                  </div>
+                   <div class="form-group">
+                    <label for="codeArticleprovider">Codigo Articulo Proveedor Register</label>
+                    <input type="text" class="form-control" name="codeArticleprovider"
+                           id="codeArticleprovider"
+                           formControlName="codeArticleprovider"
+                    />
+                    <div *ngIf="form.controls.codeArticleprovider.errors" class="">
+                      <div *ngIf="form.controls.codeArticleprovider.errors.minlength && form.controls.codeArticleprovider.dirty" class="alert alert-danger">
+                        {{'Input_Min_3' | translate}}
+                      </div>
+                      <div *ngIf="form.controls.codeArticleprovider.errors.required && form.controls.codeArticleprovider.dirty" class="alert alert-danger">
+                        {{'Input_Require' | translate}}
+                      </div>
+                    </div>
+                  </div>
+                   <div class="form-group">
+                    <label for="nameArticleprovider">Nombre Articulo Proveedor</label>
+                    <input type="text" class="form-control" name="nameArticleprovider"
+                           id="nameArticleprovider"
+                           formControlName="nameArticleprovider"
+                    />
+                    <div *ngIf="form.controls.nameArticleprovider.errors" class="">
+                      <div *ngIf="form.controls.nameArticleprovider.errors.minlength && form.controls.nameArticleprovider.dirty" class="alert alert-danger">
+                        {{'Input_Min_3' | translate}}
+                      </div>
+                      <div *ngIf="form.controls.nameArticleprovider.errors.required && form.controls.nameArticleprovider.dirty" class="alert alert-danger">
+                        {{'Input_Require' | translate}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-lg-6" >
+                <div class="form-group">
+                <label for="providerId">Seccionar Codigo Proveedor</label>
+                <ng-select
+                  [options]="providerSelect"
+                  [multiple]="false"
+                  formControlName="providerId"
+                  name="providerId"
+                >
+                </ng-select>
+
+                  <div *ngIf="form.controls.providerId.errors" class="">
+                    <div *ngIf="form.controls.providerId.errors.required && form.controls.providerId.dirty" class="alert alert-danger">
+                      {{'Input_Require' | translate}}
+                    </div>
+                  </div>
+              </div>
+                <div class="form-group">
+                <label for="fatureWarehouse">Numero Factura </label>
+                <input type="text" class="form-control" name="fatureWarehouse"
+                       id="fatureWarehouse"
+                       formControlName="fatureWarehouse"
+                />
+                <div *ngIf="form.controls.fatureWarehouse.errors" class="">
+                  <div *ngIf="form.controls.fatureWarehouse.errors.minlength && form.controls.fatureWarehouse.dirty" class="alert alert-danger">
+                    {{'Input_Min_3' | translate}}
+                  </div>
+                  <div *ngIf="form.controls.fatureWarehouse.errors.required && form.controls.fatureWarehouse.dirty" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+                </div>
+              </div>
+                <div class="form-group">
+                <label for="dateStartWarehouse">Fecha LLegada Proveedor</label>
+                  <input
+                    class="form-control"
+                    #dpYMD="bsDatepicker"
+                    bsDatepicker
+                    formControlName="dateStartWarehouse"
+                    [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY, h:mm:ss a' }">
+                <div *ngIf="form.controls.dateStartWarehouse.errors" class="">
+                  <div *ngIf="form.controls.dateStartWarehouse.errors.minlength && form.controls.dateStartWarehouse.dirty" class="alert alert-danger">
+                    {{'Input_Min_3' | translate}}
+                  </div>
+                  <div *ngIf="form.controls.dateStartWarehouse.errors.required && form.controls.dateStartWarehouse.dirty" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+                </div>
+              </div>
+                <div class="form-group">
+                <label for="dateEndWarehouse">Fecha Registro Fin</label>
+                  <input
+                    class="form-control"
+                    bsDatepicker
+                    formControlName="dateEndWarehouse"
+                    [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY, h:mm:ss a' }">
+                <div *ngIf="form.controls.dateEndWarehouse.errors" class="">
+                  <div *ngIf="form.controls.dateEndWarehouse.errors.minlength && form.controls.dateEndWarehouse.dirty" class="alert alert-danger">
+                    {{'Input_Min_3' | translate}}
+                  </div>
+                  <div *ngIf="form.controls.dateEndWarehouse.errors.required && form.controls.dateEndWarehouse.dirty" class="alert alert-danger">
+                    {{'Input_Require' | translate}}
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-group">
+                <input md-input
+                       formControlName="warehouseId"
+                       hidden="true"
+                >
+              </div>
+                <div class="form-group">
+                <div *ngIf="isEditForm; then addData else editData"></div>
+                <ng-template #addData>
+                  <button [disabled]="loading" type="button" (click)="registerWarehouse()"  class="btn btn-primary">{{'Add_Warehouse'| translate }}</button>
+                </ng-template>
+                <ng-template #editData>
+                  <button [disabled]="loading" type="button" (click)="editProvider()"  class="btn btn-primary">{{'Edit_Warehouse'| translate }}</button>
+                </ng-template>
+              </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<div class=" ">
+  <div class="col-xs-6 margin-top-button">
+    <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)">Añadir</button>
+  </div>
+</div>

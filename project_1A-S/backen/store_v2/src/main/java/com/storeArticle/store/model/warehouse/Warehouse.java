@@ -1,6 +1,7 @@
 package com.storeArticle.store.model.warehouse;
 
 import com.storeArticle.store.model.groupProductModel.ArticleDetail;
+import com.storeArticle.store.model.groupProductModel.Business;
 import com.storeArticle.store.model.provider.ArticleProvider;
 import com.storeArticle.store.model.provider.Provider;
 
@@ -16,17 +17,28 @@ public class Warehouse implements Serializable {
     @Column(name = "warehouse_id")
     private int warehouseId;
 
+    @ManyToOne
     @JoinColumn(name = "articledetail_id")
     private ArticleDetail articleDetailId;
 
     @Column(name = "quantyti_provider_warehouse")
     private int quantytiProviderWarehouse;
 
+    @ManyToOne
     @JoinColumn(name = "articleprovider_id")
     private ArticleProvider articleProviderId;
 
+    @ManyToOne
+    @JoinColumn(name = "wname_id")
+    private WareHouseMain wnameId;
+
+    @ManyToOne
     @JoinColumn(name = "provider_id")
     private Provider providerId;
+
+    @ManyToOne
+    @JoinColumn(name = "business_id")
+    private Business businessId;
 
     @Column(name = "fature_warehouse")
     private String fatureWarehouse;
@@ -46,6 +58,13 @@ public class Warehouse implements Serializable {
     @Column(name = "is_delete_warehouse")
     private boolean isDelete;
 
+    public Business getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(Business businessId) {
+        this.businessId = businessId;
+    }
 
     public int getWarehouseId() {
         return warehouseId;

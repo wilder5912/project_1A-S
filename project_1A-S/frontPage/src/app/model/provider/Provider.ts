@@ -2,6 +2,6 @@ export class Provider {
   providerId: number;
   nameProvider: string;
   codeProvider: string;
-  numbrePhoneProvider: number;
+  numberPhoneProvider: number;
   isDelete: boolean;
 }

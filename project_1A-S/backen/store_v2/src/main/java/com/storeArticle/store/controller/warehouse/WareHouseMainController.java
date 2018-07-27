@@ -2,6 +2,8 @@ package com.storeArticle.store.controller.warehouse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.storeArticle.store.model.warehouse.Warehouse;
+import com.storeArticle.store.service.dto.SelectVEO;
+import com.storeArticle.store.service.warehouseProductService.WareHouseMainService;
 import com.storeArticle.store.service.warehouseProductService.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,20 +14,25 @@ import java.util.List;
 
 @Controller
 @RestController
-@RequestMapping(value="/warehouse")
+@RequestMapping(value="/wareHouseMain")
 @CrossOrigin(methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
         RequestMethod.DELETE })
-public class warehouseController {
+public class WareHouseMainController {
 
     @Autowired
-    private WarehouseService warehouseService;
+    private WareHouseMainService wareHouseMainService;
 
     protected ObjectMapper mapper;
-    public warehouseController(){
+    public WareHouseMainController(){
         mapper = new ObjectMapper();
     }
 
-    @PostMapping(value = "/addWarehouse")
+    @GetMapping(value = "/getWareHouseMainDTO")
+    public List<SelectVEO> getWareHouseMainDTO()throws IOException {
+        return wareHouseMainService.getWareHouserMainListDTO();
+    }
+
+/*    @PostMapping(value = "/addWarehouse")
     public boolean addProvider(@RequestBody Warehouse warehouse)throws IOException {
         return warehouseService.addWarehouse(warehouse);
     }
@@ -46,5 +53,5 @@ public class warehouseController {
     @PostMapping(value = "/editWarehouser")
     public boolean editWarehouse(@RequestBody Warehouse warehouse)throws IOException {
         return warehouseService.updatedWarehouse(warehouse);
-    }
+    }*/
 }

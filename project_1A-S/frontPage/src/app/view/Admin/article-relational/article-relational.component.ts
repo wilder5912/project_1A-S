@@ -24,7 +24,7 @@ export class ArticleRelationalComponent implements OnInit {
   public article: Article;
   public artArticleId: Article;
   public business: Business;
-  public articleRelarionaData: ArticleRelational;
+  public articleRelarionaData: ArticleRelational = new ArticleRelational();
   public articleRelational: any;
   public modalRefArticleRelation: BsModalRef;
   public config = {
@@ -66,7 +66,7 @@ export class ArticleRelationalComponent implements OnInit {
 
   public formValidateModal() {
     this.form = this.formBuilder.group({
-      bussineId: [ '', Validators.compose([
+      businessId: [ '', Validators.compose([
         Validators.required
       ])],
       articleId: [ '', Validators.compose([
@@ -123,7 +123,10 @@ export class ArticleRelationalComponent implements OnInit {
 
 
   public registerRelationalArticle() {
+   // console.log("aaa");
+
     if (this.getValidateInfo()) {
+     // console.log("bbbb");
       this.articleRelational = [];
       this.article = new Article();
       this.business = new Business();
@@ -135,8 +138,8 @@ export class ArticleRelationalComponent implements OnInit {
         this.articleRelarionaData = new ArticleRelational();
         this.artArticleId.articleId = articleIdList[i];
         this.articleRelarionaData.articleId = this.article;
-        this.articleRelarionaData.artArticleId = this.artArticleId;
         this.articleRelarionaData.businessId = this.business;
+        this.articleRelarionaData.artArticleId = this.artArticleId;
         this.articleRelational.push(this.articleRelarionaData);
       }
     this.articleService.addArticleRelationalList(this.articleRelational)

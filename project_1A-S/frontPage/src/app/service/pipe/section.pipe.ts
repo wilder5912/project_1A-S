@@ -12,7 +12,7 @@ export class SectionPipe implements PipeTransform {
       const sectionInfo = [
         {'SectionInformation': _.filter(array, row => row.sectionId === query)},
         {'SectionInformation': _.filter(array, row => row.nameSection.indexOf(query) > -1)},
-        {'SectionInformation': _.filter(array, row => row.groupId.bussineId.nameBu.indexOf(query) > -1)},
+        {'SectionInformation': _.filter(array, row => row.groupId.businessId.nameBu.indexOf(query) > -1)},
         {'SectionInformation': _.filter(array, row => row.groupId.nameGroup.indexOf(query) > -1)},
       ];
       let nfo = idP;

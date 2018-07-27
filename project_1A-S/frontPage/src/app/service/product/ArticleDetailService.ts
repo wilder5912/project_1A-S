@@ -19,6 +19,9 @@ export class ArticleDetailService {
   public getArticleDetailBussine( idBusiness: number): Observable<Object> {
     return this.http.get<Object>(this.dataService.getUrl('/articleDetail/getArticleBussine/' + idBusiness));
   }
+  public getArticleDetailIdBussine( idBusiness: number): Observable<Object> {
+    return this.http.get<Object>(this.dataService.getUrl('/articleDetail/getArticleDetailIdBussine/' + idBusiness));
+  }
   public getArticleBussine(): Observable<Object> {
     return this.http.get<Object>(this.dataService.getUrl('/articleDetail/getArticleBussineId'));
   }

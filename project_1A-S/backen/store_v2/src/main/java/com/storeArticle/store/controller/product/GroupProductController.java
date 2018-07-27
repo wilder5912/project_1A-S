@@ -31,6 +31,7 @@ public class GroupProductController {
     }
      @GetMapping(value = "/getGroupProduct")
         public List<GroupProduct> getGroupProduct()throws IOException {
+         List<GroupProduct> x = groupProductService.getGroupProduct();
             return groupProductService.getGroupProduct();
     }
 

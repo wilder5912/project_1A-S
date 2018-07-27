@@ -159,6 +159,13 @@ public class ArticleDetailService implements ArticleDetailCrup {
                 .setParameter(3, false)
                 .getResultList();
     }
+    public List<Object[]> getArticledetailIdBussineId(int bussineId ){
+        return entityManager.createQuery(ArticleDetailQueryEnum.getArticledetailIdBussineHql.getHql())
+                .setParameter(1, bussineId)
+                .setParameter(2, false)
+                .setParameter(3, false)
+                .getResultList();
+    }
     public List<Object> getArticleBussineId(){
         return entityManager.createQuery(ArticleDetailQueryEnum.getArticleBussineHql.getHql())
                 .setParameter(1, false)
@@ -173,6 +180,9 @@ public class ArticleDetailService implements ArticleDetailCrup {
         return selectDTOService.getIdNameDTOAndId(getArticledetailBussineId(bussineId));
     }
 
+    public List<SelectVEO> getSelectArticleDetailIdList(int bussineId){
+        return selectDTOService.getIdNameDTOAndId(getArticledetailIdBussineId(bussineId));
+    }
 
     public List<SelectVEO> getSubSelectArticleId(int bussineId){
         return selectDTOService.getIdNameDTOAndId(getArticledetailBussineId(bussineId));

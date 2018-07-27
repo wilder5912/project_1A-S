@@ -68,7 +68,7 @@ public class ArticleRelationalService implements ArticleRelationalCrup{
     public void updateArticleId(ArticleRelational articleRelational) {
          entityManager.createQuery(ArticleRelationalQueryEnum.updateStateArticleIdRelationalHql.getHql())
                 .setParameter(1, true)
-                .setParameter(2, articleRelational.getBussineId().getBusinessId())
+                .setParameter(2, articleRelational.getBusinessId().getBusinessId())
                 .setParameter(3, articleRelational.getArticleId().getArticleId())
                 .executeUpdate();
     }
@@ -78,7 +78,7 @@ public class ArticleRelationalService implements ArticleRelationalCrup{
 
         try {
             return (Integer)entityManager.createQuery(ArticleRelationalQueryEnum.isArticleIdRelationalHql.getHql())
-                    .setParameter(1, articleRelational.getBussineId().getBusinessId())
+                    .setParameter(1, articleRelational.getBusinessId().getBusinessId())
                     .setParameter(2, articleRelational.getArticleId().getArticleId())
                     .setParameter(3, articleRelational.getArtArticleId().getArticleId())
                     .getSingleResult();

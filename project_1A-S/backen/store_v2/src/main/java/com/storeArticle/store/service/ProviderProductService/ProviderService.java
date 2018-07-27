@@ -1,7 +1,10 @@
 package com.storeArticle.store.service.ProviderProductService;
 
 import com.storeArticle.store.model.provider.Provider;
+import com.storeArticle.store.service.dto.SelectDTOService;
+import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.enumPage.ProviderQueryEnum;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +18,8 @@ public class ProviderService {
 
     @PersistenceContext
     private EntityManager entityManager;
-
+    @Autowired
+    private SelectDTOService selectDTOService;
     public boolean addprovider(Provider provider){
 
         boolean isBusiness = false;
@@ -37,7 +41,7 @@ public class ProviderService {
         Provider provider = getProvider(providerNew.getProviderId());
         provider.setCodeProvider(providerNew.getCodeProvider());
         provider.setNameProvider (providerNew.getNameProvider()); ;
-        provider.setNumbrePhoneProvider(providerNew.getNumbrePhoneProvider());
+        provider.setNumberPhoneProvider(providerNew.getNumberPhoneProvider());
         entityManager.flush();
         return null != provider;
     }
@@ -67,5 +71,16 @@ public class ProviderService {
         return entityManager.createQuery(groupProductHql)
                 .getResultList();
     }
+
+    public List<Object[]> getProviderIdCodeList(){
+        return entityManager.createQuery(ProviderQueryEnum.getListProviderIdCodeHql.getHql())
+                .getResultList();
+    }
+
+    public List<SelectVEO> getProviderIdCodeDTO(){
+     return selectDTOService.getIdNameDTOAndId(getProviderIdCodeList());
+    }
+
+
 
 }
