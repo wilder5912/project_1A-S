@@ -122,6 +122,9 @@ export class WarehouseComponent implements OnInit {
         Validators.required
       ])],
     });
+    this.form.controls['dateStartWarehouse'].setValue('2018-08-05T21:15:48.000Z');
+     
+
   }
 
   public getValidateInfo(): boolean {
@@ -190,7 +193,7 @@ export class WarehouseComponent implements OnInit {
       });
   }
   public registerWarehouse() {
-    console.log(this.getValidateInfo(),this.form.value['articleDetailId']);
+    console.log(this.getValidateInfo(),this.form.value['dateStartWarehouse']);
     if (true === this.getValidateInfo() ) {
       console.log('Registrado conrrectamente');
       this.provider = new Provider();
