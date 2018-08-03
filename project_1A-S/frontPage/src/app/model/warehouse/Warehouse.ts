@@ -9,12 +9,12 @@ export class Warehouse {
   businessId: Business;
   quantytiProviderWarehouse: number;
   articleProviderId: ArticleProvider;
+  wnameId: WareHouseMain;
   providerId: Provider;
   fatureWarehouse: string;
   dateStartWarehouse: string;
   dateEndWarehouse: string;
   codeWarehouse: string;
   quantytiCurrectWarehouse: number;
-  wnameId: WareHouseMain;
   isDelete: boolean;
 }

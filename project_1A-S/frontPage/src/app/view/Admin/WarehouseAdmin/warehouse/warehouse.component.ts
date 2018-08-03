@@ -200,8 +200,8 @@ export class WarehouseComponent implements OnInit {
       this.articleProvider.nameArticleProvider = this.form.value['nameArticleprovider'];
       this.wareHouseMain = new WareHouseMain();
       this.wareHouseMain.wnameId = this.form.value['wnameId'];
-      this.wareHouseMain.addressWName = 'ooooooooooooooo';
-      this.wareHouseMain.codeWarehouse = 'ooooooooooooooo';
+      /*//this.wareHouseMain.addressWName = 'ooooooooooooooo';
+      //this.wareHouseMain.codeWarehouse = 'ooooooooooooooo';*/
       this.wareHouseMain.isDelete = false;
       this.business = new Business();
       this.business.businessId = this.form.value['businessId'];
@@ -217,12 +217,11 @@ export class WarehouseComponent implements OnInit {
       this.warehouse.dateEndWarehouse = this.form.value['dateEndWarehouse'];
       this.warehouse.fatureWarehouse = this.form.value['fatureWarehouse'];
       this.warehouse.quantytiProviderWarehouse = this.form.value['quantytiProviderWarehouse'];
+      this.warehouse.quantytiCurrectWarehouse = this.form.value['quantytiProviderWarehouse'];
 
-      console.log(this.wareHouseMain);
-      console.log(this.warehouse,"---------------");
       this.warehouseService.addWarehouse(this.warehouse)
         .subscribe(result => {
-          console.log(result);
+
         });
     }
   }

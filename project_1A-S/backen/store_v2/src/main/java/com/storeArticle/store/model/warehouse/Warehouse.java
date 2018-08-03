@@ -146,6 +146,14 @@ public class Warehouse implements Serializable {
         this.quantytiCurrectWarehouse = quantytiCurrectWarehouse;
     }
 
+    public WareHouseMain getWnameId() {
+        return wnameId;
+    }
+
+    public void setWnameId(WareHouseMain wnameId) {
+        this.wnameId = wnameId;
+    }
+
     public boolean isDelete() {
         return isDelete;
     }
