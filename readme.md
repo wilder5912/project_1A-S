@@ -1,1 +1,1 @@
-you must add in of file for example imagen if user , imagen article
+if you have the database you must give me, to my Email:wilder5912@gmail.com wilder Baptista Vasquez 
