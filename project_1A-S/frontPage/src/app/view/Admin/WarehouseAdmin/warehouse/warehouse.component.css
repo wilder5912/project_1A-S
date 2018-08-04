@@ -8,3 +8,7 @@
 .margin-top-button{
   margin-top: 1%;
 }
+.scroll-table-with{
+  overflow: scroll;
+  width: 100%;
+}

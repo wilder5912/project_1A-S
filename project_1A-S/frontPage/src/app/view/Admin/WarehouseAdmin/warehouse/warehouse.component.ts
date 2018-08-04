@@ -57,6 +57,9 @@ export class WarehouseComponent implements OnInit {
   public wareHouseMain: WareHouseMain;
   public articleProvider: ArticleProvider;
   public warehouseList;
+
+  public dataWarehouser;
+
   constructor(private router: Router , private formBuilder: FormBuilder,
               public dataService: DataService, public modalService: BsModalService,
               public translate: TranslateService, public bussineService: BussineService, public articleDetailService: ArticleDetailService ,
@@ -76,6 +79,7 @@ export class WarehouseComponent implements OnInit {
     this.getListBussine();
     this.getListWarehouse();
     this.getProviderCode();
+    this.getListWareHouse();
   }
 
 
@@ -123,8 +127,6 @@ export class WarehouseComponent implements OnInit {
       ])],
     });
     this.form.controls['dateStartWarehouse'].setValue('2018-08-05T21:15:48.000Z');
-     
-
   }
 
   public getValidateInfo(): boolean {
@@ -192,10 +194,17 @@ export class WarehouseComponent implements OnInit {
         console.log(result);
       });
   }
+
+  public getListWareHouse() {
+   this.warehouseService.listWarehouse()
+     .subscribe( result => {
+       console.log(result,"---");
+      this.dataWarehouser = result;
+     });
+  }
+
   public registerWarehouse() {
-    console.log(this.getValidateInfo(),this.form.value['dateStartWarehouse']);
     if (true === this.getValidateInfo() ) {
-      console.log('Registrado conrrectamente');
       this.provider = new Provider();
       this.provider.providerId = this.form.value['providerId'];
       this.articleProvider = new ArticleProvider();
@@ -203,8 +212,6 @@ export class WarehouseComponent implements OnInit {
       this.articleProvider.nameArticleProvider = this.form.value['nameArticleprovider'];
       this.wareHouseMain = new WareHouseMain();
       this.wareHouseMain.wnameId = this.form.value['wnameId'];
-      /*//this.wareHouseMain.addressWName = 'ooooooooooooooo';
-      //this.wareHouseMain.codeWarehouse = 'ooooooooooooooo';*/
       this.wareHouseMain.isDelete = false;
       this.business = new Business();
       this.business.businessId = this.form.value['businessId'];
@@ -221,10 +228,9 @@ export class WarehouseComponent implements OnInit {
       this.warehouse.fatureWarehouse = this.form.value['fatureWarehouse'];
       this.warehouse.quantytiProviderWarehouse = this.form.value['quantytiProviderWarehouse'];
       this.warehouse.quantytiCurrectWarehouse = this.form.value['quantytiProviderWarehouse'];
-
       this.warehouseService.addWarehouse(this.warehouse)
         .subscribe(result => {
-
+          this.getListWareHouse();
         });
     }
   }

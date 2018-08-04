@@ -1,5 +1,6 @@
 package com.storeArticle.store.service.warehouseProductService;
 
+import com.storeArticle.store.model.warehouse.WareHouseMain;
 import com.storeArticle.store.service.dto.BussineDTOService;
 import com.storeArticle.store.service.dto.SelectDTOService;
 import com.storeArticle.store.service.dto.SelectVEO;
@@ -29,6 +30,11 @@ public class WareHouseMainService {
     public List<SelectVEO> getWareHouserMainListDTO(){
         return selectDTOService.getIdNameDTOAndId(getWarehouseCodeListAll());
     }
+    public List<WareHouseMain> getWarehouseMainListAll(){
+        return entityManager.createQuery(getlookForWarehouseHql.getListWarehouseHql.getHql())
+                .setParameter(1,false)
+                .getResultList();
 
+    }
 
 }

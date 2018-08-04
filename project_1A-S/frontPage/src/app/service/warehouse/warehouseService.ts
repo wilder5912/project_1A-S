@@ -20,7 +20,6 @@ export class WarehouseService {
 
 
   public addWarehouse(warehouse: Warehouse): Observable<Object>  {
-    console.log(JSON.stringify(warehouse));
     return this.http.post<Object>(this.dataService.getUrl('/warehouse/addWarehouse'), JSON.stringify(warehouse),
       { headers: this.dataService.headerSend
       }
@@ -29,6 +28,13 @@ export class WarehouseService {
 
   public listWarehouseCode(): Observable<Object[]> {
     return this.http.get<Object[]>(this.dataService.getUrl('/warehouse/listWarehouseCode'),
+      {
+        headers: this.dataService.headerSend
+      }
+    );
+  }
+  public listWarehouse(): Observable<Object[]> {
+    return this.http.get<Object[]>(this.dataService.getUrl('/warehouse/listWarehouse'),
       {
         headers: this.dataService.headerSend
       }
