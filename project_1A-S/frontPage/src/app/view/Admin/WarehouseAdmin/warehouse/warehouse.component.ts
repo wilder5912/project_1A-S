@@ -152,9 +152,19 @@ export class WarehouseComponent implements OnInit {
   }
 
   openModalWithClass(template: TemplateRef<any>) {
-    /* this.isEditForm = true;
-     this.form.controls['businessId'].setValue('');
-     this.form.controls['nameBu'].setValue('');*/
+    this.isEditForm = true;
+    this.form.controls['businessId'].setValue('');
+    this.form.controls['articleDetailId'].setValue('');
+    this.form.controls['wnameId'].setValue('');
+    this.form.controls['articleProviderId'].setValue('');
+    this.form.controls['quantytiProviderWarehouse'].setValue('');
+    this.form.controls['codeArticleprovider'].setValue('');
+    this.form.controls['nameArticleprovider'].setValue('');
+    this.form.controls['providerId'].setValue('');
+    this.form.controls['fatureWarehouse'].setValue('');
+    this.form.controls['dateStartWarehouse'].setValue('');
+    this.form.controls['dateEndWarehouse'].setValue('');
+    this.form.controls['warehouseId'].setValue('');
     this.modalRefWarehouser = this.dataService.showModalBig(template, this.config);
   }
   getListBussine(): void {
@@ -165,20 +175,17 @@ export class WarehouseComponent implements OnInit {
         console.log(error );
       });
   }
-  getListBusiness(businessId: number, articleBusiness: number ): void {
+/*  getListBusiness(businessId: number, articleBusiness: number ): void {
     this.form.controls['businessId'].setValue(businessId + '');
     this.getSelectArticleBusiness(businessId, articleBusiness);
-   /* this.bussineService.getBussine()
+   /!* this.bussineService.getBussine()
       .subscribe(result => {
         this.bussineSelect = result;
 
       }, error => {
         console.log(error );
-      });*/
-  }
-
-
-
+      });*!/
+  }*/
 
   onSelectBussine(event) {
     this.dataService.bussineId = event.value;
@@ -193,11 +200,8 @@ export class WarehouseComponent implements OnInit {
   public getSelectArticleBusiness(businessId: number, articleBusiness: number) {
     this.articleDetailService.getArticleDetailIdBussine(businessId)
       .subscribe(result => {
-        //this.articleSelect = result;
       if ( null !== result ) {
         this.articleSelect = result;
-        console.log(result,"************",articleBusiness);
-
         this.form.controls['articleDetailId'].setValue(articleBusiness + '');
 
 
@@ -223,7 +227,6 @@ export class WarehouseComponent implements OnInit {
   public getListWareHouse() {
    this.warehouseService.listWarehouse()
      .subscribe( result => {
-       console.log(result, "2-2222----");
       this.dataWarehouser = result;
      });
   }

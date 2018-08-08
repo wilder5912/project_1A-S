@@ -85,6 +85,8 @@ import { QuantytiCurrectPipe } from './service/pipe/warehouse/quantyti-currect.p
 import { QuantytiProviderPipe } from './service/pipe/warehouse/quantyti-provider.pipe';
 import { MainWarehouseCodePipe } from './service/pipe/warehouse/main-warehouse-code.pipe';
 import { FatureWarehousePipe } from './service/pipe/warehouse/fature-warehouse.pipe';
+import { HomeCashierPageComponent } from './view/cashier/home-cashier-page/home-cashier-page.component';
+import { HomeCashierComponent } from './view/cashier/home-cashier/home-cashier.component';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -165,6 +167,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     QuantytiProviderPipe,
     MainWarehouseCodePipe,
     FatureWarehousePipe,
+    HomeCashierPageComponent,
+    HomeCashierComponent,
   ],
   imports: [
     BrowserModule,

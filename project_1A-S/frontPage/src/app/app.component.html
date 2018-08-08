@@ -1,7 +1,7 @@
 
 <app-load-page></app-load-page>
 
-<div *ngIf="user.typeUser != 'Admin'">
+<div *ngIf="user.typeUser == 'User' || user.typeUser == '' || user.typeUser == ' ' || null == user.typeUser ">
   <app-header-user></app-header-user>
  <div *ngIf="dataService.urlPage=='/home'">
  </div>
@@ -18,7 +18,13 @@
 
 </div>
 
-<div *ngIf="user.typeUser=='Admin'">
+<div *ngIf="user.typeUser =='Admin'">
   <app-home-admin-page></app-home-admin-page>
-
 </div>
+
+<div *ngIf="user.typeUser =='Cashier'">
+  <app-home-cashier-page></app-home-cashier-page>
+</div>
+
+
+
