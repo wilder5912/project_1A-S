@@ -54,4 +54,5 @@ public class ArticleProvider implements Serializable {
     public void setDelete(boolean delete) {
         isDelete = delete;
     }
+
 }

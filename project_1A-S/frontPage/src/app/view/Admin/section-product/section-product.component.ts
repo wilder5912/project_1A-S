@@ -148,8 +148,7 @@ public onSelectGroup(event) {
       } , error => {
         console.log(error);
       });
-
-}
+  }
 public edit(itemTableSection, template: TemplateRef<any>) {
    this.isEditForm = false;
   this.form.controls['sectionId'].setValue(itemTableSection.sectionId + '');

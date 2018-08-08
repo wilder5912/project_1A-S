@@ -74,6 +74,18 @@ import { ProviderComponent } from './view/Admin/ProviderAdmin/provider/provider.
 import { ArticleProviderComponent } from './view/Admin/ProviderAdmin/article-provider/article-provider.component';
 import { WarehouseComponent } from './view/Admin/WarehouseAdmin/warehouse/warehouse.component';
 import { AddProToBusComponent } from './view/Admin/ProviderAdmin/add-pro-to-bus/add-pro-to-bus.component';
+import { CodeArPipe } from './service/pipe/warehouse/code-ar.pipe';
+import { CodeArticleProviderPipe } from './service/pipe/warehouse/code-article-provider.pipe';
+import { IdWarehousePipe } from './service/pipe/warehouse/id-warehouse.pipe';
+import { NameArPipe } from './service/pipe/warehouse/name-ar.pipe';
+import { NameBusPipe } from './service/pipe/warehouse/name-bus.pipe';
+import { NameSubSeccionPipe } from './service/pipe/warehouse/name-sub-section.pipe';
+import { PrecyArPipe } from './service/pipe/warehouse/precy-ar.pipe';
+import { QuantytiCurrectPipe } from './service/pipe/warehouse/quantyti-currect.pipe';
+import { QuantytiProviderPipe } from './service/pipe/warehouse/quantyti-provider.pipe';
+import { MainWarehouseCodePipe } from './service/pipe/warehouse/main-warehouse-code.pipe';
+import { FatureWarehousePipe } from './service/pipe/warehouse/fature-warehouse.pipe';
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -142,7 +154,17 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     ArticleProviderComponent,
     WarehouseComponent,
     AddProToBusComponent,
-
+    CodeArPipe,
+    CodeArticleProviderPipe,
+    IdWarehousePipe,
+    NameArPipe,
+    NameBusPipe,
+    NameSubSeccionPipe,
+    PrecyArPipe,
+    QuantytiCurrectPipe,
+    QuantytiProviderPipe,
+    MainWarehouseCodePipe,
+    FatureWarehousePipe,
   ],
   imports: [
     BrowserModule,

@@ -91,12 +91,13 @@ export class WarehouseComponent implements OnInit {
         Validators.required
       ])],
       articleDetailId: ['', Validators.compose([
-        Validators.required,
-        Validators.minLength(1),
+        Validators.required
       ])],
       quantytiProviderWarehouse: ['', Validators.compose([
         Validators.required,
         Validators.minLength(1),
+      ])],
+      articleProviderId: ['', Validators.compose([
       ])],
       codeArticleprovider: ['', Validators.compose([
         Validators.required,
@@ -126,7 +127,6 @@ export class WarehouseComponent implements OnInit {
         Validators.required
       ])],
     });
-    this.form.controls['dateStartWarehouse'].setValue('2018-08-05T21:15:48.000Z');
   }
 
   public getValidateInfo(): boolean {
@@ -165,6 +165,17 @@ export class WarehouseComponent implements OnInit {
         console.log(error );
       });
   }
+  getListBusiness(businessId: number, articleBusiness: number ): void {
+    this.form.controls['businessId'].setValue(businessId + '');
+    this.getSelectArticleBusiness(businessId, articleBusiness);
+   /* this.bussineService.getBussine()
+      .subscribe(result => {
+        this.bussineSelect = result;
+
+      }, error => {
+        console.log(error );
+      });*/
+  }
 
 
 
@@ -179,7 +190,22 @@ export class WarehouseComponent implements OnInit {
         this.articleSelect = result;
       });
   }
+  public getSelectArticleBusiness(businessId: number, articleBusiness: number) {
+    this.articleDetailService.getArticleDetailIdBussine(businessId)
+      .subscribe(result => {
+        //this.articleSelect = result;
+      if ( null !== result ) {
+        this.articleSelect = result;
+        console.log(result,"************",articleBusiness);
 
+        this.form.controls['articleDetailId'].setValue(articleBusiness + '');
+
+
+      }
+
+
+      });
+  }
   public getListWarehouse() {
       this.wareHouseMainService.listWarehouseCodeMain()
         .subscribe(result => {
@@ -191,19 +217,19 @@ export class WarehouseComponent implements OnInit {
     this.providerService.listProviderDTO()
       .subscribe(result => {
         this.providerSelect = result;
-        console.log(result);
       });
   }
 
   public getListWareHouse() {
    this.warehouseService.listWarehouse()
      .subscribe( result => {
-       console.log(result,"---");
+       console.log(result, "2-2222----");
       this.dataWarehouser = result;
      });
   }
 
   public registerWarehouse() {
+        this.isEditForm = true;
     if (true === this.getValidateInfo() ) {
       this.provider = new Provider();
       this.provider.providerId = this.form.value['providerId'];
@@ -233,5 +259,74 @@ export class WarehouseComponent implements OnInit {
           this.getListWareHouse();
         });
     }
+  }
+
+  public updateWarehouse() {
+    if (true === this.getValidateInfo() ) {
+      this.provider = new Provider();
+      this.provider.providerId = this.form.value['providerId'];
+      this.articleProvider = new ArticleProvider();
+      this.articleProvider.articleProviderId = this.form.value['articleProviderId'];
+      this.articleProvider.codeArticleProvider = this.form.value['codeArticleprovider'];
+      this.articleProvider.nameArticleProvider = this.form.value['nameArticleprovider'];
+      this.wareHouseMain = new WareHouseMain();
+      this.wareHouseMain.wnameId = this.form.value['wnameId'];
+      this.wareHouseMain.isDelete = false;
+      this.business = new Business();
+      this.business.businessId = this.form.value['businessId'];
+      this.articleDetail = new ArticleDetail();
+      this.articleDetail.articleDetailId = this.form.value['articleDetailId'];
+      this.warehouse = new Warehouse();
+      this.warehouse.warehouseId = this.form.value['warehouseId']
+      this.warehouse.providerId = this.provider;
+      this.warehouse.businessId = this.business;
+      this.warehouse.articleDetailId = this.articleDetail;
+      this.warehouse.articleProviderId  =  this.articleProvider;
+      this.warehouse.wnameId  =  this.wareHouseMain;
+      this.warehouse.dateStartWarehouse = this.form.value['dateStartWarehouse'];
+      this.warehouse.dateEndWarehouse = this.form.value['dateEndWarehouse'];
+      this.warehouse.fatureWarehouse = this.form.value['fatureWarehouse'];
+      this.warehouse.quantytiProviderWarehouse = this.form.value['quantytiProviderWarehouse'];
+      this.warehouseService.editWarehouse( this.warehouse)
+        .subscribe( result => {
+          this.getListWareHouse();
+        });
+    }
+  }
+
+  public edit(itemTableBusiness: Warehouse , template: TemplateRef<any>) {
+    console.log(itemTableBusiness);
+    this.isEditForm = false;
+    this.formValidateModal();
+    this.form.controls['businessId'].setValue(itemTableBusiness.businessId.businessId + '');
+    this.articleDetailService.getArticleDetailIdBussine(itemTableBusiness.businessId.businessId)
+      .subscribe(result => {
+        this.articleSelect = result;
+        if ( null !== result ) {
+          this.form.controls['articleDetailId'].setValue( itemTableBusiness.articleDetailId.articleDetailId + '');
+          this.form.controls['wnameId'].setValue(itemTableBusiness.wnameId.wnameId + '');
+          this.form.controls['articleProviderId'].setValue(itemTableBusiness.articleProviderId.articleProviderId + '');
+          this.form.controls['quantytiProviderWarehouse'].setValue(itemTableBusiness.quantytiProviderWarehouse + '');
+          this.form.controls['codeArticleprovider'].setValue(itemTableBusiness.articleProviderId.codeArticleProvider + '');
+          this.form.controls['nameArticleprovider'].setValue(itemTableBusiness.articleProviderId.nameArticleProvider + '');
+          this.form.controls['providerId'].setValue(itemTableBusiness.providerId.providerId + '');
+          this.form.controls['fatureWarehouse'].setValue(itemTableBusiness.fatureWarehouse + '');
+          this.form.controls['dateStartWarehouse'].setValue(itemTableBusiness.dateStartWarehouse + '');
+          this.form.controls['dateEndWarehouse'].setValue(itemTableBusiness.dateEndWarehouse + '');
+          this.form.controls['warehouseId'].setValue(itemTableBusiness.warehouseId + '');
+          this.modalRefWarehouser = this.dataService.showModalBig(template, this.config);
+        }
+      });
+  }
+
+  public remove(itemTableSection: Warehouse) {
+    this.warehouse = new Warehouse();
+    this.warehouse.warehouseId = itemTableSection.articleProviderId.articleProviderId;
+    this.warehouseService.deleteWarehouse(this.warehouse)
+      .subscribe(result => {
+        this.getListWareHouse();
+      } , error => {
+        console.log(error);
+      });
   }
 }

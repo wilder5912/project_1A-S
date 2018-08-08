@@ -9,18 +9,20 @@ import { Router } from '@angular/router';
 export class WarehouseService {
 
   constructor(private http: HttpClient, public dataService: DataService , public router: Router) { }
-
-/*  public addProvider(provider: Provider): Observable<Provider>  {
-    return this.http.post<Provider>(this.dataService.getUrl('/provider/addProvider'), JSON.stringify(provider),
-      {
-        headers: this.dataService.headerSend
-      }
-    );
-  }*/
-
-
   public addWarehouse(warehouse: Warehouse): Observable<Object>  {
     return this.http.post<Object>(this.dataService.getUrl('/warehouse/addWarehouse'), JSON.stringify(warehouse),
+      { headers: this.dataService.headerSend
+      }
+    );
+  }
+  public editWarehouse(warehouse: Warehouse): Observable<Object>  {
+    return this.http.post<Object>(this.dataService.getUrl('/warehouse/editWarehouser'), JSON.stringify(warehouse),
+      { headers: this.dataService.headerSend
+      }
+    );
+  }
+  public deleteWarehouse(warehouse: Warehouse): Observable<Object>  {
+    return this.http.post<Object>(this.dataService.getUrl('/warehouse/deleteWarehouse'), JSON.stringify(warehouse),
       { headers: this.dataService.headerSend
       }
     );

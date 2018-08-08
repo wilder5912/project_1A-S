@@ -72,7 +72,6 @@ public class WarehouseService {
         warehouse.setFatureWarehouse(warehouseNew.getFatureWarehouse());
         warehouse.setFatureWarehouse (warehouseNew.getFatureWarehouse());
         warehouse.setQuantytiProviderWarehouse(warehouseNew.getQuantytiProviderWarehouse());
-        warehouse.setQuantytiCurrectWarehouse(warehouseNew.getQuantytiCurrectWarehouse());
         warehouse.setDateStartWarehouse(warehouseNew.getDateStartWarehouse());
         warehouse.setDateEndWarehouse(warehouseNew.getDateEndWarehouse());
         warehouse.setCodeWarehouse(warehouseNew.getCodeWarehouse());

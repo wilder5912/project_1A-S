@@ -74,28 +74,6 @@
                    </div>
                  </div>
 
-<!--
-                <input type="text" class="form-control" name="codeWarehouse"
-                       id="codeWarehouse"
-                       formControlName="codeWarehouse" list="countries"
-                />
-                 <datalist id="countries">
-
-
-                   <select>
-                     <option *ngFor="let c of warehouseList" [value]="c"></option>
-                   </select>
-
-
-
-                 </datalist>
-
-                 <div *ngIf="form.controls.codeWarehouse.errors" class="">
-                  <div *ngIf="form.controls.codeWarehouse.errors.required && form.controls.codeWarehouse.dirty" class="alert alert-danger">
-                    {{'Input_Require' | translate}}
-                  </div>
-
-                 </div>-->
               </div>
 
                <div class="form-group">
@@ -223,6 +201,11 @@
                        formControlName="warehouseId"
                        hidden="true"
                 >
+                  <input md-input
+                       formControlName="articleProviderId"
+                       hidden="true"
+                >
+
               </div>
                 <div class="form-group">
                 <div *ngIf="isEditForm; then addData else editData"></div>
@@ -230,7 +213,7 @@
                   <button [disabled]="loading" type="button" (click)="registerWarehouse()"  class="btn btn-primary">{{'Add_Warehouse'| translate }}</button>
                 </ng-template>
                 <ng-template #editData>
-                  <button [disabled]="loading" type="button" (click)="editProvider()"  class="btn btn-primary">{{'Edit_Warehouse'| translate }}</button>
+                  <button [disabled]="loading" type="button" (click)="updateWarehouse()"  class="btn btn-primary">{{'Edit_Warehouse'| translate }}</button>
                 </ng-template>
               </div>
               </div>
@@ -271,6 +254,7 @@
             <option ngValue="warehouseId">N#</option>
             <option ngValue="nombreBu">Nombre Sucursal</option>
             <option ngValue="nameSubSection">Marca</option>
+            <option ngValue="fatureWarehouse">Factura</option>
 
           </select>
         </div>
@@ -290,55 +274,106 @@
 
 
   <div class="panel panel-default scroll-table-with">
-    <table class="table table-striped" [mfData]="dataWarehouser | dataFilterBusiness : filterQuery" #mf="mfDataTable"
+    <table class="table table-striped" [mfData]="dataWarehouser | filterCodeArPipe: filterQueCoAr | filtercodarprovipipe: filterQue2 | filteridwahopipe: afilterQue3 | filterNaArPipe: afilterQue4 | filterbusiness: bfilterQue5 | filterwarehousecodepipe: bfilterQue6 | filternamesubseccpipe: bfilterQue7 | filterquantyticurrect: bfilterQue8 | filterquantyprovpipe: bfilterQue9 | filterpresyarpipe: bfilterQue10 | filterfaturewarehopipe: bfilterQue11  " #mf="mfDataTable"
            [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
       <thead>
       <tr>
-         <th >
+         <th>
           <mfDefaultSorter by="warehouseId">Id</mfDefaultSorter>
         </th>
-        <th >
+        <th>
+          <mfDefaultSorter by="warehouseId">Codigo Alamacen</mfDefaultSorter>
+        </th>
+        <th>
           <mfDefaultSorter by="nameBu">Sucursal</mfDefaultSorter>
         </th>
-        <th >
+        <th>
           <mfDefaultSorter by="nameSubSection">Marca</mfDefaultSorter>
         </th>
-        <th >
+        <th>
           <mfDefaultSorter by="codeArticleProvider">Codigo Articulo proveedor</mfDefaultSorter>
         </th>
-        <th >
+        <th>
           <mfDefaultSorter by="nameAr">Codigo Articulo proveedor</mfDefaultSorter>
         </th>
-        <th >
+        <th>
           <mfDefaultSorter by="codigoAr">Codigo Articulo proveedor</mfDefaultSorter>
         </th>
-        <th >
+        <th>
           <mfDefaultSorter by="precyAr">Codigo Articulo proveedor</mfDefaultSorter>
         </th>
-        <th >
-          <mfDefaultSorter by="quantytiCurrectWarehouse">Numero Llegada Almacen</mfDefaultSorter>
+        <th>
+          <mfDefaultSorter by="quantytiCurrectWarehouse">Numero Actual Almacen</mfDefaultSorter>
+        </th>
+        <th>
+          <mfDefaultSorter by="quantytiProviderWarehouse">Numeros Llegada Almacen</mfDefaultSorter>
+        </th>
+        <th>
+          <mfDefaultSorter by="fatureWarehouse">Factura</mfDefaultSorter>
         </th>
         <th >
-          <mfDefaultSorter by="quantytiProviderWarehouse">Nummeros de Articulos Almacen</mfDefaultSorter>
-        </th>
 
-        <th >
-          <mfDefaultSorter by="businessId">Eliminar/Editar</mfDefaultSorter>
         </th>
       </tr>
       <tr>
-        <th colspan="3">
-          Filtrado Por Grupo:
-          <input class="form-control" [(ngModel)]="filterQuery"/>
+        <th >
+          Filtrado N:
+          <input class="form-control" [(ngModel)]="afilterQue3"/>
         </th>
+        <th >
+          Filtrado Almacen Code:
+          <input class="form-control" [(ngModel)]="bfilterQue6"/>
+        </th>
+        <th >
+          Filtrado Por Sucursal:
+          <input class="form-control" [(ngModel)]="bfilterQue5"/>
+        </th>
+
+        <th >
+          Filtrado Por Codigo Marca:
+          <input class="form-control" [(ngModel)]="bfilterQue7"/>
+        </th>
+
+        <th >
+          Filtrado Codio Proveedor :
+          <input class="form-control" [(ngModel)]="filterQue2"/>
+        </th>
+
+        <th >
+          Filtrado por nombre Articulo:
+          <input class="form-control" [(ngModel)]="afilterQue4"/>
+        </th>
+
+        <th >
+          Filtrado Por Codigo Articulo:
+          <input class="form-control" [(ngModel)]="filterQueCoAr"/>
+        </th>
+
+        <th >
+          Filtrado Por Precio de proveedor:
+          <input class="form-control" [(ngModel)]="bfilterQue10"/>
+        </th>
+
+        <th >
+          Filtrado Cantidad  Almacen:
+          <input class="form-control" [(ngModel)]="bfilterQue8"/>
+        </th>
+
+        <th >
+          Filtrado Cantidad Llegada:
+          <input class="form-control" [(ngModel)]="bfilterQue9"/>
+        </th>
+        <th >
+          Filtrado Factura:
+          <input class="form-control" [(ngModel)]="bfilterQue11"/>
+        </th>
+
       </tr>
       </thead>
       <tbody>
-
-
-
       <tr *ngFor="let item of mf.data">
         <td>{{item.warehouseId}}</td>
+        <td>{{item.wnameId.codeWarehouse}}</td>
         <td>{{item.businessId.nameBu}}</td>
         <td>{{item.articleDetailId.subSectionId.nameSubSection}}</td>
         <td>{{item.articleProviderId.codeArticleProvider}}</td>
@@ -347,12 +382,10 @@
         <td>{{item.articleDetailId.articleId.precyAr}}</td>
         <td>{{item.quantytiCurrectWarehouse}}</td>
         <td>{{item.quantytiProviderWarehouse}}</td>
-
-
+        <td>{{item.fatureWarehouse}}</td>
         <td>
           <button (click)="remove(item)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
           <button (click)="edit(item,template)" class="btn btn-danger "><span class="glyphicon glyphicon-pencil"></span></button>
-
         </td>
       </tr>
       </tbody>
