@@ -28,6 +28,10 @@ import { ChatPageComponent } from './view/bodyPage/chat-page/chat-page.component
 import { AddInformationArticleComponent } from './view/Admin/add-information-article/add-information-article.component';
 import { ListArticleFiendComponent } from './view/bodyPage/list-article-fiend/list-article-fiend.component';
 import { SubSectionAndArticleComponent } from './view/Admin/sub-section-and-article/sub-section-and-article.component';
+import { TypeMoneyComponent } from './view/Admin/type-money/type-money.component';
+import { RoleUserComponent } from './view/Admin/role-user/role-user.component';
+import { LookForUserComponent } from './view/Admin/DetailRoleUser/look-for-user/look-for-user.component';
+import { DetailRoleUserComponent } from './view/Admin/DetailRoleUser/detail-role-user/detail-role-user.component';
 
 const routes: Routes = [
   { path : 'home', component: HomeComponent},
@@ -56,6 +60,10 @@ const routes: Routes = [
   { path : 'contactUs', component: ContactUsComponent},
   { path : 'HelpPage', component: HelpPageComponent},
   { path : 'chat', component: ChatPageComponent},
+  { path : 'typeMoney', component: TypeMoneyComponent},
+  { path : 'roleUser', component: RoleUserComponent},
+  { path : 'lookForUser', component: LookForUserComponent},
+  { path : 'detailRoleUser/:idUser', component: DetailRoleUserComponent},
   { path: '', component: HomeComponent },
   { path : '', redirectTo: '/home', pathMatch: 'full'},
 ];

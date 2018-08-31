@@ -87,6 +87,17 @@ import { MainWarehouseCodePipe } from './service/pipe/warehouse/main-warehouse-c
 import { FatureWarehousePipe } from './service/pipe/warehouse/fature-warehouse.pipe';
 import { HomeCashierPageComponent } from './view/cashier/home-cashier-page/home-cashier-page.component';
 import { HomeCashierComponent } from './view/cashier/home-cashier/home-cashier.component';
+import { TypeMoneyComponent } from './view/Admin/type-money/type-money.component';
+import { TypeMoneyIdPipe } from './service/pipe/typeMoney/type-money-id.pipe';
+import { NameTypeMoneyPipe } from './service/pipe/typeMoney/name-type-money.pipe';
+import { TypeChangeTypeMoneyPipe } from './service/pipe/typeMoney/type-change-type-money.pipe';
+import { RoleUserComponent } from './view/Admin/role-user/role-user.component';
+import { RoleUserIdPipe } from './service/pipe/roleUser/role-user-id.pipe';
+import { NameRolePipe } from './service/pipe/roleUser/name-role.pipe';
+import { DetaillRoleComponent } from './view/Admin/DetailRoleUser/detaill-role/detaill-role.component';
+import { LookForUserComponent } from './view/Admin/DetailRoleUser/look-for-user/look-for-user.component';
+import { DetailRoleUserComponent } from './view/Admin/DetailRoleUser/detail-role-user/detail-role-user.component';
+import { InfoUserComponent } from './view/Admin/DetailRoleUser/info-user/info-user.component';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -169,6 +180,17 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     FatureWarehousePipe,
     HomeCashierPageComponent,
     HomeCashierComponent,
+    TypeMoneyComponent,
+    TypeMoneyIdPipe,
+    NameTypeMoneyPipe,
+    TypeChangeTypeMoneyPipe,
+    RoleUserComponent,
+    RoleUserIdPipe,
+    NameRolePipe,
+    DetaillRoleComponent,
+    LookForUserComponent,
+    DetailRoleUserComponent,
+    InfoUserComponent,
   ],
   imports: [
     BrowserModule,

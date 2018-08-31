@@ -20,7 +20,6 @@
 
               <div class="col-lg-6">
 
-
                 <div class="form-group">
                   <label for="businessId">Bussine</label>
                   <ng-select
@@ -54,12 +53,8 @@
                   </div>
                 </div>
 
-
-
-
                <div class="form-group">
                 <label for="wnameId">Codigo Almacen</label>
-
                  <ng-select
                    [options]="warehouseList"
                    [multiple]="false"
@@ -252,10 +247,10 @@
         <div class="row">
           <select class="form-control input-sm" [(ngModel)]="sortBy">
             <option ngValue="warehouseId">N#</option>
-            <option ngValue="nombreBu">Nombre Sucursal</option>
+           <!-- <option ngValue="nombreBu">Nombre Sucursal</option>
             <option ngValue="nameSubSection">Marca</option>
             <option ngValue="fatureWarehouse">Factura</option>
-
+-->
           </select>
         </div>
       </div>

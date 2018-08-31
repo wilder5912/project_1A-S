@@ -260,6 +260,7 @@ export class WarehouseComponent implements OnInit {
       this.warehouseService.addWarehouse(this.warehouse)
         .subscribe(result => {
           this.getListWareHouse();
+          this.modalRefWarehouser.hide();
         });
     }
   }
@@ -293,12 +294,12 @@ export class WarehouseComponent implements OnInit {
       this.warehouseService.editWarehouse( this.warehouse)
         .subscribe( result => {
           this.getListWareHouse();
+          this.modalRefWarehouser.hide();
         });
     }
   }
 
   public edit(itemTableBusiness: Warehouse , template: TemplateRef<any>) {
-    console.log(itemTableBusiness);
     this.isEditForm = false;
     this.formValidateModal();
     this.form.controls['businessId'].setValue(itemTableBusiness.businessId.businessId + '');

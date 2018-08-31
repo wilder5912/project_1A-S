@@ -9,7 +9,10 @@ export class UserService {
     public formdata: FormData = new FormData();
     constructor(private http: HttpClient, public dataService: DataService) { }
     public register( user: User): Observable<User> {
-      return this.http.post<User>(this.dataService.getUrl('/user/addUser'), JSON.stringify(user));
+      return this.http.post<User>(this.dataService.getUrl('/user/addUser'), JSON.stringify(user),
+  { headers: this.dataService.headerSend
+      }
+      );
     }
 
     public editImage(file: File): Observable<HttpEvent<{}>> {

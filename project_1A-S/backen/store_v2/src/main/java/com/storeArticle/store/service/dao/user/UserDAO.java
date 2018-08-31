@@ -1,5 +1,7 @@
 package com.storeArticle.store.service.dao.user;
 
+import com.storeArticle.store.model.accounts.DetailRole;
+import com.storeArticle.store.model.accounts.RoleUser;
 import com.storeArticle.store.model.accounts.User;
 import com.storeArticle.store.service.dao.groupProductDTO.InfoCrup;
 
@@ -10,7 +12,8 @@ public class UserDAO implements InfoCrup {
     @PersistenceContext
     private EntityManager entityManager;
     private User user;
-
+    private DetailRole detailRole;
+    private RoleUser roleUser;
     public UserDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
@@ -18,7 +21,7 @@ public class UserDAO implements InfoCrup {
     @Override
     public void addObject(Object object) {
         this.user = (User) object;
-            this.user.setTypeUser("User");
+        this.user.setTypeUser("User");
         this.entityManager.persist(this.user);
     }
 }

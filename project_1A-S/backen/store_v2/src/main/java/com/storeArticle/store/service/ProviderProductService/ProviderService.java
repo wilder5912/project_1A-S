@@ -3,7 +3,7 @@ package com.storeArticle.store.service.ProviderProductService;
 import com.storeArticle.store.model.provider.Provider;
 import com.storeArticle.store.service.dto.SelectDTOService;
 import com.storeArticle.store.service.dto.SelectVEO;
-import com.storeArticle.store.service.enumPage.ProviderQueryEnum;
+import com.storeArticle.store.service.enumPage.providerEnun.ProviderQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,7 +64,6 @@ public class ProviderService {
                 .setParameter(1, articleProviderCode)
                 .setParameter(2,false)
                 .getResultList();
-
     }
     public List<Provider> getProviderListAll(){
         String groupProductHql = ProviderQueryEnum.getListProviderHql.getHql();

@@ -35,7 +35,6 @@ export class HomeAdminPageComponent implements OnInit {
     this.stateCss = true;
     this.stateCss2 = true;
     this.stateCss3 = true;
-
     this.dataService.redirectTypeUser();
   }
 

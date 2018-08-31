@@ -1,18 +1,23 @@
 package com.storeArticle.store.service.accounts;
 
+import com.storeArticle.store.model.accounts.DetailRole;
+import com.storeArticle.store.model.accounts.RoleUser;
 import com.storeArticle.store.model.accounts.User;
 import com.storeArticle.store.service.JwtGenerator.JwtGeneratorService;
 import com.storeArticle.store.service.JwtGenerator.JwtValidatorService;
 import com.storeArticle.store.service.dao.groupProductDTO.InfoCrup;
 import com.storeArticle.store.service.dao.user.UserDAO;
-import com.storeArticle.store.service.enumPage.UserQueryEnum;
+import com.storeArticle.store.service.enumPage.userEmun.UserQueryEnum;
+import com.storeArticle.store.service.roleService.DetailRoleService;
+import com.storeArticle.store.service.roleService.RoleUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.management.relation.Role;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.net.MalformedURLException;
@@ -36,15 +41,26 @@ public class UserService implements UserCrup {
     private  Path rootLocation = Paths.get("../webapps/store-0.0.1-SNAPSHOT/upload-dir/userImage");
     private InfoCrup infoCrup;
 
+    private DetailRole detailRole;
+    private RoleUser roleUser;
+    @Autowired
+    private DetailRoleService detailRoleService;
+    @Autowired
+    private RoleUserService roleUserService;
+
     @Override
     public void addUser(User user){
         user.setCodeUser(randomString());
         user.setImagenUser("user-local.png");
         user.setTokenUser(jwtGeneratorService.generate(user));
         user.setIdBoxUser(0);
-        infoCrup = new UserDAO(entityManager);
-        infoCrup.addObject(user);
-        ///entityManager.persist(user);
+        this.roleUser = this.roleUserService.getRoleUser(2);
+        user.setTypeUser(this.roleUser.getNameRole());
+        entityManager.persist(user);
+        this.detailRole = new DetailRole();
+        this.detailRole.setUserID(user);
+        this.detailRole.setRoleUserId(this.roleUser);
+        detailRoleService.addDetailRole(detailRole);
     }
 
     @Override

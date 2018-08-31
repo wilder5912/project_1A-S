@@ -3,7 +3,7 @@ package com.storeArticle.store.service.ProviderProductService;
 import com.storeArticle.store.model.groupProductModel.Business;
 import com.storeArticle.store.model.provider.DetailProvider;
 import com.storeArticle.store.model.provider.Provider;
-import com.storeArticle.store.service.enumPage.DetailProviderQueryEnum;
+import com.storeArticle.store.service.enumPage.providerEnun.DetailProviderQueryEnum;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,0 +1,14 @@
+.col-center{
+  float: none;
+  margin: 0 auto;
+}
+.title-head{
+  text-align: center;
+}
+.margin-top-button{
+  margin-top: 1%;
+}
+.scroll-table-with{
+  overflow: scroll;
+  width: 100%;
+}

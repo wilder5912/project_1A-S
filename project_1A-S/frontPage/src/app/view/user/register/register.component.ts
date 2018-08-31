@@ -42,6 +42,7 @@ export class RegisterComponent implements OnInit {
 
       this.userService.register(this.user)
         .subscribe(result => {
+          console.log(result)
           if (result) {
             this.emailExist = true;
             sessionStorage.setItem('token', result.tokenUser);

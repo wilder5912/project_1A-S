@@ -16,7 +16,7 @@ public class Box implements Serializable {
     private int boxId;
 
     @ManyToOne
-    @JoinColumn(name = "bussine_id")
+    @JoinColumn(name = "business_id")
     private Business businessId;
 
     @ManyToOne

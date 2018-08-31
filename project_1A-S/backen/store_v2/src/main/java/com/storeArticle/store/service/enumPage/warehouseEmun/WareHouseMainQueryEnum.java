@@ -1,4 +1,4 @@
-package com.storeArticle.store.service.enumPage;
+package com.storeArticle.store.service.enumPage.warehouseEmun;
 
 public enum WareHouseMainQueryEnum {
 

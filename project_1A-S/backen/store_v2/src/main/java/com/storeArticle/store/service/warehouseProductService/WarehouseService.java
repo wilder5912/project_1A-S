@@ -6,7 +6,6 @@ import com.storeArticle.store.model.provider.Provider;
 import com.storeArticle.store.service.ProviderProductService.ArticleProviderService;
 import com.storeArticle.store.service.ProviderProductService.ProviderService;
 import com.storeArticle.store.service.dto.SelectDTOService;
-import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.groupProductService.ArticleDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-import static com.storeArticle.store.service.enumPage.WarehouseQueryEnum.getlookForWarehouseHql;
+import static com.storeArticle.store.service.enumPage.warehouseEmun.WarehouseQueryEnum.getlookForWarehouseHql;
 
 @Service
 @Transactional

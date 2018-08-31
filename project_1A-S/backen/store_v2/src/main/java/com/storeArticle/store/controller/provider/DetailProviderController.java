@@ -1,6 +1,7 @@
 package com.storeArticle.store.controller.provider;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.storeArticle.store.model.accounts.DetailRole;
 import com.storeArticle.store.model.provider.DetailProvider;
 import com.storeArticle.store.model.provider.Provider;
 import com.storeArticle.store.service.ProviderProductService.DetailProviderService;

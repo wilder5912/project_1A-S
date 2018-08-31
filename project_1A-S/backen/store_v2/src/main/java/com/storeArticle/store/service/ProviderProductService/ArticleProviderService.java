@@ -1,8 +1,7 @@
 package com.storeArticle.store.service.ProviderProductService;
 
-import com.storeArticle.store.model.groupProductModel.Article;
 import com.storeArticle.store.model.provider.ArticleProvider;
-import com.storeArticle.store.service.enumPage.ArticleProviderQueryEnum;
+import com.storeArticle.store.service.enumPage.providerEnun.ArticleProviderQueryEnum;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
