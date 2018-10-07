@@ -75,4 +75,19 @@ public class SelectDTOService {
         return selectDTOList;
     }
 
+    public List<SelectVEO> getTreeDataDTO(List<Object[]> idNameList){
+        List<SelectVEO> selectDTOList = new ArrayList<SelectVEO>();
+        try{
+            idNameList.forEach(SelectData->{
+                SelectVEO selectInfo = new SelectVEO();
+                selectInfo.setValue(SelectData[0].toString());
+                selectInfo.setLabel(SelectData[1].toString() + " " +SelectData[2].toString() +" "+ SelectData[3].toString() );
+                selectDTOList.add(selectInfo);
+            });
+        }catch(Exception e){
+        }finally{
+        }
+        return selectDTOList;
+    }
+
 }

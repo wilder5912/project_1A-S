@@ -3,9 +3,9 @@
 </div>
 <tabset>
   <tab heading="Detalle Usuario">
-    <app-info-user></app-info-user>
+    <app-info-user [userId] = "idUser" ></app-info-user>
   </tab>
-  <tab heading="Roles Del Usuario">
-    <app-detaill-role></app-detaill-role>
+  <tab heading="Roles Del Usuario" *ngIf="this.dataService.userRoleCurren.userID != 0">
+    <app-detaill-role [userId] = "idUser" ></app-detaill-role>
   </tab>
 </tabset>

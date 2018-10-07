@@ -23,10 +23,10 @@ public enum ArticleDetailQueryEnum {
                             "  articleDetail.articleId.isDelete = ? and " +
                             "  articleDetail.isDelete = ? "),
     getArticledetailIdBussineHql("select articleDetail.articleDetailId, articleDetail.articleId.nameAr" +
-            " FROM ArticleDetail as articleDetail " +
-            " WHERE  articleDetail.subSectionId.sectionId.groupId.businessId.businessId = ? and " +
-            "  articleDetail.articleId.isDelete = ? and " +
-            "  articleDetail.isDelete = ? "),
+                            " FROM ArticleDetail as articleDetail " +
+                            " WHERE  articleDetail.subSectionId.sectionId.groupId.businessId.businessId = ? and " +
+                            "  articleDetail.articleId.isDelete = ? and " +
+                            "  articleDetail.isDelete = ? "),
     getArticleBussineHql("select articleDetail " +
                             " FROM ArticleDetail as articleDetail " +
                             " WHERE articleDetail.articleId.isDelete = ? and " +
@@ -39,7 +39,12 @@ public enum ArticleDetailQueryEnum {
                             " where articleDetail.subSectionId.subSectionId = ? "  ),
     getSubSectionArticleIdHql("select articleDetail.articleDetailId FROM ArticleDetail as articleDetail  " +
                            " WHERE articleDetail.subSectionId.subSectionId = ? and " +
-                           " articleDetail.articleId.articleId = ? " );
+                           " articleDetail.articleId.articleId = ? " ),
+    getArticleCodeAndBusinessHql("select articleDetail FROM ArticleDetail as articleDetail  " +
+                            " WHERE articleDetail.articleId.codigoAr = ? and " +
+                            "  articleDetail.subSectionId.sectionId.groupId.businessId.businessId = ? " )
+
+    ;
 
     private String hql;
 

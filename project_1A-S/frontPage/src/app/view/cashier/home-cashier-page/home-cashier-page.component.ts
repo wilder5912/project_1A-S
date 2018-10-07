@@ -38,7 +38,7 @@ export class HomeCashierPageComponent implements OnInit {
     this.stateCss2 = true;
     this.stateCss3 = true;
 
-    this.dataService.redirectTypeUser();
+    this.dataService.redirectTypeCashier();
   }
 
   public logout() {

@@ -1,13 +1,16 @@
 package com.storeArticle.store.service.accounts;
 
+import com.storeArticle.store.model.accounts.BusinessCurrentUser;
 import com.storeArticle.store.model.accounts.DetailRole;
 import com.storeArticle.store.model.accounts.RoleUser;
 import com.storeArticle.store.model.accounts.User;
+import com.storeArticle.store.model.groupProductModel.Business;
 import com.storeArticle.store.service.JwtGenerator.JwtGeneratorService;
 import com.storeArticle.store.service.JwtGenerator.JwtValidatorService;
 import com.storeArticle.store.service.dao.groupProductDTO.InfoCrup;
 import com.storeArticle.store.service.dao.user.UserDAO;
 import com.storeArticle.store.service.enumPage.userEmun.UserQueryEnum;
+import com.storeArticle.store.service.roleService.BusinessCurrentUserService;
 import com.storeArticle.store.service.roleService.DetailRoleService;
 import com.storeArticle.store.service.roleService.RoleUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,9 +51,12 @@ public class UserService implements UserCrup {
     @Autowired
     private RoleUserService roleUserService;
 
+    @Autowired
+    private BusinessCurrentUserService businessCurrentUserService;
     @Override
     public void addUser(User user){
         user.setCodeUser(randomString());
+        user.setBussineIdUser(1);
         user.setImagenUser("user-local.png");
         user.setTokenUser(jwtGeneratorService.generate(user));
         user.setIdBoxUser(0);
@@ -60,7 +66,13 @@ public class UserService implements UserCrup {
         this.detailRole = new DetailRole();
         this.detailRole.setUserID(user);
         this.detailRole.setRoleUserId(this.roleUser);
-        detailRoleService.addDetailRole(detailRole);
+        this.detailRoleService.addDetailRole(detailRole);
+        BusinessCurrentUser businessCurrentUser = new BusinessCurrentUser();
+        businessCurrentUser.setUserID(user);
+        Business business = new Business();
+        business.setBusinessId(1);
+        businessCurrentUser.setBusinessId(business);
+        this.businessCurrentUserService.addbusinCurreUser(businessCurrentUser);
     }
 
     @Override
@@ -139,13 +151,10 @@ public class UserService implements UserCrup {
     }
 
     public List<User> getUserToke(User user){
-
        return entityManager.createQuery(UserQueryEnum.getAutentificationTokenHql.getHql()).setParameter(1,user.getTokenUser())
                 .setParameter(2, user.getCodeUser())
                 .getResultList();
     }
-
-
 
     public boolean isCreateUser(String email){
          List<User> user = getUserEmail(email);
@@ -199,5 +208,21 @@ public class UserService implements UserCrup {
         numero=(int)(aleatorio.nextDouble() * 99+100);
       return cadena+alfa.charAt(forma)+numero;
     }
+
+
+    public boolean updatedUserRole(User userNew) {
+        User user = getUser(userNew.getUserID());
+        user.setTypeUser(userNew.getTypeUser());
+        entityManager.flush();
+        return null != user;
+    }
+
+    public boolean updatedUserBusiness(User userNew) {
+        User user = getUser(userNew.getUserID());
+        user.setBussineIdUser(userNew.getBussineIdUser());
+        entityManager.flush();
+        return null != user;
+    }
+
 
 }

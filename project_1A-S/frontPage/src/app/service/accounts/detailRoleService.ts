@@ -2,6 +2,7 @@ import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest , HttpEvent } from '@angular/common/http';
 import { DetailRole } from '../../model/usuario/DetailRole';
+import { RoleUser } from '../../model/usuario/RoleUser';
 import { User } from '../../model/usuario/User';
 import { DataService } from '../../service/dataService/data.service';
 
@@ -16,33 +17,40 @@ export class DetailRoleService {
       }
     );
   }
-
-
-  /*
-  public addRoleUser(roleUser: RoleUser): Observable<Object>  {
-    return this.http.post<Object>(this.dataService.getUrl('/roleUser/addRoleUser'), JSON.stringify(roleUser),
+  public listRoleUser( userId: number): Observable<Object>  {
+    return this.http.post<Object>(this.dataService.getUrl('/detailRole/listRoleUser'), userId,
       { headers: this.dataService.headerSend
       }
     );
   }
-  public listRoleUser(): Observable<Object[]> {
-    return this.http.get<Object[]>(this.dataService.getUrl('/roleUser/listRoleUser'),
+  public listAllRoleUser( userId: number): Observable<Object[]>  {
+    return this.http.post<Object[]>(this.dataService.getUrl('/detailRole/listAllRoleUserId'), userId,
+      { headers: this.dataService.headerSend
+      }
+    );
+  }
+  public addlistRoleUser( listRoleUserAdd): Observable<boolean> {
+    return this.http.post<boolean>(this.dataService.getUrl('/detailRole/addRoleUser'), JSON.stringify(listRoleUserAdd),
+      {
+        headers: this.dataService.headerSend
+      }
+    );
+  }
+  public getLisRoleUserSelect( idRole: number): Observable<Object[]> {
+    return this.http.post<Object[]>(this.dataService.getUrl('/detailRole/getLisRoleUser'), idRole,
+      {
+        headers: this.dataService.headerSend
+      }
+    );
+  }
+  public getLisRoleUserIdRoleId( detailRole: DetailRole): Observable<number> {
+    return this.http.post<number>(this.dataService.getUrl('/detailRole/getUserIdRoleDetail'),  JSON.stringify(detailRole),
       {
         headers: this.dataService.headerSend
       }
     );
   }
 
-  public editRoleUser(roleUser: RoleUser): Observable<boolean>  {
-    return this.http.post<boolean>(this.dataService.getUrl('/roleUser/editRoleUser'), JSON.stringify(roleUser),
-      { headers: this.dataService.headerSend
-      }
-    );
-  }
-  public deleteRoleUser(roleUser: RoleUser): Observable<boolean>  {
-    return this.http.post<boolean>(this.dataService.getUrl('/roleUser/deleteRoleUser'), JSON.stringify(roleUser),
-      { headers: this.dataService.headerSend
-      }
-    );
-  }*/
-}
+ }
+
+

@@ -37,6 +37,11 @@ public class UserController  {
         String s =user;
         return true;
     }
+    @PostMapping(value = "/getUserId")
+    public User getUserId(@RequestBody int userId){
+        return userService.getUser(userId);
+    }
+
     @PostMapping(value = "/addUser")
         public User addUser(@RequestBody String userData)throws IOException {
             this.mapper = new ObjectMapper();
@@ -100,6 +105,10 @@ public class UserController  {
                 .body(file);
     }
 
+    @PostMapping(value = "/editUserRol")
+    public boolean editUserRol(@RequestBody User user)throws IOException {
+        return userService.updatedUserRole(user);
+    }
 
 }
 

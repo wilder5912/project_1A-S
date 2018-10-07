@@ -10,7 +10,7 @@ public class ArticleVEO implements Serializable {
     private int articleId;
     private String nameAr;
     private String codigoAr;
-    private Double precyAr;
+    private float precyAr;
     private String detailAr;
     private String imageMainAr;
     private int reviewAr;
@@ -45,11 +45,11 @@ public class ArticleVEO implements Serializable {
         this.codigoAr = codigoAr;
     }
 
-    public Double getPrecyAr() {
+    public float getPrecyAr() {
         return precyAr;
     }
 
-    public void setPrecyAr(Double precyAr) {
+    public void setPrecyAr(float precyAr) {
         this.precyAr = precyAr;
     }
 

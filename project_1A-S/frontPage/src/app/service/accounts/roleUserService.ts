@@ -22,6 +22,14 @@ export class RoleUserService {
       }
     );
   }
+  public listAllRole(): Observable<Object>  {
+    return this.http.get<Object>(this.dataService.getUrl('/roleUser/listAllRole'),
+      {
+        headers: this.dataService.headerSend
+      }
+    );
+  }
+
 
   public editRoleUser(roleUser: RoleUser): Observable<boolean>  {
     return this.http.post<boolean>(this.dataService.getUrl('/roleUser/editRoleUser'), JSON.stringify(roleUser),

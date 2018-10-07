@@ -13,15 +13,16 @@ public class BusinessCurrentUser implements Serializable {
     @Column(name="businesscurouser_id")
     private int businesscurouserId;
 
-    @Column(name = "user_id")
-    private User userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User userID;
 
     @ManyToOne
     @JoinColumn(name = "business_id")
     private Business businessId;
 
-    @Column(name = "businesscurouser_select")
-    private boolean buCurUserSelect;
+    @Column(name = "is_delete_businesscurouser")
+    private boolean isDelete;
 
     public int getBusinesscurouserId() {
         return businesscurouserId;
@@ -31,12 +32,12 @@ public class BusinessCurrentUser implements Serializable {
         this.businesscurouserId = businesscurouserId;
     }
 
-    public User getUserId() {
-        return userId;
+    public User getUserID() {
+        return userID;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
+    public void setUserID(User userID) {
+        this.userID = userID;
     }
 
     public Business getBusinessId() {
@@ -47,11 +48,11 @@ public class BusinessCurrentUser implements Serializable {
         this.businessId = businessId;
     }
 
-    public boolean isBuCurUserSelect() {
-        return buCurUserSelect;
+    public boolean isDelete() {
+        return isDelete;
     }
 
-    public void setBuCurUserSelect(boolean buCurUserSelect) {
-        this.buCurUserSelect = buCurUserSelect;
+    public void setDelete(boolean delete) {
+        isDelete = delete;
     }
 }

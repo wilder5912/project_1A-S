@@ -1,64 +1,48 @@
-<div class="container">
-
-  <div class="row row-offcanvas row-offcanvas-right">
-
-    <div class="col-12 col-md-9">
-      <div class="jumbotron">
-        <h1>Hello, world!</h1>
-        <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport sizes to see it in action.</p>
-      </div>
-      <div class="row">
-        <div class="col-6 col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-        </div><!--/span-->
-        <div class="col-6 col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-        </div><!--/span-->
-        <div class="col-6 col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-        </div><!--/span-->
-        <div class="col-6 col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-        </div><!--/span-->
-        <div class="col-6 col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-        </div><!--/span-->
-        <div class="col-6 col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-        </div><!--/span-->
-      </div><!--/row-->
-    </div><!--/span-->
-
-    <div class="col-6 col-md-3 sidebar-offcanvas" id="sidebar">
-      <div class="list-group">
-        <a href="#" class="list-group-item active">Link</a>
-        <a href="#" class="list-group-item">Link</a>
-        <a href="#" class="list-group-item">Link</a>
-        <a href="#" class="list-group-item">Link</a>
-        <a href="#" class="list-group-item">Link</a>
-        <a href="#" class="list-group-item">Link</a>
-        <a href="#" class="list-group-item">Link</a>
-        <a href="#" class="list-group-item">Link</a>
-        <a href="#" class="list-group-item">Link</a>
-        <a href="#" class="list-group-item">Link</a>
-      </div>
-    </div><!--/span-->
-  </div><!--/row-->
-
-  <hr>
-
-
-
+<div class=" row-offcanvas ">
+  <div class=" col-lg-3 border-image">
+    <img src="{{dataService.getApiUrl()}}/user/files/cambio_modenda.jpg" alt="{{dataService.getApiUrl()}}/user/files/cambio_modenda.jpg" class="image-with"/>
+    <p><a class="btn btn-secondary" routerLink="/typeMoney" role="button">Tipo de mondeda »</a></p>
+  </div>
+  <div class=" col-lg-3 border-image">
+    <img src="{{dataService.getApiUrl()}}/user/files/role_user.png" alt="{{dataService.getApiUrl()}}/user/files/role_user.png" class="image-with"/>
+    <p><a class="btn btn-secondary" routerLink="/roleUser" role="button">Roles Usuario »</a></p>
+  </div>
+  <div class=" col-lg-3 border-image">
+    <img src="{{dataService.getApiUrl()}}/user/files/for_look.jpg" alt="{{dataService.getApiUrl()}}/user/files/for_look.jpg" class="image-with"/>
+    <p><a class="btn btn-secondary" routerLink="/lookForUser" role="button">Buscar Usuario »</a></p>
+  </div>
+  <div class=" col-lg-3 border-image">
+    <img src="{{dataService.getApiUrl()}}/user/files/almacen_1.jpg" alt="{{dataService.getApiUrl()}}/user/files/almacen_1.jpg" class="image-with"/>
+    <p><a class="btn btn-secondary" routerLink="/createWarehouse" role="button">Almacen »</a></p>
+  </div>
+  <div class=" col-lg-3 border-image">
+    <img src="{{dataService.getApiUrl()}}/user/files/sucursal_1.png" alt="{{dataService.getApiUrl()}}/user/files/sucursal_1.png" class="image-with"/>
+    <p><a class="btn btn-secondary" routerLink="/createBusiness" role="button">Sucursales »</a></p>
+  </div>
+  <div class=" col-lg-3 border-image">
+    <img src="{{dataService.getApiUrl()}}/user/files/grupo_1.png" alt="{{dataService.getApiUrl()}}/user/files/grupo_1.png" class="image-with"/>
+    <p><a class="btn btn-secondary" routerLink="/groupProduct" role="button">Grupo »</a></p>
+  </div>
+  <div class=" col-lg-3 border-image">
+    <img src="{{dataService.getApiUrl()}}/user/files/seccion_1.jpg" alt="{{dataService.getApiUrl()}}/user/files/seccion_1.jpg" class="image-with"/>
+    <p><a class="btn btn-secondary" routerLink="/sectionProduct" role="button">Seccion »</a></p>
+  </div>
+  <div class=" col-lg-3 border-image">
+    <img src="{{dataService.getApiUrl()}}/user/files/marca_1.png" alt="{{dataService.getApiUrl()}}/user/files/marca_1.png" class="image-with"/>
+    <p><a class="btn btn-secondary" routerLink="/subSectionProduct" role="button">Marca »</a></p>
+  </div>
+  <div class=" col-lg-3 border-image">
+    <img src="{{dataService.getApiUrl()}}/user/files/articulos_1.jpg" alt="{{dataService.getApiUrl()}}/user/files/articulos_1.jpg" class="image-with"/>
+    <p><a class="btn btn-secondary" routerLink="/acticle" role="button">Articulo »</a></p>
+  </div>
+  <div class=" col-lg-3 border-image">
+    <img src="{{dataService.getApiUrl()}}/user/files/nuevo_producto_1.png" alt="{{dataService.getApiUrl()}}/user/files/nuevo_producto_1.png" class="image-with"/>
+    <p><a class="btn btn-secondary" routerLink="/productCreate" role="button">Crear Articulo »</a></p>
+  </div>
+  <div class=" col-lg-3 border-image">
+    <img src="{{dataService.getApiUrl()}}/user/files/proveedor_1.png" alt="{{dataService.getApiUrl()}}/user/files/proveedor_1.png" class="image-with"/>
+    <p><a class="btn btn-secondary" routerLink="/createProvider" role="button">Crear Proveedor »</a></p>
+  </div>
 </div>
+
+

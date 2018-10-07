@@ -7,14 +7,13 @@ import java.io.Serializable;
 @Table(name = "client")
 public class Client implements Serializable {
 
-
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name = "detailsell_id")
-    private int id_client;
+    @Column(name = "id_client")
+    private int clientId;
 
     @Column(name = "name_client")
-    private String name_client;
+    private String nameClient;
 
     @Column(name = "last_name_client")
     private String lastNameClient;
@@ -34,23 +33,29 @@ public class Client implements Serializable {
     @Column(name = "address_client")
     private String addressClient;
 
+    @Column(name = "email_client")
+    private String emailClient;
+
+    @Column(name = "discount_client")
+    private boolean discountClient;
+
     @Column(name = "is_delete_client")
     private boolean isDelete;
 
-    public int getId_client() {
-        return id_client;
+    public int getClientId() {
+        return clientId;
     }
 
-    public void setId_client(int id_client) {
-        this.id_client = id_client;
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
-    public String getName_client() {
-        return name_client;
+    public String getNameClient() {
+        return nameClient;
     }
 
-    public void setName_client(String name_client) {
-        this.name_client = name_client;
+    public void setNameClient(String nameClient) {
+        this.nameClient = nameClient;
     }
 
     public String getLastNameClient() {
@@ -107,5 +112,21 @@ public class Client implements Serializable {
 
     public void setDelete(boolean delete) {
         isDelete = delete;
+    }
+
+    public String getEmailClient() {
+        return emailClient;
+    }
+
+    public void setEmailClient(String emailClient) {
+        this.emailClient = emailClient;
+    }
+
+    public boolean isDiscountClient() {
+        return discountClient;
+    }
+
+    public void setDiscountClient(boolean discountClient) {
+        this.discountClient = discountClient;
     }
 }

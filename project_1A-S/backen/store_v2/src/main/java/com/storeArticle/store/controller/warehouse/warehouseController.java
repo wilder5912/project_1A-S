@@ -47,4 +47,12 @@ public class warehouseController {
     public boolean editWarehouse(@RequestBody Warehouse warehouse)throws IOException {
         return warehouseService.updatedWarehouse(warehouse);
     }
+
+    @GetMapping(value = "/getWarehouserNumArticle/{codeArticle}/{businessId}")
+    public int getWarehouserNumArticle(@PathVariable("codeArticle") String codeArticle,@PathVariable("businessId") int businessId )throws IOException {
+        return warehouseService.getWarehouseNumArticle(codeArticle,businessId );
+    }
+
+
+
 }

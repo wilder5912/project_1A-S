@@ -9,7 +9,13 @@ import com.storeArticle.store.service.dto.ArticleVEO;
 import com.storeArticle.store.service.dto.SelectDTOService;
 import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.enumPage.ArticleDetailQueryEnum;
+import com.storeArticle.store.service.exception.ObjectNotFoundException;
+import com.storeArticle.store.service.validation.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,6 +26,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @Transactional
 @Service
@@ -215,6 +223,18 @@ public class ArticleDetailService implements ArticleDetailCrup {
                 .executeUpdate();
     }
 
+    public ArticleDetail getArticleCodeAndBusiness(String  codeArticle, int businessId) {
+      try {
+          return (ArticleDetail)entityManager.createQuery(ArticleDetailQueryEnum.getArticleCodeAndBusinessHql.getHql())
+                  .setParameter(1, codeArticle)
+                  .setParameter(2, businessId)
+                  .getSingleResult();
+
+      } catch (RuntimeException e){
+            return null;
+      }
+
+    }
 
 
     public boolean isDeleteArticleRelation(ArticleDetail articleDetailData){
@@ -245,6 +265,24 @@ public class ArticleDetailService implements ArticleDetailCrup {
         }catch (RuntimeException e){
             return null;
         }
+    }
+
+    public ArticleDetail getArticleDetaCodeAndBu(String codeAr, int businessId){
+        return getArticleCodeAndBusiness(codeAr, businessId);
+    }
+
+    public ResponseEntity<ArticleDetail> restDetailArticle(String codeAr, int businessId) {
+        if (true == ValidationService.isValidateTextComma(codeAr)) {
+            throw new ObjectNotFoundException("Review Code " + codeAr);
+        }
+        ArticleDetail articleDetail = getArticleDetaCodeAndBu(codeAr, businessId);
+        ResponseEntity<ArticleDetail> resource = new ResponseEntity<ArticleDetail>(articleDetail, HttpStatus.OK);
+        if(null == articleDetail ) {
+            resource = new ResponseEntity<ArticleDetail>(articleDetail, HttpStatus.NOT_FOUND);
+            // throw new ObjectNotFoundException("Review Code " + codeAr);
+        }
+
+        return resource;
     }
 
 }

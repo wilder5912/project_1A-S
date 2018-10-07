@@ -1,10 +1,12 @@
 package com.storeArticle.store.service.groupProductService;
 
+import com.storeArticle.store.model.accounts.BusinessCurrentUser;
 import com.storeArticle.store.model.groupProductModel.Business;
 import com.storeArticle.store.model.groupProductModel.GroupProduct;
 import com.storeArticle.store.service.dto.*;
 import com.storeArticle.store.service.enumPage.BussineQueryEnum;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +16,7 @@ import java.util.List;
 
 @Transactional
 @Service
-public class BusinessService implements GroupBusinessCrup{
+public class BusinessService {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -23,7 +25,7 @@ public class BusinessService implements GroupBusinessCrup{
     @Autowired
     private BussineDTOService bussineDTOService;
 
-    @Override
+
     public boolean addBusiness(Business business) {
         boolean isBusiness = false;
         if(isCreateBusiness(business.getNameBu())) {
@@ -34,28 +36,45 @@ public class BusinessService implements GroupBusinessCrup{
         return isBusiness;
     }
 
-    @Override
-    public boolean deleteBusiness(int businessId) {
+    public Business deleteBusiness(int businessId) {
         Business business = getBusiness(businessId);
         business.setDelete(true);
         entityManager.flush();
-        return null != business;
+        return  business;
     }
 
-    @Override
-    public boolean updatedBusiness(Business businessNew) {
+    public Business updatedBusiness(Business businessNew) {
         Business business = getBusiness(businessNew.getBusinessId());
-        business.setNameBu(businessNew.getNameBu());
-        entityManager.flush();
-        return null != business;
+            business.setNameBu(businessNew.getNameBu());
+            entityManager.flush();
+        return business;
     }
 
-    @Override
+    public ResponseEntity<Business> deleteRequest(Business businessNew , int bussinesId ){
+        Business business = null;
+        if(businessNew.getBusinessId() == bussinesId){
+            business = deleteBusiness(businessNew.getBusinessId());
+        }
+        if (null == business) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.noContent().build();
+    }
+
+    public ResponseEntity<Business> UpdateRequest(Business businessNew , int bussinesId ){
+        Business business = null;
+        if(businessNew.getBusinessId() == bussinesId){
+            business = updatedBusiness(businessNew);
+        }
+        if (null == business) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.noContent().build();
+    }
     public Business getBusiness(int businessId) {
         return entityManager.find(Business.class, businessId);
     }
 
-    @Override
     public Boolean getIsBusiness() {
         return null;
     }

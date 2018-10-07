@@ -25,6 +25,18 @@ export class UserService {
       });
       return this.http.request(req);
     }
+  public getUserId(userId: number): Observable<User>  {
+    return this.http.post<User>(this.dataService.getUrl('/user/getUserId'), userId,
+      { headers: this.dataService.headerSend
+      }
+    );
+  }
+  public editUserRol(user: User): Observable<boolean>  {
+    return this.http.post<boolean>(this.dataService.getUrl('/user/editUserRol'), JSON.stringify(user),
+      { headers: this.dataService.headerSend
+      }
+    );
+  }
 }
 
 

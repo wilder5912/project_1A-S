@@ -19,6 +19,8 @@ public class Business implements Serializable {
 
     @Column(name = "name_bu" )
     private String nameBu;
+   @Column(name = "code_control_bu" )
+    private String codeControlBu;
 
     @Column(name = "is_delete_bu")
     private boolean isDelete;
@@ -51,4 +53,11 @@ public class Business implements Serializable {
         this.nameBu = nameBu;
     }
 
+    public String getCodeControlBu() {
+        return codeControlBu;
+    }
+
+    public void setCodeControlBu(String codeControlBu) {
+        this.codeControlBu = codeControlBu;
+    }
 }

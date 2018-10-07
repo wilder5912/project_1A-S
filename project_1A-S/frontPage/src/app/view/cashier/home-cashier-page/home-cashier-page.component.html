@@ -3,12 +3,12 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
+          <span class="sr-only">Toggle Cajero</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" routerLink="/home">Binary admin</a>
+        <a class="navbar-brand" routerLink="/home">Binary Cajero</a>
       </div>
 
       <div class=""  >
@@ -51,12 +51,18 @@
         <li class="text-center  page-heade ">
           <h1> <small class="text-color-user">User: {{this.dataService.AUTH_CONFIG.firtNameUser}} {{this.dataService.AUTH_CONFIG.lastNameUser }}</small></h1>
         </li>
-
         <li>
-          <a   routerLink="/homeAdmin"  ><i class="fa fa-dashboard fa-3x"></i> Home</a>
+          <a   routerLink="/homeCashier"  ><i class="fa fa-dashboard fa-3x"></i>Home</a>
+        </li>
+        <li>
+          <a   routerLink="/salesCashier"  ><i class="fa fa-dashboard fa-3x"></i>Ventas</a>
+        </li>
+        <li>
+          <a   routerLink="/clientCashier"  ><i class="fa fa-dashboard fa-3x"></i>Clientes</a>
         </li>
 
-        <li class="{{idAN}}" >
+
+      <!--  <li class="{{idAN}}" >
           <a (click)="selectTodo()"><i class="fa fa-desktop fa-3x"></i> Tienda Acticulos <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level collapse {{idBN}}"   >
             <li>
@@ -65,10 +71,10 @@
 
           </ul>
         </li>
+-->
 
 
-
-
+<!--
         <li class="{{idAN3}}" >
           <a (click)="selectTodo3()"><i class="fa fa-desktop fa-3x"></i>Almacen <span class="fa arrow"></span></a>
           <ul class="nav nav-second-level collapse {{idBN3}}"   >
@@ -76,7 +82,7 @@
               <a   routerLink="/createWarehouse"  ><i class="fa fa-dashboard fa-2x"></i>Lista Almacen </a>
             </li>
           </ul>
-        </li>
+        </li>-->
 
 
 

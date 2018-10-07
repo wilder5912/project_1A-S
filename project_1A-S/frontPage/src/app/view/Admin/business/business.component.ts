@@ -88,15 +88,16 @@ export class BusinessComponent implements OnInit {
 
   public editBusiness() {
      if (true === this.getValidateInfo() ) {
+
       this.business = new Business();
       this.business.businessId = this.form.value['businessId'];
       this.business.nameBu = this.form.value['nameBu'];
       this.bussineService.editBusiness(this.business)
         .subscribe(result => {
-           if (result) {
-            this.getListBussine();
-            this.modalRefBusiness.hide();
-          }
+           if (null === result) {
+             this.getListBussine();
+             this.modalRefBusiness.hide();
+           }
         });
     }
   }
@@ -104,7 +105,7 @@ export class BusinessComponent implements OnInit {
     this.business.businessId = itemTableGroup.businessId;
     this.bussineService.deleteBusiness(this.business)
       .subscribe(result => {
-        if (result) {
+        if (null === result) {
           this.getListBussine();
         }
       }, error => {

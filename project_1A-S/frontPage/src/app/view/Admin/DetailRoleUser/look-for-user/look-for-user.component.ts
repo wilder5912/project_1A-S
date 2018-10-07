@@ -59,7 +59,6 @@ public getlookForDetailRole(infoUser: string) {
     this.detailRoleService.lookForDetailRole(infoUser)
       .subscribe( result => {
         this.detailRoleUserList = result;
-        console.log(result);
       });
 }
   public getValidateInfo(): boolean {

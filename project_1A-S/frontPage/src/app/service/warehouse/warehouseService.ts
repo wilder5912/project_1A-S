@@ -42,5 +42,12 @@ export class WarehouseService {
       }
     );
   }
+  public getNumerOfArticle(codeArticle: string, businessId: number ): Observable<number> {
+    return this.http.get<number>(this.dataService.getUrl('/warehouse/getWarehouserNumArticle/' + codeArticle + '/' + businessId),
+      {
+        headers: this.dataService.headerSend
+      }
+    );
+  }
 
 }

@@ -1,0 +1,11 @@
+.border-image{
+  border: 5px solid #FFFF00;
+  outline: 5px solid #FF0088;
+  padding: 10px;
+  margin: auto;
+  text-align: center;
+}
+.image-with{
+  max-width: 100%;
+  height: 250px;
+}

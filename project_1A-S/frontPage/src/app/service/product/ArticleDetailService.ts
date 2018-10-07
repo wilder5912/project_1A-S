@@ -1,10 +1,11 @@
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
- import { ArticleDetail} from '../../model/product/ArticleDetail';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { ArticleDetail} from '../../model/product/ArticleDetail';
 import { DataService } from '../dataService/data.service';
 import { Router } from '@angular/router';
-
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 @Injectable()
 export class ArticleDetailService {
   constructor(private http: HttpClient, public dataService: DataService , public router: Router) { }
@@ -33,7 +34,24 @@ export class ArticleDetailService {
   public addArticleDetail( articleDetail ): Observable<boolean> {
     return this.http.post<boolean>(this.dataService.getUrl('/articleDetail/addArticleDetail'), JSON.stringify(articleDetail),
       {
-        headers: { 'Content-Type': 'application/json; charset=utf-8'}}
+        headers: this.dataService.headerSend
+      }
     );
+  }
+  public getArticleDetailCodBusi( codeAr: string , businessId: number ): Observable<ArticleDetail> {
+    return this.http.get<ArticleDetail>(this.dataService.getUrl('/articleDetail/getArticleDetailCodBusi/' + codeAr + '/' + businessId),
+      {
+        headers: this.dataService.headerSend
+      }
+    )
+     .catch(this.errorHandler);
+  }
+  private handleError (error: any) {
+    const errMsg = error.message || 'Server error';
+    /*//console.error(errMsg); // log to console instead*/
+    return Observable.throw(errMsg);
+  }
+  errorHandler(error: HttpErrorResponse) {
+    return Observable.throw(error.message || 'error');
   }
 }

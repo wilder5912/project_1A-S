@@ -1,5 +1,6 @@
 package com.storeArticle.store.controller.roleUser;
 import com.storeArticle.store.model.accounts.RoleUser;
+import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.roleService.RoleUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,11 @@ public class RoleUserController {
     public List<RoleUser> listRoleUser()throws IOException {
         return roleUserService.getListRoleUser();
     }
+    @GetMapping(value = "/listAllRole")
+    public List<SelectVEO> listAllRole()throws IOException {
+        return roleUserService.getListSelectDTO();
+    }
+
     @PostMapping(value = "/addRoleUser")
     public boolean addRoleUser(@RequestBody RoleUser roleUser)throws IOException {
         return roleUserService.addTypeMoney(roleUser);
@@ -33,4 +39,5 @@ public class RoleUserController {
     public boolean deleteRoleUser(@RequestBody RoleUser roleUser)throws IOException {
         return roleUserService.deleteRoleUser(roleUser.getRoleUserId());
     }
+
 }

@@ -2,6 +2,7 @@ package com.storeArticle.store.controller.roleUser;
 
 import com.storeArticle.store.model.accounts.DetailRole;
 import com.storeArticle.store.model.accounts.RoleUser;
+import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.roleService.DetailRoleService;
 import com.storeArticle.store.service.roleService.RoleUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +27,35 @@ public class DetailRoleController {
         return detailRoleService.getListDetailRole(detailProvider);
     }
 
+    @PostMapping(value = "/listRoleUser")
+    public  List<SelectVEO> listRoleUser(@RequestBody int roleUserId)throws IOException {
+        return detailRoleService.getListSelectDTO(roleUserId);
+    }
+    @PostMapping(value = "/listAllRoleUserId")
+    public  List<Object> listAllRoleUserId(@RequestBody int roleUserId)throws IOException {
+        return detailRoleService.getAllDetailRoleUserId(roleUserId);
+    }
+
+    @PostMapping(value = "/addRoleUser")
+    public boolean addRoleUser(@RequestBody List<DetailRole> detailRoleData )throws IOException{
+        return detailRoleService.addDetailRoleRelational(detailRoleData);
+    }
+
+    @PostMapping(value = "/getLisRoleUser")
+    public List<SelectVEO> getLisRoleUser(@RequestBody int roleId){
+        return  detailRoleService.getListSelectUserRoleDTO(roleId);
+    }
+
+    @PostMapping(value = "/getUserIdRoleDetail")
+    public int getUserIdRoleDetail(@RequestBody DetailRole detailRole){
+        return  detailRoleService.getUserIdAndRoleId(detailRole);
+    }
+
 /*    @GetMapping(value = "/listRoleUser")
     public List<RoleUser> listRoleUser()throws IOException {
         return roleUserService.getListRoleUser();
     }
-    @PostMapping(value = "/addRoleUser")
-    public boolean addRoleUser(@RequestBody RoleUser roleUser)throws IOException {
-        return roleUserService.addTypeMoney(roleUser);
-    }
+
     @PostMapping(value = "/editRoleUser")
     public boolean editRoleUser(@RequestBody RoleUser roleUser)throws IOException {
         return roleUserService.updatedRoleUser(roleUser);

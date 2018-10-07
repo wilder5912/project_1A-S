@@ -23,6 +23,9 @@ public class WareHouseMain implements Serializable {
     @Column(name = "address_wname")
     private String addressWName;
 
+    @Column(name = "id_business_wname")
+    private int idBusinessWname;
+
     @Column(name = "is_delete_wname")
     private boolean isDelete;
 
@@ -56,5 +59,13 @@ public class WareHouseMain implements Serializable {
 
     public void setDelete(boolean delete) {
         isDelete = delete;
+    }
+
+    public int getIdBusinessWname() {
+        return idBusinessWname;
+    }
+
+    public void setIdBusinessWname(int idBusinessWname) {
+        this.idBusinessWname = idBusinessWname;
     }
 }

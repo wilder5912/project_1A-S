@@ -1,0 +1,394 @@
+<script src="sales.component.ts"></script>
+<div class="container">
+  <h1 class="title-head">{{ 'Cashier' |translate }}</h1>
+</div>
+
+<form novalidate [formGroup]="form" name="form"   #f="ngForm"  >
+  <div class="col-lg-6">
+    <h2>Informacion Articulo</h2>
+
+    <div class="form-group">
+      <label for="businessId">Sucursal</label>
+      <ng-select *ngIf="bussineSelect"
+        [options]="bussineSelect"
+        [multiple]="false"
+        formControlName="businessId"
+        name = "businessId"
+      >
+      </ng-select>
+    </div>
+
+
+
+
+    <div class="form-group">
+      <label for="codigoAr">Codigo Articulo</label>
+      <input type="text" class="form-control" name="codigoAr"
+             formControlName="codigoAr" (keyup.enter)="getInfoArticleDetail()"
+      />
+      <button type="button" (click)="getInfoArticleDetail()"  class="btn btn-primary">Buscar</button>
+
+      <div *ngIf="form.controls.codigoAr.errors" class="">
+        <div *ngIf="form.controls.codigoAr.errors.minlength && form.controls.codigoAr.dirty" class="alert alert-danger">
+          {{'Input_Min_3' | translate}}
+        </div>
+        <div *ngIf="form.controls.codigoAr.errors.required && form.controls.codigoAr.dirty" class="alert alert-danger">
+          {{'Input_Require' | translate}}
+        </div>
+        <div *ngIf="form.controls.codigoAr.errors.isTextS  && form.controls.codigoAr.dirty" class="alert alert-danger">
+          {{'Delete_Comma' | translate}}
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="nameAr">Nombre Articulo </label>
+      <input type="text" class="form-control" name="nameAr"
+             formControlName="nameAr"
+      />
+      <div *ngIf="form.controls.nameAr.errors" class="">
+        <div *ngIf="form.controls.nameAr.errors.minlength && form.controls.nameAr.dirty" class="alert alert-danger">
+          {{'Input_Min_3' | translate}}
+        </div>
+        <div *ngIf="form.controls.nameAr.errors.required && form.controls.nameAr.dirty" class="alert alert-danger">
+          {{'Input_Require' | translate}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="numberPrudctSp">Cantidad</label>
+      <input type="number" class="form-control" name="numberPrudctSp"
+             formControlName="numberPrudctSp"
+      />
+      <div *ngIf="form.controls.numberPrudctSp.errors" class="">
+        <div *ngIf="form.controls.numberPrudctSp.errors.minlength" class="alert alert-danger">
+          {{'Input_Min_3' | translate}}
+        </div>
+        <div *ngIf="form.controls.numberPrudctSp.errors.required" class="alert alert-danger">
+          {{'Input_Require' | translate}}
+        </div>
+        <div *ngIf="form.controls.numberPrudctSp.errors.isNumber" class="alert alert-danger">
+          {{'Input_Number' | translate}}
+        </div>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label> Numero De Articulos Alamcen: {{currentArticle}}</label>
+    </div>
+    <div class="form-group" *ngIf="articleDetail">
+      <label >Imagen</label>
+      <img *ngIf="articleDetail.articleId.imageMainAr"  class="image-article-width" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]"  src="{{dataService.getApiUrl()}}/imageArticle/files/{{articleDetail.articleId.imageMainAr}}" alt="{{dataService.getApiUrl()}}/imageArticle/files/{{articleDetail.articleId.imageMainAr}}" data-holder-rendered="true">
+    </div>
+
+  </div>
+ <div class="col-lg-6">
+   <h2>Cliente Datos </h2>
+   <div class="form-group">
+     <label for="nameRole">Buscar Cliente</label>
+     <input type="text" class="form-control" name="clienInfo"
+            formControlName="clienInfo" (keyup.enter)="getInfoClient()"
+     />
+     <button  type="button" (click)="getInfoClient()"  class="btn btn-primary">Buscar</button>
+
+   </div>
+
+   <div class="form-group">
+     <label for="nameRole">Seleccione Cliente</label>
+     <ng-select
+       [options]="clientSelect"
+       [multiple]="false"
+       formControlName="clientId"
+       name="clientId"
+       (selected)="onSelectClient($event)"
+     >
+     </ng-select>
+   </div>
+
+    <div class="form-group">
+      <label for="nameRole">Ci/Nit</label>
+      <input type="text" class="form-control" name="ciNitClient"
+             formControlName="ciNitClient"
+      />
+      <div *ngIf="form.controls.ciNitClient.errors" class="">
+        <div *ngIf="form.controls.ciNitClient.errors.minlength && form.controls.ciNitClient.dirty" class="alert alert-danger">
+          {{'Input_Min_3' | translate}}
+        </div>
+        <div *ngIf="form.controls.ciNitClient.errors.required && form.controls.ciNitClient.dirty" class="alert alert-danger">
+          {{'Input_Require' | translate}}
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="nameClient">Nombre Cliente</label>
+      <input type="text" class="form-control" name="nameClient"
+             formControlName="nameClient"
+      />
+      <div *ngIf="form.controls.nameClient.errors" class="">
+        <div *ngIf="form.controls.nameClient.errors.minlength && form.controls.nameClient.dirty" class="alert alert-danger">
+          {{'Input_Min_3' | translate}}
+        </div>
+        <div *ngIf="form.controls.nameClient.errors.required && form.controls.nameClient.dirty" class="alert alert-danger">
+          {{'Input_Require' | translate}}
+        </div>
+      </div>
+    </div>
+   <input md-input
+          formControlName="discountClient"
+          hidden="true"
+   >
+    <div class="form-group">
+      <label for="nameRole">Apellido Cliente</label>
+      <input type="text" class="form-control" name="lastNameClient"
+             formControlName="lastNameClient"
+      />
+      <div *ngIf="form.controls.lastNameClient.errors" class="">
+        <div *ngIf="form.controls.lastNameClient.errors.minlength && form.controls.lastNameClient.dirty" class="alert alert-danger">
+          {{'Input_Min_3' | translate}}
+        </div>
+        <div *ngIf="form.controls.lastNameClient.errors.required && form.controls.lastNameClient.dirty" class="alert alert-danger">
+          {{'Input_Require' | translate}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nameRole">Fecha De Nacimiento</label>
+      <input type="text" class="form-control" name="dateBirthClient"
+             formControlName="dateBirthClient"
+      />
+      <div *ngIf="form.controls.dateBirthClient.errors" class="">
+        <div *ngIf="form.controls.dateBirthClient.errors.minlength && form.controls.dateBirthClient.dirty" class="alert alert-danger">
+          {{'Input_Min_3' | translate}}
+        </div>
+        <div *ngIf="form.controls.dateBirthClient.errors.required && form.controls.dateBirthClient.dirty" class="alert alert-danger">
+          {{'Input_Require' | translate}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nameRole">Telefono</label>
+      <input type="text" class="form-control" name="phoneClient"
+             formControlName="phoneClient"
+      />
+      <div *ngIf="form.controls.phoneClient.errors" class="">
+        <div *ngIf="form.controls.phoneClient.errors.minlength && form.controls.phoneClient.dirty" class="alert alert-danger">
+          {{'Input_Min_3' | translate}}
+        </div>
+        <div *ngIf="form.controls.phoneClient.errors.required && form.controls.phoneClient.dirty" class="alert alert-danger">
+          {{'Input_Require' | translate}}
+        </div>
+      </div>
+    </div>
+   <div class="form-group">
+      <label for="nameRole">Celular </label>
+      <input type="text" class="form-control" name="cellPhoneClient"
+             formControlName="cellPhoneClient"
+      />
+      <div *ngIf="form.controls.cellPhoneClient.errors" class="">
+        <div *ngIf="form.controls.cellPhoneClient.errors.minlength && form.controls.cellPhoneClient.dirty" class="alert alert-danger">
+          {{'Input_Min_3' | translate}}
+        </div>
+        <div *ngIf="form.controls.cellPhoneClient.errors.required && form.controls.cellPhoneClient.dirty" class="alert alert-danger">
+          {{'Input_Require' | translate}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="nameRole">Direccion</label>
+      <input type="text" class="form-control" name="addressClient"
+             formControlName="addressClient"
+      />
+      <div *ngIf="form.controls.addressClient.errors" class="">
+        <div *ngIf="form.controls.addressClient.errors.minlength && form.controls.addressClient.dirty" class="alert alert-danger">
+          {{'Input_Min_3' | translate}}
+        </div>
+        <div *ngIf="form.controls.addressClient.errors.required && form.controls.addressClient.dirty" class="alert alert-danger">
+          {{'Input_Require' | translate}}
+        </div>
+      </div>
+    </div>
+   <div class="form-group">
+     <label for="nameRole">Email</label>
+     <input type="text" class="form-control" name="emailClient"
+            formControlName="emailClient"
+     />
+     <div *ngIf="form.controls.emailClient.errors" class="">
+       <div *ngIf="form.controls.emailClient.errors.minlength && form.controls.emailClient.dirty" class="alert alert-danger">
+         {{'Input_Min_3' | translate}}
+       </div>
+       <div *ngIf="form.controls.emailClient.errors.required && form.controls.emailClient.dirty" class="alert alert-danger">
+         {{'Input_Require' | translate}}
+       </div>
+     </div>
+   </div>
+
+  </div>
+
+
+  <div class="col-lg-12">
+    <div class="form-group">
+      <input md-input
+             formControlName="clientId"
+             hidden="true"
+      >
+    </div>
+
+    <div class="col-lg-2 form-group">
+      <button type="button" (click)="addArticleListSell()"  class="btn btn-primary">Añadir Articulo </button>
+    </div>
+    <div class="col-lg-2 form-group">
+      <button type="button" class="btn btn-primary" (click)="openModalWithClass(template)">Confirmar venta </button>
+    </div>
+  </div>
+
+
+  <div class="">
+    <div class="col-lg-12">
+      <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Confirmar Venta</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalVenta.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-12 col-center">
+
+                <div class="col-lg-12">
+
+                  <div class="form-group">
+                    <label for="detailRoleId">Seleccione Vendedor</label>
+                    <ng-select
+                      [options]="roleUserSeller"
+                      [multiple]="false"
+                      formControlName="detailRoleId"
+                      name="detailRoleId"
+                    >
+                    </ng-select>
+                    <div *ngIf="form.controls.detailRoleId.errors" class="">
+                      <div *ngIf="form.controls.detailRoleId.errors.minlength && form.controls.detailRoleId.dirty" class="alert alert-danger">
+                        {{'Input_Min_3' | translate}}
+                      </div>
+                      <div *ngIf="form.controls.detailRoleId.errors.required && form.controls.detailRoleId.dirty" class="alert alert-danger">
+                        {{'Input_Require' | translate}}
+                      </div>
+                    </div>
+                  </div>
+           <div class="form-group">
+                    <label for="paymentTypeId">Tipo De Pago</label>
+                    <ng-select
+                      [options]="paymentList"
+                      [multiple]="false"
+                      formControlName="paymentTypeId"
+                      name="paymentTypeId"
+                    >
+                    </ng-select>
+                    <div *ngIf="form.controls.paymentTypeId.errors" class="">
+                      <div *ngIf="form.controls.paymentTypeId.errors.minlength && form.controls.paymentTypeId.dirty" class="alert alert-danger">
+                        {{'Input_Min_3' | translate}}
+                      </div>
+                      <div *ngIf="form.controls.paymentTypeId.errors.required && form.controls.paymentTypeId.dirty" class="alert alert-danger">
+                        {{'Input_Require' | translate}}
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <input md-input
+                           formControlName="articleDetailId"
+                           hidden="true"
+                    >
+
+                  </div>
+                  <div class="form-group">
+                    <button  type="button" (click)="registerSeller()"  class="btn btn-primary">Registrar venta</button>
+
+                  </div>
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+
+
+</form>
+
+
+
+
+<div class="" >
+  <div class="">
+    <h2 class="col-xs-6"></h2>
+  </div>
+
+  <div class="panel panel-default ">
+    <table class="table table-striped" [mfData]="listArticleSell" #mf="mfDataTable"
+           [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+      <thead>
+      <tr>
+        <th>
+          <mfDefaultSorter by="codigoAr">Codigo</mfDefaultSorter>
+        </th>
+        <th>
+          <mfDefaultSorter by="numberPrudctSp">Cantidad</mfDefaultSorter>
+        </th>
+        <th>
+          <mfDefaultSorter by="numberPrudctSp">U/M</mfDefaultSorter>
+        </th>
+
+        <th>
+          <mfDefaultSorter by="nameAr">Consepto</mfDefaultSorter>
+        </th>
+        <th>
+          <mfDefaultSorter by="precyAr">P/U</mfDefaultSorter>
+        </th>
+        <th>
+          <mfDefaultSorter by="discountAr">Descto</mfDefaultSorter>
+        </th>
+        <th>
+          <mfDefaultSorter by="*">Total</mfDefaultSorter>
+        </th>
+        <th>
+        </th>
+      </tr>
+
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of mf.data">
+        <td>{{item.warehouseId.articleDetailId.articleId.codigoAr}}</td>
+        <td>{{item.numberPrudctSp}}</td>
+        <td>Unidades</td>
+        <td>{{item.warehouseId.articleDetailId.articleId.nameAr}}</td>
+        <td>{{item.warehouseId.articleDetailId.articleId.precyAr}}</td>
+        <td *ngIf="!item.warehouseId.articleDetailId.articleId.discountAr" >{{item.warehouseId.articleDetailId.articleId.perDiscountAr}}</td>
+        <td *ngIf="item.warehouseId.articleDetailId.articleId.discountAr" >0</td>
+        <td>{{item.warehouseId.articleDetailId.articleId.precyAr*item.numberPrudctSp}}</td>
+        <td>
+          <button (click)="removeArticle(item)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+<!--          <button (click)="edit(item,template)" class="btn btn-danger "><span class="glyphicon glyphicon-pencil"></span></button>-->
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td >
+          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,15]"></mfBootstrapPaginator>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+

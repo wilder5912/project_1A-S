@@ -21,10 +21,16 @@ public class Article implements Serializable {
     private String codigoAr;
 
     @Column(name="precy_ar")
-    private Double precyAr;
+    private float precyAr;
 
     @Column(name="detail_ar")
     private String detailAr;
+
+    @Column(name="per_discount_ar")
+    private float perDiscountAr;
+
+    @Column(name="is_discount_ar")
+    private boolean isDiscountAr;
 
     @Column(name="image_main_ar")
     private String imageMainAr;
@@ -56,11 +62,11 @@ public class Article implements Serializable {
         this.codigoAr = codigoAr;
     }
 
-    public Double getPrecyAr() {
+    public float getPrecyAr() {
         return precyAr;
     }
 
-    public void setPrecyAr(Double precyAr) {
+    public void setPrecyAr(float precyAr) {
         this.precyAr = precyAr;
     }
 
@@ -86,5 +92,21 @@ public class Article implements Serializable {
 
     public void setDelete(boolean delete) {
         isDelete = delete;
+    }
+
+    public float getPerDiscountAr() {
+        return perDiscountAr;
+    }
+
+    public void setPerDiscountAr(float perDiscountAr) {
+        this.perDiscountAr = perDiscountAr;
+    }
+
+    public boolean isDiscountAr() {
+        return isDiscountAr;
+    }
+
+    public void setDiscountAr(boolean discountAr) {
+        isDiscountAr = discountAr;
     }
 }

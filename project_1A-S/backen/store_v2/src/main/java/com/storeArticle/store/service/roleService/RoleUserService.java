@@ -1,7 +1,10 @@
 package com.storeArticle.store.service.roleService;
 
 import com.storeArticle.store.model.accounts.RoleUser;
+import com.storeArticle.store.service.dto.SelectDTOService;
+import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.enumPage.roleEmun.RoleUserQueryEnum;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
@@ -14,6 +17,8 @@ public class RoleUserService {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Autowired
+    private SelectDTOService selectDTOService;
     public boolean addTypeMoney(RoleUser roleUser){
         boolean isRoleUser = false;
         if(isCreateProvider(roleUser.getNameRole())){
@@ -46,7 +51,15 @@ public class RoleUserService {
                 .setParameter(1,false)
                 .getResultList();
     }
+    public List<Object[]> getListRole(){
+        return entityManager.createQuery(RoleUserQueryEnum.getListOfAllRoleHql.getHql())
+                .setParameter(1,false)
+                .getResultList();
+    }
 
+    public List<SelectVEO> getListSelectDTO(){
+        return  selectDTOService.getIdNameDTO(getListRole());
+    }
 
     public boolean deleteRoleUser(int warehouseId){
         RoleUser roleUser = getRoleUser(warehouseId);

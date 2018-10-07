@@ -7,6 +7,7 @@ import com.storeArticle.store.service.dto.BusinessVEO;
 import com.storeArticle.store.service.dto.SelectVEO;
 import com.storeArticle.store.service.groupProductService.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,18 +55,18 @@ public class BusinessController {
         return businessService.getBusinessAll(businessI);
     }
 
-    @PostMapping(value = "/deleteBusiness")
-    public boolean deleteBusiness(@RequestBody String businessData)throws IOException {
+    @PutMapping(value = "/deleteBusiness/{businessId}")
+    public ResponseEntity<Business> deleteBusiness(@RequestBody String businessData, @PathVariable("businessId") int businessId)throws IOException {
         this.mapper = new ObjectMapper();
         Business business = this.mapper.readValue(businessData, Business.class);
-        return businessService.deleteBusiness(business.getBusinessId());
+        return businessService.deleteRequest(business,businessId );
     }
 
-    @PostMapping(value = "/editBusiness")
-    public boolean editBusiness(@RequestBody String businessData)throws IOException {
+    @PutMapping(value = "/editBusiness/{businessId}")
+    public ResponseEntity<Business> editBusiness(@RequestBody String businessData, @PathVariable("businessId") int businessId )throws IOException {
         this.mapper = new ObjectMapper();
         Business business = this.mapper.readValue(businessData, Business.class);
-        return businessService.updatedBusiness(business);
+        return businessService.UpdateRequest(business, businessId);
     }
 
 

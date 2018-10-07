@@ -41,6 +41,8 @@ public class User implements Serializable {
     @Column(name = "id_box_user")
     private int idBoxUser;
 
+    @Column(name = "business_id_user")
+    private int bussineIdUser;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -124,5 +126,13 @@ public class User implements Serializable {
 
     public void setIdBoxUser(int idBoxUser) {
         this.idBoxUser = idBoxUser;
+    }
+
+    public int getBussineIdUser() {
+        return bussineIdUser;
+    }
+
+    public void setBussineIdUser(int bussineIdUser) {
+        this.bussineIdUser = bussineIdUser;
     }
 }

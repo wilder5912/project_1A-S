@@ -32,6 +32,9 @@ import { TypeMoneyComponent } from './view/Admin/type-money/type-money.component
 import { RoleUserComponent } from './view/Admin/role-user/role-user.component';
 import { LookForUserComponent } from './view/Admin/DetailRoleUser/look-for-user/look-for-user.component';
 import { DetailRoleUserComponent } from './view/Admin/DetailRoleUser/detail-role-user/detail-role-user.component';
+import { HomeCashierComponent } from './view/cashier/home-cashier/home-cashier.component';
+import { SalesComponent } from './view/cashier/sales/sales.component';
+import { ClientComponent } from './view/cashier/client/client.component';
 
 const routes: Routes = [
   { path : 'home', component: HomeComponent},
@@ -64,6 +67,9 @@ const routes: Routes = [
   { path : 'roleUser', component: RoleUserComponent},
   { path : 'lookForUser', component: LookForUserComponent},
   { path : 'detailRoleUser/:idUser', component: DetailRoleUserComponent},
+  { path : 'homeCashier', component: HomeCashierComponent},
+  { path : 'salesCashier', component: SalesComponent},
+  { path : 'clientCashier', component: ClientComponent},
   { path: '', component: HomeComponent },
   { path : '', redirectTo: '/home', pathMatch: 'full'},
 ];

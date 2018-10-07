@@ -9,4 +9,5 @@ export class User {
   tokenUser: string;
   codeUser: string;
   idBoxUser: number;
+  bussineIdUser: number;
 }

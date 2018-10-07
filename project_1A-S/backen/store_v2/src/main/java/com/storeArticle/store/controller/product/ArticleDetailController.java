@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import org.springframework.hateoas.Resource;
 import java.io.IOException;
 import java.util.List;
 
@@ -97,6 +98,11 @@ public class ArticleDetailController {
     @PostMapping(value="/addArticleDetail")
     public boolean addArticleDetail(@RequestBody List<ArticleDetail> articleDetailData )throws IOException{
         return articleDetailService.addArticleRelational(articleDetailData);
+    }
+
+    @GetMapping(value = "/getArticleDetailCodBusi/{codeAr}/{businessId}")
+    public ResponseEntity<ArticleDetail> getArticleDetailCodBusi(@PathVariable("codeAr") String codeAr, @PathVariable("businessId") int businessId ){
+        return articleDetailService.restDetailArticle(codeAr, businessId);
     }
 
 

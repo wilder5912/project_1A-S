@@ -24,10 +24,10 @@ export class BussineService {
     }
 
     public editBusiness(business: Business): Observable<Business>  {
-      return this.http.post<Business>(this.dataService.getUrl('/business/editBusiness'), JSON.stringify(business));
+      return this.http.put<Business>(this.dataService.getUrl('/business/editBusiness/' + business.businessId ), JSON.stringify(business));
     }
     public deleteBusiness(business: Business): Observable<Business>  {
-      return this.http.post<Business>(this.dataService.getUrl('/business/deleteBusiness'), JSON.stringify(business));
+      return this.http.put<Business>(this.dataService.getUrl('/business/deleteBusiness/' + business.businessId ), JSON.stringify(business));
     }
 }
 

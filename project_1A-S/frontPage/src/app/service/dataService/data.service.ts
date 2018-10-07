@@ -24,6 +24,7 @@ export class DataService {
  public articleValue: number;
  public boxIdUser = 0;
  public detailArticle;
+ public idDetailRole: number;
  public AUTH_CONFIG: User = {
     userID: 0,
     firtNameUser: '',
@@ -34,8 +35,23 @@ export class DataService {
     imagenUser: '',
     tokenUser: '',
     codeUser: '',
-    idBoxUser: 0
+    idBoxUser: 0,
+    bussineIdUser: 0
   };
+ public userRoleCurren: User = {
+    userID: 0,
+    firtNameUser: '',
+    lastNameUser: '',
+    emailUser: '',
+    password: '',
+    typeUser: '',
+    imagenUser: '',
+    tokenUser: '',
+    codeUser: '',
+    idBoxUser: 0,
+    bussineIdUser: 0
+  };
+
  public rantingMax = 5;
  public typeImageSelect = [
    {value: 'Publico', label: 'Publico'},
@@ -44,10 +60,12 @@ export class DataService {
  ];
   constructor( private modalService: BsModalService , private router: Router ) {
    this.getLanguagePage();
-    this.initPage();
+   this.initPage();
+   this.idDetailRole = 0;
  }
   public headerSend = {
     'Content-Type': 'application/json; charset=utf-8',
+    'X-Requested-With': '',
     'access-token': sessionStorage.getItem('token'),
   };
  public initPage() {
@@ -72,7 +90,11 @@ export class DataService {
       this.router.navigate(['/home']);
     }
   }
-
+  public redirectTypeCashier() {
+    if (this.AUTH_CONFIG.typeUser !== 'Cashier' ) {
+      this.router.navigate(['/home']);
+    }
+  }
   public getApiUrl(): string {
     return this._apiUrl;
   }

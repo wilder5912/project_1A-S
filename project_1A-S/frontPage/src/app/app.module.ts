@@ -98,6 +98,8 @@ import { DetaillRoleComponent } from './view/Admin/DetailRoleUser/detaill-role/d
 import { LookForUserComponent } from './view/Admin/DetailRoleUser/look-for-user/look-for-user.component';
 import { DetailRoleUserComponent } from './view/Admin/DetailRoleUser/detail-role-user/detail-role-user.component';
 import { InfoUserComponent } from './view/Admin/DetailRoleUser/info-user/info-user.component';
+import { SalesComponent } from './view/cashier/sales/sales.component';
+import { ClientComponent } from './view/cashier/client/client.component';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -115,7 +117,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 @NgModule({
   declarations: [
     AppComponent,
-     LoginComponent,
+    LoginComponent,
     HomeComponent,
     RegisterComponent,
     HomeAdminComponent,
@@ -191,6 +193,8 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     LookForUserComponent,
     DetailRoleUserComponent,
     InfoUserComponent,
+    SalesComponent,
+    ClientComponent,
   ],
   imports: [
     BrowserModule,

@@ -112,7 +112,7 @@ export class AppComponent implements OnInit {
           this.dataService.AUTH_CONFIG = result;
           this.imageUser = this.dataService.getApiUrl() + '/user/files/' + this.dataService.AUTH_CONFIG.imagenUser;
           this.dataService.imageUserPage = this.dataService.getApiUrl() + '/user/files/' + this.dataService.AUTH_CONFIG.imagenUser;
-
+          this.dataService.bussineId = this.dataService.AUTH_CONFIG.bussineIdUser;
 
           localStorage.setItem('currentUser', JSON.stringify({emailUser: result.emailUser, token: 'fake-jwt-token'}));
           this.user = result;
